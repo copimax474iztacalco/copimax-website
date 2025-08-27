@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¿Dónde imprimir tu tesis rápido y barato en CDMX? - COPIMAX Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary1:#000000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;
+      --text:#2d3748;--muted:#666;--card:#fff;--bg:#b5ff00;--whatsapp:#25D366;
+      --ok:#b5ff00;--radius:10px
+    }
+    
+    body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;overflow-x:hidden;background:#fff}
+    a{text-decoration:none}
+
+    /* Header Styles */
+    header{
+      background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      color:#fff;position:fixed;top:0;left:0;right:0;z-index:1000;
+      box-shadow:0 4px 20px rgba(0,0,0,0.1)
+    }
+    
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 2rem;max-width:1200px;margin:0 auto
+    }
+    
+    .logo{
+      display:flex;align-items:center;cursor:pointer;transition:transform 0.3s ease
+    }
+    
+    .logo:hover{transform:scale(1.05)}
+    
+    .logo img{
+      width:50px;height:50px;border-radius:50%;object-fit:cover
+    }
+    
+    .contact-header{
+      display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap
+    }
+    
+    .contact-header span{
+      font-weight:600;font-size:0.9rem
+    }
+    
+    .whatsapp-btn{
+      background:var(--whatsapp);color:#fff;padding:0.5rem 1rem;
+      border-radius:25px;font-weight:600;font-size:0.9rem;
+      transition:all 0.3s ease;display:inline-block
+    }
+    
+    .whatsapp-btn:hover{background:var(--cta2);transform:translateY(-2px)}
+
+    /* Menu Principale Elegante in Stile Apple */
+    .main-navigation{
+      display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);
+      border-radius:25px;padding:4px;backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.1)
+    }
+    
+    .nav-link{
+      color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;
+      padding:12px 20px;border-radius:20px;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position:relative;white-space:nowrap;letter-spacing:0.02em
+    }
+    
+    .nav-link:hover{
+      background:rgba(255,255,255,0.15);transform:translateY(-1px);
+      color:#fff
+    }
+    
+    .nav-link.active{
+      background:rgba(255,255,255,0.2);color:#fff;font-weight:600;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1)
+    }
+    
+    /* Effetto hover sottile */
+    .nav-link::after{
+      content:'';position:absolute;bottom:8px;left:50%;width:0;height:2px;
+      background:var(--cta1);transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform:translateX(-50%);border-radius:1px
+    }
+    
+    .nav-link:hover::after{
+      width:20px
+    }
+    
+    .nav-link.active::after{
+      width:30px;background:var(--cta1)
+    }
+    
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle{
+      display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;
+      z-index:1001
+    }
+    
+    .mobile-menu-toggle span{
+      width:25px;height:3px;background:#fff;border-radius:2px;
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(6px,6px)
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2){
+      opacity:0
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(6px,-6px)
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu{
+      display:none;position:fixed;top:80px;left:0;right:0;
+      background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
+      padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:2000;
+      transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+    }
+    
+    .mobile-menu.active{
+      transform:translateY(0)
+    }
+    
+    .mobile-menu-item{
+      display:block;color:#fff;text-decoration:none;font-weight:500;font-size:1.1rem;
+      padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);position:relative
+    }
+    
+    .mobile-menu-item:hover{
+      color:var(--cta1);transform:translateX(10px)
+    }
+    
+    .mobile-menu-item::after{
+      content:'';position:absolute;right:0;top:50%;width:8px;height:8px;
+      background:var(--cta1);border-radius:50%;transform:translateY(-50%) scale(0);
+      transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+    }
+    
+    .mobile-menu-item:hover::after{
+      transform:translateY(-50%) scale(1)
+    }
+    
+    .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1500}
+    .mobile-backdrop.active{display:block}
+    body.menu-open{overflow:hidden}
+
+    /* Main Content */
+    .main-content{
+      margin-top:80px;min-height:calc(100vh - 80px)
+    }
+    
+    .container{
+      max-width:1200px;margin:0 auto;padding:0 24px
+    }
+
+    /* Article Header */
+    .article-header{
+      background:linear-gradient(135deg,var(--bg),var(--cta2));
+      padding:80px 0;text-align:center
+    }
+    
+    .article-header h1{
+      font-size:3rem;font-weight:800;color:var(--primary1);
+      margin-bottom:1.5rem;line-height:1.2;max-width:800px;margin-left:auto;margin-right:auto
+    }
+    
+    .article-header .meta{
+      font-size:1.1rem;color:var(--primary1);font-weight:600
+    }
+
+    /* Article Content */
+    .article-content{
+      padding:80px 0;background:#fff
+    }
+    
+    .article-text{
+      max-width:800px;margin:0 auto;font-size:1.1rem;line-height:1.8
+    }
+    
+    .article-text h2{
+      font-size:2rem;font-weight:700;color:var(--primary1);
+      margin:3rem 0 1.5rem 0
+    }
+    
+    .article-text h3{
+      font-size:1.5rem;font-weight:600;color:var(--primary1);
+      margin:2rem 0 1rem 0
+    }
+    
+    .article-text p{
+      margin-bottom:1.5rem;color:var(--text)
+    }
+    
+    .article-text ul, .article-text ol{
+      margin:1.5rem 0;padding-left:2rem
+    }
+    
+    .article-text li{
+      margin-bottom:0.5rem;color:var(--text)
+    }
+    
+    .article-text strong{
+      color:var(--primary1);font-weight:600
+    }
+
+    /* CTA Section */
+    .cta-section{
+      background:var(--bg);padding:80px 0;text-align:center
+    }
+    
+    .cta-content{max-width:600px;margin:0 auto;padding:0 24px}
+    
+    .cta-title{
+      font-size:2rem;font-weight:800;color:var(--primary1);margin-bottom:1.5rem
+    }
+    
+    .cta-text{
+      font-size:1.1rem;color:var(--text);margin-bottom:2rem;line-height:1.6
+    }
+    
+    .cta-buttons{
+      display:flex;gap:1rem;justify-content:center;flex-wrap:wrap
+    }
+    
+    .cta-primary{
+      background:linear-gradient(135deg,var(--cta1),var(--cta2));
+      color:#000;padding:1rem 2rem;border-radius:50px;font-weight:700;
+      display:inline-block;text-decoration:none;box-shadow:0 10px 30px rgba(181,255,0,0.3);
+      transition:all 0.4s ease;border:none;cursor:pointer;font-size:1.1rem
+    }
+    
+    .cta-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(181,255,0,0.4)}
+    
+    .cta-secondary{
+      background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      color:#fff;padding:1rem 2rem;border-radius:50px;font-weight:700;
+      display:inline-block;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      transition:all 0.4s ease;border:none;cursor:pointer;font-size:1.1rem
+    }
+    
+    .cta-secondary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,0.3)}
+
+    /* Footer */
+    .footer{
+      background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      color:#fff;text-align:center;padding:2rem 0
+    }
+    
+    .footer-content{max-width:1200px;margin:0 auto;padding:0 24px}
+    
+    .footer-links{
+      display:flex;gap:2rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap
+    }
+    
+    .footer-links a{
+      color:#fff;text-decoration:none;transition:color 0.3s ease
+    }
+    
+    .footer-links a:hover{color:var(--cta1)}
+    
+    .footer-copyright{
+      color:rgba(255,255,255,0.8);font-size:0.9rem
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .article-header h1{font-size:2.5rem}
+      .article-header .meta{font-size:1rem}
+      .article-text{font-size:1rem}
+      .article-text h2{font-size:1.8rem}
+      .article-text h3{font-size:1.4rem}
+      .cta-buttons{flex-direction:column;align-items:center}
+      .cta-primary,.cta-secondary{width:100%;max-width:300px;text-align:center}
+      .nav{padding:1rem}
+      .contact-header{flex-direction:column;gap:1rem}
+      
+      /* Menu Responsive */
+      .main-navigation{display:none}
+      .mobile-menu-toggle{display:flex}
+      .mobile-menu{display:block}
+    }
+    
+    @media(max-width:480px){
+      .article-header h1{font-size:2rem}
+      .article-header .meta{font-size:0.9rem}
+      .article-text h2{font-size:1.6rem}
+      .article-text h3{font-size:1.3rem}
+      .container{padding:0 16px}
+      .nav{padding:8px 16px}
+      .contact-header{flex-direction:column;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='index.html'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      
+      <!-- Menu Principale Elegante in Stile Apple -->
+      <div class="main-navigation">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="servicios.html" class="nav-link">Servicios</a>
+        <a href="copias-volumen-cdmx.html" class="nav-link">Volumen</a>
+        <a href="nosotros.html" class="nav-link">Nosotros</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </div>
+      
+      <!-- Botón Menú Móvil -->
+      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="mobile-backdrop" id="mobileBackdrop" onclick="toggleMobileMenu()"></div>
+      
+      <div class="contact-header">
+        <span>📞 55-4021-9892</span>
+        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20consultar%20sobre%20un%20proyecto.%20%F0%9F%93%9D" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+    
+    <!-- Menú Móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-menu-item">🏠 Inicio</a>
+      <a href="servicios.html" class="mobile-menu-item">🖨️ Servicios</a>
+      <a href="nosotros.html" class="mobile-menu-item">🏠 Nosotros</a>
+      <a href="blog.html" class="mobile-menu-item active">📝 Blog</a>
+      <a href="contacto.html" class="mobile-menu-item">📍 Contacto</a>
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+        <a class="mobile-whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20consultar%20sobre%20un%20proyecto.%20%F0%9F%93%9D" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Article Header -->
+    <section class="article-header">
+      <div class="container">
+        <h1>¿Dónde imprimir tu tesis rápido y barato en CDMX? Guía completa 2025</h1>
+        <div class="meta">📅 Enero 2025 • 📚 Categoría: Tesis • ⏱️ 5 min de lectura</div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+      <div class="container">
+        <div class="article-text">
+          <p>Si eres estudiante universitario en CDMX y necesitas imprimir tu tesis de forma urgente y económica, esta guía te ayudará a tomar la mejor decisión.</p>
+          
+          <h2>🎯 ¿Por qué es importante elegir bien dónde imprimir tu tesis?</h2>
+          <p>Tu tesis representa años de trabajo y dedicación. Elegir el lugar correcto para imprimirla puede marcar la diferencia entre una presentación profesional y una que no refleje el esfuerzo invertido.</p>
+          
+          <h3>✅ Factores clave a considerar:</h3>
+          <ul>
+            <li><strong>Calidad de impresión</strong> - Resolución y nitidez del texto</li>
+            <li><strong>Tipos de papel disponibles</strong> - Bond, couché, fotográfico</li>
+            <li><strong>Opciones de encuadernación</strong> - Espiral, pasta dura, engargolado</li>
+            <li><strong>Precios competitivos</strong> - Especialmente para volúmenes altos</li>
+            <li><strong>Servicio express</strong> - Entrega en el mismo día</li>
+          </ul>
+          
+          <h2>🏆 COPIMAX: Tu mejor opción en Iztacalco</h2>
+          <p>Con más de 25 años de experiencia, COPIMAX se ha convertido en el <strong>centro de impresiones más confiable de Iztacalco</strong>. Nuestros servicios especializados para tesis incluyen:</p>
+          
+          <h3>🖨️ Impresión de alta calidad</h3>
+          <ul>
+            <li>Impresoras de última generación</li>
+            <li>Papel bond 75gr de alta calidad</li>
+            <li>Resolución profesional para gráficos y tablas</li>
+            <li>Opciones de impresión a color y blanco y negro</li>
+          </ul>
+          
+          <h3>📚 Encuadernación profesional</h3>
+          <ul>
+            <li>Engargolado con espiral metálico</li>
+            <li>Pasta dura y blanda disponible</li>
+            <li>Acabados personalizados</li>
+            <li>Protección para documentos importantes</li>
+          </ul>
+          
+          <h2>💰 Precios competitivos para estudiantes</h2>
+          <p>Entendemos que como estudiante, el presupuesto es importante. Por eso ofrecemos:</p>
+          <ul>
+            <li><strong>Descuentos por volumen</strong> - Cuantas más copias, mejor precio</li>
+            <li><strong>Precios especiales para tesis</strong> - Desde $0.35 por copia</li>
+            <li><strong>Sin costos ocultos</strong> - Precio final transparente</li>
+            <li><strong>Opciones de pago flexibles</strong> - Efectivo y transferencias</li>
+          </ul>
+          
+          <h2>⚡ Servicio express para emergencias</h2>
+          <p>¿Tu tesis se debe entregar mañana? No te preocupes, COPIMAX ofrece:</p>
+          <ul>
+            <li><strong>Impresión en el mismo día</strong> - Para proyectos urgentes</li>
+            <li><strong>Horarios extendidos</strong> - De lunes a sábado</li>
+            <li><strong>Atención personalizada</strong> - Te ayudamos con cualquier duda</li>
+            <li><strong>WhatsApp prioritario</strong> - Respuesta inmediata</li>
+          </ul>
+          
+          <h2>📍 Ubicación estratégica</h2>
+          <p>Nos encontramos en <strong>Vainilla 474, Iztacalco 08400, CDMX</strong>, a solo minutos de:</p>
+          <ul>
+            <li>UPIICSA - Instituto Politécnico Nacional</li>
+            <li>Metro Iztacalco</li>
+            <li>Centros comerciales importantes</li>
+            <li>Principales avenidas de la zona</li>
+          </ul>
+          
+          <h2>🎓 Experiencia con instituciones educativas</h2>
+          <p>COPIMAX ha trabajado con estudiantes de:</p>
+          <ul>
+            <li>UPIICSA - Instituto Politécnico Nacional</li>
+            <li>UNAM - Universidad Nacional Autónoma de México</li>
+            <li>UAM - Universidad Autónoma Metropolitana</li>
+            <li>Institutos tecnológicos privados</li>
+          </ul>
+          
+          <h2>💡 Consejos para una tesis perfecta</h2>
+          <ol>
+            <li><strong>Planifica con anticipación</strong> - Evita imprimir a última hora</li>
+            <li><strong>Revisa el formato</strong> - Asegúrate de que cumple los requisitos</li>
+            <li><strong>Pide una copia de prueba</strong> - Verifica la calidad antes de imprimir todo</li>
+            <li><strong>Considera la encuadernación</strong> - Una buena presentación suma puntos</li>
+            <li><strong>Guarda copias digitales</strong> - Nunca se sabe cuándo las necesitarás</li>
+          </ol>
+          
+          <h2>🚀 ¿Listo para imprimir tu tesis?</h2>
+          <p>No dejes que la impresión sea un obstáculo para tu éxito académico. En COPIMAX tenemos todo lo que necesitas para que tu tesis se vea profesional y perfecta.</p>
+          
+          <p><strong>Contacta con nosotros hoy mismo:</strong></p>
+          <ul>
+            <li>📞 Teléfono: 55-4021-9892</li>
+            <li>💬 WhatsApp: <a href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20necesito%20imprimir%20mi%20tesis%20urgentemente.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">Enviar mensaje</a></li>
+            <li>📍 Dirección: Vainilla 474, Iztacalco 08400, CDMX</li>
+            <li>🕒 Horarios: Lunes a viernes 8:30-18:00, Sábados y Domingos 8:30-14:00</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Necesitas imprimir tu tesis urgentemente?</h2>
+        <p class="cta-text">Contáctanos ahora para obtener precios especiales para estudiantes y servicio express.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20necesito%20imprimir%20mi%20tesis%20urgentemente.%20¿Pueden%20ayudarme?" class="cta-primary" target="_blank" rel="noopener">💬 WhatsApp Urgente</a>
+          <a href="blog.html" class="cta-secondary">📝 Volver al Blog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#calculator">Cotizar</a>
+        <a href="index.html#services-packages">Servicios</a>
+        <a href="blog.html">Blog</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-copyright">
+        © 2024 COPIMAX - Centro de Copias Iztacalco. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Funzione per gestire il menu mobile
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (mobileMenu && mobileToggle) {
+        mobileMenu.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+    }
+    
+    // Chiudi menu mobile quando si clicca su un link
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+      mobileMenuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          closeMobileMenu();
+        });
+      });
+    });
+    
+    function closeMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (mobileMenu && mobileToggle) {
+        mobileMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    }
+  </script>
+</body>
+</html>
