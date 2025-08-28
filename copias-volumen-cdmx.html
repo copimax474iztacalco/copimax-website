@@ -126,150 +126,179 @@
   }
     
 
-  /* MOBILE HEADER PERFETTO - STESSO STILE DESKTOP */
+  /* MOBILE HEADER PERFETTO - STESSO STILE DESKTOP - FORZATO */
   @media (max-width: 768px) {
-    /* Nascondi header desktop su mobile */
+    /* Nascondi header desktop su mobile - FORZATO */
     header.header {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
     
-    /* Header mobile fisso e perfetto */
+    /* Header mobile fisso e perfetto - FORZATO */
     .mobile-header {
       display: block !important;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: linear-gradient(135deg, var(--primary1), var(--primary2));
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 9999 !important;
+      background: linear-gradient(135deg, var(--primary1), var(--primary2)) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 200px !important;
     }
     
-    /* Container mobile header */
+    /* Container mobile header - FORZATO */
     .mobile-header-container {
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 20px !important;
+      padding: 16px 20px !important;
+      width: 100% !important;
+      min-height: 200px !important;
     }
     
-    /* Logo mobile centrato */
+    /* Logo mobile centrato - FORZATO */
     .mobile-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 50px;
-      cursor: pointer;
-      filter: brightness(1.2);
-      transition: transform 0.3s ease;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 50px !important;
+      cursor: pointer !important;
+      filter: brightness(1.2) !important;
+      transition: transform 0.3s ease !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-logo:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) !important;
     }
     
     .mobile-logo img {
-      height: 50px;
-      width: auto;
+      height: 50px !important;
+      width: auto !important;
+      display: block !important;
+      visibility: visible !important;
     }
     
-    /* Navigazione mobile verticale */
+    /* Navigazione mobile verticale - FORZATO */
     .mobile-navigation {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-      max-width: 300px;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      width: 100% !important;
+      max-width: 300px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 20px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 25px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      padding: 14px 20px !important;
+      background: rgba(255,255,255,0.08) !important;
+      border-radius: 25px !important;
+      color: #fff !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+      font-size: 1rem !important;
+      transition: all 0.3s ease !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(20px) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-nav-link:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.15) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
     }
     
     .mobile-nav-link.active {
-      background: rgba(255,255,255,0.2);
-      color: var(--cta1);
-      font-weight: 600;
-      box-shadow: 0 4px 20px rgba(181,255,0,0.3);
+      background: rgba(255,255,255,0.2) !important;
+      color: var(--cta1) !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 20px rgba(181,255,0,0.3) !important;
     }
     
-    /* Contatti mobile integrati */
+    /* Contatti mobile integrati - FORZATO */
     .mobile-contact-section {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.1);
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      align-items: center !important;
+      padding: 16px 20px !important;
+      background: rgba(255,255,255,0.05) !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-phone {
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #fff !important;
+      font-size: 0.95rem !important;
+      font-weight: 500 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-whatsapp-btn {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+      background: linear-gradient(135deg, #25D366, #128C7E) !important;
+      color: #fff !important;
+      padding: 12px 24px !important;
+      border-radius: 25px !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .mobile-whatsapp-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4) !important;
     }
     
-    /* Spazio per header mobile fisso */
+    /* Spazio per header mobile fisso - FORZATO */
     .hero-section {
-      margin-top: 200px !important;
+      margin-top: 250px !important;
+      padding-top: 50px !important;
     }
     
-    /* Nascondi bottone WhatsApp fisso su mobile (già integrato nell'header) */
+    /* Nascondi bottone WhatsApp fisso su mobile - FORZATO */
     .whatsapp-fixed-btn {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
   }
   
-  /* Nascondi header mobile su desktop */
+  /* Nascondi header mobile su desktop - FORZATO */
   @media (min-width: 769px) {
     .mobile-header {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
   }
     
