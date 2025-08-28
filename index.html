@@ -2000,9 +2000,16 @@
     
     .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden}
     
+    .books-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    
     .books-carousel{
       display:flex;transition:transform 0.5s ease-in-out;gap:24px;padding:20px 0;
-      width:fit-content; /* Assicura che il carosello si espanda per contenere tutti i libri */
+      width:max-content; /* Corretto: max-content invece di fit-content */
+      transform: translateX(0); /* Posizione iniziale esplicita */
     }
     
     .book-item{
@@ -2075,6 +2082,11 @@
     
     .books-indicator.active{
       background:var(--cta1);transform:scale(1.2)
+    }
+    
+    /* Stili per libri clonati */
+    .book-item.cloned {
+      opacity: 0.8;
     }
     
     /* Responsive per il carosello */
@@ -5246,6 +5258,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         // Setup eventi
         this.setupEvents();
         
+        // Crea indicatori
+        this.createIndicators();
+        
         // Avvia autoplay
         if (this.autoPlay) {
           this.startAutoPlay();
@@ -5287,6 +5302,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         const translateX = -this.currentIndex * bookWidth;
         
         this.carousel.style.transform = `translateX(${translateX}px)`;
+        
+        // Aggiorna indicatori
+        this.updateIndicators();
         
         if (!animate) {
           // Forza il reflow
@@ -5394,6 +5412,37 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           clearInterval(this.autoPlayTimer);
           this.autoPlayTimer = null;
         }
+      }
+      
+      createIndicators() {
+        const indicatorsContainer = document.getElementById('booksIndicators');
+        if (!indicatorsContainer) return;
+        
+        const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
+        indicatorsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalBooks; i++) {
+          const indicator = document.createElement('div');
+          indicator.className = 'books-indicator';
+          indicator.onclick = () => {
+            this.currentIndex = i + 3; // Compensa i cloni iniziali
+            this.updateCarousel(true);
+          };
+          indicatorsContainer.appendChild(indicator);
+        }
+        
+        // Attiva il primo indicatore
+        this.updateIndicators();
+      }
+      
+      updateIndicators() {
+        const indicators = document.querySelectorAll('.books-indicator');
+        const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
+        const activeIndex = (this.currentIndex - 3 + totalBooks) % totalBooks; // Compensa i cloni
+        
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === activeIndex);
+        });
       }
     }
     
