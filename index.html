@@ -3147,134 +3147,7 @@
       .main-navigation{display:none}
     }
     
-    /* MENU HAMBURGER MOBILE FUNZIONANTE - SOLO MOBILE */
-    .navbar-mobile {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: #2a2a2a;
-      padding: 15px 20px;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-    
-    .nav-brand img {
-      height: 40px;
-      width: auto;
-    }
-    
-    .hamburger {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 5px;
-    }
-    
-    .hamburger span {
-      width: 20px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    .mobile-menu {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: rgba(42, 42, 42, 0.95);
-      backdrop-filter: blur(10px);
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-      padding: 20px 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    
-    .mobile-menu.show {
-      transform: translateY(0);
-    }
-    
-    .mobile-menu a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 15px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      transition: background 0.3s ease;
-      font-size: 16px;
-    }
-    
-    .mobile-menu a:hover {
-      background: rgba(255,255,255,0.1);
-    }
-    
-    .mobile-menu .phone {
-      color: white;
-      padding: 15px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-size: 16px;
-      background: rgba(255,255,255,0.05);
-    }
-    
-    .mobile-menu .whatsapp {
-      background: #25D366;
-      color: white;
-      font-weight: 600;
-      text-align: center;
-      margin: 10px 20px;
-      border-radius: 25px;
-      border: none;
-    }
-    
-    .mobile-menu .whatsapp:hover {
-      background: #128C7E;
-    }
-    
-    /* MOBILE ONLY - NON INFLUENZA DESKTOP */
-    @media (max-width: 768px) {
-      .navbar-mobile {
-        display: flex !important;
-      }
-      
-      .hero {
-        margin-top: 80px !important;
-      }
-    }
-    
-    /* DESKTOP ONLY - LAYOUT ORIGINALE INTATTO */
-    @media (min-width: 769px) {
-      .navbar-mobile {
-        display: none !important;
-      }
-      
-      /* RIPRISTINO LAYOUT DESKTOP ORIGINALE */
-      .hero {
-        margin-top: 0 !important;
-        padding: 100px 0 100px !important;
-      }
-      
-      header.header {
-        display: block !important;
-      }
-    }
+
   </style>
 </head>
 <body>
@@ -5316,75 +5189,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
 
           
-      // ===== NUOVO MENU MOBILE SLIDE LATERALE =====
-      
-      // Funzioni per il menu mobile slide - GLOBALI
-      window.toggleMobileSlideMenu = function() {
-        const slideMenu = document.getElementById('mobileSlideMenu');
-        const body = document.body;
-        
-        if (slideMenu.classList.contains('open')) {
-          closeMobileSlideMenu();
-        } else {
-          openMobileSlideMenu();
-        }
-      };
-      
-      window.openMobileSlideMenu = function() {
-        const slideMenu = document.getElementById('mobileSlideMenu');
-        const body = document.body;
-        
-        slideMenu.classList.add('open');
-        body.style.overflow = 'hidden';
-        
-        // Aggiungi overlay se non esiste
-        if (!document.querySelector('.mobile-menu-overlay')) {
-          const overlay = document.createElement('div');
-          overlay.className = 'mobile-menu-overlay';
-          overlay.onclick = closeMobileSlideMenu;
-          document.body.appendChild(overlay);
-          
-          // Attiva overlay dopo un frame
-          requestAnimationFrame(() => {
-            overlay.classList.add('active');
-          });
-        }
-      };
-      
-      window.closeMobileSlideMenu = function() {
-        const slideMenu = document.getElementById('mobileSlideMenu');
-        const body = document.body;
-        const overlay = document.querySelector('.mobile-menu-overlay');
-        
-        slideMenu.classList.remove('open');
-        body.style.overflow = 'auto';
-        
-        if (overlay) {
-          overlay.classList.remove('active');
-          setTimeout(() => {
-            if (overlay.parentNode) {
-              overlay.parentNode.removeChild(overlay);
-            }
-          }, 300);
-        }
-      };
-      
-      // Chiudi menu con ESC
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeMobileSlideMenu();
-        }
-      });
-      
-      // Chiudi menu quando si clicca su un link
-      document.addEventListener('DOMContentLoaded', function() {
-        const slideMenuLinks = document.querySelectorAll('.slide-menu-nav a');
-        slideMenuLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            closeMobileSlideMenu();
-          });
-        });
-      });
+
       
       // CAROSELLO LIBRI - INFINITE LOOP FUNZIONANTE
     class BooksCarousel {
@@ -6793,68 +6598,19 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
       }
     });
     
-    // JAVASCRIPT MENU HAMBURGER MOBILE
-    console.log('🚨 MENU HAMBURGER JS CARICATO!');
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('📱 DOM CARICATO - Setup menu hamburger');
-      
-      const hamburger = document.getElementById('hamburger');
-      const menu = document.getElementById('mobile-menu');
-      
-      console.log('🍔 Hamburger trovato:', hamburger);
-      console.log('📋 Menu trovato:', menu);
-      
-      if (!hamburger) {
-        console.error('❌ ERRORE: hamburger non trovato!');
-        return;
-      }
-      
-      if (!menu) {
-        console.error('❌ ERRORE: mobile-menu non trovato!');
-        return;
-      }
-      
-      // Toggle menu hamburger
-      hamburger.addEventListener('click', function() {
-        console.log('🍔 CLICK HAMBURGER!');
-        hamburger.classList.toggle('active');
-        menu.classList.toggle('show');
-        
-        if (menu.classList.contains('show')) {
-          console.log('✅ MENU APERTO');
-        } else {
-          console.log('❌ MENU CHIUSO');
-        }
+
       });
-      
-      // Chiudi menu quando clicchi su una voce
-      const menuLinks = menu.querySelectorAll('a');
-      menuLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          console.log('🔗 CLICK LINK:', this.href);
-          hamburger.classList.remove('active');
-          menu.classList.remove('show');
-          console.log('❌ MENU CHIUSO DOPO CLICK LINK');
-        });
-      });
-      
-      console.log('✅ Event listeners aggiunti al menu hamburger');
-    });
     
-    // Backup: esegui dopo 1 secondo
-    setTimeout(function() {
-      console.log('🔄 Backup check menu hamburger');
-      const hamburger = document.getElementById('hamburger');
-      const menu = document.getElementById('mobile-menu');
-      
-      if (hamburger && menu) {
-        console.log('✅ Backup: elementi trovati');
-      } else {
-        console.error('❌ Backup: elementi NON trovati');
-      }
-    }, 1000);
-  });
+    // MENU MOBILE SEMPLIFICATO
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      menu.classList.toggle('open');
+    }
+    
+    function closeMobileSlideMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      menu.classList.remove('open');
+    }
   </script>
 </body>
 </html>
