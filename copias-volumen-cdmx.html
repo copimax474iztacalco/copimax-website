@@ -12,21 +12,16 @@
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--primary1:#000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;--text:#1f2937;--muted:#6b7280;--card:#fff}
     body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-    header.header{background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;position:sticky;top:0;z-index:1000}
-    .nav{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 24px;padding-top:20px}
+    header.header{position:sticky;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);color:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;min-height:80px}
+    .nav{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;min-height:80px}
     .logo{display:flex;align-items:center;height:50px;cursor:pointer}
     .logo img{height:50px;width:auto;filter:brightness(1.1)}
     .main-navigation{display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);border-radius:25px;padding:4px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1)}
     .nav-link{color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;padding:12px 20px;border-radius:20px;transition:all .3s;position:relative}
     .nav-link:hover{background:rgba(255,255,255,0.15);transform:translateY(-1px)}
     .nav-link.active{background:rgba(255,255,255,0.2);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-    .mobile-menu-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px}
-    .mobile-menu-toggle span{width:25px;height:3px;background:#fff;border-radius:2px;transition:all .3s}
-    .mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:2000;transform:translateY(-100%);transition:transform .4s}
-    .mobile-menu.active{transform:translateY(0);display:block}
-    .mobile-menu-item{display:block;color:#fff;text-decoration:none;font-weight:500;font-size:1.1rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.1)}
-    .mobile-backdrop{display:none}
+
     .contact-header{display:flex;gap:12px;align-items:center}
     .whatsapp-btn{background:#25D366;color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;text-decoration:none}
     h1{font-size:2.2rem;font-weight:900;letter-spacing:-.02em}
@@ -35,7 +30,7 @@
       background: linear-gradient(135deg,var(--cta1),var(--cta2));
       -webkit-background-clip:text;background-clip:text;color:transparent;
       filter:saturate(110%);
-    }
+  }
     .sub{color:#e5e7eb;margin-top:6px}
     .hero{padding:40px 0}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -54,49 +49,302 @@
     .faq summary{padding:14px 16px;font-weight:700;cursor:pointer}
     .faq .ans{padding:0 16px 14px 16px;color:var(--muted)}
     footer{background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;text-align:center;padding:24px 0;margin-top:40px}
-    @media(max-width:768px){
-      .grid{grid-template-columns:1fr}
-      h1{font-size:1.8rem}
-      .header{position:sticky;top:0;z-index:1000}
-      .mobile-menu{top:64px;max-height:calc(100dvh - 64px);overflow-y:auto}
+
+
+
+  
+  /* Desktop - Header sempre consistente */
+  @media (min-width: 769px) {
+    header.header {
+      min-height: 80px;
+      padding: 0;
     }
+    
+    .nav {
+      padding: 16px 24px;
+      min-height: 80px;
+    }
+    
+    .contact-header span {
+      color: #fff !important;
+      font-size: 0.9rem;
+    }
+    
+    .hero-section {
+      background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      color:#fff;padding:100px 0 80px;text-align:center;position:relative;overflow:hidden
+    }
+    
+    .hero-section::before{content:"";position:absolute;inset:0;opacity:.15;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><pattern id="d" width="200" height="200" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="2" fill="white" opacity=".15"/><circle cx="150" cy="150" r="2" fill="white" opacity=".15"/></pattern></defs><rect width="200" height="200" fill="url(%23d)"/></svg>')}
+    
+    .hero-content{max-width:800px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    
+    .hero-title{
+      font-size:3.5rem;font-weight:900;line-height:1.2;margin-bottom:2rem;
+      background:linear-gradient(135deg,var(--cta1) 0%,var(--cta2) 50%,#ffffff 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+    }
+    
+    .hero-subtitle{
+      font-size:1.3rem;line-height:1.6;margin-bottom:2rem;opacity:0.95;font-weight:400
+    }
+    
+
+
+    /* Bottone WhatsApp fisso in basso a destra */
+    .whatsapp-fixed-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-fixed-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+    }
+
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+    
+
+  /* MOBILE HEADER PERFETTO - STESSO STILE DESKTOP */
+  @media (max-width: 768px) {
+    /* Nascondi header desktop su mobile */
+    header.header {
+      display: none !important;
+    }
+    
+    /* Header mobile fisso e perfetto */
+    .mobile-header {
+      display: block !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--primary1), var(--primary2));
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* Container mobile header */
+    .mobile-header-container {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    /* Logo mobile centrato */
+    .mobile-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      cursor: pointer;
+      filter: brightness(1.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .mobile-logo img {
+      height: 50px;
+      width: auto;
+    }
+    
+    /* Navigazione mobile verticale */
+    .mobile-navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 25px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+    }
+    
+    .mobile-nav-link:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .mobile-nav-link.active {
+      background: rgba(255,255,255,0.2);
+      color: var(--cta1);
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(181,255,0,0.3);
+    }
+    
+    /* Contatti mobile integrati */
+    .mobile-contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .mobile-phone {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .mobile-whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+    
+    .mobile-whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    }
+    
+    /* Spazio per header mobile fisso */
+    .hero-section {
+      margin-top: 200px !important;
+    }
+    
+    /* Nascondi bottone WhatsApp fisso su mobile (già integrato nell'header) */
+    .whatsapp-fixed-btn {
+      display: none !important;
+    }
+  }
+  
+  /* Nascondi header mobile su desktop */
+  @media (min-width: 769px) {
+    .mobile-header {
+      display: none !important;
+    }
+  }
+    
+
   </style>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <div class="logo" onclick="window.location.href='index.html'">
-        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+  <!-- MOBILE HEADER PERFETTO - STESSO STILE DESKTOP -->
+  <header class="mobile-header">
+    <div class="mobile-header-container">
+      <!-- Logo mobile centrato -->
+      <div class="mobile-logo" onclick="window.location.href='/'">
+        <img src="assets/logo-copimax.png" alt="COPIMAX Logo">
       </div>
-      <div class="main-navigation">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="copias-volumen-cdmx.html" class="nav-link active">Volumen</a>
-        <a href="nosotros.html" class="nav-link">Nosotros</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contacto.html" class="nav-link">Contacto</a>
+      
+      <!-- Navigazione mobile verticale -->
+      <nav class="mobile-navigation">
+        <a href="/" class="mobile-nav-link">🏠 Inicio</a>
+        <a href="/servicios" class="mobile-nav-link">🖨️ Servicios</a>
+        <a href="/copias-volumen-cdmx" class="mobile-nav-link active">📦 Volumen</a>
+        <a href="/nosotros" class="mobile-nav-link">🏢 Nosotros</a>
+        <a href="/blog" class="mobile-nav-link">�� Blog</a>
+        <a href="/contacto" class="mobile-nav-link">📍 Contacto</a>
+      </nav>
+      
+      <!-- Contatti mobile integrati -->
+      <div class="mobile-contact-section">
+        <div class="mobile-phone">
+          📞 +52 5540219892
+        </div>
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
+           class="mobile-whatsapp-btn" 
+           target="_blank" 
+           rel="noopener">
+          💬 WhatsApp
+        </a>
       </div>
-      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="contact-header">
-        <span>📞 55-4021-9892</span>
-        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20cotizar%20copias%20por%20volumen" target="_blank" rel="noopener">💬 WhatsApp</a>
-      </div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-menu-item">🏠 Inicio</a>
-      <a href="servicios.html" class="mobile-menu-item">🖨️ Servicios</a>
-      <a href="copias-volumen-cdmx.html" class="mobile-menu-item">📦 Volumen</a>
-      <a href="nosotros.html" class="mobile-menu-item">🏢 Nosotros</a>
-      <a href="blog.html" class="mobile-menu-item">📝 Blog</a>
-      <a href="contacto.html" class="mobile-menu-item">📍 Contacto</a>
-    </div>
-    <div class="wrap" style="padding:24px 24px 12px 24px">
-      <h1 class="title-faded">Copias por Volumen en CDMX (10,000–100,000+)</h1>
-      <p class="sub">Producción 24–48h • Entrega CDMX • Precios por millar</p>
     </div>
   </header>
+
+  <!-- Header desktop (nascosto su mobile) -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='/'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      <!-- Menu Principale Elegante in Stile Apple -->
+      <div class="main-navigation">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link active">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
+      </div>
+      
+      <div class="contact-header">
+        <span>📞 +52 5540219892</span>
+        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+
+
+
+    </header>
+  
+
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Copias por Volumen en CDMX (10,000–100,000+)</h1>
+      <p class="hero-subtitle">Producción 24–48h • Entrega CDMX • Precios por millar</p>
+    </div>
+  </section>
 
   <main class="wrap">
     <section class="hero grid">
@@ -166,23 +414,7 @@
           </div>
           <div style="margin-top:14px"><button class="cta" type="submit">Solicitar cotización</button></div>
         </form>
-        <script>
-          (function(){
-            const qtyEl = document.getElementById('q');
-            const sidesEl = document.getElementById('sides');
-            const totalEl = document.getElementById('total-preview');
-            const fmt = (n)=> n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:2});
-            function recalc(){
-              const q = Math.max(0, parseInt(qtyEl.value||'0'));
-              const pricePerPage = sidesEl.value==='x2' ? 0.35 : 0.40;
-              const total = q * pricePerPage;
-              totalEl.textContent = fmt(total);
-            }
-            qtyEl.addEventListener('input', recalc);
-            sidesEl.addEventListener('change', recalc);
-            recalc();
-          })();
-        </script>
+
       </div>
     </section>
 
@@ -200,23 +432,30 @@
   <footer>
     <div class="wrap" style="display:flex;flex-direction:column;gap:10px;align-items:center">
       <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
-        <a href="index.html" style="color:#fff;text-decoration:none">Inicio</a>
-        <a href="servicios.html" style="color:#fff;text-decoration:none">Servicios</a>
-        <a href="copias-volumen-cdmx.html" style="color:#b5ff00;text-decoration:none">Volumen</a>
-        <a href="nosotros.html" style="color:#fff;text-decoration:none">Nosotros</a>
-        <a href="blog.html" style="color:#fff;text-decoration:none">Blog</a>
-        <a href="contacto.html" style="color:#fff;text-decoration:none">Contacto</a>
+        <a href="/" style="color:#fff;text-decoration:none">Inicio</a>
+        <a href="/servicios" style="color:#fff;text-decoration:none">Servicios</a>
+        <a href="/copias-volumen-cdmx" style="color:#b5ff00;text-decoration:none">Volumen</a>
+        <a href="/nosotros" style="color:#fff;text-decoration:none">Nosotros</a>
+        <a href="/blog" style="color:#fff;text-decoration:none">Blog</a>
+        <a href="/contacto" style="color:#fff;text-decoration:none">Contacto</a>
       </div>
       <div>© 2025 COPIMAX – Copias por Volumen CDMX</div>
     </div>
   </footer>
-  <script>
-    function toggleMobileMenu(){
-      const menu=document.getElementById('mobileMenu');
-      if(menu){ menu.classList.toggle('active'); }
-    }
-  </script>
+
+      <!-- JavaScript esterno -->
+    <script src="js/main.js"></script>
+    <script src="js/calculator.js"></script>
+  <!-- Bottone WhatsApp fisso in basso a destra -->
+  <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
+     class="whatsapp-fixed-btn" 
+     target="_blank" 
+     rel="noopener" 
+     title="Contactar por WhatsApp">
+    💬
+  </a>
+
+
+
 </body>
-</html>
-
-
+  </html>

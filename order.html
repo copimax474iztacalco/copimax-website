@@ -12,7 +12,7 @@
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--primary1:#000000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;--text:#2d3748;--muted:#666;--card:#fff;--whatsapp:#25D366}
     body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden}
-    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);color:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s ease}
     .nav{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
     .logo{display:flex;align-items:center;height:50px;cursor:pointer}
     .logo img{height:50px;width:auto;transition:all 0.3s ease;filter:brightness(1.1)}
@@ -22,60 +22,39 @@
       display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);
       border-radius:25px;padding:4px;backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,0.1)
-    }
+  }
     
     .nav-link{
       color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;
       padding:12px 20px;border-radius:20px;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position:relative;white-space:nowrap;letter-spacing:0.02em
-    }
+  }
     
     .nav-link:hover{
       background:rgba(255,255,255,0.15);transform:translateY(-1px);
       color:#fff
-    }
+  }
     
     .nav-link.active{
       background:rgba(255,255,255,0.2);color:#fff;font-weight:600;
       box-shadow:0 4px 12px rgba(0,0,0,0.1)
-    }
+  }
     
     /* Effetto hover sottile */
     .nav-link::after{
       content:'';position:absolute;bottom:8px;left:50%;width:0;height:2px;
       background:var(--cta1);transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       transform:translateX(-50%);border-radius:1px
-    }
+  }
     
     .nav-link:hover::after{
       width:20px
-    }
+  }
     
     .nav-link.active::after{
       width:30px;background:var(--cta1)
-    }
-    .mobile-menu-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;z-index:1001}
-    .mobile-menu-toggle span{width:25px;height:3px;background:#fff;border-radius:2px;transition:all .3s}
-    .mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:2000;transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
-    .mobile-menu.active{transform:translateY(0)}
-    .mobile-menu-item{display:block;color:#fff;text-decoration:none;font-weight:500;font-size:1.1rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);position:relative}
-    
-    .mobile-menu-item:hover{
-      color:var(--cta1);transform:translateX(10px)
-    }
-    
-    .mobile-menu-item::after{
-      content:'';position:absolute;right:0;top:50%;width:8px;height:8px;
-      background:var(--cta1);border-radius:50%;transform:translateY(-50%) scale(0);
-      transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu-item:hover::after{
-      transform:translateY(-50%) scale(1)
-    }
-    .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1500}
-    .mobile-backdrop.active{display:block}
-    body.menu-open{overflow:hidden}
+  }
+
     .contact-header{display:flex;gap:12px;align-items:center}
     .whatsapp-btn{background:var(--whatsapp);color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600}
     .main{max-width:1100px;margin:120px auto 60px auto;padding:0 24px}
@@ -97,50 +76,89 @@
     .file-preview-item{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:16px}
     .summary{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-top:12px}
     @media(max-width:768px){
-      .mobile-menu-toggle{display:flex}
-      .main-navigation{display:none}
-      .main{margin-top:110px}
+      header{
+        height:60px; /* ALTEZZA FISSA MINIMAL */
+        background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
+    }
+      
+      .nav{
+        padding:8px 16px;height:44px; /* ALTEZZA FISSA */
+        align-items:center;justify-content:space-between
+    }
+      
+      .logo{
+        height:36px; /* LOGO PIÙ PICCOLO */
+    }
+      
+      .logo img{
+        height:36px
+    }
+      
+      /* NASCONDI TUTTO TRANNE LOGO E MENU */
+      .contact-header{display:none !important}
+      .main-navigation{display:none !important}
+      
+
+      
+      /* CONTENUTO PRINCIPALE CON PADDING CORRETTO */
+      .main{margin-top:80px} /* 60px header + 20px spazio */
       .file-preview-grid{grid-template-columns:1fr}
-    }
+  }
     
-    @media(min-width:769px){
-      .mobile-menu-toggle{display:none}
-      .main-navigation{display:flex}
-    }
+
   </style>
 </head>
 <body>
   <header class="header">
     <nav class="nav">
-              <div class="logo" onclick="window.location.href='index.html'">
+              <div class="logo" onclick="window.location.href='/'">
         <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
       </div>
       <!-- Menu Principale Elegante in Stile Apple -->
       <div class="main-navigation">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="copias-volumen-cdmx.html" class="nav-link">Volumen</a>
-        <a href="nosotros.html" class="nav-link">Nosotros</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contacto.html" class="nav-link">Contacto</a>
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
       </div>
-      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="mobile-backdrop" id="mobileBackdrop" onclick="toggleMobileMenu()"></div>
       <div class="contact-header">
         <span>📞 55-4021-9892</span>
-        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20hacer%20un%20pedido%20de%20copias.%20%F0%9F%93%9D" target="_blank" rel="noopener">💬 WhatsApp</a>
+                    <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </nav>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-menu-item">🏠 Inicio</a>
-      <a href="servicios.html" class="mobile-menu-item">🖨️ Servicios</a>
-      <a href="nosotros.html" class="mobile-menu-item">🏢 Nosotros</a>
-      <a href="blog.html" class="mobile-menu-item">📝 Blog</a>
-      <a href="contacto.html" class="mobile-menu-item">📍 Contacto</a>
-    </div>
   </header>
+  
+  <!-- NUOVO MENU MOBILE SLIDE LATERALE -->
+  <button class="mobile-nav-button" onclick="toggleMobileSlideMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  
+  <div class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <div class="mobile-logo">COPIMAX</div>
+      <button class="close-slide-menu" onclick="toggleMobileSlideMenu()">✕</button>
+    </div>
+    
+    <nav class="slide-menu-nav">
+      <a href="index.html" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="servicios.html" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="copias-volumen-cdmx.html" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="nosotros.html" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="blog.html" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="contacto.html" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </nav>
+    
+    <div class="slide-menu-footer">
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+                    <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
 
   <main class="main">
     <div class="order-header">
@@ -216,21 +234,10 @@
     // Redirect this legacy page to the inline flow on index
     try {
       if (window.location.hash !== '#standalone') {
-        window.location.replace('index.html#order');
-      }
-    } catch (e) {}
-    // Mobile/Desktop menu
-    function toggleMobileMenu(){
-      const mobileMenu=document.getElementById('mobileMenu');
-      const mobileToggle=document.querySelector('.mobile-menu-toggle');
-      const mobileBackdrop=document.getElementById('mobileBackdrop');
-      if(mobileMenu&&mobileToggle){
-        mobileMenu.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        if(mobileBackdrop){mobileBackdrop.classList.toggle('active');}
-        document.body.classList.toggle('menu-open');
-      }
+        window.location.replace('/#order');
     }
+  } catch (e) {}
+
     function toggleDesktopMenu(e){e?.stopPropagation?.();const d=document.getElementById('desktopDropdown');if(d){d.classList.toggle('active');}}
     document.addEventListener('click',function(ev){const d=document.getElementById('desktopDropdown');const t=document.querySelector('.desktop-menu-button');if(!d||!t)return;const inside=d.contains(ev.target)||t.contains(ev.target);if(!inside)d.classList.remove('active');});
 
@@ -250,7 +257,7 @@
       fileUpload.addEventListener('dragleave',()=>fileUpload.classList.remove('dragover'));
       fileUpload.addEventListener('drop',(e)=>handleFiles(e));
       fileInput.addEventListener('change',(e)=>handleFiles(e,true));
-    }
+  }
     function handleFiles(e,isInput){e.preventDefault&&e.preventDefault();const files=isInput?e.target.files:e.dataTransfer.files;if(!files||files.length===0)return;const grid=document.getElementById('file-preview-grid');Array.from(files).forEach((file)=>{if(file.size>10*1024*1024){alert('Archivo demasiado grande (máx 10MB): '+file.name);return;}if(!file.name.match(/\.(pdf|jpe?g|png|docx?)$/i)){alert('Formato no soportado: '+file.name);return;}orderState.files.push(file);if(grid){const item=document.createElement('div');item.className='file-preview-item';item.textContent='📄 '+file.name;grid.appendChild(item);}});
       const up=document.getElementById('upload-progress');const fill=document.getElementById('progress-fill-files');const text=document.getElementById('progress-text');if(up&&fill&&text){up.classList.remove('hidden');let p=0;const iv=setInterval(()=>{p=Math.min(100,p+20);fill.style.width=p+'%';text.textContent=p+'%';if(p===100){clearInterval(iv);setTimeout(()=>up.classList.add('hidden'),400);}},200);}}
 
@@ -259,11 +266,11 @@
     document.getElementById('delivery-options').innerHTML='Selecciona entre entrega local o CDMX y horarios.';
     document.getElementById('payment-section').innerHTML='Completa nombre, email, teléfono y selecciona método de pago.';
 
-    function submitOrder(){alert('✅ Pedido confirmado. Te contactaremos por WhatsApp.');window.location.href='index.html';}
+    function submitOrder(){alert('✅ Pedido confirmado. Te contactaremos por WhatsApp.');window.location.href='/';}
 
     // History handling
     if(window.history&&window.history.replaceState){window.history.replaceState({page:'order'},'',window.location.pathname);}    
-    window.addEventListener('popstate',function(ev){window.location.href='index.html';});
+    window.addEventListener('popstate',function(ev){window.location.href='/';});
   </script>
 </body>
 </html>

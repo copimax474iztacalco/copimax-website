@@ -157,46 +157,37 @@
 
     /* Header Styles */
     header{
-      background:linear-gradient(135deg,var(--primary1),var(--primary2));
-      color:#fff;position:fixed;top:0;left:0;right:0;z-index:1000;
-      box-shadow:0 4px 20px rgba(0,0,0,0.1)
+      position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      backdrop-filter:blur(10px);min-height:80px
     }
     
     .nav{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 2rem;max-width:1200px;margin:0 auto
+      max-width:1200px;margin:0 auto;padding:16px 24px;
+      display:flex;align-items:center;justify-content:space-between;min-height:80px
     }
     
     .logo{
-      display:flex;align-items:center;cursor:pointer;transition:transform 0.3s ease
+      display:flex;align-items:center;height:50px;cursor:pointer;
+      transition:transform 0.3s ease
     }
     
     .logo:hover{transform:scale(1.05)}
     
     .logo img{
-      width:50px;height:50px;border-radius:50%;object-fit:cover
+      height:50px;border-radius:50%;object-fit:cover
     }
     
     .contact-header{
-      display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap
+      display:flex;gap:12px;align-items:center
     }
     
-    .contact-header span{
-      font-weight:600;font-size:0.9rem
+    .whatsapp-btn{
+      background:var(--whatsapp);color:#fff;padding:.5rem 1rem;border-radius:999px;
+      font-weight:600;transition:transform .2s,box-shadow .2s
     }
     
-    .whatsapp-btn,.blog-btn,.nosotros-btn,.servicios-btn{
-      background:var(--cta1);color:#000;padding:0.5rem 1rem;
-      border-radius:25px;font-weight:600;font-size:0.9rem;
-      transition:all 0.3s ease;display:inline-block
-    }
-    
-    .whatsapp-btn:hover,.blog-btn:hover,.nosotros-btn:hover,.servicios-btn:hover{
-      background:var(--cta2);transform:translateY(-2px)
-    }
-    
-    .servicios-btn.active{
-      background:var(--cta2);color:var(--primary1)
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,.35)
     }
 
     /* Menu Principale Elegante in Stile Apple */
@@ -237,115 +228,11 @@
       width:30px;background:var(--cta1)
     }
     
-    /* Mobile Menu Toggle */
-    .mobile-menu-toggle{
-      display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;
-      z-index:1001
-    }
-    
-    .mobile-menu-toggle span{
-      width:25px;height:3px;background:#fff;border-radius:2px;
-      transition:all 0.3s ease
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(1){
-      transform:rotate(45deg) translate(6px,6px)
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(2){
-      opacity:0
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(3){
-      transform:rotate(-45deg) translate(6px,-6px)
-    }
-    
-    /* Mobile Menu */
-    .mobile-menu{
-      display:none;position:fixed;top:80px;left:0;right:0;
-      background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
-      padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:2000;
-      transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu.active{
-      transform:translateY(0)
-    }
-    
-    .mobile-menu-item{
-      display:block;color:#fff;text-decoration:none;font-weight:500;font-size:1.1rem;
-      padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
-      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);position:relative
-    }
-    
-    .mobile-menu-item:hover{
-      color:var(--cta1);transform:translateX(10px)
-    }
-    
-    .mobile-menu-item::after{
-      content:'';position:absolute;right:0;top:50%;width:8px;height:8px;
-      background:var(--cta1);border-radius:50%;transform:translateY(-50%) scale(0);
-      transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu-item:hover::after{
-      transform:translateY(-50%) scale(1)
-    }
-    
-    .mobile-contact{
-      margin-top:2rem;padding-top:2rem;border-top:2px solid rgba(255,255,255,0.2);
-      text-align:center
-    }
-    
-    .mobile-contact span{
-      display:block;color:#fff;font-weight:600;margin-bottom:1rem
-    }
-    
-    .mobile-whatsapp-btn{
-      background:var(--whatsapp);color:#fff;padding:1rem 2rem;border-radius:25px;
-      font-weight:600;text-decoration:none;display:inline-block;transition:all 0.3s ease
-    }
-    
-    .mobile-whatsapp-btn:hover{
-      transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,0.35)
-    }
-    
-    .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1500}
-    .mobile-backdrop.active{display:block}
-    body.menu-open{overflow:hidden}
-    
-    /* Responsive Design per Menu */
-    @media (max-width: 768px) {
-      .main-navigation {
-        display: none;
-      }
-      
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      
-      .nav {
-        justify-content: space-between;
-      }
-      
-      .logo {
-        margin-right: 0;
-      }
-    }
-    
-    @media (min-width: 769px) {
-      .mobile-menu-toggle {
-        display: none;
-      }
-      
-      .main-navigation {
-        display: flex;
-      }
-    }
+
 
     /* Main Content */
     .main-content{
-      margin-top:80px;min-height:calc(100vh - 80px)
+      min-height:calc(100vh - 80px)
     }
     
     .container{
@@ -355,7 +242,7 @@
     /* Hero Section */
     .hero-section{
       background:linear-gradient(135deg,var(--bg),var(--cta2));
-      padding:80px 0;text-align:center
+      padding:100px 0;text-align:center
     }
     
     .hero-content{max-width:800px;margin:0 auto}
@@ -503,6 +390,36 @@
 
     /* Responsive */
     @media(max-width:768px){
+      header{
+        height:60px; /* ALTEZZA FISSA MINIMAL */
+        background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
+      }
+      
+      .nav{
+        padding:8px 16px;height:44px; /* ALTEZZA FISSA */
+        align-items:center;justify-content:space-between
+      }
+      
+      .logo{
+        height:36px; /* LOGO PIÙ PICCOLO */
+      }
+      
+      .logo img{
+        height:36px
+      }
+      
+      /* NASCONDI TUTTO TRANNE LOGO E MENU */
+      .contact-header{display:none !important}
+      .main-navigation{display:none !important}
+      
+
+      
+      /* CONTENUTO PRINCIPALE CON PADDING CORRETTO */
+      .main-content{
+        padding-top:80px; /* 60px header + 20px spazio */
+      }
+      
+      /* HERO RESPONSIVE */
       .hero-title{font-size:2.5rem}
       .hero-subtitle{font-size:1.1rem}
       .text-content h1{font-size:2.2rem}
@@ -510,21 +427,6 @@
       .services-grid{grid-template-columns:1fr;gap:1.5rem}
       .cta-buttons{flex-direction:column;align-items:center}
       .cta-primary,.cta-secondary{width:100%;max-width:300px;text-align:center}
-      .nav{padding:1rem}
-      .contact-header{flex-direction:column;gap:1rem}
-      
-      /* Menu Responsive */
-      .main-menu{
-        display:none
-      }
-      
-      .mobile-menu-toggle{
-        display:flex
-      }
-      
-      .mobile-menu{
-        display:block
-      }
     }
     
     @media(max-width:480px){
@@ -542,47 +444,56 @@
   <!-- Header -->
   <header class="header">
     <nav class="nav">
-              <div class="logo" onclick="window.location.href='index.html'">
+      <div class="logo" onclick="window.location.href='/'">
         <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
       </div>
+      
       <!-- Menu Principale Elegante in Stile Apple -->
       <div class="main-navigation">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="servicios.html" class="nav-link active">Servicios</a>
-        <a href="copias-volumen-cdmx.html" class="nav-link">Volumen</a>
-        <a href="nosotros.html" class="nav-link">Nosotros</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contacto.html" class="nav-link">Contacto</a>
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link active">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
       </div>
-      
-      <!-- Botón Menú Móvil -->
-      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="mobile-backdrop" id="mobileBackdrop" onclick="toggleMobileMenu()"></div>
       
       <div class="contact-header">
         <span>📞 55-4021-9892</span>
-        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20hacer%20un%20pedido%20de%20copias.%20%F0%9F%93%9D" target="_blank" rel="noopener">💬 WhatsApp</a>
+                    <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </nav>
+  </header>
+  
+  <!-- NUOVO MENU MOBILE SLIDE LATERALE -->
+  <button class="mobile-nav-button" onclick="toggleMobileSlideMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  
+  <div class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <div class="mobile-logo">COPIMAX</div>
+      <button class="close-slide-menu" onclick="toggleMobileSlideMenu()">✕</button>
+    </div>
     
-    <!-- Menú Móvil -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-menu-item">🏠 Inicio</a>
-      <a href="servicios.html" class="mobile-menu-item active">🖨️ Servicios</a>
-      <a href="nosotros.html" class="mobile-menu-item">🏠 Nosotros</a>
-      <a href="blog.html" class="mobile-menu-item">📝 Blog</a>
-      <a href="contacto.html" class="mobile-menu-item">📍 Contacto</a>
+    <nav class="slide-menu-nav">
+      <a href="index.html" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="servicios.html" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="copias-volumen-cdmx.html" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="nosotros.html" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="blog.html" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="contacto.html" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </nav>
+    
+    <div class="slide-menu-footer">
       <div class="mobile-contact">
         <span>📞 55-4021-9892</span>
-        <a class="mobile-whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20hacer%20un%20pedido%20de%20copias.%20%F0%9F%93%9D" target="_blank" rel="noopener">💬 WhatsApp</a>
+                    <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-  </header>
-  </header>
+  </div>
 
   <!-- Main Content -->
   <main class="main-content">
@@ -692,7 +603,7 @@ años</strong>
         <p class="cta-text">Contáctanos ahora para obtener precios personalizados y atención inmediata.</p>
         <div class="cta-buttons">
           <a href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20cotizar%20unos%20servicios%20de%20copias.%20%F0%9F%93%9D" class="cta-primary" target="_blank" rel="noopener">💬 Cotizar por WhatsApp</a>
-          <a href="index.html" class="cta-secondary">🏠 Volver al Inicio</a>
+          <a href="/" class="cta-secondary">🏠 Volver al Inicio</a>
         </div>
       </div>
     </section>
@@ -702,13 +613,13 @@ años</strong>
   <footer class="footer">
     <div class="footer-content">
               <div class="footer-links">
-          <a href="index.html">Inicio</a>
-          <a href="index.html#calculator">Cotizar</a>
-          <a href="index.html#services-packages">Servicios</a>
-          <a href="index.html#blog">Blog</a>
-          <a href="nosotros.html">Nosotros</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="contacto.html">Contacto</a>
+          <a href="/">Inicio</a>
+          <a href="/#calculator">Cotizar</a>
+          <a href="/#services-packages">Servicios</a>
+          <a href="/#blog">Blog</a>
+          <a href="/nosotros">Nosotros</a>
+          <a href="/servicios">Servicios</a>
+          <a href="/contacto">Contacto</a>
         </div>
       <div class="footer-copyright">
         © 2024 COPIMAX - Centro de Copias Iztacalco. Todos los derechos reservados.
@@ -716,40 +627,296 @@ años</strong>
     </div>
   </footer>
 
-  <script>
-    // Funzione per gestire il menu mobile
-    function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  <style>
+    /* ===== NUOVO MENU MOBILE SLIDE LATERALE ===== */
+    
+    /* Pulsante hamburger mobile */
+    .mobile-nav-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Menu slide laterale */
+    .mobile-slide-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      z-index: 1002;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .mobile-slide-menu.open {
+      left: 0;
+    }
+    
+    /* Header del menu mobile */
+    .slide-menu-header {
+      background: linear-gradient(135deg, var(--primary1), var(--primary2));
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+    
+    .mobile-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .close-slide-menu {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .close-slide-menu:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    /* Navigazione del menu mobile */
+    .slide-menu-nav {
+      flex: 1;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .slide-menu-nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .slide-menu-nav a:hover {
+      background: #f8f9fa;
+      color: var(--cta1);
+      padding-left: 25px;
+    }
+    
+    /* Footer del menu mobile */
+    .slide-menu-footer {
+      padding: 20px;
+      border-top: 1px solid #f0f0f0;
+      background: #f8f9fa;
+    }
+    
+    .mobile-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .mobile-contact span {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .mobile-contact a {
+      background: var(--whatsapp);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-contact a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+    
+    /* Overlay scuro quando menu aperto */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Desktop - Header sempre consistente */
+    @media (min-width: 769px) {
+      header {
+        min-height: 80px;
+        padding: 0;
+      }
       
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+      .nav {
+        padding: 16px 24px;
+        min-height: 80px;
+      }
+      
+      .contact-header span {
+        color: #fff !important;
+        font-size: 0.9rem;
+      }
+      
+      .hero {
+        padding: 100px 0 100px;
+      }
+      
+      /* Nascondi menu mobile su desktop */
+      .mobile-nav-button {
+        display: none !important;
+      }
+      
+      .mobile-slide-menu {
+        display: none !important;
       }
     }
     
-    // Chiudi menu mobile quando si clicca su un link
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
-      mobileMenuItems.forEach(item => {
-        item.addEventListener('click', function() {
-          closeMobileMenu();
+    /* Mostra menu mobile solo su mobile */
+    @media (max-width: 768px) {
+      .mobile-nav-button {
+        display: flex;
+      }
+      
+      /* Nascondi header desktop su mobile */
+      header {
+        display: none !important;
+      }
+      
+      /* Aggiungi padding-top per compensare header nascosto */
+      .main-content {
+        padding-top: 20px;
+      }
+    }
+  </style>
+  
+  <script>
+    // ===== NUOVO MENU MOBILE SLIDE LATERALE =====
+    
+    // Funzioni per il menu mobile slide
+    function toggleMobileSlideMenu() {
+      const slideMenu = document.getElementById('mobileSlideMenu');
+      const body = document.body;
+      
+      if (slideMenu.classList.contains('open')) {
+        closeMobileSlideMenu();
+      } else {
+        openMobileSlideMenu();
+      }
+    }
+    
+    function openMobileSlideMenu() {
+      const slideMenu = document.getElementById('mobileSlideMenu');
+      const body = document.body;
+      
+      slideMenu.classList.add('open');
+      body.style.overflow = 'hidden';
+      
+      // Aggiungi overlay se non esiste
+      if (!document.querySelector('.mobile-menu-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        overlay.onclick = closeMobileSlideMenu;
+        document.body.appendChild(overlay);
+        
+        // Attiva overlay dopo un frame
+        requestAnimationFrame(() => {
+          overlay.classList.add('active');
         });
-      });
+      }
+    }
+    
+    function closeMobileSlideMenu() {
+      const slideMenu = document.getElementById('mobileSlideMenu');
+      const body = document.body;
+      const overlay = document.querySelector('.mobile-menu-overlay');
+      
+      slideMenu.classList.remove('open');
+      body.style.overflow = 'auto';
+      
+      if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+          if (overlay.parentNode) {
+            overlay.parentNode.removeChild(overlay);
+          }
+        }, 300);
+      }
+    }
+    
+    // Chiudi menu con ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMobileSlideMenu();
+      }
     });
     
-    function closeMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    // Chiudi menu quando si clicca su un link
+    document.addEventListener('DOMContentLoaded', function() {
+      const slideMenuLinks = document.querySelectorAll('.slide-menu-nav a');
+      slideMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          closeMobileSlideMenu();
+        });
+      });
       
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        document.body.classList.remove('menu-open');
+      // Aggiungi classe attiva al pulsante Servicios
+      const serviciosBtn = document.querySelector('.servicios-btn');
+      if (serviciosBtn) {
+        serviciosBtn.classList.add('active');
       }
-    }
-    // Smooth scroll para links interni
+    });
+    
+    // Smooth scroll para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -761,42 +928,6 @@ años</strong>
           });
         }
       });
-    });
-    
-    // Función para manejar el menú móvil
-    function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileBackdrop = document.getElementById('mobileBackdrop');
-      
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        if(mobileBackdrop){ mobileBackdrop.classList.toggle('active'); }
-        document.body.classList.toggle('menu-open');
-      }
-    }
-    
-    // Cerrar menú móvil al hacer clic en un enlace
-    function closeMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileBackdrop = document.getElementById('mobileBackdrop');
-      
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        if(mobileBackdrop){ mobileBackdrop.classList.remove('active'); }
-        document.body.classList.remove('menu-open');
-      }
-    }
-    
-    // Aggiungi classe attiva al pulsante Servicios
-    document.addEventListener('DOMContentLoaded', function() {
-      const serviciosBtn = document.querySelector('.servicios-btn');
-      if (serviciosBtn) {
-        serviciosBtn.classList.add('active');
-      }
     });
   </script>
 </body>

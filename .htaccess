@@ -1,24 +1,4 @@
-RewriteEngine On
-
-# Gestione URL puliti per la pagina Nosotros
-RewriteRule ^nosotros/?$ nosotros.html [L]
-
-# Gestione URL puliti per la pagina Servicios
-RewriteRule ^servicios/?$ servicios.html [L]
-
-# Gestione URL puliti per la pagina Contacto
-RewriteRule ^contacto/?$ contacto.html [L]
-
-# Gestione URL pulitos para la página Blog
-RewriteRule ^blog/?$ blog.html [L]
-
-# Gestione URL puliti per la home
-RewriteRule ^$ index.html [L]
-
-# Gestione errori 404
-ErrorDocument 404 /index.html
-
-# Compressione GZIP
+# Enable GZIP compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -31,7 +11,7 @@ ErrorDocument 404 /index.html
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# Cache headers
+# Browser caching
 <IfModule mod_expires.c>
     ExpiresActive on
     ExpiresByType text/css "access plus 1 year"
@@ -50,3 +30,32 @@ ErrorDocument 404 /index.html
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# URL rewriting for clean URLs
+RewriteEngine On
+
+# Remove .html extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect from .html to clean URL
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Specific redirects for blog posts
+RewriteRule ^centro-copiado-cdmx-guia-2025/?$ /centro-copiado-cdmx-guia-2025.html [L]
+RewriteRule ^fotocopias-economicas-cdmx-precios-2025/?$ /fotocopias-economicas-cdmx-precios-2025.html [L]
+RewriteRule ^papeleria-cdmx-servicios-centro-confianza/?$ /papeleria-cdmx-servicios-centro-confianza.html [L]
+RewriteRule ^tesis-guia-2025/?$ /tesis-guia-2025.html [L]
+RewriteRule ^copias-baratas-iztacalco/?$ /copias-baratas-iztacalco.html [L]
+RewriteRule ^papeleria-estudiantes-iztacalco/?$ /papeleria-estudiantes-iztacalco.html [L]
+RewriteRule ^copias-volumen-cdmx/?$ /copias-volumen-cdmx.html [L]
+
+# Force HTTPS (uncomment if you have SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]

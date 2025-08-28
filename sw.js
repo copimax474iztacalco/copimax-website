@@ -1,7 +1,7 @@
 const CACHE_NAME = 'copimax-v1';
 const urlsToCache = [
   '/',
-  '/index.html',
+  '/',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
   'https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop',

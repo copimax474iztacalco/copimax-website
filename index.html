@@ -243,29 +243,269 @@
     body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;overflow-x:hidden;background:#fff}
     a{text-decoration:none}
 
+    /* Header Styles - Desktop - Standardizzato */
     header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:linear-gradient(135deg,var(--primary1),var(--primary2)); /* STESSO GRADIENTE HERO */
-  color:#fff;box-shadow:0 2px 20px rgba(0,0,0,.08)
-
+      position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,var(--primary1),var(--primary2));
+      backdrop-filter:blur(10px);min-height:80px;display:flex;align-items:center
     }
-    .nav{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:center;height:50px;cursor:pointer}
-    .logo img{height:50px;width:auto;transition:all 0.3s ease;filter:brightness(1.1)}
-    .logo:hover img{transform:scale(1.05);filter:brightness(1.2)}
-    .contact-header{display:flex;gap:12px;align-items:center}
-    .blog-btn{background:linear-gradient(135deg,var(--cta1),var(--cta2));color:#000;padding:.5rem 1rem;border-radius:999px;font-weight:600;transition:transform .2s,box-shadow .2s;margin-left:8px;text-transform:uppercase;letter-spacing:0.05em;font-size:0.9rem}
-    .blog-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(181,255,0,.35)}
-    .whatsapp-btn{background:var(--whatsapp);color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;transition:transform .2s,box-shadow .2s}
-    .whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,.35)}
-    .nosotros-btn{background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;transition:transform .2s,box-shadow .2s;margin-left:8px;text-transform:uppercase;letter-spacing:0.05em;font-size:0.9rem;border:2px solid var(--cta1)}
-    .nosotros-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(181,255,0,.35);background:var(--cta1);color:#000}
+    
+    .nav{
+      max-width:1200px;margin:0 auto;padding:16px 24px;
+      display:flex;align-items:center;justify-content:space-between;width:100%
+    }
+    
+    .logo{
+      display:flex;align-items:center;height:50px;cursor:pointer;
+      transition:transform 0.3s ease;flex-shrink:0
+    }
+    
+    .logo:hover{transform:scale(1.05)}
+    
+    .logo img{
+      height:50px;border-radius:50%;object-fit:cover
+    }
+    
+    .contact-header{
+      display:flex;gap:12px;align-items:center;flex-shrink:0
+    }
+    
+    .contact-header span{
+      color:#fff !important;font-weight:600;font-size:0.9rem
+    }
+    
+    .whatsapp-btn{
+      background:var(--whatsapp);color:#fff;padding:.5rem 1rem;border-radius:999px;
+      font-weight:600;transition:transform .2s,box-shadow .2s;flex-shrink:0
+    }
+    
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,.35)
+    }
+    
+    /* Desktop - Header sempre consistente */
+    @media (min-width: 769px) {
+      header {
+        min-height: 80px;
+        padding: 0;
+      }
+      
+      .nav {
+        padding: 16px 24px;
+        min-height: 80px;
+      }
+      
+      .contact-header span {
+        color: #fff !important;
+        font-size: 0.9rem;
+      }
+      
+      .hero {
+        padding: 100px 0 100px;
+      }
+    }
+    
+    /* ===== NUOVO MENU MOBILE SLIDE LATERALE ===== */
+    
+    /* Pulsante hamburger mobile */
+    .mobile-nav-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Menu slide laterale */
+    .mobile-slide-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      z-index: 1002;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .mobile-slide-menu.open {
+      left: 0;
+    }
+    
+    /* Header del menu mobile */
+    .slide-menu-header {
+      background: linear-gradient(135deg, var(--primary1), var(--primary2));
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+    
+    .mobile-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .close-slide-menu {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .close-slide-menu:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    /* Navigazione del menu mobile */
+    .slide-menu-nav {
+      flex: 1;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .slide-menu-nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .slide-menu-nav a:hover {
+      background: #f8f9fa;
+      color: var(--primary1);
+      padding-left: 25px;
+    }
+    
+    /* Footer del menu mobile */
+    .slide-menu-footer {
+      padding: 20px;
+      border-top: 1px solid #f0f0f0;
+      background: #f8f9fa;
+    }
+    
+    .mobile-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .mobile-contact span {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .mobile-contact a {
+      background: var(--whatsapp);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-contact a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+    
+    /* Overlay scuro quando menu aperto */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Mostra menu mobile solo su mobile */
+    @media (max-width: 768px) {
+      .mobile-nav-button {
+        display: flex;
+      }
+      
+      /* Nascondi header desktop su mobile */
+      header {
+        display: none !important;
+      }
+      
+      /* Aggiungi padding-top per compensare header nascosto */
+      .hero {
+        padding-top: 20px;
+      }
+      
+      /* Centra testo hero su mobile */
+      .hero-left {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .hero h1 {
+        text-align: center;
+        margin: 0 auto 1.4rem auto;
+      }
+      
+      .hero-description {
+        text-align: center;
+        margin: 0 auto 2rem auto;
+      }
+    }
 
-    /* Menu Principale Elegante in Stile Apple */
+    /* Menu Principale Elegante in Stile Apple - Centrato */
     .main-navigation{
       display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);
       border-radius:25px;padding:4px;backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,0.1)
+      border:1px solid rgba(255,255,255,0.1);margin:0 auto;flex-shrink:0
     }
     
     .nav-link{
@@ -299,117 +539,16 @@
       width:30px;background:var(--cta1)
     }
     
-    /* Mobile Menu Toggle */
-    .mobile-menu-toggle{
-      display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;
-      z-index:1001
-    }
-    
-    .mobile-menu-toggle span{
-      width:25px;height:3px;background:#fff;border-radius:2px;
-      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(1){
-      transform:rotate(45deg) translate(6px,6px)
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(2){
-      opacity:0
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(3){
-      transform:rotate(-45deg) translate(6px,-6px)
-    }
-    
-    /* Mobile Menu */
-    .mobile-menu{
-      display:none;position:fixed;top:80px;left:0;right:0;
-      background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
-      padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:2000;
-      transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu.active{
-      transform:translateY(0)
-    }
-    
-    .mobile-menu-item{
-      display:block;color:#fff;text-decoration:none;font-weight:500;font-size:1.1rem;
-      padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
-      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);position:relative
-    }
-    
-    .mobile-menu-item:hover{
-      color:var(--cta1);transform:translateX(10px)
-    }
-    
-    .mobile-menu-item::after{
-      content:'';position:absolute;right:0;top:50%;width:8px;height:8px;
-      background:var(--cta1);border-radius:50%;transform:translateY(-50%) scale(0);
-      transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-    }
-    
-    .mobile-menu-item:hover::after{
-      transform:translateY(-50%) scale(1)
-    }
-    
-    .mobile-contact{
-      margin-top:2rem;padding-top:2rem;border-top:2px solid rgba(255,255,255,0.2);
-      text-align:center
-    }
-    
-    .mobile-contact span{
-      display:block;color:#fff;font-weight:600;margin-bottom:1rem
-    }
-    
-    .mobile-whatsapp-btn{
-      background:var(--whatsapp);color:#fff;padding:1rem 2rem;border-radius:25px;
-      font-weight:600;text-decoration:none;display:inline-block;transition:all 0.3s ease
-    }
-    
-    .mobile-whatsapp-btn:hover{
-      transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,0.35)
-    }
-    
-    /* Mobile backdrop and scroll lock */
-    .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1500}
-    .mobile-backdrop.active{display:block}
-    body.menu-open{overflow:hidden}
-    
-    /* Responsive Design per Menu */
-    @media (max-width: 768px) {
-      .main-navigation {
-        display: none;
-      }
-      
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      
-      .nav {
-        justify-content: space-between;
-      }
-      
-      .logo {
-        margin-right: 0;
-      }
-    }
-    
-    @media (min-width: 769px) {
-      .mobile-menu-toggle {
-        display: none;
-      }
-      
-      .main-navigation {
-        display: flex;
-      }
-    }
 
 
-    /* Hero */
+
+
+
+
+
+    /* Hero - Padding ridotto per desktop */
     .hero{
-      background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;padding:140px 0 100px;position:relative;overflow:hidden
+      background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;padding:100px 0 100px;position:relative;overflow:hidden
     }
     .hero::before{content:"";position:absolute;inset:0;opacity:.15;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><pattern id="d" width="200" height="200" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="2" fill="white" opacity=".15"/><circle cx="150" cy="150" r="2" fill="white" opacity=".15"/></pattern></defs><rect width="200" height="200" fill="url(%23d)"/></svg>')}
     .hero-content{max-width:1400px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
@@ -429,6 +568,36 @@
       max-width: 600px;
       position: relative;
       z-index: 3;
+    }
+    
+    .hero-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-logo img {
+      height: 80px;
+      width: auto;
+      border-radius: 50%;
+      filter: brightness(1.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* Logo hero più grande solo su desktop */
+    @media (min-width: 769px) {
+      .hero-logo img {
+        height: 160px; /* Aumentato del 100% da 80px a 160px */
+        width: auto;
+      }
+      
+      /* Nascondi menu mobile su desktop */
+      .mobile-nav-button {
+        display: none !important;
+      }
+      
+      .mobile-slide-menu {
+        display: none !important;
+      }
     }
     
     .hero-right {
@@ -884,13 +1053,7 @@
         display:none
       }
       
-      .mobile-menu-toggle{
-        display:flex
-      }
-      
-      .mobile-menu{
-        display:block
-      }
+
       
       /* Oculta el menú de escritorio en móviles */
       .main-menu{display:none}
@@ -1838,7 +2001,8 @@
     .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden}
     
     .books-carousel{
-      display:flex;transition:transform 0.5s ease-in-out;gap:24px;padding:20px 0
+      display:flex;transition:transform 0.5s ease-in-out;gap:24px;padding:20px 0;
+      width:fit-content; /* Assicura che il carosello si espanda per contenere tutti i libri */
     }
     
     .book-item{
@@ -1911,6 +2075,37 @@
     
     .books-indicator.active{
       background:var(--cta1);transform:scale(1.2)
+    }
+    
+    /* Responsive per il carosello */
+    @media (max-width: 768px) {
+      .books-carousel-container {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .books-carousel {
+        gap: 16px;
+        padding: 16px 0;
+      }
+      
+      .book-item {
+        min-width: 240px; /* Libri più piccoli su mobile */
+      }
+      
+      .book-image img {
+        height: 280px; /* Immagini più piccole su mobile */
+      }
+      
+      .books-controls {
+        margin-top: 30px;
+      }
+      
+      .books-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
     }
     
     /* Sezione Legale */
@@ -2011,7 +2206,7 @@
     .footer-links a:hover{color:var(--cta1)}
     
     /* Floating WhatsApp */
-    .floating-whatsapp{position:fixed;right:18px;bottom:86px;background:var(--whatsapp);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 8px 24px rgba(37,211,102,.35);z-index:1000;animation:pulse 2s infinite}
+    .floating-whatsapp{position:fixed;right:18px;bottom:86px;background:var(--whatsapp);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 8px 24px rgba(37,211,102,.35);z-index:900;animation:pulse 2s infinite}
     @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 
 
@@ -2461,12 +2656,7 @@
       }
       
       /* Floating WhatsApp - Adjusted */
-      .floating-whatsapp {
-        bottom: 70px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.4rem;
-      }
+      .floating-whatsapp {bottom: 70px;width: 50px;height: 50px;font-size: 1.4rem;z-index: 600}
     }
 
     /* Hidden by default */
@@ -2945,9 +3135,16 @@
     /* Mobile navigation and layout tuning (non-intrusive) */
     @media(max-width:768px){
       .header{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,var(--primary1),var(--primary2));backdrop-filter:blur(10px)}
-      .mobile-menu{top:64px;max-height:calc(100dvh - 64px);overflow-y:auto}
-      .hero{padding-top:16px}
+      .nav{padding:8px 16px}
+      .logo{height:40px}
+      .logo img{height:40px}
+      
+      .hero{padding-top:20px}
+      .hero-left{text-align:center;margin:0 auto}
+      .hero-stats{justify-content:center}
       .section-title{font-size:1.5rem}
+      .contact-header{display:none}
+      .main-navigation{display:none}
     }
   </style>
 </head>
@@ -2955,47 +3152,29 @@
   <!-- Header -->
   <header class="header">
     <nav class="nav">
-      <div class="logo" onclick="window.location.href='index.html'">
+      <div class="logo" onclick="window.location.href='/'">
         <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
       </div>
       
       <!-- Menu Principale Elegante in Stile Apple -->
       <div class="main-navigation">
-        <a href="index.html" class="nav-link active">Inicio</a>
-        <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="copias-volumen-cdmx.html" class="nav-link">Volumen</a>
-        <a href="nosotros.html" class="nav-link">Nosotros</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contacto.html" class="nav-link">Contacto</a>
-      </div>
-      
-      <!-- Botón Menú Móvil -->
-      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <a href="/" class="nav-link active">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
       </div>
       
       <div class="contact-header">
         <span>📞 55-4021-9892</span>
-        <a class="whatsapp-btn" href="https://wa.me/5554219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+                    <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </nav>
-    
-    <!-- Menú Móvil -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-menu-item">🏠 Inicio</a>
-      <a href="servicios.html" class="mobile-menu-item">🖨️ Servicios</a>
-      <a href="nosotros.html" class="mobile-menu-item">🏠 Nosotros</a>
-      <a href="blog.html" class="mobile-menu-item">📝 Blog</a>
-      <a href="contacto.html" class="mobile-menu-item">📍 Contacto</a>
-      <div class="mobile-contact">
-        <span>📞 55-4021-9892</span>
-        <a class="mobile-whatsapp-btn" href="https://wa.me/5554219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
-      </div>
-    </div>
-  </header>
+    </header>
+  
 
+  
   <!-- HOME PAGE -->
   <div id="homepage">
     <!-- Hero -->
@@ -3003,6 +3182,9 @@
       <div class="hero-content">
         <div class="hero-main">
           <div class="hero-left">
+            <div class="hero-logo">
+              <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+            </div>
             <h1>Centro de Copias e Impresiones</h1>
             <p class="hero-description">Con más de 25 años de experiencia, COPIMAX es tu centro de copias de confianza en Iztacalco.</p>
             
@@ -3054,7 +3236,7 @@
               <div class="service-compact">
                 <div class="service-icon">📄</div>
                 <div class="service-info">
-                  <h4><a href="servicios.html" style="color:#111">Copias BN • más de 100</a></h4>
+                  <h4><a href="/servicios" style="color:#111">Copias BN • más de 100</a></h4>
                   <div class="service-price-compact">$0.35 - $0.40</div>
                   <p>Una/doble cara</p>
                   <p style="font-size: 0.85rem; color: #059669; margin-top: 4px; font-weight: 600;">1-100 copias: $1 MXN</p>
@@ -3063,7 +3245,7 @@
               <div class="service-compact">
                 <div class="service-icon">🎨</div>
                 <div class="service-info">
-                  <h4><a href="servicios.html" style="color:#111">Impresión Color $5 - $10</a></h4>
+                  <h4><a href="/servicios" style="color:#111">Impresión Color $5 - $10</a></h4>
                   <div class="service-price-compact">$5 - $10</div>
                   <p>Textos y fotos</p>
                 </div>
@@ -3108,7 +3290,7 @@
                   <div class="package-price">$8,750 / $10,000 MXN</div>
                   <p>Tarifa fija por página • 24–48h</p>
                 </div>
-                <a class="package-cta" href="copias-volumen-cdmx.html">Cotizar volumen</a>
+                <a class="package-cta" href="/copias-volumen-cdmx">Cotizar volumen</a>
               </div>
             </div>
           </div>
@@ -3455,189 +3637,92 @@
     </section>
     
     <!-- Carosello Libri de Inglés Cambridge -->
+    <!-- Carosello Libri de Inglés Cambridge -->
     <section class="gallery">
       <div class="container">
         <h2 class="section-title">Libros de Inglés Disponibles</h2>
         <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:1.1rem">Material Didáctico Cambridge - Servicio de Engargolado Profesional</p>
         
-        <div class="gallery-container">
-          <div class="gallery-carousel" id="galleryCarousel">
-            <!-- LIBRO 1 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Life Pre-Intermediate Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Life Pre-Intermediate Student's Book</div>
-                <div class="book-edition">2nd Edition - Cambridge</div>
-                <div class="book-price">$220 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+        <div class="books-carousel-container">
+          <div class="books-carousel-wrapper">
+            <div class="books-carousel" id="booksCarousel">
+              <!-- LIBRI - Duplicati per infinite loop -->
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Life Pre-Intermediate Student's Book">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Life Pre-Intermediate Student's Book</div>
+                  <div class="book-edition">2nd Edition - Cambridge</div>
+                  <div class="book-price">$220 MXN</div>
+                </div>
               </div>
-            </div>
-            
-            <!-- LIBRO 2 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Life Pre-Intermediate Workbook">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Life Pre-Intermediate Workbook</div>
-                <div class="book-edition">2nd Edition - Cambridge</div>
-                <div class="book-price">$180 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+              
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=250&fit=crop" alt="Life Pre-Intermediate Workbook">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Life Pre-Intermediate Workbook</div>
+                  <div class="book-edition">2nd Edition - Cambridge</div>
+                  <div class="book-price">$180 MXN</div>
+                </div>
               </div>
-            </div>
-            
-            <!-- LIBRO 3 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Interchange Level 1 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Interchange Level 1 Student's Book</div>
-                <div class="book-edition">4th Edition - Cambridge</div>
-                <div class="book-price">$250 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+              
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="Interchange Level 1 Student's Book">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Interchange Level 1 Student's Book</div>
+                  <div class="book-edition">4th Edition - Cambridge</div>
+                  <div class="book-price">$250 MXN</div>
+                </div>
               </div>
-            </div>
-            
-            <!-- LIBRO 4 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Interchange Level 1 Workbook">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Interchange Level 1 Workbook</div>
-                <div class="book-edition">4th Edition - Cambridge</div>
-                <div class="book-price">$190 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+              
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=250&fit=crop" alt="Interchange Level 1 Workbook">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Interchange Level 1 Workbook</div>
+                  <div class="book-edition">4th Edition - Cambridge</div>
+                  <div class="book-price">$190 MXN</div>
+                </div>
               </div>
-            </div>
-            
-            <!-- LIBRO 5 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Empower A2 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Empower A2 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$240 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+              
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=250&fit=crop" alt="Empower A2 Student's Book">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Empower A2 Student's Book</div>
+                  <div class="book-edition">Cambridge English</div>
+                  <div class="book-price">$240 MXN</div>
+                </div>
               </div>
-            </div>
-            
-            <!-- LIBRO 6 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Empower B1 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Empower B1 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$260 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 7 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Empower B1+ Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Empower B1+ Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$270 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 8 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Empower B2 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Empower B2 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$280 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 9 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Evolve Level 1 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Evolve Level 1 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$250 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-                        <!-- LIBRO 10 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Evolve Level 2 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Evolve Level 2 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$250 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 11 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Close Up B1 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Close Up B1 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$240 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 12 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Close Up B1+ Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Close Up B1+ Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$250 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 13 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Close Up B2 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Close Up B2 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$260 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
-              </div>
-            </div>
-            
-            <!-- LIBRO 14 -->
-            <div class="gallery-item book-item-enhanced">
-              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=250&fit=crop" alt="Close Up C1 Student's Book">
-              <div class="gallery-overlay">
-                <div class="gallery-title">Close Up C1 Student's Book</div>
-                <div class="book-edition">Cambridge English</div>
-                <div class="book-price">$290 MXN</div>
-                <div class="book-service">+ Engargolado Profesional</div>
+              
+              <div class="book-item">
+                <div class="book-image">
+                  <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=250&fit=crop" alt="Empower B1 Student's Book">
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Empower B1 Student's Book</div>
+                  <div class="book-edition">Cambridge English</div>
+                  <div class="book-price">$260 MXN</div>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="gallery-controls">
-            <button class="gallery-btn" id="prevBtn" onclick="window.galleryPrev()">‹</button>
-            <button class="gallery-btn" id="nextBtn" onclick="window.galleryNext()">›</button>
+          <!-- Controlli Carosello -->
+          <div class="books-controls">
+            <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
+            <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
           </div>
           
-          <div class="gallery-indicators" id="galleryIndicators">
-            <div class="gallery-indicator active" onclick="window.galleryGoTo(0)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(1)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(2)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(3)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(4)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(5)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(6)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(7)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(8)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(9)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(10)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(11)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(12)"></div>
-            <div class="gallery-indicator" onclick="window.galleryGoTo(13)"></div>
-          </div>
+          <!-- Indicatori -->
+          <div class="books-indicators" id="booksIndicators"></div>
         </div>
         
         <!-- Sezione Legale Estesa Orizzontalmente -->
@@ -4205,13 +4290,13 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-links" style="display:flex;gap:2rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap">
-        <a href="index.html" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Inicio</a>
-        <a href="index.html#calculator" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Cotizar</a>
-        <a href="index.html#services-packages" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Servicios</a>
-        <a href="index.html#blog" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Blog</a>
-        <a href="nosotros.html" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Nosotros</a>
-        <a href="servicios.html" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Servicios</a>
-        <a href="contacto.html" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Contacto</a>
+        <a href="/" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Inicio</a>
+        <a href="/#calculator" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Cotizar</a>
+        <a href="/#services-packages" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Servicios</a>
+        <a href="/#blog" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Blog</a>
+        <a href="/nosotros" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Nosotros</a>
+        <a href="/servicios" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Servicios</a>
+        <a href="/contacto" style="color:#fff;text-decoration:none;transition:color 0.3s ease">Contacto</a>
       </div>
       <p>&copy; 2025 COPIMAX — Centro de Copias e Impresiones Iztacalco. 100% negocio familiar.</p>
       <p style="font-size:.9rem;margin-top:8px;color:#9ca3af">Vainilla 474, Iztacalco 08400, CDMX • 55-4021-9892 • copimax474@hotmail.com</p>
@@ -4219,7 +4304,7 @@
   </footer>
 
   <!-- Floating WhatsApp -->
-      <a class="floating-whatsapp" id="float-wa" href="https://wa.me/5554219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+              <a class="floating-whatsapp" id="float-wa" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 
 
@@ -5100,55 +5185,267 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-    // Función para manejar el menú móvil
-    function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+          
+      // ===== NUOVO MENU MOBILE SLIDE LATERALE =====
       
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        if(mobileBackdrop){ mobileBackdrop.classList.toggle('active'); }
-        document.body.classList.toggle('menu-open');
-      }
-    }
-    
-    // Funzione per gestire il menu mobile
-    function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      // Funzioni per il menu mobile slide - GLOBALI
+      window.toggleMobileSlideMenu = function() {
+        const slideMenu = document.getElementById('mobileSlideMenu');
+        const body = document.body;
+        
+        if (slideMenu.classList.contains('open')) {
+          closeMobileSlideMenu();
+        } else {
+          openMobileSlideMenu();
+        }
+      };
       
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-      }
-    }
-    
-    // Chiudi menu mobile quando si clicca su un link
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
-      mobileMenuItems.forEach(item => {
-        item.addEventListener('click', function() {
-          closeMobileMenu();
+      window.openMobileSlideMenu = function() {
+        const slideMenu = document.getElementById('mobileSlideMenu');
+        const body = document.body;
+        
+        slideMenu.classList.add('open');
+        body.style.overflow = 'hidden';
+        
+        // Aggiungi overlay se non esiste
+        if (!document.querySelector('.mobile-menu-overlay')) {
+          const overlay = document.createElement('div');
+          overlay.className = 'mobile-menu-overlay';
+          overlay.onclick = closeMobileSlideMenu;
+          document.body.appendChild(overlay);
+          
+          // Attiva overlay dopo un frame
+          requestAnimationFrame(() => {
+            overlay.classList.add('active');
+          });
+        }
+      };
+      
+      window.closeMobileSlideMenu = function() {
+        const slideMenu = document.getElementById('mobileSlideMenu');
+        const body = document.body;
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        
+        slideMenu.classList.remove('open');
+        body.style.overflow = 'auto';
+        
+        if (overlay) {
+          overlay.classList.remove('active');
+          setTimeout(() => {
+            if (overlay.parentNode) {
+              overlay.parentNode.removeChild(overlay);
+            }
+          }, 300);
+        }
+      };
+      
+      // Chiudi menu con ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeMobileSlideMenu();
+        }
+      });
+      
+      // Chiudi menu quando si clicca su un link
+      document.addEventListener('DOMContentLoaded', function() {
+        const slideMenuLinks = document.querySelectorAll('.slide-menu-nav a');
+        slideMenuLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            closeMobileSlideMenu();
+          });
         });
       });
-    });
-    
-    // Cerrar menú móvil al hacer clic en un enlace
-    function closeMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileBackdrop = document.getElementById('mobileBackdrop');
       
-      if (mobileMenu && mobileToggle) {
-        mobileMenu.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        if(mobileBackdrop){ mobileBackdrop.classList.remove('active'); }
-        document.body.classList.remove('menu-open');
+      // CAROSELLO LIBRI - INFINITE LOOP FUNZIONANTE
+    class BooksCarousel {
+      constructor() {
+        this.carousel = document.getElementById('booksCarousel');
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        this.autoPlay = true;
+        this.autoPlayInterval = 4000;
+        this.autoPlayTimer = null;
+        
+        if (this.carousel) {
+          this.init();
+        }
+      }
+      
+      init() {
+        // Clona i libri per infinite loop
+        this.cloneBooks();
+        
+        // Setup iniziale
+        this.updateCarousel(false);
+        
+        // Setup eventi
+        this.setupEvents();
+        
+        // Avvia autoplay
+        if (this.autoPlay) {
+          this.startAutoPlay();
+        }
+        
+        console.log('📚 Carosello libri inizializzato!');
+      }
+      
+      cloneBooks() {
+        const books = Array.from(this.carousel.children);
+        const totalBooks = books.length;
+        
+        // Clona i primi 3 libri alla fine
+        for (let i = 0; i < 3; i++) {
+          const clone = books[i].cloneNode(true);
+          clone.classList.add('cloned');
+          this.carousel.appendChild(clone);
+        }
+        
+        // Clona gli ultimi 3 libri all'inizio
+        for (let i = totalBooks - 3; i < totalBooks; i++) {
+          const clone = books[i].cloneNode(true);
+          clone.classList.add('cloned');
+          this.carousel.insertBefore(clone, this.carousel.firstChild);
+        }
+        
+        // Aggiorna l'indice iniziale per compensare i cloni
+        this.currentIndex = 3;
+      }
+      
+      updateCarousel(animate = true) {
+        if (!animate) {
+          this.carousel.style.transition = 'none';
+        } else {
+          this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }
+        
+        const bookWidth = 280 + 24; // width + gap
+        const translateX = -this.currentIndex * bookWidth;
+        
+        this.carousel.style.transform = `translateX(${translateX}px)`;
+        
+        if (!animate) {
+          // Forza il reflow
+          this.carousel.offsetHeight;
+          this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }
+      }
+      
+      moveCarousel(direction) {
+        if (this.isAnimating) return;
+        
+        this.isAnimating = true;
+        this.stopAutoPlay();
+        
+        if (direction === 'next') {
+          this.currentIndex++;
+        } else {
+          this.currentIndex--;
+        }
+        
+        this.updateCarousel(true);
+        
+        // Gestisci infinite loop
+        setTimeout(() => {
+          this.handleInfiniteLoop();
+          this.isAnimating = false;
+          
+          if (this.autoPlay) {
+            this.startAutoPlay();
+          }
+        }, 600);
+      }
+      
+      handleInfiniteLoop() {
+        const totalBooks = this.carousel.children.length;
+        const originalBooks = totalBooks - 6; // Escludi i cloni
+        
+        if (this.currentIndex >= originalBooks + 3) {
+          // Sei andato oltre l'ultimo libro originale
+          this.currentIndex = 3;
+          this.updateCarousel(false);
+        } else if (this.currentIndex < 3) {
+          // Sei andato prima del primo libro originale
+          this.currentIndex = originalBooks + 2;
+          this.updateCarousel(false);
+        }
+      }
+      
+      setupEvents() {
+        // Touch/Swipe support
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        
+        this.carousel.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+          this.stopAutoPlay();
+        });
+        
+        this.carousel.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        });
+        
+        this.carousel.addEventListener('touchend', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          
+          const diff = startX - currentX;
+          const threshold = 50;
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              this.moveCarousel('next');
+            } else {
+              this.moveCarousel('prev');
+            }
+          } else if (this.autoPlay) {
+            this.startAutoPlay();
+          }
+        });
+        
+        // Mouse events per desktop
+        this.carousel.addEventListener('mouseenter', () => {
+          this.stopAutoPlay();
+        });
+        
+        this.carousel.addEventListener('mouseleave', () => {
+          if (this.autoPlay) {
+            this.startAutoPlay();
+          }
+        });
+      }
+      
+      startAutoPlay() {
+        this.stopAutoPlay();
+        this.autoPlayTimer = setInterval(() => {
+          this.moveCarousel('next');
+        }, this.autoPlayInterval);
+      }
+      
+      stopAutoPlay() {
+        if (this.autoPlayTimer) {
+          clearInterval(this.autoPlayTimer);
+          this.autoPlayTimer = null;
+        }
       }
     }
+    
+    // Funzione globale per i pulsanti (compatibilità)
+    function moveCarousel(direction) {
+      if (window.booksCarousel) {
+        window.booksCarousel.moveCarousel(direction);
+      }
+    }
+    
+    // Inizializza quando il DOM è pronto
+    document.addEventListener('DOMContentLoaded', function() {
+      window.booksCarousel = new BooksCarousel();
+    });
+    
+
     
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
     const realGoogleReviews = [
@@ -6370,3 +6667,4 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
   </script>
 </body>
 </html>
+
