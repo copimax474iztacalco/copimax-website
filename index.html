@@ -5289,6 +5289,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         
         // Aggiorna l'indice iniziale per compensare i cloni
         this.currentIndex = 3;
+        
+        console.log('📚 Libri clonati:', this.carousel.children.length, 'totali');
       }
       
       updateCarousel(animate = true) {
@@ -5298,10 +5300,17 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         }
         
+        // Calcolo corretto per 6 libri + cloni
         const bookWidth = 280 + 24; // width + gap
         const translateX = -this.currentIndex * bookWidth;
         
         this.carousel.style.transform = `translateX(${translateX}px)`;
+        
+        console.log('🎠 Carosello aggiornato:', {
+          currentIndex: this.currentIndex,
+          translateX: translateX,
+          totalBooks: this.carousel.children.length
+        });
         
         // Aggiorna indicatori
         this.updateIndicators();
@@ -5342,14 +5351,22 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         const totalBooks = this.carousel.children.length;
         const originalBooks = totalBooks - 6; // Escludi i cloni
         
+        console.log('🔄 Gestione infinite loop:', {
+          currentIndex: this.currentIndex,
+          totalBooks: totalBooks,
+          originalBooks: originalBooks
+        });
+        
         if (this.currentIndex >= originalBooks + 3) {
           // Sei andato oltre l'ultimo libro originale
           this.currentIndex = 3;
           this.updateCarousel(false);
+          console.log('✅ Reset a inizio libri originali');
         } else if (this.currentIndex < 3) {
           // Sei andato prima del primo libro originale
           this.currentIndex = originalBooks + 2;
           this.updateCarousel(false);
+          console.log('✅ Reset a fine libri originali');
         }
       }
       
@@ -5363,6 +5380,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           startX = e.touches[0].clientX;
           isDragging = true;
           this.stopAutoPlay();
+          console.log('📱 Touch start:', startX);
         });
         
         this.carousel.addEventListener('touchmove', (e) => {
@@ -5377,10 +5395,14 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           const diff = startX - currentX;
           const threshold = 50;
           
+          console.log('📱 Touch end:', { startX, currentX, diff, threshold });
+          
           if (Math.abs(diff) > threshold) {
             if (diff > 0) {
+              console.log('📱 Swipe left -> next');
               this.moveCarousel('next');
             } else {
+              console.log('📱 Swipe right -> prev');
               this.moveCarousel('prev');
             }
           } else if (this.autoPlay) {
@@ -5398,6 +5420,24 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
             this.startAutoPlay();
           }
         });
+        
+        // Click sui pulsanti freccia
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            console.log('⬅️ Click pulsante prev');
+            this.moveCarousel('prev');
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            console.log('➡️ Click pulsante next');
+            this.moveCarousel('next');
+          });
+        }
       }
       
       startAutoPlay() {
@@ -5421,12 +5461,15 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
         indicatorsContainer.innerHTML = '';
         
+        console.log('🔘 Creazione indicatori per', totalBooks, 'libri');
+        
         for (let i = 0; i < totalBooks; i++) {
           const indicator = document.createElement('div');
           indicator.className = 'books-indicator';
           indicator.onclick = () => {
             this.currentIndex = i + 3; // Compensa i cloni iniziali
             this.updateCarousel(true);
+            console.log('🔘 Click indicatore', i, '-> posizione', this.currentIndex);
           };
           indicatorsContainer.appendChild(indicator);
         }
@@ -5439,6 +5482,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         const indicators = document.querySelectorAll('.books-indicator');
         const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
         const activeIndex = (this.currentIndex - 3 + totalBooks) % totalBooks; // Compensa i cloni
+        
+        console.log('🔘 Aggiornamento indicatori:', {
+          totalIndicators: indicators.length,
+          activeIndex: activeIndex,
+          currentIndex: this.currentIndex
+        });
         
         indicators.forEach((indicator, index) => {
           indicator.classList.toggle('active', index === activeIndex);
