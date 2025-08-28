@@ -432,28 +432,6 @@
   </style>
 </head>
 <body>
-    <!-- MENU HAMBURGER MOBILE FUNZIONANTE -->
-    <nav class="navbar-mobile">
-      <div class="nav-brand">
-        <img src="assets/logo-copimax.png" alt="COPIMAX Logo" height="40">
-      </div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="mobile-menu" id="mobile-menu">
-        <a href="/">🏠 Inicio</a>
-        <a href="/servicios">🖨️ Servicios</a>
-        <a href="/copias-volumen-cdmx">📦 Volumen</a>
-        <a href="/nosotros">🏢 Nosotros</a>
-        <a href="/blog">📝 Blog</a>
-        <a href="/contacto">📍 Contacto</a>
-        <div class="phone">📞 55-4021-9892</div>
-        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" class="whatsapp" target="_blank">💬 WhatsApp</a>
-      </div>
-    </nav>
-
     <!-- Header desktop (nascosto su mobile) -->
   <header class="header">
     <nav class="nav">
@@ -591,69 +569,6 @@
     <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
 
-    <!-- JAVASCRIPT MENU HAMBURGER MOBILE -->
-    <script>
-      console.log('🚨 MENU HAMBURGER JS CARICATO!');
-      
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('📱 DOM CARICATO - Setup menu hamburger');
-        
-        const hamburger = document.getElementById('hamburger');
-        const menu = document.getElementById('mobile-menu');
-        
-        console.log('🍔 Hamburger trovato:', hamburger);
-        console.log('📋 Menu trovato:', menu);
-        
-        if (!hamburger) {
-          console.error('❌ ERRORE: hamburger non trovato!');
-          return;
-        }
-        
-        if (!menu) {
-          console.error('❌ ERRORE: mobile-menu non trovato!');
-          return;
-        }
-        
-        // Toggle menu hamburger
-        hamburger.addEventListener('click', function() {
-          console.log('🍔 CLICK HAMBURGER!');
-          hamburger.classList.toggle('active');
-          menu.classList.toggle('show');
-          
-          if (menu.classList.contains('show')) {
-            console.log('✅ MENU APERTO');
-          } else {
-            console.log('❌ MENU CHIUSO');
-          }
-        });
-        
-        // Chiudi menu quando clicchi su una voce
-        const menuLinks = menu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            console.log('🔗 CLICK LINK:', this.href);
-            hamburger.classList.remove('active');
-            menu.classList.remove('show');
-            console.log('❌ MENU CHIUSO DOPO CLICK LINK');
-          });
-        });
-        
-        console.log('✅ Event listeners aggiunti al menu hamburger');
-      });
-      
-      // Backup: esegui dopo 1 secondo
-      setTimeout(function() {
-        console.log('🔄 Backup check menu hamburger');
-        const hamburger = document.getElementById('hamburger');
-        const menu = document.getElementById('mobile-menu');
-        
-        if (hamburger && menu) {
-          console.log('✅ Backup: elementi trovati');
-        } else {
-          console.error('❌ Backup: elementi NON trovati');
-        }
-      }, 1000);
-    </script>
   <!-- Bottone WhatsApp fisso in basso a destra -->
   <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
      class="whatsapp-fixed-btn" 
