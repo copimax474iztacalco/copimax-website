@@ -3147,7 +3147,7 @@
       .main-navigation{display:none}
     }
     
-    /* MENU HAMBURGER MOBILE FUNZIONANTE */
+    /* MENU HAMBURGER MOBILE FUNZIONANTE - SOLO MOBILE */
     .navbar-mobile {
       display: none;
       position: fixed;
@@ -3248,29 +3248,31 @@
       background: #128C7E;
     }
     
-    /* MOBILE ONLY */
+    /* MOBILE ONLY - NON INFLUENZA DESKTOP */
     @media (max-width: 768px) {
       .navbar-mobile {
-        display: flex;
-      }
-      
-      header.header {
-        display: none;
+        display: flex !important;
       }
       
       .hero {
-        margin-top: 100px;
-      }
-      
-      .whatsapp-fixed-btn {
-        display: none;
+        margin-top: 80px !important;
       }
     }
     
-    /* DESKTOP ONLY */
+    /* DESKTOP ONLY - LAYOUT ORIGINALE INTATTO */
     @media (min-width: 769px) {
       .navbar-mobile {
-        display: none;
+        display: none !important;
+      }
+      
+      /* RIPRISTINO LAYOUT DESKTOP ORIGINALE */
+      .hero {
+        margin-top: 0 !important;
+        padding: 100px 0 100px !important;
+      }
+      
+      header.header {
+        display: block !important;
       }
     }
   </style>
