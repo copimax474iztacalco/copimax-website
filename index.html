@@ -3150,8 +3150,30 @@
 
   </style>
 </head>
-<body>
-  <!-- Header -->
+  <body>
+    <!-- Menu Mobile Semplificato -->
+    <button class="mobile-nav-button" onclick="toggleMobileMenu()">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <nav class="mobile-slide-menu" id="mobileSlideMenu">
+      <div class="slide-menu-header">
+        <span class="mobile-logo">COPIMAX</span>
+        <button class="close-slide-menu" onclick="closeMobileSlideMenu()">×</button>
+      </div>
+      <div class="slide-menu-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#volumen">Volumen</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- Header -->
   <header class="header">
     <nav class="nav">
       <div class="logo" onclick="window.location.href='/'">
