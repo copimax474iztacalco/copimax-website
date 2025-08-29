@@ -46,56 +46,103 @@
     .card h3{font-size:1.1rem}
     .p16{padding:16px}
     .p24{padding:24px}
-    .cta{background:linear-gradient(135deg,var(--cta1),var(--cta2));color:#000;font-weight:800;border:none;border-radius:12px;padding:12px 18px;cursor:pointer;transition:all 0.3s ease}
-    .cta:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(181,255,0,0.3)}
+    /* .cta definito più sotto con stili ultra-aggressivi */
     
-    /* Bottoni tipo e colore */
+    /* Bottoni tipo e colore - STILI ULTRA-AGGRESSIVI */
     .type-btn, .color-btn {
-      background: #f3f4f6;
-      color: #374151;
-      border: 2px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex: 1;
-      -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-      touch-action: manipulation;
-      user-select: none;
+      background: #f3f4f6 !important;
+      color: #374151 !important;
+      border: 2px solid #e5e7eb !important;
+      border-radius: 8px !important;
+      padding: 8px 16px !important;
+      font-size: 0.9rem !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      flex: 1 !important;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+      touch-action: manipulation !important;
+      user-select: none !important;
+      position: relative !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-sizing: border-box !important;
     }
     
     .type-btn:hover, .color-btn:hover {
-      background: #e5e7eb;
-      border-color: #d1d5db;
-      transform: translateY(-1px);
+      background: #e5e7eb !important;
+      border-color: #d1d5db !important;
+      transform: translateY(-1px) !important;
     }
     
     .type-btn.active, .color-btn.active {
-      background: var(--cta1);
-      color: #000;
-      border-color: var(--cta1);
-      box-shadow: 0 2px 8px rgba(181,255,0,0.3);
+      background: var(--cta1) !important;
+      color: #000 !important;
+      border-color: var(--cta1) !important;
+      box-shadow: 0 2px 8px rgba(181,255,0,0.3) !important;
+    }
+    
+    /* Bottone CTA principale - STILI ULTRA-AGGRESSIVI */
+    .cta {
+      background: linear-gradient(135deg,var(--cta1),var(--cta2)) !important;
+      color: #000 !important;
+      font-weight: 800 !important;
+      border: none !important;
+      border-radius: 12px !important;
+      padding: 12px 18px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(181,255,0,0.3) !important;
     }
     
     /* Stili mobile per i bottoni */
     @media (max-width: 768px) {
       .type-btn, .color-btn {
-        padding: 12px 16px;
-        font-size: 1rem;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 12px 16px !important;
+        font-size: 1rem !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
       
       .cta {
-        padding: 16px 24px;
-        font-size: 1.1rem;
-        min-height: 48px;
-        width: 100%;
+        padding: 16px 24px !important;
+        font-size: 1.1rem !important;
+        min-height: 48px !important;
+        width: 100% !important;
       }
+    }
+    
+    /* Assicurati che i form non interferiscano con i bottoni */
+    form button[type="button"],
+    form button[type="submit"] {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+    
+    /* Debug: rendi i bottoni molto visibili */
+    .type-btn, .color-btn, .cta {
+      border: 3px solid #ff0000 !important;
+      background: #ffff00 !important;
+      color: #ff0000 !important;
     }
     table{width:100%;border-collapse:separate;border-spacing:0 8px}
     th,td{text-align:left;padding:12px 14px}
@@ -634,6 +681,73 @@
       <!-- JavaScript esterno -->
     <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
+    
+    <!-- Test diretto delle funzioni -->
+    <script>
+      console.log('Test diretto delle funzioni calcolatrice...');
+      
+      // Verifica che le funzioni siano disponibili
+      if (typeof changeType === 'function') {
+        console.log('✅ changeType funzione disponibile');
+      } else {
+        console.log('❌ changeType funzione NON disponibile');
+      }
+      
+      if (typeof changeColor === 'function') {
+        console.log('✅ changeColor funzione disponibile');
+      } else {
+        console.log('❌ changeColor funzione NON disponibile');
+      }
+      
+      // Test diretto dei bottoni
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM caricato, testando i bottoni...');
+        
+        const typeBtns = document.querySelectorAll('.type-btn');
+        const colorBtns = document.querySelectorAll('.color-btn');
+        const ctaBtn = document.querySelector('.cta');
+        
+        console.log('Bottoni tipo trovati:', typeBtns.length);
+        console.log('Bottoni colore trovati:', colorBtns.length);
+        console.log('Bottone CTA trovato:', ctaBtn ? 'SÌ' : 'NO');
+        
+        // Aggiungi event listener diretti per debug
+        typeBtns.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            console.log('CLICK su bottone tipo:', this.dataset.type);
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof changeType === 'function') {
+              changeType(this, this.dataset.type);
+            }
+          });
+        });
+        
+        colorBtns.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            console.log('CLICK su bottone colore:', this.dataset.color);
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof changeColor === 'function') {
+              changeColor(this, this.dataset.color);
+            }
+          });
+        });
+        
+        if (ctaBtn) {
+          ctaBtn.addEventListener('click', function(e) {
+            console.log('CLICK su bottone CTA');
+            e.preventDefault();
+            e.stopPropagation();
+            // Simula l'invio del form
+            const form = this.closest('form');
+            if (form) {
+              form.dispatchEvent(new Event('submit'));
+            }
+          });
+        }
+      });
+    </script>
 
   <!-- Bottone WhatsApp fisso in basso a destra -->
   <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
