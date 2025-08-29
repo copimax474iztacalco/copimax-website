@@ -1368,11 +1368,9 @@
     .calc-options::after{content:'';position:absolute;bottom:-10px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#e2e8f0,transparent)}
     .calc-option{padding:16px;border:2px solid #e2e8f0;border-radius:16px;cursor:pointer;transition:all 0.3s ease;font-weight:600;display:flex;align-items:center;gap:12px;position:relative;background:#fff}
     .calc-option:hover{border-color:var(--primary1);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
-    .calc-option.active{border-color:var(--primary1);background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;box-shadow:0 8px 25px rgba(0,0,0,0.15)}
     .option-icon{font-size:1.5rem;flex-shrink:0}
     .option-content{flex:1}
     .option-check{font-size:1.2rem;opacity:0;transition:opacity 0.3s ease}
-    .calc-option.active .option-check{opacity:1}
     
     /* CALCOLATRICE - STATO DINAMICO */
     .calc-option.active {
@@ -5825,8 +5823,11 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       console.log('📁 orderData.files.length:', orderData.files.length);
       console.log('📁 orderData.files:', orderData.files);
       // Validazione: per andare dal Passo 1 → 2 o 2 → 3 serve almeno un file
-      // Controllo più robusto: verifica sia orderData.files che la presenza visiva dei file
-      const hasFiles = orderData.files.length > 0 || document.querySelectorAll('.file-preview-item').length > 0;
+      // Controllo più robusto: verifica se ci sono file caricati in qualsiasi modo
+      const hasFiles = orderData.files.length > 0 || 
+                      document.querySelectorAll('.file-preview-item').length > 0 ||
+                      document.getElementById('file-preview-grid')?.children.length > 0 ||
+                      document.querySelector('.file-preview-header') !== null;
       
       if ((stepNum === 2 || stepNum === 3) && !hasFiles) {
         console.error('❌ Nessun file caricato, impossibile continuare');
