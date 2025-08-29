@@ -4508,17 +4508,7 @@
     setupEventListeners();
     setupValidationListeners();
     
-    // Test rapido della calcolatrice dopo 2 secondi
-    setTimeout(() => {
-      console.log('🧪 Test rapido calcolatrice...');
-      const testOption = document.querySelector('.calc-option[data-color="color"]');
-      if (testOption) {
-        console.log('🧪 Testando click su opzione color...');
-        testOption.click();
-      } else {
-        console.error('❌ Opzione color non trovata per il test');
-      }
-    }, 2000);
+    // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
     
     // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
     try {
