@@ -4990,15 +4990,12 @@
     function calculate() {
       console.log('🔄 calculate() chiamata con orderData:', orderData);
       const q = orderData.quantity; // Numero di copie richieste
-      const pdfPagesInput = document.getElementById('pdf-pages-input')?.value || 1;
-      // Preferisci le pagine reali lette dal PDF se disponibili
-      const pdfPages = (orderData.pdfPages && orderData.pdfPages > 0)
-        ? orderData.pdfPages
-        : (parseInt(pdfPagesInput) || 1);
+      
+      // Usa SOLO orderData.pdfPages, non l'input HTML
+      const pdfPages = orderData.pdfPages && orderData.pdfPages > 0 ? orderData.pdfPages : 1;
       
       console.log('📊 calculate() - Dettagli calcolo:');
       console.log('📊 orderData.pdfPages:', orderData.pdfPages);
-      console.log('📊 pdfPagesInput:', pdfPagesInput);
       console.log('📊 pdfPages finale:', pdfPages);
       console.log('📊 quantity:', q);
       
@@ -5032,6 +5029,12 @@
 
       const total = subtotal + upsellTotal;
       orderData.total = total;
+      
+      console.log('📊 calculate() - Totale finale:');
+      console.log('📊 subtotal:', subtotal);
+      console.log('📊 upsellTotal:', upsellTotal);
+      console.log('📊 total finale:', total);
+      console.log('📊 orderData.total impostato a:', orderData.total);
       
       // Aggiorna le informazioni del PDF nel calcolatore
       updatePdfInfo();
@@ -6361,6 +6364,15 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
       const deliveryPrice = orderData.delivery.price;
       const timingPrice = orderData.timing.price;
       const finalTotal = subtotal + deliveryPrice + timingPrice;
+
+      console.log('📊 updateFinalSummary - Dettagli:');
+      console.log('📊 orderData.total:', orderData.total);
+      console.log('📊 orderData.pdfPages:', orderData.pdfPages);
+      console.log('📊 orderData.quantity:', orderData.quantity);
+      console.log('📊 subtotal:', subtotal);
+      console.log('📊 deliveryPrice:', deliveryPrice);
+      console.log('📊 timingPrice:', timingPrice);
+      console.log('📊 finalTotal:', finalTotal);
 
       const finalSubtotal = document.getElementById('final-subtotal');
       const finalDelivery = document.getElementById('final-delivery');
