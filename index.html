@@ -5812,9 +5812,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       console.log('🔄 nextStep chiamato con stepNum:', stepNum);
       
       // Assicurati che orderData.files sia un array SOLO se è undefined/null
-      if (!orderData.files || !Array.isArray(orderData.files)) {
-        console.log('⚠️ orderData.files non è un array valido, lo inizializzo');
+      if (!orderData.files) {
+        console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
         orderData.files = [];
+      } else if (!Array.isArray(orderData.files)) {
+        console.log('⚠️ orderData.files non è un array, lo converto');
+        orderData.files = [orderData.files];
       }
       
       console.log('📁 orderData.files.length:', orderData.files.length);
@@ -5842,9 +5845,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       console.log('🔄 showStep chiamato con stepNum:', stepNum);
       
       // Assicurati che orderData.files sia un array SOLO se è undefined/null
-      if (!orderData.files || !Array.isArray(orderData.files)) {
-        console.log('⚠️ orderData.files non è un array valido, lo inizializzo');
+      if (!orderData.files) {
+        console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
         orderData.files = [];
+      } else if (!Array.isArray(orderData.files)) {
+        console.log('⚠️ orderData.files non è un array, lo converto');
+        orderData.files = [orderData.files];
       }
       
       console.log('📁 orderData.files.length in showStep:', orderData.files.length);
@@ -5905,6 +5911,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         if (!orderData.files) {
           console.log('⚠️ orderData.files era undefined/null, lo inizializzo');
           orderData.files = [];
+        } else if (!Array.isArray(orderData.files)) {
+          console.log('⚠️ orderData.files non era un array, lo converto');
+          orderData.files = [orderData.files];
         }
         
         console.log('📁 orderData.files prima dell\'aggiunta:', orderData.files);
@@ -5965,6 +5974,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       // Assicurati che orderData.files sia un array
       if (!orderData.files) {
         orderData.files = [];
+      } else if (!Array.isArray(orderData.files)) {
+        orderData.files = [orderData.files];
       }
       
       const fileCount = document.getElementById('file-count');
@@ -6018,6 +6029,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       // Assicurati che orderData.files sia un array
       if (!orderData.files) {
         orderData.files = [];
+      } else if (!Array.isArray(orderData.files)) {
+        orderData.files = [orderData.files];
       }
       
       console.log('📁 orderData.files prima della rimozione:', orderData.files.length);
@@ -6046,6 +6059,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       // Assicurati che orderData.files sia un array
       if (!orderData.files) {
         orderData.files = [];
+      } else if (!Array.isArray(orderData.files)) {
+        orderData.files = [orderData.files];
       }
       
       const file = orderData.files.find(f => f.name === fileName);
