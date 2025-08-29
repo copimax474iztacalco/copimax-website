@@ -6,7 +6,7 @@
   
   <!-- SEO Meta Tags -->
   <title>COPIMAX - Centro de Copias e Impresiones Iztacalco | Desde $0.35</title>
-  <meta name="description" content="Centro de copias en Iztacalco CDMX ✓ Copias desde $0.35 ✓ Impresión color $5-10 ✓ Engargolado profesional ✓ Entrega mismo día ✓ 25+ años experiencia">
+      <meta name="description" content="Centro de copiado en Iztacalco, CDMX. Copias baratas por mayoreo, impresiones rápidas, engargolados y papelería. Calidad y precio en un solo lugar.">
   <meta name="keywords" content="copias iztacalco, impresiones iztacalco, centro de copias, engargolado, impresión color, tesis universitaria, menús restaurante, entrega mismo día">
   <meta name="author" content="COPIMAX">
   <meta name="robots" content="index, follow">
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
       <meta property="og:url" content="https://copimax.store">
   <meta property="og:title" content="COPIMAX - Centro de Copias e Impresiones Iztacalco">
-  <meta property="og:description" content="25+ años de experiencia. Copias desde $0.35, impresión color, engargolado. Entrega el mismo día. WhatsApp: 55-4021-9892">
+      <meta property="og:description" content="Copimax CDMX: centro de copiado en Iztacalco. Copias desde $0.35, impresión a color, engargolados y papelería. Rápido, económico y con entrega el mismo día.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop">
   <meta property="og:site_name" content="COPIMAX">
   <meta property="og:locale" content="es_MX">
@@ -25,7 +25,7 @@
   <meta property="twitter:card" content="summary_large_image">
       <meta property="twitter:url" content="https://copimax.store">
   <meta property="twitter:title" content="COPIMAX - Centro de Copias e Impresiones Iztacalco">
-  <meta property="twitter:description" content="25+ años de experiencia. Copias desde $0.35, impresión color, engargolado. Entrega el mismo día.">
+      <meta property="twitter:description" content="Copimax CDMX: centro de copiado en Iztacalco. Copias desde $0.35, impresión a color, engargolados y papelería. Rápido, económico y con entrega el mismo día.">
   <meta property="twitter:image" content="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop">
   
   <!-- Performance & Cache -->
@@ -1235,6 +1235,156 @@
       /* Miglioramenti per la leggibilità su schermi molto piccoli */
       .services-packages-header p{font-size:0.9rem;margin-bottom:24px;line-height:1.4}
       .service-compact, .package-compact{word-break:break-word}
+    }
+    
+    /* OTTIMIZZAZIONE MOBILE PAGINA VOLUMEN */
+    @media (max-width: 768px) {
+      /* Riduci padding e margini per ottimizzare spazi */
+      .services-packages {
+        padding: 20px 0;
+      }
+      
+      .services-packages-header {
+        margin-bottom: 24px;
+      }
+      
+      .services-packages-header h2 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      
+      .services-packages-header p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      
+      /* Pacchetti più compatti */
+      .packages-section {
+        padding: 16px;
+      }
+      
+      .packages-header h3 {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+      }
+      
+      .package-compact {
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+      
+      .package-info h4 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+      
+      .package-price {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+      }
+      
+      .package-info p {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+      }
+      
+      .package-cta {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-top: 8px;
+      }
+      
+      /* Calcolatrice più compatta */
+      .calculator-section {
+        padding: 24px 0;
+      }
+      
+      .calc-hero h2 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+      }
+      
+      .calc-hero p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+      
+      .calculator-card {
+        padding: 16px;
+        margin: 0 16px;
+      }
+      
+      .calc-input {
+        margin-bottom: 20px;
+      }
+      
+      .calc-label {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+      
+      .calc-field {
+        padding: 10px;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      
+      .quantity-examples {
+        font-size: 0.8rem;
+        gap: 8px;
+      }
+      
+      .calc-options {
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      
+      .calc-option {
+        padding: 12px;
+      }
+      
+      .option-icon {
+        font-size: 1.2rem;
+      }
+      
+      .option-content strong {
+        font-size: 0.9rem;
+      }
+      
+      .option-content br + * {
+        font-size: 0.8rem;
+      }
+      
+      /* Bottoni toggle per facce */
+      .face-toggle {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+      }
+      
+      .face-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .face-btn.active {
+        background: var(--cta1);
+        color: #000;
+        border-color: var(--cta1);
+        font-weight: 600;
+      }
+      
+      .face-btn:hover:not(.active) {
+        background: #e2e8f0;
+        border-color: #cbd5e1;
+      }
     }
     .package-cta{background:linear-gradient(45deg,var(--cta1),var(--cta2));color:#000;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;border:none;font-size:0.9rem;transition:all 0.3s ease}
     .package-cta:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(181,255,0,0.3)}
@@ -3316,9 +3466,13 @@
                 <div class="package-info">
                   <h4>1000 copias BN</h4>
                   <div class="package-price">$350 MXN</div>
-                  <p>Doble cara, mismo día</p>
+                  <p id="package-face-type">BN una cara, mismo día</p>
+                  <div class="face-toggle" style="margin-top: 8px;">
+                    <button class="face-btn active" data-face="single" onclick="toggleFace(this, 'single')">Una Cara</button>
+                    <button class="face-btn" data-face="double" onclick="toggleFace(this, 'double')">Doble Cara</button>
+                  </div>
                 </div>
-                <button class="package-cta" data-deal="1000 BN doble cara $350">Pedir</button>
+                <button class="package-cta" data-deal="1000 BN una cara $350" id="package-cta-btn">Pedir</button>
               </div>
               <div class="package-compact">
                 <div class="package-info">
@@ -3369,15 +3523,7 @@
             </div>
           </div>
           
-          <div class="pdf-info" id="pdf-info" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="font-size: 1.2rem;">📄</span>
-              <strong style="color: #0c4a6e;">PDF cargado: <span id="pdf-pages">0</span> páginas</strong>
-            </div>
-            <div style="font-size: 0.9rem; color: #0369a1;">
-              <strong>Total páginas a imprimir:</strong> <span id="total-pages">0</span> páginas
-            </div>
-          </div>
+
         </div>
 
           <div class="calc-options">
@@ -3994,7 +4140,7 @@
           </div>
         </div>
         
-        <!-- Preview breve del PDF cargado (usado por el contador de páginas) -->
+        
         <div id="calc-file-preview" style="display:none; margin-top:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px">
           <strong id="calc-file-name"></strong>
           <span style="margin-left:8px;color:#475569">Páginas: <span id="calc-file-pages">0</span></span>
@@ -4717,6 +4863,32 @@
           window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
         });
       });
+      
+      // Funzione toggle per facce del pacchetto
+      function toggleFace(btn, faceType) {
+        // Rimuovi active da tutti i bottoni
+        document.querySelectorAll('.face-btn').forEach(b => b.classList.remove('active'));
+        
+        // Aggiungi active al bottone cliccato
+        btn.classList.add('active');
+        
+        // Aggiorna il testo e il data-deal
+        const packageFaceType = document.getElementById('package-face-type');
+        const packageCtaBtn = document.getElementById('package-cta-btn');
+        
+        if (faceType === 'single') {
+          packageFaceType.textContent = 'BN una cara, mismo día';
+          packageCtaBtn.textContent = 'Pedir';
+          packageCtaBtn.dataset.deal = '1000 BN una cara $350';
+        } else {
+          packageFaceType.textContent = 'BN doble cara, mismo día';
+          packageCtaBtn.textContent = 'Pedir';
+          packageCtaBtn.dataset.deal = '1000 BN doble cara $350';
+        }
+      }
+      
+      // Rendi la funzione globale
+      window.toggleFace = toggleFace;
 
       // File upload
       const fileUpload = document.getElementById('file-upload');
