@@ -1489,82 +1489,14 @@
     .cta-icon{font-size:1.3rem;flex-shrink:0}
     .cta-text{font-weight:700;word-wrap:break-word}
     
-    /* FIX ULTRA-AGGRESSIVO PER BOTTONI CALCOLATRICE - RISOLVE PROBLEMA CLICKABILITÀ */
+    /* FIX SEMPLICE PER BOTTONI CALCOLATRICE - SOLO CLICKABILITÀ */
     .calc-actions .cta-primary,
     .calc-actions .cta-whatsapp,
-    .calc-actions .cta-online,
-    #btn-wa,
-    #btn-order {
+    .calc-actions .cta-online {
       cursor: pointer !important;
       pointer-events: auto !important;
       position: relative !important;
-      z-index: 9999 !important;
-      user-select: none !important;
-      -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
-      touch-action: manipulation !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      width: auto !important;
-      height: auto !important;
-      overflow: visible !important;
-      clip: auto !important;
-      margin: 0 !important;
-      padding: 16px 24px !important;
-      border: none !important;
-      background: linear-gradient(135deg, var(--cta1), var(--cta2)) !important;
-      color: #000 !important;
-      font-weight: 700 !important;
-      font-size: 1.1rem !important;
-      border-radius: 16px !important;
-      text-decoration: none !important;
-      outline: none !important;
-      box-sizing: border-box !important;
-      transition: all 0.3s ease !important;
-    }
-    
-    /* Stili specifici per WhatsApp */
-    #btn-wa {
-      background: linear-gradient(135deg, #25d366, #128c7e) !important;
-      color: #fff !important;
-    }
-    
-    /* Stili specifici per Online */
-    #btn-order {
-      background: linear-gradient(135deg, var(--cta1), var(--cta2)) !important;
-      color: #000 !important;
-    }
-    
-    /* Hover effects */
-    .calc-actions .cta-primary:hover,
-    .calc-actions .cta-whatsapp:hover,
-    .calc-actions .cta-online:hover,
-    #btn-wa:hover,
-    #btn-order:hover {
-      transform: translateY(-3px) !important;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2) !important;
-      cursor: pointer !important;
-    }
-    
-    /* NASCONDI EVENTUALI ELEMENTI CHE POTREBBERO COPRIRE I BOTTONI */
-    .calc-actions::before,
-    .calc-actions::after {
-      display: none !important;
-      content: none !important;
-    }
-    
-    /* ASSICURATI CHE I BOTTONI SIANO SEMPRE VISIBILI E CLICCABILI */
-    .calculator-card .calc-actions {
-      position: relative !important;
-      z-index: 9999 !important;
-      pointer-events: auto !important;
-    }
-    
-    /* DEBUG VISIVO - RENDI I BOTTONI MOLTO VISIBILI */
-    #btn-wa,
-    #btn-order {
-      border: 3px solid #ff0000 !important;
-      box-shadow: 0 0 20px #ff0000 !important;
+      z-index: 10 !important;
     }
     
     .mini{text-align:center;color:#6b7280;font-size:.9rem;margin-top:8px}
@@ -4915,7 +4847,6 @@
 
       // Order buttons
       btnOrder.addEventListener('click', () => {
-        console.log('🟢 BOTTONE ORDER CLICCATO!');
         // Track order start
         if (typeof trackOrderStart === 'function') {
           const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
@@ -4925,42 +4856,7 @@
         showOrderPage();
       });
       
-      btnWA.addEventListener('click', () => {
-        console.log('🟢 BOTTONE WHATSAPP CLICCATO!');
-        sendWhatsAppOrder();
-      });
-      
-      // DEBUG: Verifica che i bottoni esistano e abbiano event listener
-      console.log('🔍 DEBUG CALCOLATRICE:');
-      console.log('btnOrder:', btnOrder);
-      console.log('btnWA:', btnWA);
-      console.log('btnOrder event listeners:', btnOrder ? 'ESISTE' : 'NON ESISTE');
-      console.log('btnWA event listeners:', btnWA ? 'ESISTE' : 'NON ESISTE');
-      
-      // DEBUG: Verifica proprietà CSS dei bottoni
-      if (btnOrder) {
-        const computedStyle = window.getComputedStyle(btnOrder);
-        console.log('🔍 btnOrder CSS:', {
-          cursor: computedStyle.cursor,
-          pointerEvents: computedStyle.pointerEvents,
-          zIndex: computedStyle.zIndex,
-          display: computedStyle.display,
-          visibility: computedStyle.visibility,
-          opacity: computedStyle.opacity
-        });
-      }
-      
-      if (btnWA) {
-        const computedStyle = window.getComputedStyle(btnWA);
-        console.log('🔍 btnWA CSS:', {
-          cursor: computedStyle.cursor,
-          pointerEvents: computedStyle.pointerEvents,
-          zIndex: computedStyle.zIndex,
-          display: computedStyle.display,
-          visibility: computedStyle.visibility,
-          opacity: computedStyle.opacity
-        });
-      }
+      btnWA.addEventListener('click', sendWhatsAppOrder);
 
       // Deal CTAs
       dealCTAs.forEach(btn => {
