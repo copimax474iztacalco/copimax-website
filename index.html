@@ -5810,6 +5810,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
     function nextStep(stepNum) {
       console.log('🔄 nextStep chiamato con stepNum:', stepNum);
+      
+      // Assicurati che orderData.files sia un array
+      if (!orderData.files) {
+        orderData.files = [];
+      }
+      
       console.log('📁 orderData.files.length:', orderData.files.length);
       console.log('📁 orderData.files:', orderData.files);
       // Validazione: per andare dal Passo 1 → 2 o 2 → 3 serve almeno un file
@@ -5832,6 +5838,15 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function showStep(stepNum) {
+      console.log('🔄 showStep chiamato con stepNum:', stepNum);
+      
+      // Assicurati che orderData.files sia un array
+      if (!orderData.files) {
+        orderData.files = [];
+      }
+      
+      console.log('📁 orderData.files.length in showStep:', orderData.files.length);
+      
       // Update step indicators
       steps.forEach((step, index) => {
         step.classList.toggle('active', index + 1 === stepNum);
@@ -5883,6 +5898,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
         // Process file immediately (no more setTimeout)
         console.log('📁 Processando file:', file.name, 'dimensione:', file.size);
+        
+        // Assicurati che orderData.files sia un array
+        if (!orderData.files) {
+          orderData.files = [];
+        }
+        
         orderData.files.push(file);
         console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
         displayUploadedFile(file);
@@ -5924,7 +5945,13 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function updateUploadStats() {
-      console.log('📊 updateUploadStats chiamato, orderData.files.length:', orderData.files.length);
+      console.log('📊 updateUploadStats chiamato, orderData.files.length:', orderData.files ? orderData.files.length : 'undefined');
+      
+      // Assicurati che orderData.files sia un array
+      if (!orderData.files) {
+        orderData.files = [];
+      }
+      
       const fileCount = document.getElementById('file-count');
       const totalSize = document.getElementById('total-size');
       
@@ -5962,16 +5989,41 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     window.removeFile = function(fileName) {
+      console.log('🗑️ removeFile chiamato per:', fileName);
+      
+      // Assicurati che orderData.files sia un array
+      if (!orderData.files) {
+        orderData.files = [];
+      }
+      
+      console.log('📁 orderData.files prima della rimozione:', orderData.files.length);
+      
+      // Rimuovi il file dall'array
       orderData.files = orderData.files.filter(f => f.name !== fileName);
+      
+      console.log('📁 orderData.files dopo la rimozione:', orderData.files.length);
+      
+      // Rimuovi solo l'elemento specifico dal DOM invece di svuotare tutto
       const container = document.getElementById('file-preview-grid');
       if (container) {
-        container.innerHTML = '';
-        orderData.files.forEach(file => displayUploadedFile(file));
-        updateUploadStats();
+        const fileItems = container.querySelectorAll('.file-preview-item');
+        fileItems.forEach(item => {
+          const fileNameElement = item.querySelector('.file-name');
+          if (fileNameElement && fileNameElement.textContent === fileName) {
+            item.remove();
+          }
+        });
       }
+      
+      updateUploadStats();
     }
 
     window.previewFile = function(fileName) {
+      // Assicurati che orderData.files sia un array
+      if (!orderData.files) {
+        orderData.files = [];
+      }
+      
       const file = orderData.files.find(f => f.name === fileName);
       if (file) {
         if (file.type.startsWith('image/')) {
