@@ -1374,31 +1374,31 @@
     .option-check{font-size:1.2rem;opacity:0;transition:opacity 0.3s ease}
     .calc-option.active .option-check{opacity:1}
     
-    /* FIX PER OPZIONI CALCOLATRICE - STATO ATTIVO FORZATO */
+    /* CALCOLATRICE - STATO DINAMICO */
     .calc-option.active {
-      border-color: var(--primary1) !important;
-      background: linear-gradient(135deg, var(--primary1), var(--primary2)) !important;
-      color: #fff !important;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+      border-color: var(--primary1);
+      background: linear-gradient(135deg, var(--primary1), var(--primary2));
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     .calc-option:not(.active) {
-      border-color: #e2e8f0 !important;
-      background: #fff !important;
-      color: #333 !important;
+      border-color: #e2e8f0;
+      background: #fff;
+      color: #333;
     }
     
     .calc-option:not(.active) .option-check {
-      opacity: 0 !important;
+      opacity: 0;
     }
     
     .calc-option.active .option-check {
-      opacity: 1 !important;
+      opacity: 1;
     }
     
     /* Result Section */
     .calc-result{background:linear-gradient(45deg,var(--cta1),var(--cta2));color:#000;padding:28px;border-radius:20px;text-align:center;margin:28px 0;box-shadow:0 20px 50px rgba(181,255,0,0.3);border:2px solid rgba(255,255,255,0.2);position:relative;overflow:hidden}
-    .calc-result::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,0.1),transparent);animation:shine 2s infinite}
+    .calc-result::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,0.1),transparent);animation:shine 2s infinite;pointer-events:none}
     @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
     .result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
     .result-header div:first-child{font-size:1.1rem;font-weight:600;color:#1a1a1a}
@@ -1415,14 +1415,12 @@
     .cta-icon{font-size:1.3rem;flex-shrink:0}
     .cta-text{font-weight:700;word-wrap:break-word}
     
-    /* FIX SEMPLICE PER BOTTONI CALCOLATRICE - SOLO CLICKABILITÀ */
+    /* BOTTONI CALCOLATRICE - STILI NORMALI */
     .calc-actions .cta-primary,
     .calc-actions .cta-whatsapp,
     .calc-actions .cta-online {
-      cursor: pointer !important;
-      pointer-events: auto !important;
-      position: relative !important;
-      z-index: 10 !important;
+      cursor: pointer;
+      position: relative;
     }
     
     .mini{text-align:center;color:#6b7280;font-size:.9rem;margin-top:8px}
@@ -4477,6 +4475,7 @@
     const ADMIN_EMAIL = 'copimax474@gmail.com';
 
     // Calculator elements
+    console.log('Initializing calculator elements...');
     const quantityInput = document.getElementById('quantity');
     const totalElement = document.getElementById('total');
     const options = document.querySelectorAll('.calc-option');
@@ -4484,6 +4483,16 @@
     const btnWA = document.getElementById('btn-wa');
     const btnOrder = document.getElementById('btn-order');
     const dealCTAs = document.querySelectorAll('.deal-cta');
+    
+    console.log('Calculator elements found:', {
+      quantityInput: !!quantityInput,
+      totalElement: !!totalElement,
+      options: options.length,
+      upsellCheckboxes: upsellCheckboxes.length,
+      btnWA: !!btnWA,
+      btnOrder: !!btnOrder,
+      dealCTAs: dealCTAs.length
+    });
 
     // Page navigation
     const homepage = document.getElementById('homepage');
@@ -4496,9 +4505,22 @@
     const orderSections = document.querySelectorAll('.order-section');
 
     // Initialize
+    console.log('🚀 Inizializzazione calcolatrice...');
     calculate();
     setupEventListeners();
     setupValidationListeners();
+    
+    // Test rapido della calcolatrice dopo 2 secondi
+    setTimeout(() => {
+      console.log('🧪 Test rapido calcolatrice...');
+      const testOption = document.querySelector('.calc-option[data-color="color"]');
+      if (testOption) {
+        console.log('🧪 Testando click su opzione color...');
+        testOption.click();
+      } else {
+        console.error('❌ Opzione color non trovata per il test');
+      }
+    }, 2000);
     
     // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
     try {
@@ -4530,19 +4552,29 @@
 
     function setupEventListeners() {
       // Calculator options
+      console.log('Setting up calculator options event listeners...');
       options.forEach(opt => {
-        opt.addEventListener('click', () => {
+        console.log('Adding click listener to option:', opt.dataset);
+        opt.addEventListener('click', (e) => {
+          console.log('Option clicked:', opt.dataset, e);
           const group = opt.dataset.type || opt.dataset.color || opt.dataset.sides;
           if (group) {
+            console.log('Processing option group:', group);
             // Remove active from same group
-            document.querySelectorAll(`[data-${Object.keys(opt.dataset)[0]}]`).forEach(el => el.classList.remove('active'));
+            const groupKey = Object.keys(opt.dataset)[0];
+            document.querySelectorAll(`[data-${groupKey}]`).forEach(el => {
+              el.classList.remove('active');
+              console.log('Removed active from:', el);
+            });
             opt.classList.add('active');
+            console.log('Added active to:', opt);
             
             // Update order data
             if (opt.dataset.type) orderData.type = opt.dataset.type;
             if (opt.dataset.color) orderData.color = opt.dataset.color;
             if (opt.dataset.sides) orderData.sides = opt.dataset.sides;
             
+            console.log('Updated orderData:', orderData);
             calculate();
           }
         });
@@ -4772,17 +4804,32 @@
       }
 
       // Order buttons
-      btnOrder.addEventListener('click', () => {
-        // Track order start
-        if (typeof trackOrderStart === 'function') {
-          const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
-          trackOrderStart(service, orderData.total);
-        }
-        // Open in-page order flow
-        showOrderPage();
-      });
+      console.log('Setting up order button event listeners...');
+      if (btnOrder) {
+        console.log('Adding click listener to order button');
+        btnOrder.addEventListener('click', (e) => {
+          console.log('Order button clicked:', e);
+          // Track order start
+          if (typeof trackOrderStart === 'function') {
+            const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+            trackOrderStart(service, orderData.total);
+          }
+          // Open in-page order flow
+          showOrderPage();
+        });
+      } else {
+        console.error('Order button not found!');
+      }
       
-      btnWA.addEventListener('click', sendWhatsAppOrder);
+      if (btnWA) {
+        console.log('Adding click listener to WhatsApp button');
+        btnWA.addEventListener('click', (e) => {
+          console.log('WhatsApp button clicked:', e);
+          sendWhatsAppOrder();
+        });
+      } else {
+        console.error('WhatsApp button not found!');
+      }
 
       // Deal CTAs
       dealCTAs.forEach(btn => {
@@ -4953,6 +5000,7 @@
     }
 
     function calculate() {
+      console.log('🔄 calculate() chiamata con orderData:', orderData);
       const q = orderData.quantity; // Numero di copie richieste
       const pdfPagesInput = document.getElementById('pdf-pages-input')?.value || 1;
       // Preferisci le pagine reali lette dal PDF se disponibili
@@ -4996,6 +5044,7 @@
         animateNumber(totalElement, total);
       }
       updateOrderSummary();
+      console.log('✅ calculate() completata, totale:', total);
     }
 
     // Animate number with count-up effect
@@ -5044,7 +5093,7 @@
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
         const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const totalPages = orderData.quantity * pagesToPrint;
-        summaryQuantity.textContent = `${orderData.quantity} copias × ${pdfPages} páginas = ${totalPages} páginas totales`;
+        summaryQuantity.textContent = `${orderData.quantity} copias × ${pagesToPrint} páginas = ${totalPages} páginas totales`;
       }
       if (summaryDetails) summaryDetails.textContent = orderData.sides === 'double' ? 'Doble cara' : 'Una cara';
       if (summaryTotal) summaryTotal.textContent = `${orderData.total.toFixed(2)} MXN`;
