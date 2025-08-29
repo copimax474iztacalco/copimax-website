@@ -5903,11 +5903,17 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         
         // Assicurati che orderData.files sia un array
         if (!orderData.files) {
+          console.log('⚠️ orderData.files era undefined/null, lo inizializzo');
           orderData.files = [];
         }
         
+        console.log('📁 orderData.files prima dell\'aggiunta:', orderData.files);
+        console.log('📁 orderData.files.length prima dell\'aggiunta:', orderData.files.length);
+        
         orderData.files.push(file);
+        console.log('📁 orderData.files dopo aggiunta:', orderData.files);
         console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+        
         displayUploadedFile(file);
         updateUploadStats();
         
@@ -5925,7 +5931,11 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
     function displayUploadedFile(file) {
       console.log('📄 displayUploadedFile chiamato per:', file.name);
+      console.log('📄 File details:', { name: file.name, size: file.size, type: file.type });
+      
       const container = document.getElementById('file-preview-grid');
+      console.log('🔍 Container trovato:', !!container);
+      
       if (container) {
         const fileItem = document.createElement('div');
         fileItem.className = 'file-preview-item';
@@ -5943,6 +5953,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           </div>
         `;
         container.appendChild(fileItem);
+        console.log('✅ File item aggiunto al container');
+      } else {
+        console.error('❌ Container file-preview-grid non trovato!');
       }
     }
 
@@ -5957,14 +5970,23 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       const fileCount = document.getElementById('file-count');
       const totalSize = document.getElementById('total-size');
       
+      console.log('🔍 Elementi trovati:', { fileCount: !!fileCount, totalSize: !!totalSize });
+      console.log('🔍 orderData.files:', orderData.files);
+      console.log('🔍 orderData.files.length:', orderData.files.length);
+      
       if (fileCount) {
         fileCount.textContent = orderData.files.length;
         console.log('📊 File count aggiornato a:', orderData.files.length);
+      } else {
+        console.error('❌ Elemento file-count non trovato!');
       }
+      
       if (totalSize) {
         const totalBytes = orderData.files.reduce((sum, file) => sum + file.size, 0);
         totalSize.textContent = (totalBytes / 1024 / 1024).toFixed(2) + ' MB';
         console.log('📊 Total size aggiornato a:', (totalBytes / 1024 / 1024).toFixed(2), 'MB');
+      } else {
+        console.error('❌ Elemento total-size non trovato!');
       }
     }
 
