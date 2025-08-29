@@ -5821,12 +5821,17 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function nextStep(stepNum) {
+      console.log('🔄 nextStep chiamato con stepNum:', stepNum);
+      console.log('📁 orderData.files.length:', orderData.files.length);
+      console.log('📁 orderData.files:', orderData.files);
       // Validazione: per andare dal Passo 1 → 2 o 2 → 3 serve almeno un file
       if ((stepNum === 2 || stepNum === 3) && orderData.files.length === 0) {
+        console.error('❌ Nessun file caricato, impossibile continuare');
         alert('Por favor sube al menos un archivo antes de continuar.');
         showStep(1); // porta l’utente allo step de subida archivos
         return;
       }
+      console.log('✅ File validati, procedendo al step:', stepNum);
       showStep(stepNum);
     }
 
@@ -5859,8 +5864,11 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function handleFileUpload(e, isInput = false) {
+      console.log('📁 handleFileUpload chiamato con:', e.type);
       e.preventDefault();
       const files = isInput ? e.target.files : e.dataTransfer.files;
+      
+      console.log('📁 File ricevuti:', files.length, 'file');
       
       if (files.length === 0) return;
       
@@ -5881,19 +5889,19 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           return;
         }
 
-        // Simulate file processing
-        setTimeout(() => {
-          orderData.files.push(file);
-          displayUploadedFile(file);
-          updateUploadStats();
-          
-          processedFiles++;
-          updateFileProgress(processedFiles, files.length);
-          
-          if (processedFiles === files.length) {
-            if (progress) progress.classList.add('hidden');
-          }
-        }, index * 200);
+        // Process file immediately (no more setTimeout)
+        console.log('📁 Processando file:', file.name, 'dimensione:', file.size);
+        orderData.files.push(file);
+        console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+        displayUploadedFile(file);
+        updateUploadStats();
+        
+        processedFiles++;
+        updateFileProgress(processedFiles, files.length);
+        
+        if (processedFiles === files.length) {
+          if (progress) progress.classList.add('hidden');
+        }
       });
       
       const fileUpload = document.getElementById('file-upload');
@@ -5901,6 +5909,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function displayUploadedFile(file) {
+      console.log('📄 displayUploadedFile chiamato per:', file.name);
       const container = document.getElementById('file-preview-grid');
       if (container) {
         const fileItem = document.createElement('div');
@@ -5923,13 +5932,18 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function updateUploadStats() {
+      console.log('📊 updateUploadStats chiamato, orderData.files.length:', orderData.files.length);
       const fileCount = document.getElementById('file-count');
       const totalSize = document.getElementById('total-size');
       
-      if (fileCount) fileCount.textContent = orderData.files.length;
+      if (fileCount) {
+        fileCount.textContent = orderData.files.length;
+        console.log('📊 File count aggiornato a:', orderData.files.length);
+      }
       if (totalSize) {
         const totalBytes = orderData.files.reduce((sum, file) => sum + file.size, 0);
         totalSize.textContent = (totalBytes / 1024 / 1024).toFixed(2) + ' MB';
+        console.log('📊 Total size aggiornato a:', (totalBytes / 1024 / 1024).toFixed(2), 'MB');
       }
     }
 
