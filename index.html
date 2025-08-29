@@ -4099,7 +4099,7 @@
           <label class="calc-label" style="margin:0">Imprimir páginas:</label>
           <input type="number" id="page-start" class="calc-field" value="1" min="1" style="width:110px">
           <span style="color:#475569">a</span>
-          <input type="number" id="page-end" class="calc-field" value="1" min="1" style="width:110px">
+                          <input type="number" id="page-end" class="calc-field" value="" min="1" style="width:110px" placeholder="Todas">
           <div style="color:#64748b;font-size:0.9rem">(opcional, deja vacío para todas)</div>
         </div>
 
@@ -5011,7 +5011,8 @@
 
       // Calcolo corretto: (Numero copie) × (Pagine da stampare) × (Prezzo per pagina)
       const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-      const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
+      const pageEndInput = document.getElementById('page-end')?.value || '';
+      const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
       const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
       const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
       let subtotal = q * pagesToPrint * unitPrice;
@@ -5088,7 +5089,8 @@
         // Usa direttamente orderData.pdfPages invece dell'input HTML
         const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-        const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
+        const pageEndInput = document.getElementById('page-end')?.value || '';
+        const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
         const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const totalPages = orderData.quantity * pagesToPrint;
@@ -5132,7 +5134,8 @@
         // Usa direttamente orderData.pdfPages invece dell'input HTML
         const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-        const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
+        const pageEndInput = document.getElementById('page-end')?.value || '';
+        const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
         const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const copies = orderData.quantity || 1;
