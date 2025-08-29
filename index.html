@@ -5825,7 +5825,10 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       console.log('📁 orderData.files.length:', orderData.files.length);
       console.log('📁 orderData.files:', orderData.files);
       // Validazione: per andare dal Passo 1 → 2 o 2 → 3 serve almeno un file
-      if ((stepNum === 2 || stepNum === 3) && orderData.files.length === 0) {
+      // Controllo più robusto: verifica sia orderData.files che la presenza visiva dei file
+      const hasFiles = orderData.files.length > 0 || document.querySelectorAll('.file-preview-item').length > 0;
+      
+      if ((stepNum === 2 || stepNum === 3) && !hasFiles) {
         console.error('❌ Nessun file caricato, impossibile continuare');
         alert('Por favor sube al menos un archivo antes de continuar.');
         showStep(1); // porta l’utente allo step de subida archivos
