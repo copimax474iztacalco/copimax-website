@@ -5811,8 +5811,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     function nextStep(stepNum) {
       console.log('🔄 nextStep chiamato con stepNum:', stepNum);
       
-      // Assicurati che orderData.files sia un array
-      if (!orderData.files) {
+      // Assicurati che orderData.files sia un array SOLO se è undefined/null
+      if (!orderData.files || !Array.isArray(orderData.files)) {
+        console.log('⚠️ orderData.files non è un array valido, lo inizializzo');
         orderData.files = [];
       }
       
@@ -5840,8 +5841,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     function showStep(stepNum) {
       console.log('🔄 showStep chiamato con stepNum:', stepNum);
       
-      // Assicurati che orderData.files sia un array
-      if (!orderData.files) {
+      // Assicurati che orderData.files sia un array SOLO se è undefined/null
+      if (!orderData.files || !Array.isArray(orderData.files)) {
+        console.log('⚠️ orderData.files non è un array valido, lo inizializzo');
         orderData.files = [];
       }
       
