@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <link rel="shortcut icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    
     <!-- Primary Meta Tags -->
     <title>Fotocopias Económicas en CDMX 2025: Precios Actualizados y 10+ Tips para Ahorrar | Copimax</title>
     <meta name="title" content="Fotocopias Económicas en CDMX 2025: Precios Actualizados y 10+ Tips para Ahorrar | Copimax">
@@ -611,7 +618,7 @@
             }
           }
           
-          /* Nascondi menu mobile su desktop */
+          /* Nascondi menu mobile su desktop - REGOLE ULTRA-AGGRESSIVE */
           @media (min-width: 769px) {
             .mobile-nav-button {
               display: none !important;
@@ -621,15 +628,54 @@
               position: absolute !important;
               top: -9999px !important;
               left: -9999px !important;
+              z-index: -9999 !important;
+              width: 0 !important;
+              height: 0 !important;
+              overflow: hidden !important;
+              clip: rect(0, 0, 0, 0) !important;
+              margin: -1px !important;
+              padding: 0 !important;
+              border: 0 !important;
             }
             .mobile-slide-menu {
               display: none !important;
               visibility: hidden !important;
               opacity: 0 !important;
               pointer-events: none !important;
-              left: -300px !important;
+              left: -9999px !important;
               position: absolute !important;
               top: -9999px !important;
+              z-index: -9999 !important;
+              width: 0 !important;
+              height: 0 !important;
+              overflow: hidden !important;
+              clip: rect(0, 0, 0, 0) !important;
+              margin: -1px !important;
+              padding: 0 !important;
+              border: 0 !important;
+            }
+            /* Nascondi anche tutti gli elementi figli del menu mobile */
+            .mobile-slide-menu * {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+            }
+            
+            /* Nascondi specificamente tutti i componenti del menu mobile */
+            .slide-menu-header,
+            .slide-menu-nav,
+            .slide-menu-footer,
+            .mobile-logo,
+            .close-slide-menu,
+            .mobile-contact {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              position: absolute !important;
+              top: -9999px !important;
+              left: -9999px !important;
               z-index: -9999 !important;
             }
           }
