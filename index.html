@@ -5012,7 +5012,7 @@
       // Calcolo corretto: (Numero copie) × (Pagine da stampare) × (Prezzo per pagina)
       const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
       const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
-      const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
+      const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
       const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
       let subtotal = q * pagesToPrint * unitPrice;
       
@@ -5089,7 +5089,7 @@
         const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
         const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
-        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
+        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
         const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const totalPages = orderData.quantity * pagesToPrint;
         
@@ -5133,7 +5133,7 @@
         const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
         const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
-        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
+        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
         const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const copies = orderData.quantity || 1;
         const total = pages * copies;
