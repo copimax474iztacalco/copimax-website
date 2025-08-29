@@ -4560,7 +4560,10 @@
             // Update order data
             if (opt.dataset.type) orderData.type = opt.dataset.type;
             if (opt.dataset.color) orderData.color = opt.dataset.color;
-            if (opt.dataset.sides) orderData.sides = opt.dataset.sides;
+            if (opt.dataset.sides) {
+              orderData.sides = opt.dataset.sides;
+              console.log('🔄 Sides cambiato a:', opt.dataset.sides);
+            }
             
             console.log('Updated orderData:', orderData);
             calculate();
@@ -4580,6 +4583,9 @@
       if (pdfPagesInput) {
         pdfPagesInput.addEventListener('input', () => {
           const value = Math.max(1, parseInt(pdfPagesInput.value || '1'));
+          // Aggiorna orderData.pdfPages quando l'utente modifica l'input
+          orderData.pdfPages = value;
+          console.log('📄 PDF pages input modificato a:', value);
           calculate();
           updatePdfInfo();
         });
@@ -4998,16 +5004,24 @@
       console.log('📊 orderData.pdfPages:', orderData.pdfPages);
       console.log('📊 pdfPages finale:', pdfPages);
       console.log('📊 quantity:', q);
+      console.log('📊 orderData.sides:', orderData.sides);
+      console.log('📊 orderData.color:', orderData.color);
       
       let unitPrice = 0;
 
       // Base price calculation
       if (orderData.color === 'bw') {
-        // Prezzo per copie BN: $1.00 per tutte le copie
-        unitPrice = 1.00;
+        // Prezzo per copie BN: $1.00 per 1-100 copie, $0.35/$0.40 per più di 100 copie
+        if (q <= 100) {
+          unitPrice = 1.00; // $1 per 1-100 copie BN
+        } else {
+          unitPrice = orderData.sides === 'double' ? 0.35 : 0.40;
+        }
       } else {
         unitPrice = 7.5; // Average color price
       }
+      
+      console.log('📊 calculate() - Prezzo unitario calcolato:', unitPrice);
 
       // Calcolo corretto: (Numero copie) × (Pagine da stampare) × (Prezzo per pagina)
       const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
@@ -6717,6 +6731,18 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
         (isAfterOpening && currentHour < 18) :
         (isAfterOpening && currentHour < 14);
       
+      // DEBUG: Log per verificare gli orari
+      console.log('🕐 Orari debug:', {
+        currentHour,
+        currentMinute,
+        currentDay,
+        isWeekday,
+        isAfterOpening,
+        isOpen,
+        weekdayHours: '8:30-18:00',
+        weekendHours: '8:30-14:00'
+      });
+      
       if (!isOpen) {
         // Se chiuso, mostra dati del giorno precedente
         return {
@@ -6754,6 +6780,14 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
       const slotsPerHour = maxSlotsPerDay / (isWeekday ? 9.5 : 5.5); // Slot per ora
       const usedSlots = Math.floor((minutesSinceOpening / 60) * slotsPerHour);
       const availableSlots = Math.max(0, maxSlotsPerDay - usedSlots);
+      
+      console.log('📊 Posti disponibili:', {
+        maxSlotsPerDay,
+        slotsPerHour,
+        minutesSinceOpening,
+        usedSlots,
+        availableSlots
+      });
       
       return {
         copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
