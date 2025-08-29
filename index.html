@@ -4995,16 +4995,19 @@
       const pdfPages = (orderData.pdfPages && orderData.pdfPages > 0)
         ? orderData.pdfPages
         : (parseInt(pdfPagesInput) || 1);
+      
+      console.log('📊 calculate() - Dettagli calcolo:');
+      console.log('📊 orderData.pdfPages:', orderData.pdfPages);
+      console.log('📊 pdfPagesInput:', pdfPagesInput);
+      console.log('📊 pdfPages finale:', pdfPages);
+      console.log('📊 quantity:', q);
+      
       let unitPrice = 0;
 
       // Base price calculation
       if (orderData.color === 'bw') {
-        // Prezzo speciale per 1-100 copie BN
-        if (q <= 100) {
-          unitPrice = 1.00; // $1 per 1-100 copie BN
-        } else {
-          unitPrice = orderData.sides === 'double' ? 0.35 : 0.40;
-        }
+        // Prezzo per copie BN: $1.00 per tutte le copie
+        unitPrice = 1.00;
       } else {
         unitPrice = 7.5; // Average color price
       }
@@ -5015,6 +5018,11 @@
       const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
       const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
       let subtotal = q * pagesToPrint * unitPrice;
+      
+      console.log('📊 calculate() - Calcolo prezzo:');
+      console.log('📊 unitPrice:', unitPrice);
+      console.log('📊 pagesToPrint:', pagesToPrint);
+      console.log('📊 subtotal calcolo:', q, '×', pagesToPrint, '×', unitPrice, '=', subtotal);
       
       // Add upsells
       let upsellTotal = 0;
@@ -5081,6 +5089,17 @@
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
         const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
         const totalPages = orderData.quantity * pagesToPrint;
+        
+        console.log('📊 updateOrderSummary - Dettagli calcolo:');
+        console.log('📊 orderData.pdfPages:', orderData.pdfPages);
+        console.log('📊 basePages:', basePages);
+        console.log('📊 pageStart:', pageStart);
+        console.log('📊 pageEnd:', pageEnd);
+        console.log('📊 hasRange:', hasRange);
+        console.log('📊 pagesToPrint:', pagesToPrint);
+        console.log('📊 orderData.quantity:', orderData.quantity);
+        console.log('📊 totalPages:', totalPages);
+        
         summaryQuantity.textContent = `${orderData.quantity} copias × ${pagesToPrint} páginas = ${totalPages} páginas totales`;
       }
       if (summaryDetails) summaryDetails.textContent = orderData.sides === 'double' ? 'Doble cara' : 'Una cara';
@@ -5171,8 +5190,13 @@
     function countPdfPages(typedarray, file) {
       pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
         const realPages = pdf.numPages;
+        console.log('📄 PDF processato:', file.name, 'pagine reali:', realPages);
+        
         orderData.pdfFile = file;
         orderData.pdfPages = realPages;
+        
+        console.log('📄 orderData.pdfPages impostato a:', orderData.pdfPages);
+        console.log('📄 orderData completo dopo impostazione PDF:', orderData);
         
         // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
         if (!orderData.files) {
@@ -5194,7 +5218,10 @@
         showCalcFilePreview(file.name, realPages);
         // Aggiorna input visivo pagine per trasparenza
         const inputEl = document.getElementById('pdf-pages-input');
-        if (inputEl) inputEl.value = String(realPages);
+        if (inputEl) {
+          inputEl.value = String(realPages);
+          console.log('📄 Input pdf-pages-input aggiornato a:', inputEl.value);
+        }
         updatePdfInfo();
         
         // Ricalcola prezzo con pagine reali
