@@ -5174,6 +5174,22 @@
         orderData.pdfFile = file;
         orderData.pdfPages = realPages;
         
+        // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
+        if (!orderData.files) {
+          orderData.files = [];
+        }
+        // Controlla se il file è già presente per evitare duplicati
+        const existingFile = orderData.files.find(f => f.name === file.name);
+        if (!existingFile) {
+          orderData.files.push(file);
+          console.log('📁 File aggiunto a orderData.files:', file.name);
+          console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+          
+          // Aggiorna anche la visualizzazione dei file
+          displayUploadedFile(file);
+          updateUploadStats();
+        }
+        
         // Mostra preview e informazioni reali
         showCalcFilePreview(file.name, realPages);
         // Aggiorna input visivo pagine per trasparenza
