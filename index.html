@@ -5074,8 +5074,8 @@
       }
       
       if (summaryQuantity) {
-        const inputVal = document.getElementById('pdf-pages-input')?.value || 1;
-        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : (parseInt(inputVal) || 1);
+        // Usa direttamente orderData.pdfPages invece dell'input HTML
+        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
         const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
@@ -5107,8 +5107,8 @@
       const totalPages = document.getElementById('total-pages');
       
       if (pdfInfo && pdfPages && totalPages) {
-        const inputVal = document.getElementById('pdf-pages-input')?.value || 1;
-        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : (parseInt(inputVal) || 1);
+        // Usa direttamente orderData.pdfPages invece dell'input HTML
+        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
         const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
         const pageEnd = parseInt(document.getElementById('page-end')?.value || '0');
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart;
@@ -5888,7 +5888,9 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         progressFill.style.width = `${stepNum * 25}%`;
       }
 
-      if (stepNum === 4) {
+      if (stepNum === 2) {
+        updateOrderSummary();
+      } else if (stepNum === 4) {
         updateFinalSummary();
         checkPaymentRequirements();
       }
