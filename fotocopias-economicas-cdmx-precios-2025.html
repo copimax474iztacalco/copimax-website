@@ -615,9 +615,22 @@
           @media (min-width: 769px) {
             .mobile-nav-button {
               display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              position: absolute !important;
+              top: -9999px !important;
+              left: -9999px !important;
             }
             .mobile-slide-menu {
               display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              left: -300px !important;
+              position: absolute !important;
+              top: -9999px !important;
+              z-index: -9999 !important;
             }
           }
           
