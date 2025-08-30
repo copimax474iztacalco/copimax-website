@@ -234,17 +234,17 @@
     }
     
     .category-section {
-      background: var(--cta1);
+      background: var(--primary1);
       border-radius: 18px;
       padding: 25px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
-      border: 2px solid var(--primary1);
+      border: 2px solid var(--cta1);
     }
     
     .category-section.featured {
-      border: 3px solid var(--primary1);
-      background: linear-gradient(145deg, var(--cta1), var(--cta2));
+      border: 3px solid var(--cta1);
+      background: linear-gradient(145deg, var(--primary1), var(--primary2));
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     }
     
@@ -256,12 +256,12 @@
     .category-title {
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--primary1);
+      color: var(--cta1);
       margin-bottom: 18px;
       text-align: center;
-      border-bottom: 3px solid var(--primary1);
+      border-bottom: 3px solid var(--cta1);
       padding-bottom: 8px;
-      text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     
     .books-list {
@@ -272,19 +272,19 @@
     
     .book-item {
       display: flex;
-      background: var(--cta1);
+      background: #fff;
       border-radius: 12px;
       padding: 16px;
       transition: all 0.3s ease;
-      border: 2px solid var(--primary1);
+      border: 2px solid var(--cta1);
       margin-bottom: 12px;
     }
     
     .book-item:hover {
-      border-color: var(--primary1);
+      border-color: var(--cta1);
       transform: translateX(3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      background: linear-gradient(145deg, var(--cta1), var(--cta2));
+      box-shadow: 0 8px 25px rgba(181, 255, 0, 0.3);
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
     }
     
     .book-image {
@@ -316,10 +316,9 @@
     
     .book-edition {
       font-size: 0.8rem;
-      color: var(--primary1);
+      color: var(--muted);
       margin-bottom: 6px;
       font-style: italic;
-      opacity: 0.8;
     }
     
     .book-price {
