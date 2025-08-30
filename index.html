@@ -5455,16 +5455,13 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           
 
       
-      // CAROSELLO LIBRI - INFINITE LOOP FUNZIONANTE
+      // CAROSELLO LIBRI - VERSIONE SEMPLIFICATA E FUNZIONANTE
     class BooksCarousel {
       constructor() {
         console.log('🔧 Costruttore BooksCarousel chiamato');
         this.carousel = document.getElementById('booksCarousel');
         this.currentIndex = 0;
         this.isAnimating = false;
-        this.autoPlay = true;
-        this.autoPlayInterval = 4000;
-        this.autoPlayTimer = null;
         
         console.log('🔍 Elemento carosello trovato:', this.carousel);
         
@@ -5476,8 +5473,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
       
       init() {
-        // Clona i libri per infinite loop
-        this.cloneBooks();
+        console.log('🚀 Inizializzazione carosello...');
         
         // Setup iniziale
         this.updateCarousel(false);
@@ -5485,50 +5481,18 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         // Setup eventi
         this.setupEvents();
         
-        // Crea indicatori
-        this.createIndicators();
-        
-        // Avvia autoplay
-        if (this.autoPlay) {
-          this.startAutoPlay();
-        }
-        
         console.log('📚 Carosello libri inizializzato!');
-      }
-      
-      cloneBooks() {
-        const books = Array.from(this.carousel.children);
-        const totalBooks = books.length;
-        
-        // Clona i primi 3 libri alla fine
-        for (let i = 0; i < 3; i++) {
-          const clone = books[i].cloneNode(true);
-          clone.classList.add('cloned');
-          this.carousel.appendChild(clone);
-        }
-        
-        // Clona gli ultimi 3 libri all'inizio
-        for (let i = totalBooks - 3; i < totalBooks; i++) {
-          const clone = books[i].cloneNode(true);
-          clone.classList.add('cloned');
-          this.carousel.insertBefore(clone, this.carousel.firstChild);
-        }
-        
-        // Aggiorna l'indice iniziale per compensare i cloni
-        this.currentIndex = 3;
-        
-        console.log('📚 Libri clonati:', this.carousel.children.length, 'totali');
       }
       
       updateCarousel(animate = true) {
         if (!animate) {
           this.carousel.style.transition = 'none';
         } else {
-          this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          this.carousel.style.transition = 'transform 0.5s ease-in-out';
         }
         
-        // Calcolo corretto per 6 libri + cloni
-        const bookWidth = 220 + 24; // width + gap (ridotto da 280px a 220px)
+        // Calcolo semplice: ogni libro è 220px + 24px gap = 244px
+        const bookWidth = 244;
         const translateX = -this.currentIndex * bookWidth;
         
         this.carousel.style.transform = `translateX(${translateX}px)`;
@@ -5539,247 +5503,107 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           totalBooks: this.carousel.children.length
         });
         
-        // Aggiorna indicatori
-        this.updateIndicators();
-        
         if (!animate) {
           // Forza il reflow
           this.carousel.offsetHeight;
-          this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          this.carousel.style.transition = 'transform 0.5s ease-in-out';
         }
       }
       
       moveCarousel(direction) {
-        if (this.isAnimating) return;
+        if (this.isAnimating) {
+          console.log('⏳ Carosello in movimento, ignoro comando');
+          return;
+        }
         
+        console.log('🎯 Movimento carosello:', direction);
         this.isAnimating = true;
-        this.stopAutoPlay();
         
         if (direction === 'next') {
-          this.currentIndex++;
+          if (this.currentIndex < this.carousel.children.length - 1) {
+            this.currentIndex++;
+          } else {
+            this.currentIndex = 0; // Torna all'inizio
+          }
         } else {
-          this.currentIndex--;
+          if (this.currentIndex > 0) {
+            this.currentIndex--;
+          } else {
+            this.currentIndex = this.carousel.children.length - 1; // Va alla fine
+          }
         }
         
         this.updateCarousel(true);
         
-        // Gestisci infinite loop
+        // Reset animazione dopo 500ms
         setTimeout(() => {
-          this.handleInfiniteLoop();
           this.isAnimating = false;
-          
-          if (this.autoPlay) {
-            this.startAutoPlay();
-          }
-        }, 600);
-      }
-      
-      handleInfiniteLoop() {
-        const totalBooks = this.carousel.children.length;
-        const originalBooks = totalBooks - 6; // Escludi i cloni
-        
-        console.log('🔄 Gestione infinite loop:', {
-          currentIndex: this.currentIndex,
-          totalBooks: totalBooks,
-          originalBooks: originalBooks
-        });
-        
-        if (this.currentIndex >= originalBooks + 3) {
-          // Sei andato oltre l'ultimo libro originale
-          this.currentIndex = 3;
-          this.updateCarousel(false);
-          console.log('✅ Reset a inizio libri originali');
-        } else if (this.currentIndex < 3) {
-          // Sei andato prima del primo libro originale
-          this.currentIndex = originalBooks + 2;
-          this.updateCarousel(false);
-          console.log('✅ Reset a fine libri originali');
-        }
+          console.log('✅ Animazione completata');
+        }, 500);
       }
       
       setupEvents() {
-        // Touch/Swipe support migliorato
+        console.log('🔗 Setup eventi...');
+        
+        // Click sui pulsanti freccia - CERCO NEL CONTAINER PRINCIPALE
+        const container = this.carousel.parentElement.parentElement;
+        const prevBtn = container.querySelector('.prev-btn');
+        const nextBtn = container.querySelector('.next-btn');
+        
+        console.log('🔍 Pulsanti trovati:', { prevBtn, nextBtn });
+        
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('⬅️ Click pulsante prev');
+            this.moveCarousel('prev');
+          });
+        } else {
+          console.error('❌ Pulsante prev non trovato!');
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('➡️ Click pulsante next');
+            this.moveCarousel('next');
+          });
+        } else {
+          console.error('❌ Pulsante next non trovato!');
+        }
+        
+        // Touch events semplificati
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
-        let startY = 0;
-        let currentY = 0;
         
-        // Touch events
         this.carousel.addEventListener('touchstart', (e) => {
-          e.preventDefault(); // Previene il comportamento di default
           startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
           isDragging = true;
-          this.stopAutoPlay();
-          console.log('📱 Touch start:', { x: startX, y: startY });
-        }, { passive: false });
+          console.log('📱 Touch start:', startX);
+        });
         
         this.carousel.addEventListener('touchmove', (e) => {
           if (!isDragging) return;
-          e.preventDefault(); // Previene lo scroll della pagina
           currentX = e.touches[0].clientX;
-          currentY = e.touches[0].clientY;
-          console.log('📱 Touch move:', { x: currentX, y: currentY });
-        }, { passive: false });
+        });
         
         this.carousel.addEventListener('touchend', (e) => {
           if (!isDragging) return;
           isDragging = false;
           
-          const diffX = startX - currentX;
-          const diffY = Math.abs(startY - currentY);
+          const diff = startX - currentX;
           const threshold = 50;
-          const maxVerticalDiff = 100; // Tolleranza per movimento verticale
           
-          console.log('📱 Touch end:', { 
-            startX, currentX, diffX, 
-            startY, currentY, diffY, 
-            threshold, maxVerticalDiff 
-          });
-          
-          // Solo se il movimento orizzontale è maggiore di quello verticale
-          if (Math.abs(diffX) > threshold && diffY < maxVerticalDiff) {
-            if (diffX > 0) {
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
               console.log('📱 Swipe left -> next');
               this.moveCarousel('next');
             } else {
               console.log('📱 Swipe right -> prev');
               this.moveCarousel('prev');
             }
-          } else if (this.autoPlay) {
-            this.startAutoPlay();
           }
-        });
-        
-        // Mouse drag support per desktop
-        let mouseStartX = 0;
-        let mouseCurrentX = 0;
-        let isMouseDragging = false;
-        
-        this.carousel.addEventListener('mousedown', (e) => {
-          mouseStartX = e.clientX;
-          isMouseDragging = true;
-          this.stopAutoPlay();
-          console.log('🖱️ Mouse down:', mouseStartX);
-        });
-        
-        this.carousel.addEventListener('mousemove', (e) => {
-          if (!isMouseDragging) return;
-          mouseCurrentX = e.clientX;
-        });
-        
-        this.carousel.addEventListener('mouseup', (e) => {
-          if (!isMouseDragging) return;
-          isMouseDragging = false;
-          
-          const diff = mouseStartX - mouseCurrentX;
-          const threshold = 50;
-          
-          console.log('🖱️ Mouse up:', { mouseStartX, mouseCurrentX, diff, threshold });
-          
-          if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-              console.log('🖱️ Drag left -> next');
-              this.moveCarousel('next');
-            } else {
-              console.log('🖱️ Drag right -> prev');
-              this.moveCarousel('prev');
-            }
-          } else if (this.autoPlay) {
-            this.startAutoPlay();
-          }
-        });
-        
-        // Gestione mouseup globale per evitare problemi se il mouse esce dal carosello
-        document.addEventListener('mouseup', () => {
-          if (isMouseDragging) {
-            isMouseDragging = false;
-            console.log('🖱️ Mouse up globale - reset drag');
-          }
-        });
-        
-        // Mouse events per desktop
-        this.carousel.addEventListener('mouseenter', () => {
-          this.stopAutoPlay();
-        });
-        
-        this.carousel.addEventListener('mouseleave', () => {
-          if (this.autoPlay) {
-            this.startAutoPlay();
-          }
-        });
-        
-        // Click sui pulsanti freccia
-        const prevBtn = this.carousel.parentElement.parentElement.querySelector('.prev-btn');
-        const nextBtn = this.carousel.parentElement.parentElement.querySelector('.next-btn');
-        
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-            console.log('⬅️ Click pulsante prev');
-            this.moveCarousel('prev');
-          });
-        }
-        
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-            console.log('➡️ Click pulsante next');
-            this.moveCarousel('next');
-          });
-        }
-      }
-      
-      startAutoPlay() {
-        this.stopAutoPlay();
-        this.autoPlayTimer = setInterval(() => {
-          this.moveCarousel('next');
-        }, this.autoPlayInterval);
-      }
-      
-      stopAutoPlay() {
-        if (this.autoPlayTimer) {
-          clearInterval(this.autoPlayTimer);
-          this.autoPlayTimer = null;
-        }
-      }
-      
-      createIndicators() {
-        const indicatorsContainer = document.getElementById('booksIndicators');
-        if (!indicatorsContainer) return;
-        
-        const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
-        indicatorsContainer.innerHTML = '';
-        
-        console.log('🔘 Creazione indicatori per', totalBooks, 'libri');
-        
-        for (let i = 0; i < totalBooks; i++) {
-          const indicator = document.createElement('div');
-          indicator.className = 'books-indicator';
-          indicator.onclick = () => {
-            this.currentIndex = i + 3; // Compensa i cloni iniziali
-            this.updateCarousel(true);
-            console.log('🔘 Click indicatore', i, '-> posizione', this.currentIndex);
-          };
-          indicatorsContainer.appendChild(indicator);
-        }
-        
-        // Attiva il primo indicatore
-        this.updateIndicators();
-      }
-      
-      updateIndicators() {
-        const indicators = document.querySelectorAll('.books-indicator');
-        const totalBooks = this.carousel.children.length - 6; // Escludi i cloni
-        const activeIndex = (this.currentIndex - 3 + totalBooks) % totalBooks; // Compensa i cloni
-        
-        console.log('🔘 Aggiornamento indicatori:', {
-          totalIndicators: indicators.length,
-          activeIndex: activeIndex,
-          currentIndex: this.currentIndex
-        });
-        
-        indicators.forEach((indicator, index) => {
-          indicator.classList.toggle('active', index === activeIndex);
         });
       }
     }
