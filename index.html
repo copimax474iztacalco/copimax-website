@@ -1270,24 +1270,28 @@
       .face-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--cta1);
         border-radius: 6px;
-        background: #f8fafc;
-        color: #64748b;
+        background: linear-gradient(45deg, var(--cta1), var(--cta2));
+        color: #000;
         cursor: pointer;
         transition: all 0.3s ease;
-      }
-      
-      .face-btn.active {
-        background: var(--cta1);
-        color: #000;
-        border-color: var(--cta1);
         font-weight: 600;
       }
       
+      .face-btn.active {
+        background: linear-gradient(45deg, var(--cta1), var(--cta2));
+        color: #000;
+        border-color: var(--cta1);
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba(181,255,0,0.3);
+      }
+      
       .face-btn:hover:not(.active) {
-        background: #e2e8f0;
-        border-color: #cbd5e1;
+        background: linear-gradient(45deg, var(--cta2), var(--cta1));
+        border-color: var(--cta2);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(181,255,0,0.2);
       }
     }
     .package-cta{background:linear-gradient(45deg,var(--cta1),var(--cta2));color:#000;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;border:none;font-size:0.9rem;transition:all 0.3s ease}
@@ -1678,6 +1682,8 @@
     .delivery-option{border:2px solid #e2e8f0;border-radius:12px;padding:20px;cursor:pointer;transition:.2s}
     .delivery-option:hover{border-color:var(--primary1)}
     .delivery-option.selected{border-color:var(--primary1);background:#f8fafc}
+.delivery-option.disabled{border-color:#cbd5e1;background:#f1f5f9;cursor:not-allowed;opacity:0.5}
+.delivery-option.disabled:hover{border-color:#cbd5e1;background:#f1f5f9}
     .delivery-title{font-weight:700;margin-bottom:5px}
     .delivery-price{color:var(--primary1);font-weight:800}
     .delivery-time{color:var(--muted);font-size:.9rem}
@@ -4850,16 +4856,21 @@
         // Aggiungi active al bottone cliccato
         btn.classList.add('active');
         
-        // Aggiorna il testo e il data-deal
+        // Aggiorna il testo, il prezzo e il data-deal
         const packageFaceType = document.getElementById('package-face-type');
         const packageCtaBtn = document.getElementById('package-cta-btn');
+        const packagePrice = document.querySelector('.package-price');
         
         if (faceType === 'single') {
+          // Una Cara: 1000 copie × $0.40 = $400
           packageFaceType.textContent = 'BN una cara, mismo día';
+          packagePrice.textContent = '$400 MXN';
           packageCtaBtn.textContent = 'Pedir';
-          packageCtaBtn.dataset.deal = '1000 BN una cara $350';
+          packageCtaBtn.dataset.deal = '1000 BN una cara $400';
         } else {
+          // Doble Cara: 1000 copie × $0.35 = $350
           packageFaceType.textContent = 'BN doble cara, mismo día';
+          packagePrice.textContent = '$350 MXN';
           packageCtaBtn.textContent = 'Pedir';
           packageCtaBtn.dataset.deal = '1000 BN doble cara $350';
         }
@@ -6180,6 +6191,55 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
               } else {
                 addressSection.classList.add('hidden');
               }
+            }
+            
+            // GESTIONE METODI DI PAGAMENTO BASATA SULLA CONSEGNA
+            const cashPaymentOption = document.querySelector('[data-payment="cash"]');
+            const transferPaymentOption = document.querySelector('[data-payment="transfer"]');
+            
+            if (option.dataset.delivery === 'pickup') {
+              // Se ritiro in negozio: abilita entrambi i metodi
+              if (cashPaymentOption) {
+                cashPaymentOption.classList.remove('disabled');
+                cashPaymentOption.style.opacity = '1';
+                cashPaymentOption.style.pointerEvents = 'auto';
+              }
+              if (transferPaymentOption) {
+                transferPaymentOption.classList.remove('disabled');
+                transferPaymentOption.style.opacity = '1';
+                transferPaymentOption.style.pointerEvents = 'auto';
+              }
+              
+              // Se era selezionato efectivo e ora è abilitato, mantienilo
+              if (orderData.payment === 'cash') {
+                // Mantieni efectivo selezionato
+              } else {
+                // Altrimenti passa a transfer (più sicuro per pickup)
+                orderData.payment = 'transfer';
+                if (transferPaymentOption) transferPaymentOption.classList.add('selected');
+                if (cashPaymentOption) cashPaymentOption.classList.remove('selected');
+              }
+            } else {
+              // Se consegna a domicilio: disabilita efectivo, forza transfer
+              if (cashPaymentOption) {
+                cashPaymentOption.classList.add('disabled');
+                cashPaymentOption.style.opacity = '0.5';
+                cashPaymentOption.style.pointerEvents = 'none';
+                cashPaymentOption.classList.remove('selected');
+              }
+              if (transferPaymentOption) {
+                transferPaymentOption.classList.remove('disabled');
+                transferPaymentOption.style.opacity = '1';
+                transferPaymentOption.style.pointerEvents = 'auto';
+                transferPaymentOption.classList.add('selected');
+              }
+              
+              // Forza transfer per consegne
+              orderData.payment = 'transfer';
+              orderData.paymentConfirmed = false;
+              
+              // Mostra conferma pagamento per transfer
+              showPaymentConfirmation('transfer');
             }
           }
           
