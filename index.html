@@ -2114,16 +2114,12 @@
     }
     
     .books-carousel{
-      display:flex;gap:24px;padding:20px 0;
-      width:max-content;
-      transform: translateX(0);
-      transition: transform 0.5s ease-in-out;
+      position: relative;
+      padding: 20px 0;
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
-      touch-action: pan-y;
-      cursor: grab;
     }
     
     .books-carousel:active {
@@ -2133,7 +2129,13 @@
     .book-item{
       min-width:220px;background:#fff;border-radius:20px;overflow:hidden;
       box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:all 0.4s ease;
-      cursor:pointer;flex-shrink:0;border:2px solid transparent
+      cursor:pointer;border:2px solid transparent;
+      margin: 0 auto;
+      display: none;
+    }
+    
+    .book-item:first-child {
+      display: block;
     }
     
     .book-item:hover{
@@ -5451,45 +5453,57 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-    // CAROSELLO LIBRI - CODICE PULITO E FUNZIONANTE
-    console.log('📚 Inizializzazione carosello libri...');
+    // CAROSELLO LIBRI - OPZIONE 1: DISPLAY NONE/BLOCK (ULTRA-SEMPLICE)
+    console.log('📚 Carosello libri - versione ultra-semplice...');
     
-    // Variabili globali semplici
+    // Variabile per l'indice corrente
     let currentBookIndex = 0;
-    let isAnimating = false;
     
-    // Funzione per muovere il carosello
-    function moveBooks(direction) {
-      if (isAnimating) return;
-      
+    // Funzione per mostrare un libro specifico
+    function showBook(index) {
       const carousel = document.getElementById('booksCarousel');
-      if (!carousel) {
-        console.error('❌ Carosello non trovato');
-        return;
+      if (!carousel) return;
+      
+      const books = carousel.children;
+      const totalBooks = books.length;
+      
+      // Nascondi tutti i libri
+      for (let i = 0; i < totalBooks; i++) {
+        books[i].style.display = 'none';
       }
       
-      isAnimating = true;
+      // Mostra solo il libro corrente
+      books[index].style.display = 'block';
+      
+      console.log(`📖 Mostro libro ${index + 1} di ${totalBooks}`);
+    }
+    
+    // Funzione per muovere al libro successivo
+    function nextBook() {
+      const carousel = document.getElementById('booksCarousel');
+      if (!carousel) return;
+      
       const totalBooks = carousel.children.length;
+      currentBookIndex = (currentBookIndex + 1) % totalBooks;
+      showBook(currentBookIndex);
+    }
+    
+    // Funzione per muovere al libro precedente
+    function prevBook() {
+      const carousel = document.getElementById('booksCarousel');
+      if (!carousel) return;
       
-      if (direction === 'next') {
-        currentBookIndex = (currentBookIndex + 1) % totalBooks;
-      } else {
-        currentBookIndex = currentBookIndex === 0 ? totalBooks - 1 : currentBookIndex - 1;
-      }
-      
-      const translateX = -currentBookIndex * 244; // 220px + 24px gap
-      carousel.style.transform = `translateX(${translateX}px)`;
-      
-      console.log(`🎠 Libro ${currentBookIndex + 1} di ${totalBooks}, translateX: ${translateX}px`);
-      
-      setTimeout(() => {
-        isAnimating = false;
-      }, 500);
+      const totalBooks = carousel.children.length;
+      currentBookIndex = currentBookIndex === 0 ? totalBooks - 1 : currentBookIndex - 1;
+      showBook(currentBookIndex);
     }
     
     // Inizializzazione quando il DOM è pronto
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('🚀 DOM caricato, setup carosello...');
+      console.log('🚀 Setup carosello ultra-semplice...');
+      
+      // Mostra il primo libro
+      showBook(0);
       
       // Setup pulsanti freccia
       const prevBtn = document.querySelector('.books-carousel-container .prev-btn');
@@ -5498,14 +5512,14 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       if (prevBtn) {
         prevBtn.addEventListener('click', () => {
           console.log('⬅️ Click prev');
-          moveBooks('prev');
+          prevBook();
         });
       }
       
       if (nextBtn) {
         nextBtn.addEventListener('click', () => {
           console.log('➡️ Click next');
-          moveBooks('next');
+          nextBook();
         });
       }
       
@@ -5513,27 +5527,26 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       const carousel = document.getElementById('booksCarousel');
       if (carousel) {
         let startX = 0;
-        let currentX = 0;
         
         carousel.addEventListener('touchstart', (e) => {
           startX = e.touches[0].clientX;
         });
         
         carousel.addEventListener('touchend', (e) => {
-          currentX = e.changedTouches[0].clientX;
-          const diff = startX - currentX;
+          const endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
           
           if (Math.abs(diff) > 50) {
             if (diff > 0) {
-              moveBooks('next');
+              nextBook();
             } else {
-              moveBooks('prev');
+              prevBook();
             }
           }
         });
       }
       
-      console.log('✅ Carosello libri inizializzato');
+      console.log('✅ Carosello ultra-semplice inizializzato!');
     });
 
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
