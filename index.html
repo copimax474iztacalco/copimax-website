@@ -3825,8 +3825,8 @@
         
         <div class="books-carousel-container">
           <!-- Frecce completamente fuori dal wrapper -->
-          <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
-          <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
+          <button class="books-btn prev-btn">‹</button>
+          <button class="books-btn next-btn">›</button>
           
           <div class="books-carousel-wrapper">
             <div class="books-carousel" id="booksCarousel">
@@ -5456,6 +5456,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
       
       // CAROSELLO LIBRI - VERSIONE SEMPLIFICATA E FUNZIONANTE
+    console.log('📚 Definizione classe BooksCarousel iniziata...');
     class BooksCarousel {
       constructor() {
         console.log('🔧 Costruttore BooksCarousel chiamato');
@@ -5607,24 +5608,26 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         });
       }
     }
+    console.log('📚 Classe BooksCarousel definita completamente');
     
-    // Funzione globale per i pulsanti (compatibilità)
-    function moveCarousel(direction) {
-      console.log('🎯 moveCarousel chiamata con direzione:', direction);
-      if (window.booksCarousel) {
-        console.log('✅ booksCarousel trovato, chiamando moveCarousel');
-        window.booksCarousel.moveCarousel(direction);
-      } else {
-        console.error('❌ booksCarousel non trovato!');
-      }
-    }
+
     
     // Inizializza quando il DOM è pronto
+    console.log('🚀 Script carosello caricato, aspettando DOM...');
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🚀 DOM caricato, inizializzando BooksCarousel...');
       try {
         window.booksCarousel = new BooksCarousel();
         console.log('✅ BooksCarousel inizializzato correttamente');
+        console.log('🔍 Verifica pulsanti dopo inizializzazione...');
+        
+        // Verifica che i pulsanti siano stati trovati
+        const container = document.querySelector('.books-carousel-container');
+        if (container) {
+          const prevBtn = container.querySelector('.prev-btn');
+          const nextBtn = container.querySelector('.next-btn');
+          console.log('🔍 Pulsanti nel container:', { prevBtn, nextBtn });
+        }
       } catch (error) {
         console.error('❌ Errore nell\'inizializzazione di BooksCarousel:', error);
       }
