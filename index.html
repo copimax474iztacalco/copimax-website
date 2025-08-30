@@ -2088,7 +2088,7 @@
       margin:0 auto;line-height:1.6
     }
     
-    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;padding:0 60px}
+    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden;padding:0 60px}
     
     .books-carousel-wrapper {
       overflow: hidden;
@@ -2114,8 +2114,12 @@
     }
     
     .books-carousel{
-      position: relative;
+      display: flex;
+      gap: 24px;
       padding: 20px 0;
+      width: max-content;
+      transform: translateX(0);
+      transition: transform 0.5s ease-in-out;
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -2130,12 +2134,7 @@
       min-width:220px;background:#fff;border-radius:20px;overflow:hidden;
       box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:all 0.4s ease;
       cursor:pointer;border:2px solid transparent;
-      margin: 0 auto;
-      display: none;
-    }
-    
-    .book-item:first-child {
-      display: block;
+      flex-shrink: 0;
     }
     
     .book-item:hover{
@@ -5453,57 +5452,50 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-    // CAROSELLO LIBRI - OPZIONE 1: DISPLAY NONE/BLOCK (ULTRA-SEMPLICE)
-    console.log('📚 Carosello libri - versione ultra-semplice...');
+    // CAROSELLO LIBRI - VERSIONE FUNZIONANTE CON TRANSFORM CSS
+    console.log('📚 Carosello libri - versione transform CSS...');
     
-    // Variabile per l'indice corrente
+    // Variabili globali
     let currentBookIndex = 0;
+    let isAnimating = false;
     
-    // Funzione per mostrare un libro specifico
-    function showBook(index) {
+    // Funzione per muovere il carosello
+    function moveCarousel(direction) {
+      if (isAnimating) return;
+      
       const carousel = document.getElementById('booksCarousel');
-      if (!carousel) return;
-      
-      const books = carousel.children;
-      const totalBooks = books.length;
-      
-      // Nascondi tutti i libri
-      for (let i = 0; i < totalBooks; i++) {
-        books[i].style.display = 'none';
+      if (!carousel) {
+        console.error('❌ Carosello non trovato');
+        return;
       }
       
-      // Mostra solo il libro corrente
-      books[index].style.display = 'block';
-      
-      console.log(`📖 Mostro libro ${index + 1} di ${totalBooks}`);
-    }
-    
-    // Funzione per muovere al libro successivo
-    function nextBook() {
-      const carousel = document.getElementById('booksCarousel');
-      if (!carousel) return;
-      
+      isAnimating = true;
       const totalBooks = carousel.children.length;
-      currentBookIndex = (currentBookIndex + 1) % totalBooks;
-      showBook(currentBookIndex);
-    }
-    
-    // Funzione per muovere al libro precedente
-    function prevBook() {
-      const carousel = document.getElementById('booksCarousel');
-      if (!carousel) return;
       
-      const totalBooks = carousel.children.length;
-      currentBookIndex = currentBookIndex === 0 ? totalBooks - 1 : currentBookIndex - 1;
-      showBook(currentBookIndex);
+      // Calcola nuovo indice
+      if (direction === 'next') {
+        currentBookIndex = (currentBookIndex + 1) % totalBooks;
+      } else {
+        currentBookIndex = currentBookIndex === 0 ? totalBooks - 1 : currentBookIndex - 1;
+      }
+      
+      // Calcola translateX (ogni libro è 220px + 24px gap = 244px)
+      const translateX = -currentBookIndex * 244;
+      
+      // Applica la trasformazione
+      carousel.style.transform = `translateX(${translateX}px)`;
+      
+      console.log(`🎠 Libro ${currentBookIndex + 1} di ${totalBooks}, translateX: ${translateX}px`);
+      
+      // Reset animazione dopo 500ms
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
     }
     
     // Inizializzazione quando il DOM è pronto
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('🚀 Setup carosello ultra-semplice...');
-      
-      // Mostra il primo libro
-      showBook(0);
+      console.log('🚀 Setup carosello transform CSS...');
       
       // Setup pulsanti freccia
       const prevBtn = document.querySelector('.books-carousel-container .prev-btn');
@@ -5512,14 +5504,14 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       if (prevBtn) {
         prevBtn.addEventListener('click', () => {
           console.log('⬅️ Click prev');
-          prevBook();
+          moveCarousel('prev');
         });
       }
       
       if (nextBtn) {
         nextBtn.addEventListener('click', () => {
           console.log('➡️ Click next');
-          nextBook();
+          moveCarousel('next');
         });
       }
       
@@ -5538,15 +5530,15 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           
           if (Math.abs(diff) > 50) {
             if (diff > 0) {
-              nextBook();
+              moveCarousel('next');
             } else {
-              prevBook();
+              moveCarousel('prev');
             }
           }
         });
       }
       
-      console.log('✅ Carosello ultra-semplice inizializzato!');
+      console.log('✅ Carosello transform CSS inizializzato!');
     });
 
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
