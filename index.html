@@ -2101,7 +2101,7 @@
     }
     
     .book-item{
-      min-width:280px;background:#fff;border-radius:20px;overflow:hidden;
+      min-width:220px;background:#fff;border-radius:20px;overflow:hidden;
       box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:all 0.4s ease;
       cursor:pointer;flex-shrink:0;border:2px solid transparent
     }
@@ -2114,7 +2114,7 @@
     .book-image{position:relative;overflow:hidden}
     
     .book-image img{
-      width:100%;height:350px;object-fit:cover;transition:all 0.4s ease
+      width:100%;height:280px;object-fit:cover;transition:all 0.4s ease
     }
     
     .book-item:hover .book-image img{transform:scale(1.05)}
@@ -2137,6 +2137,10 @@
       font-size:1.2rem;font-weight:800;color:var(--cta1);
       background:var(--primary1);color:#fff;padding:8px 16px;
       border-radius:20px;display:inline-block
+    }
+    
+    .books-controls-top{
+      display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative;z-index:10
     }
     
     .books-controls{
@@ -2172,6 +2176,20 @@
       background:var(--cta1);transform:scale(1.2)
     }
     
+    .ver-mas-container{
+      display:flex;justify-content:center;margin-top:30px
+    }
+    
+    .ver-mas-btn{
+      background:var(--cta1);color:#fff;padding:15px 30px;border-radius:25px;
+      text-decoration:none;font-weight:600;font-size:1.1rem;transition:all 0.3s ease;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);display:inline-block
+    }
+    
+    .ver-mas-btn:hover{
+      background:var(--primary1);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)
+    }
+    
     /* Stili per libri clonati */
     .book-item.cloned {
       opacity: 0.8;
@@ -2190,11 +2208,11 @@
       }
       
       .book-item {
-        min-width: 240px; /* Libri più piccoli su mobile */
+        min-width: 200px; /* Libri più piccoli su mobile */
       }
       
       .book-image img {
-        height: 280px; /* Immagini più piccole su mobile */
+        height: 220px; /* Immagini più piccole su mobile */
       }
       
       .books-controls {
@@ -3772,6 +3790,12 @@
         <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:1.1rem">Material Didáctico Cambridge - Servicio de Engargolado Profesional</p>
         
         <div class="books-carousel-container">
+          <!-- Controlli Carosello SOPRA -->
+          <div class="books-controls-top">
+            <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
+            <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
+          </div>
+          
           <div class="books-carousel-wrapper">
             <div class="books-carousel" id="booksCarousel">
               <!-- LIBRI - Duplicati per infinite loop -->
@@ -3843,70 +3867,16 @@
             </div>
           </div>
           
-          <!-- Controlli Carosello -->
-          <div class="books-controls">
-            <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
-            <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
-          </div>
-          
           <!-- Indicatori -->
           <div class="books-indicators" id="booksIndicators"></div>
-        </div>
-        
-        <!-- Sezione Legale Estesa Orizzontalmente -->
-        <div class="legal-section-extended" style="margin-bottom:0">
-          <div class="legal-grid">
-            <div class="legal-item">
-              <div class="legal-icon">📚</div>
-              <div class="legal-content">
-                <h4>LIBROS DE INGLÉS CAMBRIDGE</h4>
-                <p>SERVICIO EDUCATIVO</p>
-              </div>
-            </div>
-            
-            <div class="legal-item">
-              <div class="legal-icon">✅</div>
-              <div class="legal-content">
-                <h4>MATERIAL AUTORIZADO</h4>
-                <p>Para estudiantes de inglés</p>
-              </div>
-            </div>
-            
-            <div class="legal-item">
-              <div class="legal-icon">⚖️</div>
-              <div class="legal-content">
-                <h4>CONFORME A LA LEY</h4>
-                <p>Uso educativo exclusivamente</p>
-              </div>
-            </div>
-            
-            <div class="legal-item">
-              <div class="legal-icon">🎯</div>
-              <div class="legal-content">
-                <h4>NIVELES DISPONIBLES</h4>
-                <p>A2 • B1 • B1+ • B2 • C1</p>
-              </div>
-            </div>
-            
-            <div class="legal-item">
-              <div class="legal-icon">📖</div>
-              <div class="legal-content">
-                <h4>SERIES CAMBRIDGE</h4>
-                <p>Life • Interchange • Empower • Evolve • Close Up</p>
-              </div>
-            </div>
-            
-            
-            
-            <div class="legal-item">
-              <div class="legal-icon">⚡</div>
-              <div class="legal-content">
-                <h4>SERVICIO RÁPIDO</h4>
-                <p>Listo en 30 minutos</p>
-              </div>
-            </div>
+          
+          <!-- Pulsante Ver más -->
+          <div class="ver-mas-container">
+            <a href="libros-ingles.html" class="ver-mas-btn">Ver más libros</a>
           </div>
         </div>
+        
+
       </div>
     </section>
     
@@ -5521,7 +5491,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         }
         
         // Calcolo corretto per 6 libri + cloni
-        const bookWidth = 280 + 24; // width + gap
+        const bookWidth = 220 + 24; // width + gap (ridotto da 280px a 220px)
         const translateX = -this.currentIndex * bookWidth;
         
         this.carousel.style.transform = `translateX(${translateX}px)`;
