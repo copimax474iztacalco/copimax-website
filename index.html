@@ -5450,9 +5450,50 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-    // CAROSELLO LIBRI - VERSIONE SEMPLIFICATA E FUNZIONANTE
+          // CAROSELLO LIBRI - VERSIONE COMPLETAMENTE RISCITTA E FUNZIONANTE
     console.log('📚 Script carosello raggiunto...');
     console.log('📚 Definizione classe BooksCarousel iniziata...');
+    
+    // Funzione globale semplice per test immediato
+    function testCarousel() {
+      console.log('🧪 Test carosello chiamato');
+      const carousel = document.getElementById('booksCarousel');
+      if (carousel) {
+        console.log('✅ Elemento carosello trovato:', carousel);
+        console.log('📚 Numero libri:', carousel.children.length);
+        console.log('🎨 Stile transform attuale:', carousel.style.transform);
+        return true;
+      } else {
+        console.error('❌ Elemento carosello NON trovato!');
+        return false;
+      }
+    }
+    
+    // Funzione di test per movimento manuale
+    function testMove(direction) {
+      console.log('🧪 Test movimento manuale:', direction);
+      if (window.booksCarousel) {
+        window.booksCarousel.moveCarousel(direction);
+      } else {
+        console.error('❌ BooksCarousel non disponibile');
+      }
+    }
+    
+    // Funzione di test per stato carosello
+    function testStatus() {
+      console.log('🧪 Test stato carosello');
+      if (window.booksCarousel) {
+        console.log('📊 Stato:', {
+          currentIndex: window.booksCarousel.currentIndex,
+          isAnimating: window.booksCarousel.isAnimating,
+          carousel: window.booksCarousel.carousel,
+          transform: window.booksCarousel.carousel.style.transform
+        });
+      } else {
+        console.error('❌ BooksCarousel non disponibile');
+      }
+    }
+    
     class BooksCarousel {
       constructor() {
         console.log('🔧 Costruttore BooksCarousel chiamato');
@@ -5482,6 +5523,11 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
       
       updateCarousel(animate = true) {
+        if (!this.carousel) {
+          console.error('❌ Carosello non disponibile in updateCarousel');
+          return;
+        }
+        
         if (!animate) {
           this.carousel.style.transition = 'none';
         } else {
@@ -5497,7 +5543,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         console.log('🎠 Carosello aggiornato:', {
           currentIndex: this.currentIndex,
           translateX: translateX,
-          totalBooks: this.carousel.children.length
+          totalBooks: this.carousel.children.length,
+          transform: this.carousel.style.transform
         });
         
         if (!animate) {
@@ -5508,12 +5555,17 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
       
       moveCarousel(direction) {
+        if (!this.carousel) {
+          console.error('❌ Carosello non disponibile in moveCarousel');
+          return;
+        }
+        
         if (this.isAnimating) {
           console.log('⏳ Carosello in movimento, ignoro comando');
           return;
         }
         
-        console.log('🎯 Movimento carosello:', direction);
+        console.log('🎯 Movimento carosello:', direction, 'da indice:', this.currentIndex);
         this.isAnimating = true;
         
         if (direction === 'next') {
@@ -5530,6 +5582,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           }
         }
         
+        console.log('🎯 Nuovo indice:', this.currentIndex);
         this.updateCarousel(true);
         
         // Reset animazione dopo 500ms
@@ -5608,8 +5661,20 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
 
     // Inizializza quando il DOM è pronto
     console.log('🚀 Script carosello caricato, aspettando DOM...');
+    
+    // Test immediato per verificare che il carosello esista
+    setTimeout(() => {
+      console.log('⏰ Test immediato carosello...');
+      testCarousel();
+    }, 100);
+    
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🚀 DOM caricato, inizializzando BooksCarousel...');
+      
+      // Test prima dell'inizializzazione
+      console.log('🧪 Test pre-inizializzazione...');
+      testCarousel();
+      
       try {
         window.booksCarousel = new BooksCarousel();
         console.log('✅ BooksCarousel inizializzato correttamente');
@@ -5621,6 +5686,15 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
           const prevBtn = container.querySelector('.prev-btn');
           const nextBtn = container.querySelector('.next-btn');
           console.log('🔍 Pulsanti nel container:', { prevBtn, nextBtn });
+          
+          // Test manuale del movimento
+          if (window.booksCarousel) {
+            console.log('🧪 Test movimento manuale...');
+            console.log('🎯 Stato iniziale:', {
+              currentIndex: window.booksCarousel.currentIndex,
+              totalBooks: window.booksCarousel.carousel.children.length
+            });
+          }
         }
       } catch (error) {
         console.error('❌ Errore nell\'inizializzazione di BooksCarousel:', error);
@@ -6834,6 +6908,11 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
     window.prevStep = prevStep;
     window.submitOrder = submitOrder;
     // Funzioni galleria rimosse per evitare conflitti
+    
+    // Funzioni di test carosello disponibili globalmente
+    window.testCarousel = testCarousel;
+    window.testMove = testMove;
+    window.testStatus = testStatus;
     
             // Make review functions available globally
         // window.refreshReviews = refreshReviews; // Funzione non definita
