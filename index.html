@@ -2086,7 +2086,7 @@
       margin:0 auto;line-height:1.6
     }
     
-    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:visible;padding:0 30px}
+    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden;padding:0 60px}
     
     .books-carousel-wrapper {
       overflow: hidden;
@@ -2094,18 +2094,18 @@
       width: 100%;
     }
     
-    /* Frecce posizionate ai lati del carosello */
-    .books-carousel-wrapper .prev-btn {
+    /* Frecce posizionate completamente fuori dal container */
+    .books-carousel-container .prev-btn {
       position: absolute;
-      left: -25px;
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 20;
     }
     
-    .books-carousel-wrapper .next-btn {
+    .books-carousel-container .next-btn {
       position: absolute;
-      right: -25px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 20;
@@ -2251,12 +2251,12 @@
       }
       
       /* Frecce responsive su mobile */
-      .books-carousel-wrapper .prev-btn {
-        left: -22px;
+      .books-carousel-container .prev-btn {
+        left: 5px;
       }
       
-      .books-carousel-wrapper .next-btn {
-        right: -22px;
+      .books-carousel-container .next-btn {
+        right: 5px;
       }
     }
     
@@ -3824,11 +3824,11 @@
         <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:1.1rem">Material Didáctico Cambridge - Servicio de Engargolado Profesional</p>
         
         <div class="books-carousel-container">
+          <!-- Frecce completamente fuori dal wrapper -->
+          <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
+          <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
+          
           <div class="books-carousel-wrapper">
-            <!-- Frecce ai lati del carosello -->
-            <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
-            <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
-            
             <div class="books-carousel" id="booksCarousel">
               <!-- LIBRI - Duplicati per infinite loop -->
               <div class="book-item">
@@ -5458,6 +5458,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       // CAROSELLO LIBRI - INFINITE LOOP FUNZIONANTE
     class BooksCarousel {
       constructor() {
+        console.log('🔧 Costruttore BooksCarousel chiamato');
         this.carousel = document.getElementById('booksCarousel');
         this.currentIndex = 0;
         this.isAnimating = false;
@@ -5465,8 +5466,12 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         this.autoPlayInterval = 4000;
         this.autoPlayTimer = null;
         
+        console.log('🔍 Elemento carosello trovato:', this.carousel);
+        
         if (this.carousel) {
           this.init();
+        } else {
+          console.error('❌ Elemento booksCarousel non trovato!');
         }
       }
       
@@ -5706,8 +5711,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         });
         
         // Click sui pulsanti freccia
-        const prevBtn = this.carousel.parentElement.querySelector('.prev-btn');
-        const nextBtn = this.carousel.parentElement.querySelector('.next-btn');
+        const prevBtn = this.carousel.parentElement.parentElement.querySelector('.prev-btn');
+        const nextBtn = this.carousel.parentElement.parentElement.querySelector('.next-btn');
         
         if (prevBtn) {
           prevBtn.addEventListener('click', () => {
@@ -5781,14 +5786,24 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
     
     // Funzione globale per i pulsanti (compatibilità)
     function moveCarousel(direction) {
+      console.log('🎯 moveCarousel chiamata con direzione:', direction);
       if (window.booksCarousel) {
+        console.log('✅ booksCarousel trovato, chiamando moveCarousel');
         window.booksCarousel.moveCarousel(direction);
+      } else {
+        console.error('❌ booksCarousel non trovato!');
       }
     }
     
     // Inizializza quando il DOM è pronto
     document.addEventListener('DOMContentLoaded', function() {
-      window.booksCarousel = new BooksCarousel();
+      console.log('🚀 DOM caricato, inizializzando BooksCarousel...');
+      try {
+        window.booksCarousel = new BooksCarousel();
+        console.log('✅ BooksCarousel inizializzato correttamente');
+      } catch (error) {
+        console.error('❌ Errore nell\'inizializzazione di BooksCarousel:', error);
+      }
     });
     
 
