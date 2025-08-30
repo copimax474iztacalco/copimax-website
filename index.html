@@ -48,6 +48,8 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=TU-ID-ANALYTICS"></script>
   <script>
+    console.log('🚀 Script principale caricato...');
+    
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -5436,9 +5438,6 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       updateOrderSummary();
       window.scrollTo(0, 0);
       
-      // Cerrar menú móvil si está abierto
-      closeMobileMenu();
-      
       // Assicurati che le opzioni di pagamento siano configurate
       setTimeout(() => {
         setupDeliveryOptions();
@@ -5451,11 +5450,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-
-          
-
-      
-      // CAROSELLO LIBRI - VERSIONE SEMPLIFICATA E FUNZIONANTE
+    // CAROSELLO LIBRI - VERSIONE SEMPLIFICATA E FUNZIONANTE
+    console.log('📚 Script carosello raggiunto...');
     console.log('📚 Definizione classe BooksCarousel iniziata...');
     class BooksCarousel {
       constructor() {
@@ -5609,9 +5605,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
     console.log('📚 Classe BooksCarousel definita completamente');
-    
 
-    
     // Inizializza quando il DOM è pronto
     console.log('🚀 Script carosello caricato, aspettando DOM...');
     document.addEventListener('DOMContentLoaded', function() {
@@ -5632,9 +5626,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         console.error('❌ Errore nell\'inizializzazione di BooksCarousel:', error);
       }
     });
-    
 
-    
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
     const realGoogleReviews = [
       {
@@ -5762,9 +5754,6 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       showStep(1);
       window.scrollTo(0, 0);
       
-      // Cerrar menú móvil si está abierto
-      closeMobileMenu();
-      
       // Aggiorna cronologia senza aggiungere una nuova voce inutile
       if (shouldPush && window.history && window.history.replaceState) {
         const cleanUrl = window.location.origin + window.location.pathname;
@@ -5778,9 +5767,6 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       if (homepageContent) homepageContent.style.display = 'none';
       if (blogPage) blogPage.classList.remove('hidden');
       window.scrollTo(0, 0);
-      
-      // Cerrar menú móvil si está abierto
-      closeMobileMenu();
       
       // Aggiorna URL e cronologia browser
       if (window.history && window.history.pushState) {
@@ -6944,7 +6930,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
     window.galleryGoTo = galleryGoTo;
     
             // Make review functions available globally
-        window.refreshReviews = refreshReviews;
+        // window.refreshReviews = refreshReviews; // Funzione non definita
         window.testReviews = testReviews;
     
     // Service Worker for caching (commented out to avoid 404 errors)
