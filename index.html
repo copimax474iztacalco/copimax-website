@@ -2086,7 +2086,7 @@
       margin:0 auto;line-height:1.6
     }
     
-    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden}
+    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:visible;padding:0 30px}
     
     .books-carousel-wrapper {
       overflow: hidden;
@@ -2094,10 +2094,37 @@
       width: 100%;
     }
     
+    /* Frecce posizionate ai lati del carosello */
+    .books-carousel-wrapper .prev-btn {
+      position: absolute;
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+    }
+    
+    .books-carousel-wrapper .next-btn {
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+    }
+    
     .books-carousel{
       display:flex;transition:transform 0.5s ease-in-out;gap:24px;padding:20px 0;
       width:max-content; /* Corretto: max-content invece di fit-content */
       transform: translateX(0); /* Posizione iniziale esplicita */
+      user-select: none; /* Previene selezione testo durante swipe */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      touch-action: pan-y; /* Permette scroll verticale ma controlla orizzontale */
+      cursor: grab; /* Indica che è trascinabile */
+    }
+    
+    .books-carousel:active {
+      cursor: grabbing; /* Cambia cursore durante il drag */
     }
     
     .book-item{
@@ -2139,9 +2166,7 @@
       border-radius:20px;display:inline-block
     }
     
-    .books-controls-top{
-      display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative;z-index:10
-    }
+
     
     .books-controls{
       display:flex;justify-content:center;gap:16px;margin-top:40px
@@ -2199,7 +2224,7 @@
     @media (max-width: 768px) {
       .books-carousel-container {
         max-width: 100%;
-        padding: 0 20px;
+        padding: 0 40px;
       }
       
       .books-carousel {
@@ -2223,6 +2248,15 @@
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
+      }
+      
+      /* Frecce responsive su mobile */
+      .books-carousel-wrapper .prev-btn {
+        left: -22px;
+      }
+      
+      .books-carousel-wrapper .next-btn {
+        right: -22px;
       }
     }
     
@@ -3790,13 +3824,11 @@
         <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:1.1rem">Material Didáctico Cambridge - Servicio de Engargolado Profesional</p>
         
         <div class="books-carousel-container">
-          <!-- Controlli Carosello SOPRA -->
-          <div class="books-controls-top">
+          <div class="books-carousel-wrapper">
+            <!-- Frecce ai lati del carosello -->
             <button class="books-btn prev-btn" onclick="moveCarousel('prev')">‹</button>
             <button class="books-btn next-btn" onclick="moveCarousel('next')">›</button>
-          </div>
-          
-          <div class="books-carousel-wrapper">
+            
             <div class="books-carousel" id="booksCarousel">
               <!-- LIBRI - Duplicati per infinite loop -->
               <div class="book-item">
@@ -5561,34 +5593,49 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
       
       setupEvents() {
-        // Touch/Swipe support
+        // Touch/Swipe support migliorato
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
+        let startY = 0;
+        let currentY = 0;
         
+        // Touch events
         this.carousel.addEventListener('touchstart', (e) => {
+          e.preventDefault(); // Previene il comportamento di default
           startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
           isDragging = true;
           this.stopAutoPlay();
-          console.log('📱 Touch start:', startX);
-        });
+          console.log('📱 Touch start:', { x: startX, y: startY });
+        }, { passive: false });
         
         this.carousel.addEventListener('touchmove', (e) => {
           if (!isDragging) return;
+          e.preventDefault(); // Previene lo scroll della pagina
           currentX = e.touches[0].clientX;
-        });
+          currentY = e.touches[0].clientY;
+          console.log('📱 Touch move:', { x: currentX, y: currentY });
+        }, { passive: false });
         
         this.carousel.addEventListener('touchend', (e) => {
           if (!isDragging) return;
           isDragging = false;
           
-          const diff = startX - currentX;
+          const diffX = startX - currentX;
+          const diffY = Math.abs(startY - currentY);
           const threshold = 50;
+          const maxVerticalDiff = 100; // Tolleranza per movimento verticale
           
-          console.log('📱 Touch end:', { startX, currentX, diff, threshold });
+          console.log('📱 Touch end:', { 
+            startX, currentX, diffX, 
+            startY, currentY, diffY, 
+            threshold, maxVerticalDiff 
+          });
           
-          if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
+          // Solo se il movimento orizzontale è maggiore di quello verticale
+          if (Math.abs(diffX) > threshold && diffY < maxVerticalDiff) {
+            if (diffX > 0) {
               console.log('📱 Swipe left -> next');
               this.moveCarousel('next');
             } else {
@@ -5597,6 +5644,53 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
             }
           } else if (this.autoPlay) {
             this.startAutoPlay();
+          }
+        });
+        
+        // Mouse drag support per desktop
+        let mouseStartX = 0;
+        let mouseCurrentX = 0;
+        let isMouseDragging = false;
+        
+        this.carousel.addEventListener('mousedown', (e) => {
+          mouseStartX = e.clientX;
+          isMouseDragging = true;
+          this.stopAutoPlay();
+          console.log('🖱️ Mouse down:', mouseStartX);
+        });
+        
+        this.carousel.addEventListener('mousemove', (e) => {
+          if (!isMouseDragging) return;
+          mouseCurrentX = e.clientX;
+        });
+        
+        this.carousel.addEventListener('mouseup', (e) => {
+          if (!isMouseDragging) return;
+          isMouseDragging = false;
+          
+          const diff = mouseStartX - mouseCurrentX;
+          const threshold = 50;
+          
+          console.log('🖱️ Mouse up:', { mouseStartX, mouseCurrentX, diff, threshold });
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              console.log('🖱️ Drag left -> next');
+              this.moveCarousel('next');
+            } else {
+              console.log('🖱️ Drag right -> prev');
+              this.moveCarousel('prev');
+            }
+          } else if (this.autoPlay) {
+            this.startAutoPlay();
+          }
+        });
+        
+        // Gestione mouseup globale per evitare problemi se il mouse esce dal carosello
+        document.addEventListener('mouseup', () => {
+          if (isMouseDragging) {
+            isMouseDragging = false;
+            console.log('🖱️ Mouse up globale - reset drag');
           }
         });
         
@@ -5612,8 +5706,8 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
         });
         
         // Click sui pulsanti freccia
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = this.carousel.parentElement.querySelector('.prev-btn');
+        const nextBtn = this.carousel.parentElement.querySelector('.next-btn');
         
         if (prevBtn) {
           prevBtn.addEventListener('click', () => {
