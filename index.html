@@ -6811,99 +6811,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
       });
     });
 
-    // Gallery Carousel Functions - COMPLETELY REWRITTEN AND FIXED
-    let currentGalleryIndex = 0;
-    let maxIndex = 0;
-
-    function galleryNext() {
-      console.log('➡️ Next clicked, current:', currentGalleryIndex, 'max:', maxIndex);
-      if (currentGalleryIndex < maxIndex) {
-        currentGalleryIndex++;
-        updateGallery();
-      } else {
-        console.log('⚠️ Already at max index');
-      }
-    }
-
-    function galleryPrev() {
-      console.log('⬅️ Prev clicked, current:', currentGalleryIndex);
-      if (currentGalleryIndex > 0) {
-        currentGalleryIndex--;
-        updateGallery();
-      } else {
-        console.log('⚠️ Already at min index');
-      }
-    }
-
-    function galleryGoTo(index) {
-      currentGalleryIndex = Math.max(0, Math.min(index, maxIndex));
-      updateGallery();
-    }
-
-    function updateGallery() {
-      const carousel = document.getElementById('galleryCarousel');
-      if (!carousel) {
-        console.error('❌ Carousel element not found!');
-        return;
-      }
-      
-      const translateX = -currentGalleryIndex * (400 + 20); // item width + gap
-      carousel.style.transform = `translateX(${translateX}px)`;
-      
-      console.log('🎠 Gallery updated:', {
-        currentIndex: currentGalleryIndex,
-        translateX: translateX,
-        maxIndex: maxIndex
-      });
-
-      // Update indicators
-      const indicators = document.querySelectorAll('.gallery-indicator');
-      indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentGalleryIndex);
-      });
-
-      // Update buttons
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      
-      if (prevBtn) {
-        prevBtn.disabled = currentGalleryIndex === 0;
-        console.log('⬅️ Prev button:', prevBtn.disabled ? 'disabled' : 'enabled');
-      }
-      
-      if (nextBtn) {
-        nextBtn.disabled = currentGalleryIndex === maxIndex;
-        console.log('➡️ Next button:', nextBtn.disabled ? 'disabled' : 'enabled');
-      }
-    }
-
-    // Initialize gallery - FIXED VERSION
-    function initGallery() {
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      const totalGalleryItems = galleryItems.length;
-      maxIndex = Math.max(0, totalGalleryItems - 3); // 3 items visible at once
-      
-      console.log('🎠 Gallery initialized with', totalGalleryItems, 'items, maxIndex:', maxIndex);
-      
-      // Reset to first position
-      currentGalleryIndex = 0;
-      
-      updateGallery();
-    }
-
-    // Wait for DOM and then initialize
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGallery);
-    } else {
-      initGallery();
-    }
-
-    // Test functions are working
-    console.log('🎠 Gallery functions defined:', {
-      next: typeof galleryNext,
-      prev: typeof galleryPrev,
-      goTo: typeof galleryGoTo
-    });
+    // Sistema di galleria rimosso per evitare conflitti con il carosello di libri
 
     // Initialize reviews - Forza il caricamento
     console.log('🚀 Inizializzando recensioni...');
@@ -6925,9 +6833,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
     window.nextStep = nextStep;
     window.prevStep = prevStep;
     window.submitOrder = submitOrder;
-    window.galleryNext = galleryNext;
-    window.galleryPrev = galleryPrev;
-    window.galleryGoTo = galleryGoTo;
+    // Funzioni galleria rimosse per evitare conflitti
     
             // Make review functions available globally
         // window.refreshReviews = refreshReviews; // Funzione non definita
