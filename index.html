@@ -2088,7 +2088,7 @@
       margin:0 auto;line-height:1.6
     }
     
-    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;overflow:hidden;padding:0 60px}
+    .books-carousel-container{position:relative;max-width:1200px;margin:0 auto;padding:0 60px}
     
     .books-carousel-wrapper {
       overflow: hidden;
@@ -2114,15 +2114,16 @@
     }
     
     .books-carousel{
-      display:flex;transition:transform 0.5s ease-in-out;gap:24px;padding:20px 0;
-      width:max-content; /* Corretto: max-content invece di fit-content */
-      transform: translateX(0); /* Posizione iniziale esplicita */
-      user-select: none; /* Previene selezione testo durante swipe */
+      display:flex;gap:24px;padding:20px 0;
+      width:max-content;
+      transform: translateX(0);
+      transition: transform 0.5s ease-in-out;
+      user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
-      touch-action: pan-y; /* Permette scroll verticale ma controlla orizzontale */
-      cursor: grab; /* Indica che è trascinabile */
+      touch-action: pan-y;
+      cursor: grab;
     }
     
     .books-carousel:active {
@@ -5450,255 +5451,89 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? `
       }
     }
 
-          // CAROSELLO LIBRI - VERSIONE COMPLETAMENTE RISCITTA E FUNZIONANTE
-    console.log('📚 Script carosello raggiunto...');
-    console.log('📚 Definizione classe BooksCarousel iniziata...');
+    // CAROSELLO LIBRI - CODICE PULITO E FUNZIONANTE
+    console.log('📚 Inizializzazione carosello libri...');
     
-    // Funzione globale semplice per test immediato
-    function testCarousel() {
-      console.log('🧪 Test carosello chiamato');
+    // Variabili globali semplici
+    let currentBookIndex = 0;
+    let isAnimating = false;
+    
+    // Funzione per muovere il carosello
+    function moveBooks(direction) {
+      if (isAnimating) return;
+      
+      const carousel = document.getElementById('booksCarousel');
+      if (!carousel) {
+        console.error('❌ Carosello non trovato');
+        return;
+      }
+      
+      isAnimating = true;
+      const totalBooks = carousel.children.length;
+      
+      if (direction === 'next') {
+        currentBookIndex = (currentBookIndex + 1) % totalBooks;
+      } else {
+        currentBookIndex = currentBookIndex === 0 ? totalBooks - 1 : currentBookIndex - 1;
+      }
+      
+      const translateX = -currentBookIndex * 244; // 220px + 24px gap
+      carousel.style.transform = `translateX(${translateX}px)`;
+      
+      console.log(`🎠 Libro ${currentBookIndex + 1} di ${totalBooks}, translateX: ${translateX}px`);
+      
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+    
+    // Inizializzazione quando il DOM è pronto
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 DOM caricato, setup carosello...');
+      
+      // Setup pulsanti freccia
+      const prevBtn = document.querySelector('.books-carousel-container .prev-btn');
+      const nextBtn = document.querySelector('.books-carousel-container .next-btn');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          console.log('⬅️ Click prev');
+          moveBooks('prev');
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          console.log('➡️ Click next');
+          moveBooks('next');
+        });
+      }
+      
+      // Setup touch/swipe
       const carousel = document.getElementById('booksCarousel');
       if (carousel) {
-        console.log('✅ Elemento carosello trovato:', carousel);
-        console.log('📚 Numero libri:', carousel.children.length);
-        console.log('🎨 Stile transform attuale:', carousel.style.transform);
-        return true;
-      } else {
-        console.error('❌ Elemento carosello NON trovato!');
-        return false;
-      }
-    }
-    
-    // Funzione di test per movimento manuale
-    function testMove(direction) {
-      console.log('🧪 Test movimento manuale:', direction);
-      if (window.booksCarousel) {
-        window.booksCarousel.moveCarousel(direction);
-      } else {
-        console.error('❌ BooksCarousel non disponibile');
-      }
-    }
-    
-    // Funzione di test per stato carosello
-    function testStatus() {
-      console.log('🧪 Test stato carosello');
-      if (window.booksCarousel) {
-        console.log('📊 Stato:', {
-          currentIndex: window.booksCarousel.currentIndex,
-          isAnimating: window.booksCarousel.isAnimating,
-          carousel: window.booksCarousel.carousel,
-          transform: window.booksCarousel.carousel.style.transform
-        });
-      } else {
-        console.error('❌ BooksCarousel non disponibile');
-      }
-    }
-    
-    class BooksCarousel {
-      constructor() {
-        console.log('🔧 Costruttore BooksCarousel chiamato');
-        this.carousel = document.getElementById('booksCarousel');
-        this.currentIndex = 0;
-        this.isAnimating = false;
-        
-        console.log('🔍 Elemento carosello trovato:', this.carousel);
-        
-        if (this.carousel) {
-          this.init();
-        } else {
-          console.error('❌ Elemento booksCarousel non trovato!');
-        }
-      }
-      
-      init() {
-        console.log('🚀 Inizializzazione carosello...');
-        
-        // Setup iniziale
-        this.updateCarousel(false);
-        
-        // Setup eventi
-        this.setupEvents();
-        
-        console.log('📚 Carosello libri inizializzato!');
-      }
-      
-      updateCarousel(animate = true) {
-        if (!this.carousel) {
-          console.error('❌ Carosello non disponibile in updateCarousel');
-          return;
-        }
-        
-        if (!animate) {
-          this.carousel.style.transition = 'none';
-        } else {
-          this.carousel.style.transition = 'transform 0.5s ease-in-out';
-        }
-        
-        // Calcolo semplice: ogni libro è 220px + 24px gap = 244px
-        const bookWidth = 244;
-        const translateX = -this.currentIndex * bookWidth;
-        
-        this.carousel.style.transform = `translateX(${translateX}px)`;
-        
-        console.log('🎠 Carosello aggiornato:', {
-          currentIndex: this.currentIndex,
-          translateX: translateX,
-          totalBooks: this.carousel.children.length,
-          transform: this.carousel.style.transform
-        });
-        
-        if (!animate) {
-          // Forza il reflow
-          this.carousel.offsetHeight;
-          this.carousel.style.transition = 'transform 0.5s ease-in-out';
-        }
-      }
-      
-      moveCarousel(direction) {
-        if (!this.carousel) {
-          console.error('❌ Carosello non disponibile in moveCarousel');
-          return;
-        }
-        
-        if (this.isAnimating) {
-          console.log('⏳ Carosello in movimento, ignoro comando');
-          return;
-        }
-        
-        console.log('🎯 Movimento carosello:', direction, 'da indice:', this.currentIndex);
-        this.isAnimating = true;
-        
-        if (direction === 'next') {
-          if (this.currentIndex < this.carousel.children.length - 1) {
-            this.currentIndex++;
-          } else {
-            this.currentIndex = 0; // Torna all'inizio
-          }
-        } else {
-          if (this.currentIndex > 0) {
-            this.currentIndex--;
-          } else {
-            this.currentIndex = this.carousel.children.length - 1; // Va alla fine
-          }
-        }
-        
-        console.log('🎯 Nuovo indice:', this.currentIndex);
-        this.updateCarousel(true);
-        
-        // Reset animazione dopo 500ms
-        setTimeout(() => {
-          this.isAnimating = false;
-          console.log('✅ Animazione completata');
-        }, 500);
-      }
-      
-      setupEvents() {
-        console.log('🔗 Setup eventi...');
-        
-        // Click sui pulsanti freccia - CERCO NEL CONTAINER PRINCIPALE
-        const container = this.carousel.parentElement.parentElement;
-        const prevBtn = container.querySelector('.prev-btn');
-        const nextBtn = container.querySelector('.next-btn');
-        
-        console.log('🔍 Pulsanti trovati:', { prevBtn, nextBtn });
-        
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('⬅️ Click pulsante prev');
-            this.moveCarousel('prev');
-          });
-        } else {
-          console.error('❌ Pulsante prev non trovato!');
-        }
-        
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('➡️ Click pulsante next');
-            this.moveCarousel('next');
-          });
-        } else {
-          console.error('❌ Pulsante next non trovato!');
-        }
-        
-        // Touch events semplificati
         let startX = 0;
         let currentX = 0;
-        let isDragging = false;
         
-        this.carousel.addEventListener('touchstart', (e) => {
+        carousel.addEventListener('touchstart', (e) => {
           startX = e.touches[0].clientX;
-          isDragging = true;
-          console.log('📱 Touch start:', startX);
         });
         
-        this.carousel.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          currentX = e.touches[0].clientX;
-        });
-        
-        this.carousel.addEventListener('touchend', (e) => {
-          if (!isDragging) return;
-          isDragging = false;
-          
+        carousel.addEventListener('touchend', (e) => {
+          currentX = e.changedTouches[0].clientX;
           const diff = startX - currentX;
-          const threshold = 50;
           
-          if (Math.abs(diff) > threshold) {
+          if (Math.abs(diff) > 50) {
             if (diff > 0) {
-              console.log('📱 Swipe left -> next');
-              this.moveCarousel('next');
+              moveBooks('next');
             } else {
-              console.log('📱 Swipe right -> prev');
-              this.moveCarousel('prev');
+              moveBooks('prev');
             }
           }
         });
       }
-    }
-    console.log('📚 Classe BooksCarousel definita completamente');
-
-    // Inizializza quando il DOM è pronto
-    console.log('🚀 Script carosello caricato, aspettando DOM...');
-    
-    // Test immediato per verificare che il carosello esista
-    setTimeout(() => {
-      console.log('⏰ Test immediato carosello...');
-      testCarousel();
-    }, 100);
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('🚀 DOM caricato, inizializzando BooksCarousel...');
       
-      // Test prima dell'inizializzazione
-      console.log('🧪 Test pre-inizializzazione...');
-      testCarousel();
-      
-      try {
-        window.booksCarousel = new BooksCarousel();
-        console.log('✅ BooksCarousel inizializzato correttamente');
-        console.log('🔍 Verifica pulsanti dopo inizializzazione...');
-        
-        // Verifica che i pulsanti siano stati trovati
-        const container = document.querySelector('.books-carousel-container');
-        if (container) {
-          const prevBtn = container.querySelector('.prev-btn');
-          const nextBtn = container.querySelector('.next-btn');
-          console.log('🔍 Pulsanti nel container:', { prevBtn, nextBtn });
-          
-          // Test manuale del movimento
-          if (window.booksCarousel) {
-            console.log('🧪 Test movimento manuale...');
-            console.log('🎯 Stato iniziale:', {
-              currentIndex: window.booksCarousel.currentIndex,
-              totalBooks: window.booksCarousel.carousel.children.length
-            });
-          }
-        }
-      } catch (error) {
-        console.error('❌ Errore nell\'inizializzazione di BooksCarousel:', error);
-      }
+      console.log('✅ Carosello libri inizializzato');
     });
 
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
@@ -6909,10 +6744,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
     window.submitOrder = submitOrder;
     // Funzioni galleria rimosse per evitare conflitti
     
-    // Funzioni di test carosello disponibili globalmente
-    window.testCarousel = testCarousel;
-    window.testMove = testMove;
-    window.testStatus = testStatus;
+
     
             // Make review functions available globally
         // window.refreshReviews = refreshReviews; // Funzione non definita
