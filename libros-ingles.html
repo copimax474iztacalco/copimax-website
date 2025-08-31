@@ -809,6 +809,30 @@
           transform: translateX(-9999px) !important;
           clip: rect(0, 0, 0, 0) !important;
         }
+        
+        /* Soluzione ultra-aggressiva: nascondi tutto il menu mobile su desktop */
+        html body .mobile-nav-button,
+        html body .mobile-slide-menu,
+        html body .mobile-slide-menu *,
+        html body .mobile-slide-menu.active,
+        html body .mobile-slide-menu.active * {
+          display: none !important;
+          position: absolute !important;
+          left: -9999px !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          z-index: -9999 !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+          pointer-events: none !important;
+          transform: translateX(-9999px) !important;
+          clip: rect(0, 0, 0, 0) !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: none !important;
+          background: transparent !important;
+        }
       }
     }
   </style>
