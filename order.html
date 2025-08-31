@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacer Pedido - COPIMAX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary1:#000000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;--text:#2d3748;--muted:#666;--card:#fff;--whatsapp:#25D366}
+    body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);color:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s ease}
+    .nav{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;height:50px;cursor:pointer}
+    .logo img{height:50px;width:auto;transition:all 0.3s ease;filter:brightness(1.1)}
+    .logo:hover img{transform:scale(1.05);filter:brightness(1.2)}
+    /* Menu Principale Elegante in Stile Apple */
+    .main-navigation{
+      display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);
+      border-radius:25px;padding:4px;backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.1)
+  }
+    
+    .nav-link{
+      color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;
+      padding:12px 20px;border-radius:20px;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position:relative;white-space:nowrap;letter-spacing:0.02em
+  }
+    
+    .nav-link:hover{
+      background:rgba(255,255,255,0.15);transform:translateY(-1px);
+      color:#fff
+  }
+    
+    .nav-link.active{
+      background:rgba(255,255,255,0.2);color:#fff;font-weight:600;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1)
+  }
+    
+    /* Effetto hover sottile */
+    .nav-link::after{
+      content:'';position:absolute;bottom:8px;left:50%;width:0;height:2px;
+      background:var(--cta1);transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform:translateX(-50%);border-radius:1px
+  }
+    
+    .nav-link:hover::after{
+      width:20px
+  }
+    
+    .nav-link.active::after{
+      width:30px;background:var(--cta1)
+  }
+
+    .contact-header{display:flex;gap:12px;align-items:center}
+    .whatsapp-btn{background:var(--whatsapp);color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600}
+    .main{max-width:1100px;margin:120px auto 60px auto;padding:0 24px}
+    .order-header{margin-bottom:20px;text-align:center}
+    .steps{display:flex;gap:10px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+    .step{padding:8px 12px;border-radius:999px;background:#f1f5f9;color:#334155;font-weight:700;opacity:.6}
+    .step.active{opacity:1;background:#e2e8f0}
+    .progress-bar{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:10px 0}
+    #progress-fill{height:100%;width:25%;background:linear-gradient(90deg,var(--primary1),var(--primary2))}
+    .order-section{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;margin:16px 0}
+    .order-section.hidden{display:none}
+    .cta-primary{background:linear-gradient(135deg,var(--cta1),var(--cta2));color:#000;padding:1rem 2rem;border-radius:50px;font-weight:800;text-decoration:none;display:inline-block;border:none;cursor:pointer}
+    .file-upload{border:2px dashed #e2e8f0;border-radius:12px;padding:30px;text-align:center;transition:.2s;cursor:pointer;background:#f8fafc}
+    .file-upload.dragover{border-color:var(--primary1);background:var(--primary1);color:#fff}
+    .upload-progress{margin:20px 0;text-align:center}
+    .progress-bar-u{width:100%;height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;margin-bottom:8px}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary1),var(--primary2));width:0%}
+    .file-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:20px 0}
+    .file-preview-item{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:16px}
+    .summary{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-top:12px}
+    @media(max-width:768px){
+      header{
+        height:60px; /* ALTEZZA FISSA MINIMAL */
+        background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
+    }
+      
+      .nav{
+        padding:8px 16px;height:44px; /* ALTEZZA FISSA */
+        align-items:center;justify-content:space-between
+    }
+      
+      .logo{
+        height:36px; /* LOGO PIÙ PICCOLO */
+    }
+      
+      .logo img{
+        height:36px
+    }
+      
+      /* NASCONDI TUTTO TRANNE LOGO E MENU */
+      .contact-header{display:none !important}
+      .main-navigation{display:none !important}
+      
+
+      
+      /* CONTENUTO PRINCIPALE CON PADDING CORRETTO */
+      .main{margin-top:80px} /* 60px header + 20px spazio */
+      .file-preview-grid{grid-template-columns:1fr}
+  }
+    
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+              <div class="logo" onclick="window.location.href='/'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      <!-- Menu Principale Elegante in Stile Apple -->
+      <div class="main-navigation">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
+      </div>
+      <div class="contact-header">
+        <span>📞 55-4021-9892</span>
+                    <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- NUOVO MENU MOBILE SLIDE LATERALE -->
+  <button class="mobile-nav-button" onclick="toggleMobileSlideMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  
+  <div class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <div class="mobile-logo">COPIMAX</div>
+      <button class="close-slide-menu" onclick="toggleMobileSlideMenu()">✕</button>
+    </div>
+    
+    <nav class="slide-menu-nav">
+      <a href="index.html" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="servicios.html" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="copias-volumen-cdmx.html" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="nosotros.html" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="blog.html" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="contacto.html" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </nav>
+    
+    <div class="slide-menu-footer">
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+                    <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="order-header">
+      <h1 style="font-size:2rem;font-weight:900;color:#111;text-align:center">Hacer Pedido</h1>
+      <p style="text-align:center;color:#475569">Completa los pasos y confirma tu orden</p>
+      <div class="steps">
+        <div class="step active">1. Resumen</div>
+        <div class="step">2. Archivos</div>
+        <div class="step">3. Entrega</div>
+        <div class="step">4. Pago</div>
+      </div>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="order-section" id="step1">
+      <h2 class="section-header" style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:#111">📋 Resumen del Pedido</h2>
+      <div class="summary" id="order-summary">Cargando resumen…</div>
+      <div style="text-align:center;margin-top:24px">
+        <button class="cta-primary" onclick="nextStep(2)">Continuar → Subir Archivos</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="order-section hidden" id="step2">
+      <h2 class="section-header" style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:#111">📁 Subir Archivos</h2>
+      <div class="file-upload" id="file-upload">
+        <div class="upload-icon">⬆️</div>
+        <h3>Arrastra y suelta tus archivos aquí</h3>
+        <p style="color:#64748b;margin:10px 0">o haz clic para seleccionar</p>
+        <p style="font-size:.9rem;color:#64748b">PDF, JPG, PNG, DOC, DOCX (máx 10MB c/u)</p>
+        <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display:none">
+        <div class="upload-progress hidden" id="upload-progress">
+          <div class="progress-bar-u"><div class="progress-fill" id="progress-fill-files"></div></div>
+          <div class="progress-text" id="progress-text">0%</div>
+        </div>
+        <div class="file-preview-grid" id="file-preview-grid"></div>
+      </div>
+      <div style="text-align:center;margin-top:24px;display:flex;gap:10px;justify-content:center">
+        <button class="cta-primary" onclick="prevStep(1)" style="background:#6b7280;color:#fff">← Volver</button>
+        <button class="cta-primary" onclick="nextStep(3)" id="continue-files">Continuar → Entrega</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="order-section hidden" id="step3">
+      <h2 class="section-header" style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:#111">🚚 Opciones de Entrega</h2>
+      <div class="summary" id="delivery-options">Cargando opciones…</div>
+      <div style="text-align:center;margin-top:24px;display:flex;gap:10px;justify-content:center">
+        <button class="cta-primary" onclick="prevStep(2)" style="background:#6b7280;color:#fff">← Volver</button>
+        <button class="cta-primary" onclick="nextStep(4)">Continuar → Pago</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="order-section hidden" id="step4">
+      <h2 class="section-header" style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:#111">💳 Datos de Contacto y Pago</h2>
+      <div class="summary" id="payment-section">Completa tus datos…</div>
+      <div style="text-align:center;margin-top:24px;display:flex;gap:10px;justify-content:center">
+        <button class="cta-primary" onclick="prevStep(3)" style="background:#6b7280;color:#fff">← Volver</button>
+        <button class="cta-primary" onclick="submitOrder()" id="submit-order">🚀 CONFIRMAR PEDIDO</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="background:linear-gradient(135deg,var(--primary1),var(--primary2));color:#fff;text-align:center;padding:24px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      © 2024 COPIMAX - Centro de Copias Iztacalco
+    </div>
+  </footer>
+
+  <script>
+    // Redirect this legacy page to the inline flow on index
+    try {
+      if (window.location.hash !== '#standalone') {
+        window.location.replace('/#order');
+    }
+  } catch (e) {}
+
+    function toggleDesktopMenu(e){e?.stopPropagation?.();const d=document.getElementById('desktopDropdown');if(d){d.classList.toggle('active');}}
+    document.addEventListener('click',function(ev){const d=document.getElementById('desktopDropdown');const t=document.querySelector('.desktop-menu-button');if(!d||!t)return;const inside=d.contains(ev.target)||t.contains(ev.target);if(!inside)d.classList.remove('active');});
+
+    // Order flow minimal state
+    const stepsEls=document.querySelectorAll('.step');
+    const sections=document.querySelectorAll('.order-section');
+    const orderState={ files:[] };
+    function showStep(n){stepsEls.forEach((s,i)=>{s.classList.toggle('active',i+1===n)});sections.forEach((sec,i)=>{sec.classList.toggle('hidden',i+1!==n)});const pf=document.getElementById('progress-fill');if(pf){pf.style.width=(n*25)+'%';}}
+    function nextStep(n){if(n===3 && orderState.files.length===0){alert('Por favor sube al menos un archivo antes de continuar.');return;}showStep(n);}function prevStep(n){showStep(n)}
+
+    // File upload
+    const fileUpload=document.getElementById('file-upload');
+    const fileInput=document.getElementById('file-input');
+    if(fileUpload&&fileInput){
+      fileUpload.addEventListener('click',()=>fileInput.click());
+      fileUpload.addEventListener('dragover',(e)=>{e.preventDefault();fileUpload.classList.add('dragover');});
+      fileUpload.addEventListener('dragleave',()=>fileUpload.classList.remove('dragover'));
+      fileUpload.addEventListener('drop',(e)=>handleFiles(e));
+      fileInput.addEventListener('change',(e)=>handleFiles(e,true));
+  }
+    function handleFiles(e,isInput){e.preventDefault&&e.preventDefault();const files=isInput?e.target.files:e.dataTransfer.files;if(!files||files.length===0)return;const grid=document.getElementById('file-preview-grid');Array.from(files).forEach((file)=>{if(file.size>10*1024*1024){alert('Archivo demasiado grande (máx 10MB): '+file.name);return;}if(!file.name.match(/\.(pdf|jpe?g|png|docx?)$/i)){alert('Formato no soportado: '+file.name);return;}orderState.files.push(file);if(grid){const item=document.createElement('div');item.className='file-preview-item';item.textContent='📄 '+file.name;grid.appendChild(item);}});
+      const up=document.getElementById('upload-progress');const fill=document.getElementById('progress-fill-files');const text=document.getElementById('progress-text');if(up&&fill&&text){up.classList.remove('hidden');let p=0;const iv=setInterval(()=>{p=Math.min(100,p+20);fill.style.width=p+'%';text.textContent=p+'%';if(p===100){clearInterval(iv);setTimeout(()=>up.classList.add('hidden'),400);}},200);}}
+
+    // Summary/Delivery/Payment placeholders (can be enhanced later)
+    document.getElementById('order-summary').innerHTML='Sección de resumen lista. Revisa cantidades y opciones.';
+    document.getElementById('delivery-options').innerHTML='Selecciona entre entrega local o CDMX y horarios.';
+    document.getElementById('payment-section').innerHTML='Completa nombre, email, teléfono y selecciona método de pago.';
+
+    function submitOrder(){alert('✅ Pedido confirmado. Te contactaremos por WhatsApp.');window.location.href='/';}
+
+    // History handling
+    if(window.history&&window.history.replaceState){window.history.replaceState({page:'order'},'',window.location.pathname);}    
+    window.addEventListener('popstate',function(ev){window.location.href='/';});
+  </script>
+</body>
+</html>
+

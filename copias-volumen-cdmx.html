@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="shortcut icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  
+  <title>Copias por Volumen en CDMX (10,000–100,000+) | COPIMAX</title>
+  <meta name="description" content="Especialistas en copias por volumen en CDMX. Tirajes 10,000–100,000+. Producción 24–48h, entrega en CDMX, precios por millar. Solicita cotización en 2 minutos."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary1:#000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;--text:#1f2937;--muted:#6b7280;--card:#fff}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 24px;padding-top:20px}
+    header.header{position:sticky;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);color:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;min-height:80px}
+    .nav{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;min-height:80px}
+    .logo{display:flex;align-items:center;height:50px;cursor:pointer}
+    .logo img{height:50px;width:auto;filter:brightness(1.1)}
+    .main-navigation{display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);border-radius:25px;padding:4px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1)}
+    .nav-link{color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;padding:12px 20px;border-radius:20px;transition:all .3s;position:relative}
+    .nav-link:hover{background:rgba(255,255,255,0.15);transform:translateY(-1px)}
+    .nav-link.active{background:rgba(255,255,255,0.2);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+
+    .contact-header{display:flex;gap:12px;align-items:center}
+    .whatsapp-btn{background:#25D366;color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;text-decoration:none}
+    h1{font-size:2.2rem;font-weight:900;letter-spacing:-.02em}
+    /* Titolo con verde faded stile del sito */
+    .title-faded{
+      background: linear-gradient(135deg,var(--cta1),var(--cta2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      filter:saturate(110%);
+  }
+    .sub{color:#e5e7eb;margin-top:6px}
+    /* Hero Section */
+    .hero-section{
+      background:linear-gradient(135deg,#f8fafc,var(--cta2));
+      padding:100px 0;text-align:center
+    }
+    
+    .hero-content{max-width:800px;margin:0 auto}
+    
+    .hero-title{
+      font-size:3rem;font-weight:800;color:var(--primary1);
+      margin-bottom:1.5rem;line-height:1.2
+    }
+    
+    .hero-subtitle{
+      font-size:1.3rem;color:var(--text);max-width:600px;
+      margin:0 auto;line-height:1.6
+    }
+
+    .hero{padding:40px 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,.06)}
+    .card h3{font-size:1.1rem}
+    .p16{padding:16px}
+    .p24{padding:24px}
+    /* .cta definito più sotto con stili ultra-aggressivi */
+    
+    /* Bottoni tipo e colore - STILI ULTRA-AGGRESSIVI */
+    .type-btn, .color-btn {
+      background: #f3f4f6 !important;
+      color: #374151 !important;
+      border: 2px solid #e5e7eb !important;
+      border-radius: 8px !important;
+      padding: 8px 16px !important;
+      font-size: 0.9rem !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      flex: 1 !important;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+      touch-action: manipulation !important;
+      user-select: none !important;
+      position: relative !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+    }
+    
+    .type-btn:hover, .color-btn:hover {
+      background: #e5e7eb !important;
+      border-color: #d1d5db !important;
+      transform: translateY(-1px) !important;
+    }
+    
+    .type-btn.active, .color-btn.active {
+      background: var(--cta1) !important;
+      color: #000 !important;
+      border-color: var(--cta1) !important;
+      box-shadow: 0 2px 8px rgba(181,255,0,0.3) !important;
+    }
+    
+    /* Bottone CTA principale - STILI ULTRA-AGGRESSIVI */
+    .cta {
+      background: linear-gradient(135deg,var(--cta1),var(--cta2)) !important;
+      color: #000 !important;
+      font-weight: 800 !important;
+      border: none !important;
+      border-radius: 12px !important;
+      padding: 12px 18px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(181,255,0,0.3) !important;
+    }
+    
+    /* Stili mobile per i bottoni */
+    @media (max-width: 768px) {
+      /* Header mobile */
+      .header {
+        display: none !important;
+      }
+      
+      /* Layout mobile */
+      .wrap {
+        padding: 0 16px;
+        padding-top: 80px;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .hero-section {
+        padding: 60px 0;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+        padding: 0 16px;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+        padding: 0 16px;
+      }
+      
+      /* Tabelle responsive */
+      table {
+        font-size: 0.9rem;
+      }
+      
+      th, td {
+        padding: 8px 6px;
+      }
+      
+      /* Form mobile */
+      .type-btn, .color-btn {
+        padding: 12px 16px !important;
+        font-size: 1rem !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .cta {
+        padding: 16px 24px !important;
+        font-size: 1.1rem !important;
+        min-height: 48px !important;
+        width: 100% !important;
+      }
+      
+      /* FAQ mobile */
+      details {
+        margin-bottom: 16px;
+      }
+      
+      summary {
+        padding: 12px;
+        font-size: 1rem;
+      }
+      
+      .ans {
+        padding: 0 12px 12px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Menu Mobile Styles */
+    .mobile-nav-button {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: var(--primary1);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      border-radius: 6px;
+      padding: 4px;
+    }
+    
+    .hamburger-line {
+      width: 100%;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-slide-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary1), var(--primary2));
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding: 20px;
+      box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    }
+    
+    .mobile-slide-menu.active {
+      right: 0;
+    }
+    
+    .slide-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .mobile-logo {
+      color: var(--cta1);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .close-slide-menu {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .close-slide-menu:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .slide-menu-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .slide-menu-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 15px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .slide-menu-nav a:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(5px);
+    }
+    
+    .slide-menu-footer {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .mobile-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+    
+    .mobile-contact span {
+      color: white;
+      font-size: 1rem;
+    }
+    
+    .mobile-contact .whatsapp {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .mobile-contact .whatsapp:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-nav-button {
+        display: flex;
+      }
+    }
+    
+    /* Assicurati che i form non interferiscano con i bottoni */
+    form button[type="button"],
+    form button[type="submit"] {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu Mobile Semplificato -->
+  <button class="mobile-nav-button" onclick="toggleMobileMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <span class="mobile-logo">COPIMAX</span>
+      <button class="close-slide-menu" onclick="closeMobileSlideMenu()">×</button>
+    </div>
+    <div class="slide-menu-nav">
+      <a href="index.html" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="servicios.html" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="copias-volumen-cdmx.html" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="nosotros.html" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="blog.html" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="contacto.html" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </div>
+    
+    <!-- Sezione contatti mobile -->
+    <div class="slide-menu-footer">
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Header desktop (nascosto su mobile) -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='/'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      <!-- Menu Principale Elegante in Stile Apple -->
+      <div class="main-navigation">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link active">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
+      </div>
+      
+      <div class="contact-header">
+        <span>📞 +52 5540219892</span>
+        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+
+
+
+    </header>
+  
+
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Copias por Volumen en CDMX (10,000–100,000+)</h1>
+      <p class="hero-subtitle">Producción 24–48h • Entrega CDMX • Precios por millar</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="grid">
+      <div class="card p24">
+        <h3 style="margin-bottom:12px">BN Una cara – Tarifa fija</h3>
+        <table aria-label="BN una cara – tarifa fija">
+          <thead>
+            <tr style="background:transparent">
+              <th>Tramo</th><th>Tarifa por página</th><th>Tiempo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>10,000</td><td>$0.40</td><td>24–48h</td></tr>
+            <tr><td>20,000</td><td>$0.40</td><td>24–48h</td></tr>
+            <tr><td>50,000</td><td>$0.40</td><td>48–72h</td></tr>
+            <tr><td>100,000+</td><td>$0.40</td><td>72h</td></tr>
+          </tbody>
+        </table>
+        <p style="color:var(--muted);margin-top:8px">Tarifa fija por página. Aplica igual para volumen (según tiempos de producción).</p>
+      </div>
+      <div class="card p24">
+        <h3 style="margin-bottom:12px">BN Doble cara – Tarifa fija</h3>
+        <table aria-label="BN doble cara – tarifa fija">
+          <thead>
+            <tr style="background:transparent">
+              <th>Tramo</th><th>Tarifa por página</th><th>Tiempo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>10,000</td><td>$0.35</td><td>24–48h</td></tr>
+            <tr><td>20,000</td><td>$0.35</td><td>24–48h</td></tr>
+            <tr><td>50,000</td><td>$0.35</td><td>48–72h</td></tr>
+            <tr><td>100,000+</td><td>$0.35</td><td>72h</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:16px">
+      <div class="card p24">
+        <h3 style="margin-bottom:10px">Logística y SLA</h3>
+        <ul style="color:var(--muted);line-height:1.7;margin-left:16px">
+          <li>Producción continua 24–48h para tirajes de 10k–50k.</li>
+          <li>Entrega CDMX por zonas o retiro en tienda (Iztacalco).</li>
+          <li>Opcional: entrega por lotes/folio, paletizada.</li>
+          <li>Factura y control de calidad por muestra.</li>
+        </ul>
+      </div>
+      <div class="card p24">
+        <h3 style="margin-bottom:10px">Solicita cotización en 2 minutos</h3>
+        <form onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Tiraje: '+document.getElementById('q').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
+          <label style="display:block;margin:8px 0 4px">Tiraje estimado</label>
+          <input id="q" type="number" min="10000" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <label style="display:block;margin:12px 0 4px">Lados</label>
+          <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+            <option value="x1">Una cara (x1)</option>
+            <option value="x2">Doble cara (x2)</option>
+          </select>
+          <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️ Copia</button>
+            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨 Impresión</button>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫ BN</button>
+            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈 Color</button>
+          </div>
+          <input id="t" type="text" placeholder="BN una cara / doble cara" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb;margin-top:8px">
+          <label style="display:block;margin:12px 0 4px">Plazo</label>
+          <input id="p" type="text" placeholder="Ej: 48h" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+                      <div id="total-box" class="card" style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
+            <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
+            <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
+            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $0.40 (x1) • $0.35 (x2) • Color $5.00 (x1) • $4.35 (x2)</div>
+          </div>
+          <div style="margin-top:14px"><button class="cta" type="submit">Solicitar cotización</button></div>
+        </form>
+
+      </div>
+    </section>
+
+    <section class="faq" style="margin:24px 0">
+      <div class="card p24">
+        <h3 style="margin-bottom:10px">Preguntas frecuentes</h3>
+        <details><summary>¿Cómo preparo archivos para tirajes altos?</summary><div class="ans">PDF listo para imprimir, margenes/bleed si aplica, fuentes incrustadas. Podemos revisar un archivo de muestra.</div></details>
+        <details><summary>¿Aceptan mezclas BN/Color?</summary><div class="ans">Sí, cotizamos páginas a color por separado o por bloques definidos.</div></details>
+        <details><summary>¿Requiere anticipo?</summary><div class="ans">Para 10k+ normalmente 50% anticipo; saldo contra entrega.</div></details>
+        <details><summary>¿Qué papel usan?</summary><div class="ans">Bond 75–90g para BN estándar; otras opciones bajo pedido.</div></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;flex-direction:column;gap:10px;align-items:center">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+        <a href="/" style="color:#fff;text-decoration:none">Inicio</a>
+        <a href="/servicios" style="color:#fff;text-decoration:none">Servicios</a>
+        <a href="/copias-volumen-cdmx" style="color:#b5ff00;text-decoration:none">Volumen</a>
+        <a href="/nosotros" style="color:#fff;text-decoration:none">Nosotros</a>
+        <a href="/blog" style="color:#fff;text-decoration:none">Blog</a>
+        <a href="/contacto" style="color:#fff;text-decoration:none">Contacto</a>
+      </div>
+      <div>© 2025 COPIMAX – Copias por Volumen CDMX</div>
+    </div>
+  </footer>
+
+      <!-- JavaScript esterno -->
+    <script src="js/main.js"></script>
+    <script src="js/calculator.js"></script>
+
+  <!-- Bottone WhatsApp fisso in basso a destra -->
+  <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
+     class="whatsapp-fixed-btn" 
+     target="_blank" 
+     rel="noopener" 
+     title="Contactar por WhatsApp">
+    💬
+  </a>
+
+  <!-- JavaScript per Menu Mobile -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      menu.classList.toggle('active');
+    }
+    
+    function closeMobileSlideMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      menu.classList.remove('active');
+    }
+    
+    // Chiudi menu quando si clicca fuori
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('mobileSlideMenu');
+      const button = document.querySelector('.mobile-nav-button');
+      
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+  </html>

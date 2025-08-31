@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirigiendo…</title>
+  <meta http-equiv="refresh" content="0; url=/" />
+  <script>
+    (function(){
+      var path = window.location.pathname;
+      if(path && !path.endsWith('.html')){
+        var clean = path.replace(/\/$/, '');
+        var target = clean + '.html';
+        // Mappa le rotte note che esistono come file html
+        var known = {
+          '/servicios': '/servicios.html',
+          '/nosotros': '/nosotros.html',
+          '/blog': '/blog.html',
+          '/contacto': '/contacto.html',
+          '/order': '/order.html',
+          '/copias-volumen-cdmx': '/copias-volumen-cdmx.html',
+          '/tesis-guia-2025': '/tesis-guia-2025.html',
+          '/copias-baratas-iztacalco': '/copias-baratas-iztacalco.html',
+          '/papeleria-estudiantes-iztacalco': '/papeleria-estudiantes-iztacalco.html'
+        };
+        if(known[clean]){ window.location.replace(known[clean]); return; }
+        // fallback: se l'URL termina con segmento senza .html, prova ad aggiungerlo
+        window.location.replace(target);
+      } else {
+        window.location.replace('/');
+      }
+    })();
+  </script>
+  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:40px;color:#111} .box{max-width:600px;margin:10vh auto;text-align:center}</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Redirigiendo…</h1>
+    <p>Si no eres redirigido automáticamente, vuelve a la <a href="/">página principal</a>.</p>
+  </div>
+</body>
+</html>
+
+

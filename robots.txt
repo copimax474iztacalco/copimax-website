@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://copimax.store/sitemap.xml
+
+# Allow all important pages
+Allow: /servicios
+Allow: /nosotros
+Allow: /blog
+Allow: /contacto
+Allow: /centro-copiado-cdmx-guia-2025
+Allow: /fotocopias-economicas-cdmx-precios-2025
+Allow: /papeleria-cdmx-servicios-centro-confianza
+Allow: /tesis-guia-2025
+Allow: /copias-baratas-iztacalco
+Allow: /papeleria-estudiantes-iztacalco
+Allow: /copias-volumen-cdmx
+
+# Crawl delay (optional)
+Crawl-delay: 1
