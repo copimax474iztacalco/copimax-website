@@ -624,44 +624,7 @@
         padding: 4px;
       }
       
-      /* Nascondi menu mobile su desktop */
-      @media (min-width: 769px) {
-        .mobile-nav-button,
-        .mobile-slide-menu,
-        .hamburger-line,
-        .slide-menu-header,
-        .slide-menu-nav,
-        .slide-menu-footer,
-        .mobile-logo,
-        .close-slide-menu,
-        .mobile-contact {
-          display: none !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          position: absolute !important;
-          left: -9999px !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-        }
-        
-        /* Nascondi completamente il menu mobile su desktop */
-        .mobile-slide-menu,
-        .mobile-slide-menu.active,
-        .mobile-slide-menu * {
-          display: none !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          position: absolute !important;
-          left: -9999px !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-          z-index: -9999 !important;
-        }
-      }
+
       
       .hamburger-line {
         width: 100%;
@@ -788,6 +751,14 @@
         }
         
         .header {
+          display: none !important;
+        }
+      }
+      
+      /* Nascondi menu mobile su desktop */
+      @media (min-width: 769px) {
+        .mobile-nav-button,
+        .mobile-slide-menu {
           display: none !important;
         }
       }
