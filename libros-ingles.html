@@ -605,23 +605,25 @@
         border-radius: 12px;
       }
       
-      /* Menu Mobile Styles */
-      .mobile-nav-button {
-        display: none;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 30px;
-        height: 25px;
-        background: var(--primary1);
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1001;
-        border-radius: 6px;
-        padding: 4px;
+      /* Menu Mobile Styles - Solo per dispositivi mobili */
+      @media (max-width: 768px) {
+        .mobile-nav-button {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 30px;
+          height: 25px;
+          background: var(--primary1);
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+          border-radius: 6px;
+          padding: 4px;
+        }
       }
       
 
@@ -655,81 +657,84 @@
         }
       }
       
-      .slide-menu-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-      }
-      
-      .mobile-logo {
-        color: var(--cta1);
-        font-size: 1.5rem;
-        font-weight: 700;
-      }
-      
-      .close-slide-menu {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 0;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-      
-      .close-slide-menu:hover {
-        background: rgba(255,255,255,0.1);
-      }
-      
-      .slide-menu-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 30px;
-      }
-      
-      .slide-menu-nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.1rem;
-        padding: 15px;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      
-      .slide-menu-nav a:hover {
-        background: rgba(255,255,255,0.1);
-        transform: translateX(5px);
-      }
-      
-      .slide-menu-footer {
-        margin-top: auto;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,0.2);
-      }
-      
-      .mobile-contact {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-      }
-      
-      .mobile-contact span {
-        color: white;
-        font-size: 1rem;
+      /* Elementi del menu mobile - Solo per dispositivi mobili */
+      @media (max-width: 768px) {
+        .slide-menu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .mobile-logo {
+          color: var(--cta1);
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+        
+        .close-slide-menu {
+          background: none;
+          border: none;
+          color: white;
+          font-size: 2rem;
+          cursor: pointer;
+          padding: 0;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+        
+        .close-slide-menu:hover {
+          background: rgba(255,255,255,0.1);
+        }
+        
+        .slide-menu-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-bottom: 30px;
+        }
+        
+        .slide-menu-nav a {
+          color: white;
+          text-decoration: none;
+          font-size: 1.1rem;
+          padding: 15px;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        
+        .slide-menu-nav a:hover {
+          background: rgba(255,255,255,0.1);
+          transform: translateX(5px);
+        }
+        
+        .slide-menu-footer {
+          margin-top: auto;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .mobile-contact {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+        
+        .mobile-contact span {
+          color: white;
+          font-size: 1rem;
+        }
       }
       
       .mobile-contact .whatsapp {
@@ -758,117 +763,7 @@
         }
       }
       
-      /* Nascondi menu mobile su desktop */
-      @media (min-width: 769px) {
-        .mobile-nav-button,
-        .mobile-slide-menu,
-        .hamburger-line,
-        .slide-menu-header,
-        .slide-menu-nav,
-        .slide-menu-footer,
-        .mobile-logo,
-        .close-slide-menu,
-        .mobile-contact {
-          display: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          z-index: -9999 !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-        }
-        
-        /* Forza la rimozione completa del menu mobile su desktop */
-        .mobile-slide-menu,
-        .mobile-slide-menu.active,
-        .mobile-slide-menu * {
-          display: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          z-index: -9999 !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-        }
-        
-        /* Soluzione definitiva: rimuovi completamente il menu mobile su desktop */
-        body > .mobile-nav-button,
-        body > .mobile-slide-menu {
-          display: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          z-index: -9999 !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-          transform: translateX(-9999px) !important;
-          clip: rect(0, 0, 0, 0) !important;
-        }
-        
-        /* Soluzione ultra-aggressiva: nascondi tutto il menu mobile su desktop */
-        html body .mobile-nav-button,
-        html body .mobile-slide-menu,
-        html body .mobile-slide-menu *,
-        html body .mobile-slide-menu.active,
-        html body .mobile-slide-menu.active * {
-          display: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          z-index: -9999 !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-          transform: translateX(-9999px) !important;
-          clip: rect(0, 0, 0, 0) !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          border: none !important;
-          background: transparent !important;
-        }
-        
-        /* SOLUZIONE DEFINITIVA: Rimuovi completamente il menu mobile su desktop */
-        html body .mobile-nav-button,
-        html body .mobile-slide-menu,
-        html body .mobile-slide-menu *,
-        html body .mobile-slide-menu.active,
-        html body .mobile-slide-menu.active *,
-        html body .mobile-slide-menu .slide-menu-header,
-        html body .mobile-slide-menu .slide-menu-nav,
-        html body .mobile-slide-menu .slide-menu-footer,
-        html body .mobile-slide-menu .mobile-logo,
-        html body .mobile-slide-menu .close-slide-menu,
-        html body .mobile-slide-menu .mobile-contact {
-          display: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          z-index: -9999 !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          pointer-events: none !important;
-          transform: translateX(-9999px) !important;
-          clip: rect(0, 0, 0, 0) !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          border: none !important;
-          background: transparent !important;
-          box-shadow: none !important;
-          backdrop-filter: none !important;
-        }
-      }
+
     }
   </style>
 </head>
