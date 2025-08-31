@@ -634,8 +634,14 @@
         .slide-menu-footer,
         .mobile-logo,
         .close-slide-menu,
-        .mobile-contact {
+        .mobile-contact,
+        .mobile-slide-menu.active,
+        .mobile-slide-menu * {
           display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          position: absolute !important;
+          left: -9999px !important;
         }
       }
       
