@@ -792,6 +792,23 @@
           overflow: hidden !important;
           pointer-events: none !important;
         }
+        
+        /* Soluzione definitiva: rimuovi completamente il menu mobile su desktop */
+        body > .mobile-nav-button,
+        body > .mobile-slide-menu {
+          display: none !important;
+          position: absolute !important;
+          left: -9999px !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          z-index: -9999 !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+          pointer-events: none !important;
+          transform: translateX(-9999px) !important;
+          clip: rect(0, 0, 0, 0) !important;
+        }
       }
     }
   </style>
