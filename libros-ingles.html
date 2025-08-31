@@ -776,6 +776,22 @@
           height: 0 !important;
           overflow: hidden !important;
         }
+        
+        /* Forza la rimozione completa del menu mobile su desktop */
+        .mobile-slide-menu,
+        .mobile-slide-menu.active,
+        .mobile-slide-menu * {
+          display: none !important;
+          position: absolute !important;
+          left: -9999px !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          z-index: -9999 !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+          pointer-events: none !important;
+        }
       }
     }
   </style>
