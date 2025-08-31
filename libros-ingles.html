@@ -634,7 +634,20 @@
         .slide-menu-footer,
         .mobile-logo,
         .close-slide-menu,
-        .mobile-contact,
+        .mobile-contact {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          position: absolute !important;
+          left: -9999px !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+          pointer-events: none !important;
+        }
+        
+        /* Nascondi completamente il menu mobile su desktop */
+        .mobile-slide-menu,
         .mobile-slide-menu.active,
         .mobile-slide-menu * {
           display: none !important;
@@ -642,6 +655,11 @@
           opacity: 0 !important;
           position: absolute !important;
           left: -9999px !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+          pointer-events: none !important;
+          z-index: -9999 !important;
         }
       }
       
