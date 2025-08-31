@@ -628,16 +628,53 @@
       
 
       
-      .hamburger-line {
-        width: 100%;
-        height: 3px;
-        background: white;
-        border-radius: 2px;
-        transition: all 0.3s ease;
+
+      
+              .mobile-contact .whatsapp {
+          background: #25D366;
+          color: white;
+          text-decoration: none;
+          padding: 12px 20px;
+          border-radius: 25px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+        
+        .mobile-contact .whatsapp:hover {
+          background: #128C7E;
+          transform: translateY(-2px);
+        }
       }
       
       /* Menu Mobile - Solo per dispositivi mobili */
       @media (max-width: 768px) {
+        .mobile-nav-button {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 30px;
+          height: 25px;
+          background: var(--primary1);
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+          border-radius: 6px;
+          padding: 4px;
+        }
+        
+        .hamburger-line {
+          width: 100%;
+          height: 3px;
+          background: white;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+        }
+        
         .mobile-slide-menu {
           position: fixed;
           top: 0;
@@ -655,10 +692,7 @@
         .mobile-slide-menu.active {
           right: 0;
         }
-      }
-      
-      /* Elementi del menu mobile - Solo per dispositivi mobili */
-      @media (max-width: 768px) {
+        
         .slide-menu-header {
           display: flex;
           justify-content: space-between;
@@ -735,17 +769,10 @@
           color: white;
           font-size: 1rem;
         }
-      }
-      
-      .mobile-contact .whatsapp {
-        background: #25D366;
-        color: white;
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 25px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        display: inline-block;
+        
+        .header {
+          display: none !important;
+        }
       }
       
       .mobile-contact .whatsapp:hover {
@@ -753,22 +780,16 @@
         transform: translateY(-2px);
       }
       
-      @media (max-width: 768px) {
-        .mobile-nav-button {
-          display: flex;
-        }
-        
-        .header {
-          display: none !important;
-        }
-      }
+
       
 
     }
   </style>
 </head>
 <body>
-  <!-- Menu Mobile Semplificato -->
+
+
+  <!-- Menu Mobile -->
   <button class="mobile-nav-button" onclick="toggleMobileMenu()">
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
