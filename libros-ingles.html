@@ -647,133 +647,7 @@
         }
       }
       
-      /* Menu Mobile - Solo per dispositivi mobili */
-      @media (max-width: 768px) {
-        .mobile-nav-button {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          width: 30px;
-          height: 25px;
-          background: var(--primary1);
-          border: none;
-          cursor: pointer;
-          padding: 0;
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 1001;
-          border-radius: 6px;
-          padding: 4px;
-        }
-        
-        .hamburger-line {
-          width: 100%;
-          height: 3px;
-          background: white;
-          border-radius: 2px;
-          transition: all 0.3s ease;
-        }
-        
-        .mobile-slide-menu {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 280px;
-          height: 100vh;
-          background: linear-gradient(135deg, var(--primary1), var(--primary2));
-          backdrop-filter: blur(20px);
-          z-index: 1000;
-          transition: right 0.3s ease;
-          padding: 20px;
-          box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-        }
-        
-        .mobile-slide-menu.active {
-          right: 0;
-        }
-        
-        .slide-menu-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .mobile-logo {
-          color: var(--cta1);
-          font-size: 1.5rem;
-          font-weight: 700;
-        }
-        
-        .close-slide-menu {
-          background: none;
-          border: none;
-          color: white;
-          font-size: 2rem;
-          cursor: pointer;
-          padding: 0;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-        }
-        
-        .close-slide-menu:hover {
-          background: rgba(255,255,255,0.1);
-        }
-        
-        .slide-menu-nav {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          margin-bottom: 30px;
-        }
-        
-        .slide-menu-nav a {
-          color: white;
-          text-decoration: none;
-          font-size: 1.1rem;
-          padding: 15px;
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        
-        .slide-menu-nav a:hover {
-          background: rgba(255,255,255,0.1);
-          transform: translateX(5px);
-        }
-        
-        .slide-menu-footer {
-          margin-top: auto;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .mobile-contact {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          text-align: center;
-        }
-        
-        .mobile-contact span {
-          color: white;
-          font-size: 1rem;
-        }
-        
-        .header {
-          display: none !important;
-        }
-      }
+      
       
       .mobile-contact .whatsapp:hover {
         background: #128C7E;
@@ -789,35 +663,7 @@
 <body>
 
 
-  <!-- Menu Mobile -->
-  <button class="mobile-nav-button" onclick="toggleMobileMenu()">
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  </button>
 
-  <nav class="mobile-slide-menu" id="mobileSlideMenu">
-    <div class="slide-menu-header">
-      <span class="mobile-logo">COPIMAX</span>
-      <button class="close-slide-menu" onclick="closeMobileSlideMenu()">×</button>
-    </div>
-    <div class="slide-menu-nav">
-      <a href="index.html" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
-      <a href="servicios.html" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
-      <a href="copias-volumen-cdmx.html" onclick="closeMobileSlideMenu()">📦 Volumen</a>
-      <a href="nosotros.html" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
-      <a href="blog.html" onclick="closeMobileSlideMenu()">📝 Blog</a>
-      <a href="contacto.html" onclick="closeMobileSlideMenu()">📍 Contacto</a>
-    </div>
-    
-    <!-- Sezione contatti mobile -->
-    <div class="slide-menu-footer">
-      <div class="mobile-contact">
-        <span>📞 55-4021-9892</span>
-        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
-      </div>
-    </div>
-  </nav>
 
   <!-- Header -->
   <header class="header">
@@ -1276,27 +1122,6 @@
     </div>
   </footer>
 
-  <!-- JavaScript per Menu Mobile -->
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileSlideMenu');
-      menu.classList.toggle('active');
-    }
-    
-    function closeMobileSlideMenu() {
-      const menu = document.getElementById('mobileSlideMenu');
-      menu.classList.remove('active');
-    }
-    
-    // Chiudi menu quando si clicca fuori
-    document.addEventListener('click', function(event) {
-      const menu = document.getElementById('mobileSlideMenu');
-      const button = document.querySelector('.mobile-nav-button');
-      
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
-        menu.classList.remove('active');
-      }
-    });
-  </script>
+
 </body>
 </html>
