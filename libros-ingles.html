@@ -495,19 +495,49 @@
       }
     }
     
-          @media (max-width: 768px) {
-        .mobile-nav-button {
-          display: flex;
-        }
-        
-        .main-navigation {
-          display: none !important;
-        }
-        
-        .contact-header {
-          display: none !important;
-        }
+              @media (max-width: 768px) {
+      .mobile-nav-button {
+        display: flex;
       }
+      
+      .main-navigation {
+        display: none !important;
+      }
+      
+      .contact-header {
+        display: none !important;
+      }
+      
+      /* Mobile Menu Button Visible */
+      .mobile-nav-button {
+        display: flex !important;
+      }
+      
+      /* Mobile specific styles for book cards */
+      .book-price {
+        background: #000 !important;
+        color: #00ff41 !important;
+        padding: 8px 14px !important;
+        border-radius: 8px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+      }
+      
+      .whatsapp-btn {
+        background: #00cc66 !important;
+        color: white !important;
+        padding: 12px 20px !important;
+        border-radius: 8px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+      }
+      
+      .whatsapp-btn:hover {
+        background: #00aa55 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(0, 204, 102, 0.3) !important;
+      }
+    }
       
       /* Nascondi menu mobile su desktop */
       @media (min-width: 769px) {
@@ -763,6 +793,95 @@
         gap: 15px;
       }
       
+      /* Mobile Menu Styles */
+      .mobile-nav-button {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10;
+      }
+      
+      .mobile-nav-button span {
+        width: 100%;
+        height: 3px;
+        background: var(--primary1);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-slide-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      
+      .mobile-slide-menu.active {
+        right: 0;
+      }
+      
+      .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .close-menu-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--primary1);
+      }
+      
+      .mobile-menu-content {
+        padding: 20px;
+      }
+      
+      .mobile-nav-link {
+        display: block;
+        padding: 15px 0;
+        color: var(--primary1);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px solid #f0f0f0;
+        transition: color 0.3s ease;
+      }
+      
+      .mobile-nav-link:hover {
+        color: var(--cta1);
+      }
+      
+      .mobile-contact-info {
+        margin-top: 30px;
+        padding: 20px;
+        background: var(--light);
+        border-radius: 10px;
+        text-align: center;
+      }
+      
+      .mobile-contact-info span {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--primary1);
+      }
+      
 
   </style>
 </head>
@@ -794,8 +913,37 @@
         <span>📞 55-4021-9892</span>
         <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="mobile-nav-button" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
   </header>
+
+  <!-- Mobile Slide Menu -->
+  <div class="mobile-slide-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="logo" onclick="window.location.href='index.html'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      <button class="close-menu-btn" onclick="toggleMobileMenu()">✕</button>
+    </div>
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-nav-link">🏠 Inicio</a>
+      <a href="servicios.html" class="mobile-nav-link">🛠️ Servicios</a>
+      <a href="copias-volumen-cdmx.html" class="mobile-nav-link">📊 Volumen</a>
+      <a href="nosotros.html" class="mobile-nav-link">👥 Nosotros</a>
+      <a href="blog.html" class="mobile-nav-link">📝 Blog</a>
+      <a href="contacto.html" class="mobile-nav-link">📞 Contacto</a>
+      <div class="mobile-contact-info">
+        <span>📞 55-4021-9892</span>
+        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main>
@@ -1272,6 +1420,23 @@
     </div>
   </footer>
 
+  <!-- JavaScript per Menu Mobile -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+    
+    // Chiudi menu quando si clicca fuori
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('mobileMenu');
+      const button = document.querySelector('.mobile-nav-button');
+      
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
