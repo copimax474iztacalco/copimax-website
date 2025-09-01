@@ -50,7 +50,15 @@ RewriteRule ^papeleria-cdmx-servicios-centro-confianza/?$ /papeleria-cdmx-servic
 RewriteRule ^tesis-guia-2025/?$ /tesis-guia-2025.html [L]
 RewriteRule ^copias-baratas-iztacalco/?$ /copias-baratas-iztacalco.html [L]
 RewriteRule ^papeleria-estudiantes-iztacalco/?$ /papeleria-estudiantes-iztacalco.html [L]
+RewriteRule ^centro-copiado-mayoreo-cdmx-volumen/?$ /centro-copiado-mayoreo-cdmx-volumen.html [L]
+RewriteRule ^copimax-centro-de-copiado-cdmx-por-mayoreo/?$ /copimax-centro-de-copiado-cdmx-por-mayoreo.html [L]
+RewriteRule ^libros-ingles/?$ /libros-ingles.html [L]
 RewriteRule ^copias-volumen-cdmx/?$ /copias-volumen-cdmx.html [L]
+RewriteRule ^servicios/?$ /servicios.html [L]
+RewriteRule ^nosotros/?$ /nosotros.html [L]
+RewriteRule ^contacto/?$ /contacto.html [L]
+RewriteRule ^blog/?$ /blog.html [L]
+RewriteRule ^order/?$ /order.html [L]
 
 # Force HTTPS (uncomment if you have SSL)
 # RewriteCond %{HTTPS} off
