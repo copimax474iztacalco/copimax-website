@@ -5422,6 +5422,12 @@
       // Prepara le note speciali
       const specialNotes = document.getElementById('special-notes')?.value || '';
       
+      // Prepara la lista dei file caricati
+      let filesList = '';
+      if (orderData.files && orderData.files.length > 0) {
+        filesList = orderData.files.map(file => `- ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`).join('\n');
+      }
+      
       // Template parameters per EmailJS
       const templateParams = {
         orderNumber: orderNumber,
@@ -5436,6 +5442,7 @@
         totalAmount: finalTotal.toFixed(2),
         paymentMethod: orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia',
         fileCount: orderData.files.length,
+        filesList: filesList || 'Ningún archivo',
         specialNotes: specialNotes || 'Ninguna',
         anticipoAmount: anticipoAmount,
         requiresAnticipo: requiresAnticipo ? 'SÍ' : 'NO'
@@ -5476,6 +5483,12 @@
       // Prepara le note speciali
       const specialNotes = document.getElementById('special-notes')?.value || '';
       
+      // Prepara la lista dei file caricati
+      let filesList = '';
+      if (orderData.files && orderData.files.length > 0) {
+        filesList = orderData.files.map(file => `• ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`).join('\n');
+      }
+      
       // Crea il messaggio WhatsApp
       const message = `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
 
@@ -5490,7 +5503,9 @@
 💰 TOTAL: $${finalTotal.toFixed(2)} MXN
 💳 Pago: ${orderData.payment === 'cash' ? 'Efectivo' : (requiresAnticipo ? 'Transferencia 50% Anticipo' : 'Transferencia')}
 
-📁 Archivos: ${orderData.files.length} archivo(s)
+📁 ARCHIVOS CARGADOS (${orderData.files.length}):
+${filesList || 'Ningún archivo'}
+
 ${specialNotes ? '📝 Notas: ' + specialNotes : ''}
 
 ⚠️ REQUIERE ANTICIPO: $${anticipoAmount} MXN (${requiresAnticipo ? 'SÍ' : 'NO'})
@@ -6621,10 +6636,14 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
       });
       
       if (!isOpen) {
-        // Se chiuso, mostra dati del giorno precedente
+        // Se chiuso, mostra gli ultimi 3 slot per oggi
+        // Determina se mostrare 4 o 2 slot basato sull'orario CDMX
+        const currentHourCDMX = new Date().getHours();
+        const lastSlots = (currentHourCDMX >= 18 || currentHourCDMX < 8) ? 2 : 4;
+        
         return {
           copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
-          availableSlots: 0,
+          availableSlots: lastSlots,
           isOpen: false
         };
       }
@@ -6690,7 +6709,7 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
             badge.textContent = `⏰ Sin lugares disponibles para hoy`;
           }
         } else {
-          badge.textContent = `⏰ Cerrado - Abierto mañana`;
+          badge.textContent = `⏰ Últimos ${stats.availableSlots} lugares para entrega hoy`;
         }
       });
     }
