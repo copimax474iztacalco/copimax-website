@@ -180,28 +180,64 @@
         /* Menu Desktop */
         .main-navigation {
             display: flex;
-            gap: 30px;
+            gap: 0;
             align-items: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 25px;
+            padding: 4px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin: 0 auto;
+            flex-shrink: 0;
         }
         
         .nav-link {
-            color: var(--text-light);
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 8px;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
         }
         
         .nav-link:hover {
-            color: var(--primary-green);
-            background: rgba(154, 255, 0, 0.1);
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-1px);
+            color: #fff;
         }
         
         .nav-link.active {
-            color: var(--primary-green);
-            background: rgba(154, 255, 0, 0.15);
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* Effetto hover sottile */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+        
+        .nav-link:hover::after {
+            width: 20px;
+        }
+        
+        .nav-link.active::after {
+            width: 30px;
+            background: var(--primary-green);
         }
         
         .logo {
@@ -541,6 +577,26 @@
             color: var(--text-light);
         }
         
+        .service-btn {
+            background: var(--gradient-green);
+            color: var(--dark-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(154, 255, 0, 0.3);
+        }
+        
+        .service-btn:hover {
+            background: var(--lime-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(154, 255, 0, 0.4);
+        }
+        
         /* STATS SECTION */
         .stats-section {
             background: var(--gradient-dark);
@@ -746,6 +802,26 @@
         
         .contact-card a:hover {
             color: var(--lime-bright);
+        }
+        
+        /* Map Section */
+        .map-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin: 2rem 0;
+        }
+        
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .map-container h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
         }
         
         /* FLOATING WHATSAPP */
@@ -1161,6 +1237,11 @@
                 display: none;
             }
             
+            .instant-quote {
+                font-size: 0.8rem !important;
+                padding: 8px 15px !important;
+            }
+            
             .trust-indicators {
                 flex-direction: column;
                 gap: 15px;
@@ -1434,7 +1515,7 @@
                     <a href="https://wa.me/5215540219892" class="cta-btn secondary">💬 WhatsApp Express</a>
                 </div>
                 <div class="urgency-notice">
-                    🔥 OFERTA HOY: Pedidos +10,000 copias = DESCUENTO ESPECIAL
+                    <a href="/#calculator" style="color: inherit; text-decoration: none;">🧮 Calcula tu precio en segundos</a>
                 </div>
             </div>
         </div>
@@ -1452,6 +1533,7 @@
                 <div class="service-card">
                     <h3>Fotocopias Mayoreo CDMX</h3>
                     <div class="service-price">DESDE $0.35</div>
+                    <a href="/copias-volumen-cdmx" class="service-btn">📦 Ver Precios Volumen</a>
                     <p><strong>Precio más bajo garantizado</strong><br>
                     Especialistas en alto volumen: 1,000+ copias con descuentos especiales. Calidad profesional, papel bond 20, entrega el mismo día en toda CDMX.</p>
                 </div>
@@ -1620,6 +1702,16 @@
                     <p>Vainilla 474, Iztacalco</p>
                     <p>CDMX 08400</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+        <div class="map-container">
+            <h2>🗺️ Ubicación en el mapa</h2>
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15)">
+                <iframe title="Mapa COPIMAX" src="https://www.google.com/maps?q=Vainilla%20474%2C%20Granjas%20M%C3%A9xico%2C%20Iztacalco%2C%20CDMX&output=embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
