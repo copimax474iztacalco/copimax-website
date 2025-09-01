@@ -540,10 +540,10 @@
           padding: 20px 0;
         }
         
-        /* CARD PRINCIPALE - DIMENSIONI FISSE */
+        /* CARD PRINCIPALE - RIMUOVI LIMITAZIONI DIMENSIONALI */
         .book-item {
           width: 180px;
-          height: 320px;
+          /* NON mettere height fissa qui */
           background: white;
           border-radius: 12px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -558,13 +558,13 @@
           box-shadow: 0 6px 18px rgba(0,0,0,0.12);
         }
         
-        /* IMMAGINE - DEVE OCCUPARE 224px DI ALTEZZA (70% di 320px) */
+        /* IMMAGINE - DEVE ESSERE MOLTO ALTA */
         .book-image {
-          height: 224px;
           width: 100%;
-          flex-shrink: 0;
+          aspect-ratio: 3/4; /* Questo fa sì che l'immagine sia alta */
           overflow: hidden;
           border-radius: 12px 12px 0 0;
+          flex-shrink: 0;
         }
         
         .book-image img {
@@ -574,17 +574,15 @@
           display: block;
         }
         
-        /* SEZIONE INFERIORE - DEVE OCCUPARE 96px DI ALTEZZA (30% di 320px) */
+        /* SEZIONE INFERIORE - COMPATTA */
         .book-details {
-          height: 96px;
-          width: 100%;
-          padding: 8px;
+          padding: 10px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          flex-shrink: 0;
-          background: white;
+          gap: 8px;
+          min-height: 60px; /* Minima altezza, non fissa */
         }
         
         /* PREZZO - SINISTRA */
@@ -647,12 +645,11 @@
           color: white;
           border: none;
           border-radius: 6px;
-          padding: 6px 10px;
+          padding: 8px 12px;
           font-size: 10px;
           font-weight: bold;
           cursor: pointer;
           flex-shrink: 0;
-          height: 28px;
         }
         
         .order-btn:hover {
