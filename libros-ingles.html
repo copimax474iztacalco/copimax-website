@@ -532,17 +532,17 @@
           display: flex !important;
         }
         
-        /* Layout desktop per le card - esatto 1:1 come nella foto */
+        /* Layout desktop per le card - più larghe e compatte */
         .books-list {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 25px;
+          gap: 15px;
           padding: 20px 0;
         }
         
-        /* CARD PRINCIPALE - RIMUOVI LIMITAZIONI DIMENSIONALI */
+        /* CARD PRINCIPALE - PIÙ LARGHE E COMPATTE */
         .book-item {
-          width: 180px;
+          width: 220px;
           /* NON mettere height fissa qui */
           background: white;
           border-radius: 12px;
@@ -550,7 +550,7 @@
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          margin: 10px;
+          margin: 8px;
         }
         
         .book-item:hover {
@@ -574,15 +574,15 @@
           display: block;
         }
         
-        /* SEZIONE INFERIORE - COMPATTA E CENTRATA */
+        /* SEZIONE INFERIORE - PIÙ COMPATTA */
         .book-details {
-          padding: 12px;
+          padding: 8px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 8px;
-          min-height: 80px;
+          gap: 6px;
+          min-height: 60px;
           text-align: center;
         }
         
@@ -926,16 +926,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 1</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 1</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 1 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 1 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -946,16 +946,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -966,16 +966,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 3</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 3</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 3 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 3 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -986,16 +986,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 4</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 4</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 4 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 4 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1006,16 +1006,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 5</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 5</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 5 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 5 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1026,16 +1026,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Evolve Level 6</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Evolve Level 6</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 6 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Evolve Level 6 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1052,16 +1052,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Interchange Level 1</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">4th Edition - Cambridge</div>
+                  <h3>Interchange Level 1</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">4th Edition - Cambridge</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 1 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 1 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1072,16 +1072,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Interchange Level 2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">4th Edition - Cambridge</div>
+                  <h3>Interchange Level 2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">4th Edition - Cambridge</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1092,16 +1092,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Interchange Level 3</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">4th Edition - Cambridge</div>
+                  <h3>Interchange Level 3</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">4th Edition - Cambridge</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 3 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Interchange Level 3 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1118,16 +1118,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Empower A2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Empower A2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Empower A2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Empower A2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1138,16 +1138,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Empower B1</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Empower B1</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B1 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B1 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1158,16 +1158,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Empower B1+</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Empower B1+</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B1+ (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B1+ (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
@@ -1178,16 +1178,16 @@
               </div>
               <div class="book-details">
                 <div class="book-info">
-                  <div class="book-title">Empower B2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Empower B2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
                 <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
+                  <div class="price-tag">
+                    <div class="price">$350</div>
+                    <div class="currency">MXN</div>
+                  </div>
+                  <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Empower B2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">📱 Ordenar</button>
                 </div>
               </div>
             </div>
