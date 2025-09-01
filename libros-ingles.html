@@ -587,14 +587,35 @@
           gap: 10px;
         }
         
+        .price-tag {
+          background: #000;
+          color: #00ff00;
+          padding: 8px 12px;
+          border-radius: 8px;
+          text-align: center;
+          min-width: 60px;
+        }
+        
+        .price {
+          font-size: 0.9rem;
+          font-weight: 700;
+          margin-bottom: 2px;
+        }
+        
+        .currency {
+          font-size: 0.7rem;
+          font-weight: 600;
+        }
+        
         .book-info {
           flex: 1;
           display: flex;
           flex-direction: column;
-          text-align: left;
+          text-align: center;
+          align-items: center;
         }
         
-        .book-title {
+        .book-info h3 {
           font-size: 0.9rem;
           font-weight: 600;
           color: #000;
@@ -602,24 +623,44 @@
           line-height: 1.2;
         }
         
-        .book-subtitle {
+        .book-info p {
           font-size: 0.8rem;
           color: #000;
           margin-bottom: 1px;
           line-height: 1.2;
         }
         
-        .book-edition {
+        .book-info .publisher {
           font-size: 0.75rem;
           color: #666;
           font-style: italic;
-          margin-bottom: 0;
         }
         
-        .price-order-row {
-          display: flex;
+        .order-btn {
+          display: inline-flex;
           align-items: center;
-          gap: 10px;
+          justify-content: center;
+          gap: 5px;
+          background: #25D366;
+          color: white;
+          text-decoration: none;
+          padding: 8px 12px;
+          border-radius: 12px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          border: none;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+        
+        .order-btn:hover {
+          background: #128C7E;
+          transform: translateY(-1px);
+        }
+        
+        .order-btn .icon {
+          font-size: 0.8rem;
         }
         
         .book-price {
@@ -828,18 +869,19 @@
                 <img src="https://images.unsplash.com/photo-1756681746498-f1f7d759386c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Close Up A2">
               </div>
               <div class="book-details">
+                <div class="price-tag">
+                  <div class="price">$350</div>
+                  <div class="currency">MXN</div>
+                </div>
                 <div class="book-info">
-                  <div class="book-title">Close Up A2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Close Up A2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
-                <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up A2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
-                </div>
+                <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up A2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">
+                  <span class="icon">📱</span>
+                  Ordenar
+                </button>
               </div>
             </div>
             
@@ -848,18 +890,19 @@
                 <img src="https://images.unsplash.com/photo-1756681746498-440eedd02907?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Close Up B1">
               </div>
               <div class="book-details">
+                <div class="price-tag">
+                  <div class="price">$350</div>
+                  <div class="currency">MXN</div>
+                </div>
                 <div class="book-info">
-                  <div class="book-title">Close Up B1</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Close Up B1</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
-                <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B1 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
-                </div>
+                <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B1 (Student\'s Book + Workbook) por $350 MXN', '_blank')">
+                  <span class="icon">📱</span>
+                  Ordenar
+                </button>
               </div>
             </div>
             
@@ -868,18 +911,19 @@
                 <img src="https://images.unsplash.com/photo-1756681746543-b3879e0f1c77?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Close Up B1+">
               </div>
               <div class="book-details">
+                <div class="price-tag">
+                  <div class="price">$350</div>
+                  <div class="currency">MXN</div>
+                </div>
                 <div class="book-info">
-                  <div class="book-title">Close Up B1+</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Close Up B1+</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
-                <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B1+ (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
-                </div>
+                <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B1+ (Student\'s Book + Workbook) por $350 MXN', '_blank')">
+                  <span class="icon">📱</span>
+                  Ordenar
+                </button>
               </div>
             </div>
             
@@ -888,18 +932,19 @@
                 <img src="https://images.unsplash.com/photo-1756681746489-bf4e40a2078c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Close Up B2">
               </div>
               <div class="book-details">
+                <div class="price-tag">
+                  <div class="price">$350</div>
+                  <div class="currency">MXN</div>
+                </div>
                 <div class="book-info">
-                  <div class="book-title">Close Up B2</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Close Up B2</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
-                <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B2 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
-                </div>
+                <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up B2 (Student\'s Book + Workbook) por $350 MXN', '_blank')">
+                  <span class="icon">📱</span>
+                  Ordenar
+                </button>
               </div>
             </div>
             
@@ -908,18 +953,19 @@
                 <img src="https://images.unsplash.com/photo-1756681746497-fdd18773ce0d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Close Up C1">
               </div>
               <div class="book-details">
+                <div class="price-tag">
+                  <div class="price">$350</div>
+                  <div class="currency">MXN</div>
+                </div>
                 <div class="book-info">
-                  <div class="book-title">Close Up C1</div>
-                  <div class="book-subtitle">Student's Book +</div>
-                  <div class="book-subtitle">Workbook</div>
-                  <div class="book-edition">Cambridge English</div>
+                  <h3>Close Up C1</h3>
+                  <p>Student's Book + Workbook</p>
+                  <span class="publisher">Cambridge English</span>
                 </div>
-                <div class="price-order-row">
-                  <div class="book-price">$350</div>
-                  <a href="https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up C1 (Student's Book + Workbook) por $350 MXN" class="whatsapp-btn" target="_blank">
-                    <i class="whatsapp-icon">📱</i> Ordenar
-                  </a>
-                </div>
+                <button class="order-btn" onclick="window.open('https://wa.me/525540219892?text=Hola! Me interesa el libro Close Up C1 (Student\'s Book + Workbook) por $350 MXN', '_blank')">
+                  <span class="icon">📱</span>
+                  Ordenar
+                </button>
               </div>
             </div>
             
