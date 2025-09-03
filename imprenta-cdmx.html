@@ -291,12 +291,6 @@
             background: radial-gradient(circle, rgba(163, 230, 53, 0.1) 0%, transparent 70%);
         }
 
-        .building-icon {
-            font-size: 8rem;
-            color: #a3e635;
-            z-index: 1;
-        }
-
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -770,7 +764,7 @@
                 </div>
                 
                 <div class="hero-image">
-                    <i class="fas fa-building building-icon"></i>
+                    <img src="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX - Imprenta en CDMX" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                 </div>
             </div>
         </div>
@@ -790,9 +784,9 @@
                 </div>
 
                 <div class="service-card">
-                    <h3>Impresiones Color A4 - $10</h3>
+                    <h3>Impresiones Color A4</h3>
                     <p>Impresiones a color en alta resolución, ideales para presentaciones, folletos y materiales promocionales de tu empresa.</p>
-                    <div class="price-tag">$1 - $10</div>
+                    <div class="price-tag">$5 - $10</div>
                 </div>
 
                 <div class="service-card">
@@ -804,19 +798,19 @@
                 <div class="service-card">
                     <h3>Paquetes Populares</h3>
                     <p>Combina copias BN con impresiones a color. Perfecto para empresas que necesitan materiales mixtos de forma regular.</p>
-                    <div class="price-tag">$250 MXN</div>
+                    <div class="price-tag">Cotizar</div>
                 </div>
 
                 <div class="service-card">
                     <h3>200 copias BN</h3>
                     <p>Paquete especial para empresas pequeñas y emprendedores que necesitan un volumen moderado de copias de calidad.</p>
-                    <div class="price-tag">$80 MXN</div>
+                    <div class="price-tag">$70 - $80 MXN</div>
                 </div>
 
                 <div class="service-card">
-                    <h3>25 copias más BN</h3>
-                    <p>Solución rápida para necesidades urgentes. Incluye copias adicionales con la misma calidad profesional de siempre.</p>
-                    <div class="price-tag">$8.750 / $60.000</div>
+                    <h3>20,000+ copias BN</h3>
+                    <p>Volumen alto para empresas grandes. Precios especiales por mayoreo con entrega programada y servicio dedicado.</p>
+                    <div class="price-tag">$0.35 - $0.40</div>
                 </div>
             </div>
         </div>
@@ -832,6 +826,11 @@
                 <div class="calc-input-group">
                     <label for="q">Cantidad de copias</label>
                     <input type="number" id="q" class="calc-input" placeholder="100" min="1" value="100">
+                </div>
+                
+                <div class="calc-input-group">
+                    <label for="pages">Número de páginas</label>
+                    <input type="number" id="pages" class="calc-input" placeholder="1" min="1" value="1">
                 </div>
                 
                 <div class="calc-input-group">
@@ -861,11 +860,11 @@
                     <div class="calc-options">
                         <button class="calc-option color-btn active" onclick="changeColor(this, 'bn')" data-color="bn">
                             <strong>Blanco y Negro</strong><br>
-                            <span style="font-size: 0.9rem; color: #888;">Económico</span>
+                            <span style="font-size: 0.9rem; color: #888;">$1 (≤100) / $0.35-0.40 (>100)</span>
                         </button>
                         <button class="calc-option color-btn" onclick="changeColor(this, 'color')" data-color="color">
                             <strong>A Todo Color</strong><br>
-                            <span style="font-size: 0.9rem; color: #888;">Alta calidad</span>
+                            <span style="font-size: 0.9rem; color: #888;">$5 (logo) / $10 (imagen)</span>
                         </button>
                     </div>
                 </div>
@@ -1024,10 +1023,11 @@
             console.log('Calcolatrice JavaScript caricata');
             
             const qtyEl = document.getElementById('q');
+            const pagesEl = document.getElementById('pages');
             const sidesEl = document.getElementById('sides');
             const totalEl = document.getElementById('total-preview');
             
-            if (!qtyEl || !sidesEl || !totalEl) {
+            if (!qtyEl || !pagesEl || !sidesEl || !totalEl) {
                 console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
                 return;
             }
@@ -1042,26 +1042,36 @@
             // Ricalcola il totale
             function recalc() {
                 const q = Math.max(0, parseInt(qtyEl.value || '0'));
+                const pages = Math.max(1, parseInt(pagesEl.value || '1'));
                 const sides = sidesEl.value;
                 const colorBtn = document.querySelector('.color-btn.active');
                 const typeBtn = document.querySelector('.type-btn.active');
                 
-                let pricePerPage = 0.40; // Default BN una cara
+                let pricePerPage = 0;
                 
-                if (sides === 'x2') {
-                    pricePerPage = 0.35; // BN doble cara
-                }
-                
-                // Se è a color, aumenta il prezzo
-                if (colorBtn && colorBtn.dataset.color === 'color') {
-                    if (sides === 'x2') {
-                        pricePerPage = 4.35; // Color doble cara
+                // Prezzi BN
+                if (colorBtn && colorBtn.dataset.color === 'bn') {
+                    if (q <= 100) {
+                        pricePerPage = 1.00; // Menos de 100 copias: $1 por copia
                     } else {
-                        pricePerPage = 5.00; // Color una cara
+                        if (sides === 'x2') {
+                            pricePerPage = 0.35; // BN doble cara más de 100
+                        } else {
+                            pricePerPage = 0.40; // BN una cara más de 100
+                        }
                     }
                 }
                 
-                const total = q * pricePerPage;
+                // Prezzi a color
+                if (colorBtn && colorBtn.dataset.color === 'color') {
+                    if (sides === 'x2') {
+                        pricePerPage = 10.00; // Color doble cara (imagen completa)
+                    } else {
+                        pricePerPage = 5.00; // Color una cara (solo logo)
+                    }
+                }
+                
+                const total = q * pages * pricePerPage;
                 totalEl.textContent = fmt(total);
                 
                 // Aggiorna anche il campo tipo automaticamente
@@ -1088,6 +1098,7 @@
             
             // Event listeners
             qtyEl.addEventListener('input', recalc);
+            pagesEl.addEventListener('input', recalc);
             sidesEl.addEventListener('change', recalc);
             
             // Calcolo iniziale
