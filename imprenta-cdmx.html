@@ -860,7 +860,7 @@
                     <div class="calc-options">
                         <button class="calc-option color-btn active" onclick="changeColor(this, 'bn')" data-color="bn">
                             <strong>Blanco y Negro</strong><br>
-                            <span style="font-size: 0.9rem; color: #888;">$1 (≤100) / $0.35-0.40 (>100)</span>
+                            <span style="font-size: 0.9rem; color: #888;">$1 (1-100 copias) / $0.35-0.40 (>100)</span>
                         </button>
                         <button class="calc-option color-btn" onclick="changeColor(this, 'color')" data-color="color">
                             <strong>A Todo Color</strong><br>
@@ -873,7 +873,7 @@
                     <div class="calc-price" id="total-preview">$35.00 MXN</div>
                     <div class="calc-details">Precio calculado automáticamente</div>
                     <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
-                        <a href="https://wa.me/525540219892" class="btn-primary" target="_blank" style="background: #000; color: #a3e635;">
+                        <a href="https://wa.me/525540219892" class="btn-primary" target="_blank" style="background: #000; color: #ffffff;">
                             <i class="fab fa-whatsapp"></i> COTIZAR AHORA
                         </a>
                         <a href="tel:+525540219892" class="btn-secondary" style="border-color: #000; color: #000;">
@@ -1052,7 +1052,7 @@
                 // Prezzi BN
                 if (colorBtn && colorBtn.dataset.color === 'bn') {
                     if (q <= 100) {
-                        pricePerPage = 1.00; // Menos de 100 copias: $1 por copia
+                        pricePerPage = 1.00; // De 1 a 100 copias: $1 por copia (sin importar lados)
                     } else {
                         if (sides === 'x2') {
                             pricePerPage = 0.35; // BN doble cara más de 100
@@ -1071,7 +1071,13 @@
                     }
                 }
                 
-                const total = q * pages * pricePerPage;
+                // Calcola le hojas reali
+                let totalHojas = q * pages;
+                if (sides === 'x2') {
+                    totalHojas = Math.ceil(totalHojas / 2); // 2 lados = 1 hoja
+                }
+                
+                const total = totalHojas * pricePerPage;
                 totalEl.textContent = fmt(total);
                 
                 // Aggiorna anche il campo tipo automaticamente
