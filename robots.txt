@@ -16,6 +16,7 @@ Allow: /tesis-guia-2025
 Allow: /copias-baratas-iztacalco
 Allow: /papeleria-estudiantes-iztacalco
 Allow: /copias-volumen-cdmx
+Allow: /imprenta-cdmx
 
 # Crawl delay (optional)
 Crawl-delay: 1
