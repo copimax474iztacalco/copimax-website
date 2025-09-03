@@ -861,16 +861,60 @@
 
                 <div class="calc-input-group">
                     <label>Servicios Adicionales</label>
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
-                            <input type="checkbox" id="engargolado" data-price="40"> Engargolado (+$40)
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
-                            <input type="checkbox" id="folders" data-price="15"> Folders (+$15)
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
-                            <input type="checkbox" id="laminated" data-price="25"> Enmicado (+$25)
-                        </label>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                        <div style="border: 1px solid #444; border-radius: 10px; padding: 15px;">
+                            <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem; margin-bottom: 10px;">
+                                <input type="checkbox" id="engargolado" data-price="40"> Engargolado (+$40)
+                            </label>
+                            <div class="engargolado-options" style="margin-top: 8px; display: none;">
+                                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <label style="font-size: 0.9rem; color: #888;">Cantidad:</label>
+                                    <input type="number" id="engargolado-qty" min="1" value="1" style="width: 60px; padding: 4px; border: 1px solid #444; border-radius: 4px; background: #1a1a1a; color: #fff;">
+                                    <label style="font-size: 0.9rem; color: #888;">de</label>
+                                    <select id="engargolado-size" style="padding: 4px; border: 1px solid #444; border-radius: 4px; background: #1a1a1a; color: #fff;">
+                                        <option value="100">100 páginas</option>
+                                        <option value="200">200 páginas</option>
+                                        <option value="300">300 páginas</option>
+                                        <option value="500">500 páginas</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.8rem; color: #888;">
+                                    Precio: <span id="engargolado-price">$40</span> por engargolado
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border: 1px solid #444; border-radius: 10px; padding: 15px;">
+                            <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem; margin-bottom: 10px;">
+                                <input type="checkbox" id="folders" data-price="15"> Folders (+$15)
+                            </label>
+                            <div class="folders-options" style="margin-top: 8px; display: none;">
+                                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <label style="font-size: 0.9rem; color: #888;">Cantidad:</label>
+                                    <input type="number" id="folders-qty" min="1" value="1" style="width: 60px; padding: 4px; border: 1px solid #444; border-radius: 4px; background: #1a1a1a; color: #fff;">
+                                    <span style="font-size: 0.9rem; color: #888;">(5 folders por pack)</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: #888;">
+                                    Precio: <span id="folders-price">$15</span> por folder
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border: 1px solid #444; border-radius: 10px; padding: 15px;">
+                            <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem; margin-bottom: 10px;">
+                                <input type="checkbox" id="laminated" data-price="25"> Enmicado (+$25)
+                            </label>
+                            <div class="laminated-options" style="margin-top: 8px; display: none;">
+                                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <label style="font-size: 0.9rem; color: #888;">Cantidad de hojas:</label>
+                                    <input type="number" id="laminated-pages" min="1" value="1" step="1" style="width: 80px; padding: 4px; border: 1px solid #444; border-radius: 4px; background: #1a1a1a; color: #fff;">
+                                    <span style="font-size: 0.9rem; color: #888;">hojas</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: #888;">
+                                    Precio: <span id="laminated-price">$25</span> por hoja
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1034,6 +1078,10 @@
             const engargoladoEl = document.getElementById('engargolado');
             const foldersEl = document.getElementById('folders');
             const laminatedEl = document.getElementById('laminated');
+            const engargoladoQtyEl = document.getElementById('engargolado-qty');
+            const engargoladoSizeEl = document.getElementById('engargolado-size');
+            const foldersQtyEl = document.getElementById('folders-qty');
+            const laminatedPagesEl = document.getElementById('laminated-pages');
             
             if (!qtyEl || !pagesEl || !sidesEl || !totalEl) {
                 console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
@@ -1089,13 +1137,21 @@
                 
                 // Aggiungi servizi aggiuntivi
                 if (engargoladoEl && engargoladoEl.checked) {
-                    total += 40; // Engargolado
+                    const qty = parseInt(engargoladoQtyEl?.value || '1');
+                    const size = parseInt(engargoladoSizeEl?.value || '100');
+                    let pricePerUnit = 20; // Base price for 100 pages
+                    if (size > 100) pricePerUnit = 40;
+                    if (size > 200) pricePerUnit = 50;
+                    if (size > 300) pricePerUnit = 60;
+                    total += qty * pricePerUnit;
                 }
                 if (foldersEl && foldersEl.checked) {
-                    total += 15; // Folders
+                    const qty = parseInt(foldersQtyEl?.value || '1');
+                    total += qty * 15; // $15 por folder
                 }
                 if (laminatedEl && laminatedEl.checked) {
-                    total += 25; // Enmicado
+                    const pages = parseInt(laminatedPagesEl?.value || '1');
+                    total += pages * 25; // $25 por hoja
                 }
                 
                 totalEl.textContent = fmt(total);
@@ -1128,9 +1184,39 @@
             sidesEl.addEventListener('change', recalc);
             
             // Event listeners per servizi aggiuntivi
-            if (engargoladoEl) engargoladoEl.addEventListener('change', recalc);
-            if (foldersEl) foldersEl.addEventListener('change', recalc);
-            if (laminatedEl) laminatedEl.addEventListener('change', recalc);
+            if (engargoladoEl) {
+                engargoladoEl.addEventListener('change', function() {
+                    const options = document.querySelector('.engargolado-options');
+                    if (options) {
+                        options.style.display = this.checked ? 'block' : 'none';
+                    }
+                    recalc();
+                });
+            }
+            if (foldersEl) {
+                foldersEl.addEventListener('change', function() {
+                    const options = document.querySelector('.folders-options');
+                    if (options) {
+                        options.style.display = this.checked ? 'block' : 'none';
+                    }
+                    recalc();
+                });
+            }
+            if (laminatedEl) {
+                laminatedEl.addEventListener('change', function() {
+                    const options = document.querySelector('.laminated-options');
+                    if (options) {
+                        options.style.display = this.checked ? 'block' : 'none';
+                    }
+                    recalc();
+                });
+            }
+            
+            // Event listeners per le opzioni dei servizi
+            if (engargoladoQtyEl) engargoladoQtyEl.addEventListener('input', recalc);
+            if (engargoladoSizeEl) engargoladoSizeEl.addEventListener('change', recalc);
+            if (foldersQtyEl) foldersQtyEl.addEventListener('input', recalc);
+            if (laminatedPagesEl) laminatedPagesEl.addEventListener('input', recalc);
             
             // Calcolo iniziale
             recalc();
