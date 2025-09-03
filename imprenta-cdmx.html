@@ -165,17 +165,7 @@
             gap: 10px;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: #a3e635;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-weight: bold;
-        }
+
 
         .nav-menu {
             display: flex;
@@ -705,7 +695,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <div class="logo-icon">C</div>
+                    <img src="https://copimax.store/assets/logo-copimax.png" alt="COPIMAX Logo" style="width: 40px; height: 40px; object-fit: contain;">
                     COPIMAX
                 </a>
                 <nav class="nav-menu">
@@ -869,6 +859,21 @@
                     </div>
                 </div>
 
+                <div class="calc-input-group">
+                    <label>Servicios Adicionales</label>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
+                            <input type="checkbox" id="engargolado" data-price="40"> Engargolado (+$40)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
+                            <input type="checkbox" id="folders" data-price="15"> Folders (+$15)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.9rem;">
+                            <input type="checkbox" id="laminated" data-price="25"> Enmicado (+$25)
+                        </label>
+                    </div>
+                </div>
+
                 <div class="calc-result">
                     <div class="calc-price" id="total-preview">$35.00 MXN</div>
                     <div class="calc-details">Precio calculado automáticamente</div>
@@ -983,7 +988,7 @@
                         <li><i class="fas fa-map-marker-alt"></i> Vainilla 474, Iztacalco, CDMX 08400</li>
                         <li><i class="fas fa-subway"></i> Cerca de UPIICSA y Granjas México</li>
                         <li><i class="fab fa-whatsapp"></i> WhatsApp: Cotizaciones rápidas</li>
-                        <li><i class="fas fa-clock"></i> Lun-Vie: 8:00-20:00 | Sáb: 9:00-15:00</li>
+                        <li><i class="fas fa-clock"></i> Lun-Vie: 8:30-18:00 | Sáb-Dom: 8:30-14:00</li>
                         <li><i class="fas fa-phone"></i> Tel: 55-4021-9892</li>
                     </ul>
                 </div>
@@ -1026,6 +1031,9 @@
             const pagesEl = document.getElementById('pages');
             const sidesEl = document.getElementById('sides');
             const totalEl = document.getElementById('total-preview');
+            const engargoladoEl = document.getElementById('engargolado');
+            const foldersEl = document.getElementById('folders');
+            const laminatedEl = document.getElementById('laminated');
             
             if (!qtyEl || !pagesEl || !sidesEl || !totalEl) {
                 console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
@@ -1077,7 +1085,19 @@
                     totalHojas = Math.ceil(totalHojas / 2); // 2 lados = 1 hoja
                 }
                 
-                const total = totalHojas * pricePerPage;
+                let total = totalHojas * pricePerPage;
+                
+                // Aggiungi servizi aggiuntivi
+                if (engargoladoEl && engargoladoEl.checked) {
+                    total += 40; // Engargolado
+                }
+                if (foldersEl && foldersEl.checked) {
+                    total += 15; // Folders
+                }
+                if (laminatedEl && laminatedEl.checked) {
+                    total += 25; // Enmicado
+                }
+                
                 totalEl.textContent = fmt(total);
                 
                 // Aggiorna anche il campo tipo automaticamente
@@ -1106,6 +1126,11 @@
             qtyEl.addEventListener('input', recalc);
             pagesEl.addEventListener('input', recalc);
             sidesEl.addEventListener('change', recalc);
+            
+            // Event listeners per servizi aggiuntivi
+            if (engargoladoEl) engargoladoEl.addEventListener('change', recalc);
+            if (foldersEl) foldersEl.addEventListener('change', recalc);
+            if (laminatedEl) laminatedEl.addEventListener('change', recalc);
             
             // Calcolo iniziale
             recalc();
