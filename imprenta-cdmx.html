@@ -1125,13 +1125,8 @@
                     }
                 }
                 
-                // Calcola le hojas reali
-                let totalHojas = q * pages;
-                if (sides === 'x2') {
-                    totalHojas = Math.ceil(totalHojas / 2); // 2 lados = 1 hoja
-                }
-                
-                let total = totalHojas * pricePerPage;
+                // Calcola il totale: q * pages = numero totale di pagine da stampare
+                let total = q * pages * pricePerPage;
                 
                 // Aggiungi servizi aggiuntivi
                 if (engargoladoEl && engargoladoEl.checked) {
