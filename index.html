@@ -3663,7 +3663,7 @@
           <div class="upsells">
             <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
             <div class="upsell-item">
-              <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="40">
+              <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="20">
               <div class="upsell-info">
                 <div class="upsell-title">Engargolado</div>
                 <div class="upsell-desc">Encuadernado profesional con espiral</div>
@@ -3680,11 +3680,11 @@
                     </select>
                   </div>
                   <div style="font-size: 0.8rem; color: #666;">
-                    Precio: <span id="engargolado-price">$40</span> por engargolado
+                    Precio: <span id="engargolado-price">$20</span> por engargolado
                   </div>
                 </div>
               </div>
-              <div class="upsell-price">+$40</div>
+              <div class="upsell-price">+$20</div>
             </div>
             <div class="upsell-item">
               <input type="checkbox" class="upsell-checkbox" id="folders" data-price="15">
@@ -5185,8 +5185,9 @@
 
     // Animate number with count-up effect
     function animateNumber(element, targetValue) {
-      const currentText = element.textContent;
-      const currentValue = parseFloat(currentText.replace(/[^0-9.]/g, '')) || 0;
+      // Pulisce completamente il contenuto dell'elemento prima di iniziare l'animazione
+      element.textContent = '';
+      const currentValue = 0;
       const startValue = currentValue;
       const duration = 800; // milliseconds
       const startTime = performance.now();
@@ -5199,6 +5200,7 @@
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
         const currentNumber = startValue + (targetValue - startValue) * easeOutQuart;
         
+        // Sostituisce completamente il contenuto con il nuovo prezzo
         element.textContent = `$${currentNumber.toFixed(2)} MXN`;
         
         if (progress < 1) {
