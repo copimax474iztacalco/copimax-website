@@ -217,6 +217,24 @@
         gap: 16px !important;
       }
       
+      /* Grid 4 colonne mobile */
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+      
+      /* Calculadora centrada mobile */
+      .card[style*="max-width: 600px"] {
+        margin: 0 16px !important;
+        max-width: none !important;
+      }
+      
+      /* Logística mobile */
+      div[style*="max-width: 600px"][style*="margin: 24px auto 0"] {
+        margin: 16px !important;
+        max-width: none !important;
+      }
+      
       /* Form mobile */
       .type-btn, .color-btn {
         padding: 12px 16px !important;
@@ -495,12 +513,12 @@
     <div class="hero-content">
       <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        ¿Necesitas <span style="color: var(--cta1);">50,000 copias</span> para <strong>MAÑANA</strong>?
+        ¿Necesitas <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">50,000 copias</span> para <strong>MAÑANA</strong>?
       </h1>
       
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
       <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
-        Las tienes listas en <strong>24 horas</strong> desde <span style="color: var(--cta1); font-weight: 700;">$0.35</span> cada una
+        Las tienes listas en <strong>24 horas</strong> desde <span style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
       </p>
       
       <!-- CTA GIGANTE E URGENTE -->
@@ -530,42 +548,42 @@
     <section style="margin-bottom: 32px;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          ¿Por qué somos la <span style="color: var(--cta1);">imprenta líder en volumen</span>?
+          ¿Por qué somos la <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta líder en volumen</span>?
         </h2>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
           <div>
-            <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               🏆 Experiencia Comprobada en Grandes Volúmenes
             </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">
+            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
               Con más de dos décadas como <strong>imprenta especializada</strong>, hemos producido millones de copias para universidades, corporativos y dependencias gubernamentales. Nuestra <strong>imprenta</strong> maneja desde manuales estudiantiles hasta campañas publicitarias masivas.
             </p>
           </div>
           
           <div>
-            <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               ⚙️ Tecnología Industrial Exclusiva
             </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">
+            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
               Nuestra <strong>imprenta</strong> cuenta con equipos Xerox de producción industrial capaces de imprimir hasta 50,000 copias diarias manteniendo calidad offset. A diferencia de otras <strong>imprentas</strong>, garantizamos uniformidad en color y definición en toda tu producción.
             </p>
           </div>
           
           <div>
-            <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               📍 Ubicación Estratégica en Iztacalco
             </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">
+            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
               Somos la <strong>imprenta</strong> más accesible para la zona empresarial UPIICSA y alrededores. Esta ubicación privilegiada nos permite ofrecer entregas express y recolecciones sin costo adicional en un radio de 15km.
             </p>
           </div>
           
           <div>
-            <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               🚚 Logística Especializada para Volumen
             </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">
+            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
               Nuestra <strong>imprenta</strong> maneja la logística completa: desde recepción de archivos digitales hasta empaquetado profesional y entrega programada. Trabajamos con empresas de mensajería especializadas en documentos corporativos.
             </p>
           </div>
@@ -577,7 +595,7 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1);">Precios Transparentes</span> - Sin Sorpresas
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Precios Transparentes</span> - Sin Sorpresas
         </h2>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
@@ -658,7 +676,7 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1);">Casos de Éxito</span> de Nuestra Imprenta
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Casos de Éxito</span> de Nuestra Imprenta
         </h2>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
@@ -707,18 +725,10 @@
       </div>
     </section>
 
-    <section class="grid" style="margin-top:16px">
-      <div class="card p24">
-        <h3 style="margin-bottom:10px">Logística y SLA</h3>
-        <ul style="color:var(--muted);line-height:1.7;margin-left:16px">
-          <li>Producción continua 24–48h para tirajes de 10k–50k.</li>
-          <li>Entrega CDMX por zonas o retiro en tienda (Iztacalco).</li>
-          <li>Opcional: entrega por lotes/folio, paletizada.</li>
-          <li>Factura y control de calidad por muestra.</li>
-        </ul>
-      </div>
-      <div class="card p24">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000;">Cotiza tu proyecto industrial - Respuesta en 2 horas</h3>
+    <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
+    <section style="margin: 32px 0;">
+      <div class="card p24" style="max-width: 600px; margin: 0 auto;">
+        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu proyecto industrial - Respuesta en 2 horas</h3>
         <form onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Tiraje: '+document.getElementById('q').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
           <label style="display:block;margin:8px 0 4px">Tiraje estimado</label>
           <input id="q" type="number" min="10000" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
@@ -758,7 +768,29 @@
             </div>
           </div>
         </form>
-
+      </div>
+      
+      <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
+      <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
+        <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
+          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+            <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
+            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
+          </div>
+          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+            <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
+            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda (Iztacalco)</p>
+          </div>
+          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+            <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
+            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por lotes/folio, paletizada</p>
+          </div>
+          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+            <p style="color: var(--text); margin: 0; font-weight: 600;">✅ Control de calidad</p>
+            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Factura y control por muestra</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -766,7 +798,7 @@
     <section style="margin: 32px 0;">
       <div style="background: linear-gradient(135deg, var(--cta1), var(--cta2)); padding: 24px; border-radius: 16px; text-align: center;">
         <p style="font-size: 1.2rem; font-weight: 700; color: #000; margin: 0;">
-          🏆 <strong>Más de 500 empresas</strong> confían en nuestra <strong>imprenta</strong> para proyectos de gran <strong>volumen</strong>
+          🏆 <strong>Más de 500 empresas</strong> confían en nuestra <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta</strong> para proyectos de gran <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">volumen</strong>
         </p>
         <p style="font-size: 1rem; color: #000; margin: 8px 0 0 0;">
           Únete a universidades, bancos y dependencias gubernamentales
@@ -777,7 +809,7 @@
     <section class="faq" style="margin:24px 0">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1);">Preguntas Frecuentes</span> sobre Imprenta por Volumen
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Preguntas Frecuentes</span> sobre Imprenta por Volumen
         </h2>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -812,46 +844,46 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1);">Servicios Adicionales</span> de Nuestra Imprenta
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Servicios Adicionales</span> de Nuestra Imprenta
         </h2>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-          <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 16px;">🎨</div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <div style="font-size: 2rem; margin-bottom: 12px;">🎨</div>
+            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Diseño y Optimización de Archivos
             </h3>
-            <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">
+            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
               Nuestro equipo de diseño optimiza archivos para producción industrial, reduciendo costos de <strong>impresión</strong> hasta 30% en grandes <strong>volúmenes</strong>.
             </p>
           </div>
           
-          <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 16px;">📚</div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <div style="font-size: 2rem; margin-bottom: 12px;">📚</div>
+            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Acabados Profesionales para Volumen
             </h3>
-            <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">
+            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
               La <strong>imprenta</strong> ofrece engargolado, enmicado y empastado industrial para grandes cantidades. Ideal para manuales corporativos y material educativo.
             </p>
           </div>
           
-          <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 16px;">📦</div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <div style="font-size: 2rem; margin-bottom: 12px;">📦</div>
+            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Almacenamiento Temporal
             </h3>
-            <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">
+            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
               Nuestra <strong>imprenta</strong> cuenta con bodega climatizada para almacenar tu producción hasta por 30 días sin costo adicional.
             </p>
           </div>
           
-          <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 16px;">🚚</div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
+          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <div style="font-size: 2rem; margin-bottom: 12px;">🚚</div>
+            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Entrega Programada
             </h3>
-            <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">
+            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
               Coordinamos entregas escalonadas según tu calendario académico o empresarial. La <strong>imprenta</strong> puede dividir tu pedido en entregas semanales o quincenales.
             </p>
           </div>
@@ -875,13 +907,13 @@
           COPIMAX - Imprenta Industrial Iztacalco
         </h3>
         <p style="font-size: 1rem; color: #e5e7eb; margin-bottom: 4px;">
-          Especialistas en <strong>impresión por volumen</strong> desde 1998
+          Especialistas en <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">impresión por volumen</strong> desde 1998
         </p>
         <p style="font-size: 0.95rem; color: #d1d5db;">
           Zona UPIICSA • Iztacalco • Ciudad de México
         </p>
         <p style="font-size: 0.9rem; color: var(--cta1); font-weight: 600;">
-          <strong>Imprenta líder en grandes volúmenes CDMX</strong>
+          <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta líder en grandes volúmenes CDMX</strong>
         </p>
       </div>
       
@@ -918,7 +950,7 @@
       
       <!-- Copyright -->
       <div style="text-align: center; font-size: 0.9rem; color: #d1d5db; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; width: 100%;">
-        © 2025 COPIMAX – <strong>Imprenta</strong> copias por Volumen CDMX • Todos los derechos reservados
+        © 2025 COPIMAX – <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta</strong> copias por Volumen CDMX • Todos los derechos reservados
       </div>
     </div>
   </footer>
