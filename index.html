@@ -318,6 +318,101 @@
       }
     }
     
+    /* Tablet - Breakpoint intermedio ottimizzato */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      /* Hero ottimizzato per tablet */
+      .hero-main {
+        gap: 60px; /* Ridotto da 80px per tablet */
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem; /* Ridotto da 4rem per tablet */
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem; /* Ridotto da 1.5rem */
+      }
+      
+      .hero-description {
+        font-size: 1rem; /* Ridotto da 1.05rem */
+      }
+      
+      /* Logo hero ottimizzato per tablet */
+      .hero-logo img {
+        height: 140px; /* Ridotto da 160px per tablet */
+      }
+      
+      /* Stats ottimizzate per tablet */
+      .hero-stats {
+        gap: 30px; /* Ridotto da 40px */
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      
+      /* Video Reels ottimizzato per tablet */
+      .reels-grid {
+        grid-template-columns: repeat(3, 1fr); /* Da 4 a 3 colonne */
+        gap: 20px; /* Ridotto da 24px */
+      }
+      
+      /* Services & Packages ottimizzato per tablet */
+      .services-packages-grid {
+        gap: 32px; /* Ridotto da 48px */
+      }
+      
+      .services-section, .packages-section {
+        padding: 28px; /* Ridotto da 32px */
+      }
+      
+      /* Calculator ottimizzato per tablet */
+      .calculator-card {
+        padding: 28px; /* Ridotto da 32px */
+        max-width: 600px; /* Ridotto da 680px */
+      }
+      
+      .calc-hero h2 {
+        font-size: 2.2rem; /* Ridotto da 2.5rem */
+      }
+      
+      .calc-hero p {
+        font-size: 1.1rem; /* Ridotto da 1.2rem */
+      }
+      
+      /* Order Page ottimizzato per tablet */
+      .order-page {
+        padding: 60px 0 80px; /* Ridotto padding */
+      }
+      
+      .order-container {
+        padding: 0 20px; /* Ridotto da 24px */
+      }
+      
+      /* Gallery ottimizzata per tablet */
+      .gallery-container {
+        padding: 20px; /* Ridotto da 24px */
+      }
+      
+      .gallery-item {
+        min-width: 280px; /* Ridotto da 320px */
+      }
+      
+      /* Books Section ottimizzata per tablet */
+      .books-grid-container {
+        padding: 0 20px; /* Ridotto da 24px */
+      }
+      
+      .books-grid {
+        grid-template-columns: repeat(3, 1fr); /* Da 4 a 3 colonne */
+        gap: 20px; /* Ridotto da 24px */
+      }
+      
+      /* Legal Section ottimizzata per tablet */
+      .legal-grid {
+        grid-template-columns: repeat(2, 1fr); /* Da 3 a 2 colonne */
+        gap: 24px; /* Ridotto da 32px */
+      }
+    }
+    
     /* ===== NUOVO MENU MOBILE SLIDE LATERALE ===== */
     
     /* Pulsante hamburger mobile */
@@ -1173,30 +1268,30 @@
     
     /* Mobile extra piccolo - Ultra compatto per schermi molto stretti */
     @media(max-width:320px){
-      .services-packages{padding:20px 0}
-      .services-packages-grid{gap:12px}
-      .services-section, .packages-section{padding:12px;border-radius:10px}
-      .subsection-title{font-size:1rem;margin-bottom:10px;line-height:1.2}
+      .services-packages{padding:24px 0}
+      .services-packages-grid{gap:16px}
+      .services-section, .packages-section{padding:16px;border-radius:12px}
+      .subsection-title{font-size:1rem;margin-bottom:12px;line-height:1.3}
       
-      /* Servicios Principales - Layout ultra compatto */
-      .services-compact{gap:8px}
-      .service-compact{padding:8px;gap:8px}
+      /* Servicios Principales - Layout ultra compatto ma confortevole */
+      .services-compact{gap:10px}
+      .service-compact{padding:10px;gap:10px}
       .service-icon{font-size:1.2rem;width:30px;height:30px}
-      .service-info h4{font-size:0.9rem;margin-bottom:2px;line-height:1.2}
-      .service-price-compact{font-size:0.9rem;margin-bottom:2px}
-      .service-info p{font-size:0.75rem;line-height:1.3}
-      .service-info p:last-child{font-size:0.7rem;margin-top:1px}
+      .service-info h4{font-size:0.9rem;margin-bottom:3px;line-height:1.3}
+      .service-price-compact{font-size:0.9rem;margin-bottom:3px}
+      .service-info p{font-size:0.75rem;line-height:1.4}
+      .service-info p:last-child{font-size:0.7rem;margin-top:2px}
       
-      /* Paquetes Populares - Layout ultra compatto */
-      .packages-compact{gap:8px}
-      .package-compact{padding:8px;gap:6px}
-      .package-info h4{font-size:0.9rem;margin-bottom:2px;line-height:1.2}
-      .package-price{font-size:1rem;margin-bottom:2px}
-      .package-info p{font-size:0.75rem;line-height:1.3}
-      .package-cta{padding:6px 10px;font-size:0.8rem;border-radius:5px}
+      /* Paquetes Populares - Layout ultra compatto ma confortevole */
+      .packages-compact{gap:10px}
+      .package-compact{padding:10px;gap:8px}
+      .package-info h4{font-size:0.9rem;margin-bottom:3px;line-height:1.3}
+      .package-price{font-size:1rem;margin-bottom:3px}
+      .package-info p{font-size:0.75rem;line-height:1.4}
+      .package-cta{padding:8px 12px;font-size:0.8rem;border-radius:6px}
       
-      /* Deal badge ultra compatto */
-      .deal-badge{padding:3px 8px;font-size:0.75rem;margin-bottom:6px;line-height:1.2}
+      /* Deal badge ultra compatto ma confortevole */
+      .deal-badge{padding:4px 10px;font-size:0.75rem;margin-bottom:8px;line-height:1.3}
       
       /* Miglioramenti per la leggibilità su schermi molto piccoli */
       .services-packages-header p{font-size:0.9rem;margin-bottom:24px;line-height:1.4}
@@ -1372,7 +1467,7 @@
       font-size:1.2rem;color:rgba(255,255,255,0.9);margin-bottom:2rem;line-height:1.6;max-width:600px;margin-left:auto;margin-right:auto
     }
     .calc-subtitle{font-size:1.1rem;color:rgba(255,255,255,0.9);margin-bottom:30px}
-    .calc-progress{display:flex;justigit add .fy-content:center;align-items:center;gap:20px;margin-bottom:20px}
+    .calc-progress{display:flex;justify-content:center;align-items:center;gap:20px;margin-bottom:20px}
     .progress-step{display:flex;flex-direction:column;align-items:center;gap:8px}
     .step-number{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;border:2px solid rgba(255,255,255,0.3)}
     .progress-step.active .step-number{background:var(--cta1);border-color:var(--cta1);color:#000}
@@ -1476,6 +1571,11 @@
     .cta-whatsapp:hover,.cta-online:hover,.cta-call:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.2)}
     .cta-icon{font-size:1.3rem;flex-shrink:0}
     .cta-text{font-weight:700;word-wrap:break-word}
+    
+    /* Color Details Styles */
+    .color-type-option.active div{border-color:#10b981;background:#f0fdf4}
+    .color-type-option:hover div{border-color:#d1d5db;background:#f9fafb}
+    .mixed-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     
     /* BOTTONI CALCOLATRICE - STILI NORMALI */
     .calc-actions .cta-primary,
@@ -1868,56 +1968,60 @@
       
       /* Input fields e buttons ultra compatti */
       .calc-actions{grid-template-columns:1fr;gap:12px;margin-top:20px}
-      .cta-whatsapp, .cta-online, .cta-call{padding:14px 20px;font-size:1rem;border-radius:14px}
-      .cta-icon{font-size:1.2rem}
-      .cta-text{font-size:1rem}
+    .cta-whatsapp, .cta-online, .cta-call{padding:14px 20px;font-size:1rem;border-radius:14px}
+    .cta-icon{font-size:1.2rem}
+    .cta-text{font-size:1rem}
+    
+    /* Color Details Mobile */
+    .color-type-options{grid-template-columns:1fr;gap:8px}
+    .mixed-inputs{grid-template-columns:1fr;gap:8px}
       
       /* File upload ultra compatto */
       .file-upload{border-width:1px;padding:24px}
       .file-upload h3{font-size:1.2rem}
       .file-upload p{font-size:0.9rem}
       
-      /* Calculator file upload ultra compatto */
-      .calc-file-upload{padding:16px;border-radius:10px}
-      .calc-upload-icon{font-size:1.8rem;margin-bottom:8px}
-      .calc-file-upload h4{font-size:0.95rem;margin-bottom:6px}
-      .calc-file-upload p{font-size:0.85rem;margin:6px 0}
-      .calc-file-preview{padding:10px;border-radius:6px}
+      /* Calculator file upload ultra compatto ma confortevole */
+      .calc-file-upload{padding:18px;border-radius:10px}
+      .calc-upload-icon{font-size:1.8rem;margin-bottom:10px}
+      .calc-file-upload h4{font-size:0.95rem;margin-bottom:8px}
+      .calc-file-upload p{font-size:0.85rem;margin:8px 0}
+      .calc-file-preview{padding:12px;border-radius:6px}
       
-      /* Validation messages ultra compatte */
-      .validation-message{font-size:0.75rem;margin-top:3px;min-height:14px}
+      /* Validation messages ultra compatte ma leggibili */
+      .validation-message{font-size:0.8rem;margin-top:4px;min-height:16px}
     }
     
     /* Mobile extra piccolo - Ultra compatto per Order Page */
     @media(max-width:320px){
-      .order-page{padding:24px 0 32px}
-      .order-container{padding:0 8px}
-      .order-header h1{font-size:1.6rem;margin-bottom:6px}
+      .order-page{padding:28px 0 36px}
+      .order-container{padding:0 12px}
+      .order-header h1{font-size:1.6rem;margin-bottom:8px}
       .order-header p{font-size:0.85rem}
       
-      /* Steps extra compatti */
-      .order-steps{gap:4px;margin:12px 0}
-      .step{padding:4px 6px;font-size:0.75rem;min-width:70px}
+      /* Steps extra compatti ma confortevoli */
+      .order-steps{gap:6px;margin:16px 0}
+      .step{padding:6px 8px;font-size:0.75rem;min-width:70px}
       .step-number{width:16px;height:16px;font-size:0.7rem}
       
       /* Progress bar extra compatta */
-      .order-progress-bar{height:2px;margin:8px 0}
+      .order-progress-bar{height:2px;margin:10px 0}
       
-      /* Sezioni extra compatte */
-      .order-section{padding:12px;margin:8px 0;border-radius:12px}
-      .section-header{font-size:0.95rem;margin-bottom:8px;gap:6px}
+      /* Sezioni extra compatte ma confortevoli */
+      .order-section{padding:14px;margin:10px 0;border-radius:12px}
+      .section-header{font-size:0.95rem;margin-bottom:10px;gap:8px}
       .section-header span{font-size:0.95rem}
       
-      /* File upload extra compatto */
-      .file-upload{padding:16px;border-radius:8px}
-      .upload-icon{font-size:2rem;margin-bottom:10px}
-      .file-upload h3{font-size:1rem;margin-bottom:6px}
-      .file-upload p{font-size:0.8rem;margin:6px 0}
+      /* File upload extra compatto ma confortevole */
+      .file-upload{padding:18px;border-radius:8px}
+      .upload-icon{font-size:2rem;margin-bottom:12px}
+      .file-upload h3{font-size:1rem;margin-bottom:8px}
+      .file-upload p{font-size:0.8rem;margin:8px 0}
       
-      /* File preview extra compatto */
-      .file-preview-grid{gap:6px}
-      .file-preview-item{padding:8px;border-radius:8px}
-      .file-preview-header{gap:6px;margin-bottom:6px}
+      /* File preview extra compatto ma confortevole */
+      .file-preview-grid{gap:8px}
+      .file-preview-item{padding:10px;border-radius:8px}
+      .file-preview-header{gap:8px;margin-bottom:8px}
       .file-icon{font-size:1.2rem}
       .file-name{font-size:0.8rem}
       .file-size{font-size:0.7rem}
@@ -3642,6 +3746,44 @@
             </div>
           </div>
 
+          <!-- Opzioni dettagliate per stampa a colori -->
+          <div class="color-details" id="color-details" style="display: none; margin-top: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
+            <h4 style="margin-bottom: 12px; font-weight: 600; color: #374151;">Tipo de impresión a color</h4>
+            <div class="color-type-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+              <div class="color-type-option" data-color-type="text-logo">
+                <div style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                  <div style="font-weight: 600; margin-bottom: 4px;">📝 Texto y Logo</div>
+                  <div style="font-size: 0.9rem; color: #6b7280;">$5 MXN por copia</div>
+                </div>
+              </div>
+              <div class="color-type-option" data-color-type="images">
+                <div style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                  <div style="font-weight: 600; margin-bottom: 4px;">🖼️ Imágenes</div>
+                  <div style="font-size: 0.9rem; color: #6b7280;">$10 MXN por copia</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opzione per calcolo misto -->
+            <div class="mixed-calculation" style="margin-top: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <input type="checkbox" id="mixed-calculation" style="margin: 0;">
+                <label for="mixed-calculation" style="font-weight: 600; color: #374151;">Calcular precio mixto</label>
+              </div>
+              
+              <div class="mixed-inputs" id="mixed-inputs" style="display: none; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias texto/logo:</label>
+                  <input type="number" id="text-logo-qty" min="0" value="0" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias con imágenes:</label>
+                  <input type="number" id="images-qty" min="0" value="0" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="calc-options">
             <div class="calc-option active" data-sides="double">
               <div class="option-icon">📄</div>
@@ -3695,7 +3837,7 @@
                   <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
                     <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
                     <input type="number" id="folders-qty" min="1" value="1" style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span style="font-size: 0.9rem; color: #666;">(5 folders por pack)</span>
+                    <span style="font-size: 0.9rem; color: #666;">(1 folder individual)</span>
                   </div>
                   <div style="font-size: 0.8rem; color: #666;">
                     Precio: <span id="folders-price">$15</span> por folder
@@ -4581,6 +4723,58 @@
     setupEventListeners();
     setupValidationListeners();
     
+    // Funzione per gestire le opzioni dettagliate di colore
+    function setupColorDetailsListeners() {
+      // Event listeners per i tipi di colore
+      document.querySelectorAll('.color-type-option').forEach(option => {
+        option.addEventListener('click', () => {
+          // Rimuovi active da tutti
+          document.querySelectorAll('.color-type-option').forEach(opt => opt.classList.remove('active'));
+          // Aggiungi active al selezionato
+          option.classList.add('active');
+          
+          // Aggiorna orderData
+          orderData.colorType = option.dataset.colorType;
+          calculate();
+        });
+      });
+      
+      // Event listener per il checkbox calcolo misto
+      const mixedCheckbox = document.getElementById('mixed-calculation');
+      const mixedInputs = document.getElementById('mixed-inputs');
+      
+      if (mixedCheckbox) {
+        mixedCheckbox.addEventListener('change', () => {
+          if (mixedCheckbox.checked) {
+            mixedInputs.style.display = 'grid';
+            orderData.mixedCalculation = true;
+          } else {
+            mixedInputs.style.display = 'none';
+            orderData.mixedCalculation = false;
+          }
+          calculate();
+        });
+      }
+      
+      // Event listeners per gli input del calcolo misto
+      const textLogoQty = document.getElementById('text-logo-qty');
+      const imagesQty = document.getElementById('images-qty');
+      
+      if (textLogoQty) {
+        textLogoQty.addEventListener('input', () => {
+          orderData.textLogoQty = parseInt(textLogoQty.value) || 0;
+          calculate();
+        });
+      }
+      
+      if (imagesQty) {
+        imagesQty.addEventListener('input', () => {
+          orderData.imagesQty = parseInt(imagesQty.value) || 0;
+          calculate();
+        });
+      }
+    }
+    
     // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
     
     // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
@@ -4643,9 +4837,19 @@
             
             console.log('Updated orderData:', orderData);
             calculate();
+            
+            // Gestisci la visualizzazione delle opzioni dettagliate per colore
+            if (opt.dataset.color === 'color') {
+              document.getElementById('color-details').style.display = 'block';
+            } else {
+              document.getElementById('color-details').style.display = 'none';
+            }
           }
         });
       });
+
+      // Event listeners per le nuove opzioni di colore
+      setupColorDetailsListeners();
 
       // Quantity input
       quantityInput.addEventListener('input', () => {
@@ -5139,8 +5343,22 @@
         } else {
           unitPrice = orderData.sides === 'double' ? 0.35 : 0.40;
         }
-      } else {
-        unitPrice = 7.5; // Average color price
+      } else if (orderData.color === 'color') {
+        // Calcolo per stampa a colori
+        if (orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
+          // Calcolo misto: testo/logo + immagini
+          const textLogoTotal = orderData.textLogoQty * 5; // $5 per testo/logo
+          const imagesTotal = orderData.imagesQty * 10; // $10 per immagini
+          const totalMixed = textLogoTotal + imagesTotal;
+          const totalQty = orderData.textLogoQty + orderData.imagesQty;
+          unitPrice = totalMixed / totalQty; // Prezzo medio
+        } else if (orderData.colorType === 'text-logo') {
+          unitPrice = 5.00; // $5 per testo e logo
+        } else if (orderData.colorType === 'images') {
+          unitPrice = 10.00; // $10 per immagini
+        } else {
+          unitPrice = 7.50; // Prezzo medio di default
+        }
       }
       
       console.log('📊 calculate() - Prezzo unitario calcolato:', unitPrice);
@@ -5151,12 +5369,29 @@
       const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
       const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
       const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
-      let subtotal = q * pagesToPrint * unitPrice;
+      
+      // Calcolo del subtotal in base al tipo di calcolo
+      let subtotal;
+      if (orderData.color === 'color' && orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
+        // Calcolo misto: usa le quantità specifiche per testo/logo e immagini
+        const textLogoTotal = orderData.textLogoQty * pagesToPrint * 5; // $5 per testo/logo
+        const imagesTotal = orderData.imagesQty * pagesToPrint * 10; // $10 per immagini
+        subtotal = textLogoTotal + imagesTotal;
+      } else {
+        // Calcolo normale
+        subtotal = q * pagesToPrint * unitPrice;
+      }
       
       console.log('📊 calculate() - Calcolo prezzo:');
       console.log('📊 unitPrice:', unitPrice);
       console.log('📊 pagesToPrint:', pagesToPrint);
-      console.log('📊 subtotal calcolo:', q, '×', pagesToPrint, '×', unitPrice, '=', subtotal);
+      if (orderData.color === 'color' && orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
+        console.log('📊 Calcolo misto - Texto/Logo:', orderData.textLogoQty, '×', pagesToPrint, '× $5 =', orderData.textLogoQty * pagesToPrint * 5);
+        console.log('📊 Calcolo misto - Imágenes:', orderData.imagesQty, '×', pagesToPrint, '× $10 =', orderData.imagesQty * pagesToPrint * 10);
+        console.log('📊 subtotal calcolo misto:', subtotal);
+      } else {
+        console.log('📊 subtotal calcolo normale:', q, '×', pagesToPrint, '×', unitPrice, '=', subtotal);
+      }
       
       // Add upsells
       let upsellTotal = 0;
