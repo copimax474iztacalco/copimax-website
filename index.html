@@ -230,6 +230,22 @@
     /* Critical CSS - Above the fold optimizations */
     *{margin:0;padding:0;box-sizing:border-box}
     
+    /* Prevenzione scroll infinito e overflow */
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Assicura che tutti gli elementi rispettino i limiti del viewport */
+    * {
+      max-width: 100%;
+    }
+    
     /* Preload critical images */
     body::before {
       content: '';
@@ -254,7 +270,22 @@
   --whatsapp:#25D366;
   --radius:10px;
     }
-    body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;overflow-x:hidden;background:#fff}
+    html, body {
+      font-family:'Inter',sans-serif;
+      line-height:1.6;
+      color:#333;
+      overflow-x:hidden;
+      background:#fff;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    body {
+      position: relative;
+    }
+    
     a{text-decoration:none}
 
     /* Header Styles - Desktop - Standardizzato */
@@ -1999,6 +2030,24 @@
       .order-header h1{font-size:1.6rem;margin-bottom:8px}
       .order-header p{font-size:0.85rem}
       
+      /* Fix per schermi molto piccoli */
+      .container {
+        padding: 0 12px;
+      }
+      
+      .hero {
+        padding: 50px 0 30px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      
       /* Steps extra compatti ma confortevoli */
       .order-steps{gap:6px;margin:16px 0}
       .step{padding:6px 8px;font-size:0.75rem;min-width:70px}
@@ -3095,9 +3144,20 @@
       margin-top: 50px;
       padding: 60px 0 60px 0; /* spazio di respiro dal footer, sfondo bianco */
       background: #ffffff;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    /* Fix per mobile - evita overflow orizzontale */
+    @media (max-width: 768px) {
+      .legal-section-extended {
+        margin-top: 30px;
+        padding: 40px 0;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
     
     .legal-grid {
@@ -3430,6 +3490,26 @@
       .hero-stats{justify-content:center}
       .section-title{font-size:1.5rem}
       .contact-header{display:none}
+      
+      /* Fix per prevenire overflow orizzontale */
+      .container {
+        padding: 0 16px;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      
+      /* Assicura che tutti gli elementi rispettino la larghezza del viewport */
+      * {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      
+      /* Fix per elementi che potrebbero causare scroll infinito */
+      .floating-whatsapp {
+        bottom: 20px;
+        right: 20px;
+      }
+      
       .main-navigation{display:none}
     }
     
@@ -7142,6 +7222,49 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
     function closeMobileSlideMenu() {
       const menu = document.getElementById('mobileSlideMenu');
       menu.classList.remove('open');
+    }
+    
+    // Test delle correzioni mobile (solo in modalità debug)
+    if (window.location.search.includes('debug=true')) {
+      console.log('🧪 Modalità debug attivata - Test correzioni mobile');
+      
+      // Test 1: Verifica overflow orizzontale
+      function testHorizontalOverflow() {
+        const bodyWidth = document.body.scrollWidth;
+        const windowWidth = window.innerWidth;
+        const hasOverflow = bodyWidth > windowWidth;
+        
+        console.log(`📏 Test Overflow: ${hasOverflow ? '❌ FAIL' : '✅ PASS'} (${bodyWidth}px vs ${windowWidth}px)`);
+        return !hasOverflow;
+      }
+      
+      // Test 2: Verifica footer position
+      function testFooterPosition() {
+        const footer = document.querySelector('footer');
+        if (!footer) {
+          console.log('🦶 Test Footer: ❌ FAIL - Footer non trovato');
+          return false;
+        }
+        
+        const footerRect = footer.getBoundingClientRect();
+        const bodyRect = document.body.getBoundingClientRect();
+        const isLastElement = footerRect.bottom >= bodyRect.bottom - 10;
+        
+        console.log(`🦶 Test Footer: ${isLastElement ? '✅ PASS' : '❌ FAIL'}`);
+        return isLastElement;
+      }
+      
+      // Esegui test dopo caricamento
+      setTimeout(() => {
+        const overflowTest = testHorizontalOverflow();
+        const footerTest = testFooterPosition();
+        
+        if (overflowTest && footerTest) {
+          console.log('🎉 TUTTE LE CORREZIONI FUNZIONANO!');
+        } else {
+          console.log('⚠️ Alcune correzioni richiedono attenzione');
+        }
+      }, 1000);
     }
   </script>
 </body>
