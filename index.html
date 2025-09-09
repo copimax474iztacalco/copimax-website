@@ -1170,10 +1170,8 @@
     .video-container{position:relative;width:100%;height:100%;background:#000}
     .reel-video{width:100%;height:100%;border:none;display:block}
     
-    .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,0.7) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;color:#fff;opacity:0.8;transition:opacity 0.3s ease;cursor:pointer;pointer-events:none}
-    .video-reel-card:hover .video-overlay{opacity:0.2}
-    .video-reel-card .play-button{pointer-events:auto;background:rgba(0,0,0,0.7);border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all 0.3s ease}
-    .video-reel-card .play-button:hover{background:rgba(0,0,0,0.9);transform:scale(1.1)}
+    .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,0.7) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;color:#fff;opacity:1;transition:opacity 0.3s ease;cursor:pointer}
+    .video-reel-card:hover .video-overlay{opacity:0.3}
     
     .play-button{font-size:2rem;margin-bottom:12px;text-align:center}
     .video-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;text-align:center}
@@ -1234,33 +1232,26 @@
     .package-price{font-size:1.4rem;font-weight:800;color:var(--primary1);margin-bottom:4px}
     .package-info p{font-size:0.9rem;color:var(--muted);margin:0;line-height:1.4}
     
-    /* Mobile Optimization - DEFINITIVA */
+    /* Mobile Optimization - Ultra Compact */
     @media(max-width:768px){
       .services-packages{padding:32px 0}
       .services-packages-grid{grid-template-columns:1fr;gap:24px;max-width:100%}
-      .services-section, .packages-section{padding:20px;border-radius:16px;overflow:visible}
+      .services-section, .packages-section{padding:20px;border-radius:16px}
       .subsection-title{font-size:1.2rem;margin-bottom:16px}
-      
-      /* Servicios Principales - Layout verticale SEMPLICE */
-      .services-compact{display:flex;flex-direction:column;gap:16px;width:100%}
-      .service-compact{display:flex;padding:16px;gap:16px;align-items:center;width:100%;box-sizing:border-box}
-      .service-icon{font-size:1.8rem;width:50px;height:50px;flex-shrink:0}
-      .service-info{flex:1;min-width:0;width:100%}
-      .service-info h4{font-size:1.1rem;margin-bottom:4px;word-wrap:break-word}
-      .service-price-compact{font-size:1.3rem;margin-bottom:4px}
-      .service-info p{font-size:0.9rem;margin:0;line-height:1.4;word-wrap:break-word}
-      
-      /* Paquetes Populares - Layout verticale SEMPLICE */
-      .packages-compact{display:flex;flex-direction:column;gap:16px;width:100%}
-      .package-compact{display:flex;padding:16px;flex-direction:column;align-items:stretch;text-align:center;width:100%;box-sizing:border-box}
-      .package-info{text-align:center;margin-bottom:8px;width:100%}
-      .package-info h4{font-size:1.1rem;margin-bottom:4px;word-wrap:break-word}
-      .package-price{font-size:1.3rem;margin-bottom:4px}
-      .package-info p{font-size:0.9rem;margin:0;line-height:1.4;word-wrap:break-word}
-      .package-cta{width:100%;padding:12px 20px;font-size:0.9rem;border-radius:8px;box-sizing:border-box}
+      /* Primary services in a horizontal row with scroll */
+      .services-compact{flex-direction:row;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+      .services-compact::-webkit-scrollbar{height:6px}
+      .services-compact::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:999px}
+      .service-compact{padding:12px;gap:12px;min-width:220px;scroll-snap-align:start}
+      .service-icon{font-size:1.5rem;width:40px;height:40px}
+      .service-info h4{font-size:1rem}
+      .service-price-compact{font-size:1.1rem}
+      .package-compact{padding:12px}
+      .package-info h4{font-size:1rem}
+      .package-price{font-size:1.2rem}
     }
     
-    /* Mobile molto piccolo - SOLO per schermi sotto 480px */
+    /* Mobile molto piccolo - Ultra Compact per Servicios y Paquetes */
     @media(max-width:480px){
       .hero-description {
         font-size: 0.95rem;
@@ -1280,34 +1271,62 @@
       
       .services-packages{padding:24px 0}
       .services-packages-grid{gap:16px;max-width:100%}
-      .services-section, .packages-section{padding:16px;border-radius:12px;overflow:visible}
+      .services-section, .packages-section{padding:16px;border-radius:12px}
       .subsection-title{font-size:1.1rem;margin-bottom:12px}
       
-      /* Servicios Principales - Layout orizzontale SOLO per schermi molto piccoli */
-      .services-compact{display:flex;flex-direction:row;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;width:100%}
-      .services-compact::-webkit-scrollbar{height:4px}
-      .services-compact::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:999px}
-      .service-compact{display:flex;padding:8px;gap:8px;min-width:160px;scroll-snap-align:start;flex-direction:row;align-items:center;flex-shrink:0;box-sizing:border-box}
+      /* Servicios Principales - Layout verticale su mobile molto piccolo */
+      .services-compact{flex-direction:column;gap:10px;overflow-x:visible;padding-bottom:0}
+      .service-compact{padding:10px;gap:10px;min-width:auto;scroll-snap-align:none;flex-direction:row;align-items:center}
       .service-icon{font-size:1.3rem;width:35px;height:35px;flex-shrink:0}
       .service-info{flex:1;min-width:0}
-      .service-info h4{font-size:0.95rem;margin-bottom:3px;word-wrap:break-word}
+      .service-info h4{font-size:0.95rem;margin-bottom:3px}
       .service-price-compact{font-size:1rem;margin-bottom:3px}
-      .service-info p{font-size:0.8rem;margin:0;word-wrap:break-word}
+      .service-info p{font-size:0.8rem;margin:0}
       .service-info p:last-child{font-size:0.75rem;margin-top:2px}
       
-      /* Paquetes Populares - Layout verticale anche su mobile piccolo */
-      .packages-compact{display:flex;flex-direction:column;gap:10px;width:100%}
-      .package-compact{display:flex;padding:10px;gap:8px;flex-direction:column;align-items:stretch;text-align:center;width:100%;box-sizing:border-box}
-      .package-info{text-align:center;margin-bottom:8px;width:100%}
-      .package-info h4{font-size:0.95rem;margin-bottom:3px;word-wrap:break-word}
+      /* Paquetes Populares - Layout ottimizzato per mobile molto piccolo */
+      .packages-compact{gap:10px}
+      .package-compact{padding:10px;gap:8px;flex-direction:row;align-items:center;text-align:left}
+      .package-info{text-align:left;margin-bottom:0;flex:1;min-width:0}
+      .package-info h4{font-size:0.95rem;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .package-price{font-size:1.1rem;margin-bottom:3px}
-      .package-info p{font-size:0.8rem;margin:0;word-wrap:break-word}
-      .package-cta{width:100%;padding:8px 12px;font-size:0.85rem;border-radius:6px;box-sizing:border-box}
+      .package-info p{font-size:0.8rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .package-cta{width:auto;padding:8px 12px;font-size:0.85rem;border-radius:6px;flex-shrink:0}
       
       /* Deal badge più compatto */
       .deal-badge{padding:4px 10px;font-size:0.8rem;margin-bottom:8px}
     }
     
+    /* Mobile extra piccolo - Ultra compatto per schermi molto stretti */
+    @media(max-width:320px){
+      .services-packages{padding:24px 0}
+      .services-packages-grid{gap:16px}
+      .services-section, .packages-section{padding:16px;border-radius:12px}
+      .subsection-title{font-size:1rem;margin-bottom:12px;line-height:1.3}
+      
+      /* Servicios Principales - Layout ultra compatto ma confortevole */
+      .services-compact{gap:10px}
+      .service-compact{padding:10px;gap:10px}
+      .service-icon{font-size:1.2rem;width:30px;height:30px}
+      .service-info h4{font-size:0.9rem;margin-bottom:3px;line-height:1.3}
+      .service-price-compact{font-size:0.9rem;margin-bottom:3px}
+      .service-info p{font-size:0.75rem;line-height:1.4}
+      .service-info p:last-child{font-size:0.7rem;margin-top:2px}
+      
+      /* Paquetes Populares - Layout ultra compatto ma confortevole */
+      .packages-compact{gap:10px}
+      .package-compact{padding:10px;gap:8px;flex-direction:row;align-items:center;text-align:left}
+      .package-info{text-align:left;margin-bottom:0;flex:1;min-width:0}
+      .package-info h4{font-size:0.9rem;margin-bottom:3px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .package-price{font-size:1rem;margin-bottom:3px}
+      .package-info p{font-size:0.75rem;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .package-cta{padding:8px 12px;font-size:0.8rem;border-radius:6px;flex-shrink:0}
+      
+      /* Deal badge ultra compatto ma confortevole */
+      .deal-badge{padding:4px 10px;font-size:0.75rem;margin-bottom:8px;line-height:1.3}
+      
+      /* Miglioramenti per la leggibilità su schermi molto piccoli */
+      .services-packages-header p{font-size:0.9rem;margin-bottom:24px;line-height:1.4}
       .service-compact, .package-compact{word-break:break-word}
     }
     
@@ -3619,11 +3638,6 @@
                   frameborder="0" 
                   allowfullscreen>
                 </iframe>
-                <div class="video-overlay">
-                  <div class="play-button">▶</div>
-                  <h3 class="video-title">Impresión Rápida</h3>
-                  <p class="video-description">Proceso de impresión en tiempo real</p>
-                </div>
               </div>
             </div>
 
@@ -3636,11 +3650,6 @@
                   frameborder="0" 
                   allowfullscreen>
                 </iframe>
-                <div class="video-overlay">
-                  <div class="play-button">▶</div>
-                  <h3 class="video-title">Calidad Profesional</h3>
-                  <p class="video-description">Nuestros equipos de última generación</p>
-                </div>
               </div>
             </div>
 
@@ -3653,11 +3662,6 @@
                   frameborder="0" 
                   allowfullscreen>
                 </iframe>
-                <div class="video-overlay">
-                  <div class="play-button">▶</div>
-                  <h3 class="video-title">Servicio Express</h3>
-                  <p class="video-description">Entrega rápida y confiable</p>
-                </div>
               </div>
             </div>
 
@@ -3670,11 +3674,6 @@
                   frameborder="0" 
                   allowfullscreen>
                 </iframe>
-                <div class="video-overlay">
-                  <div class="play-button">▶</div>
-                  <h3 class="video-title">Atención Personalizada</h3>
-                  <p class="video-description">Equipo especializado para ti</p>
-                </div>
               </div>
             </div>
           </div>
@@ -5368,43 +5367,10 @@
       
       videoCards.forEach((card, index) => {
         const iframe = card.querySelector('.reel-video');
-        const playButton = card.querySelector('.play-button');
         
         if (!iframe) return;
         
-        // Click handler for play button
-        if (playButton) {
-          playButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Hide overlay and play video
-            const overlay = card.querySelector('.video-overlay');
-            if (overlay) {
-              overlay.style.display = 'none';
-            }
-            
-            // Enable autoplay on iframe
-            const currentSrc = iframe.src;
-            if (currentSrc.includes('autoplay=0')) {
-              iframe.src = currentSrc.replace('autoplay=0', 'autoplay=1');
-            }
-          });
-        }
-        
-        // Click handler for entire card
-        card.addEventListener('click', (e) => {
-          if (e.target === playButton) return;
-          
-          const overlay = card.querySelector('.video-overlay');
-          if (overlay && overlay.style.display !== 'none') {
-            overlay.style.display = 'none';
-            const currentSrc = iframe.src;
-            if (currentSrc.includes('autoplay=0')) {
-              iframe.src = currentSrc.replace('autoplay=0', 'autoplay=1');
-            }
-          }
-        });
+        // No overlay needed - Vimeo controls are always visible and functional
         // Users can click directly on Vimeo player controls
       });
       
