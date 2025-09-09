@@ -1238,17 +1238,36 @@
       .services-packages-grid{grid-template-columns:1fr;gap:24px;max-width:100%}
       .services-section, .packages-section{padding:20px;border-radius:16px}
       .subsection-title{font-size:1.2rem;margin-bottom:16px}
-      /* Primary services in a horizontal row with scroll */
-      .services-compact{flex-direction:row;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
-      .services-compact::-webkit-scrollbar{height:6px}
-      .services-compact::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:999px}
-      .service-compact{padding:12px;gap:12px;min-width:220px;scroll-snap-align:start}
-      .service-icon{font-size:1.5rem;width:40px;height:40px}
-      .service-info h4{font-size:1rem}
-      .service-price-compact{font-size:1.1rem}
-      .package-compact{padding:12px}
-      .package-info h4{font-size:1rem}
-      .package-price{font-size:1.2rem}
+      /* Primary services mantengono layout verticale su tablet/mobile normale */
+      .services-compact{flex-direction:column;gap:16px}
+      .service-compact{padding:16px;gap:16px}
+      .service-icon{font-size:1.8rem;width:50px;height:50px}
+      .service-info h4{font-size:1.1rem}
+      .service-price-compact{font-size:1.3rem}
+      .package-compact{padding:16px}
+      .package-info h4{font-size:1.1rem}
+      .package-price{font-size:1.3rem}
+    }
+    
+    /* Mobile intermedio - Layout ottimizzato per iPhone 13 Pro Max e simili */
+    @media(max-width:600px) and (min-width:481px){
+      .services-packages{padding:28px 0}
+      .services-packages-grid{gap:20px}
+      .services-section, .packages-section{padding:18px;border-radius:14px}
+      .subsection-title{font-size:1.15rem;margin-bottom:14px}
+      
+      /* Servicios Principales - Layout verticale ottimizzato */
+      .services-compact{flex-direction:column;gap:14px}
+      .service-compact{padding:14px;gap:14px}
+      .service-icon{font-size:1.6rem;width:45px;height:45px}
+      .service-info h4{font-size:1.05rem}
+      .service-price-compact{font-size:1.2rem}
+      
+      /* Paquetes Populares - Layout verticale ottimizzato */
+      .packages-compact{gap:12px}
+      .package-compact{padding:14px}
+      .package-info h4{font-size:1.05rem}
+      .package-price{font-size:1.25rem}
     }
     
     /* Mobile molto piccolo - Ultra Compact per Servicios y Paquetes */
@@ -1274,8 +1293,10 @@
       .services-section, .packages-section{padding:16px;border-radius:12px}
       .subsection-title{font-size:1.1rem;margin-bottom:12px}
       
-      /* Servicios Principales - Layout orizzontale compatto su mobile molto piccolo */
+      /* Servicios Principales - Layout orizzontale SOLO per schermi molto piccoli */
       .services-compact{flex-direction:row;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+      .services-compact::-webkit-scrollbar{height:4px}
+      .services-compact::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:999px}
       .service-compact{padding:8px;gap:8px;min-width:160px;scroll-snap-align:start;flex-direction:row;align-items:center;flex-shrink:0}
       .service-icon{font-size:1.3rem;width:35px;height:35px;flex-shrink:0}
       .service-info{flex:1;min-width:0}
