@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const qtyEl = document.getElementById('q');
     const sidesEl = document.getElementById('sides');
-    const totalEl = document.getElementById('total-preview');
     
-    if (!qtyEl || !sidesEl || !totalEl) {
+    if (!qtyEl || !sidesEl) {
         console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
         return;
     }
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const total = q * pricePerPage;
-        totalEl.textContent = fmt(total);
+        // Non aggiorniamo più totalEl per evitare conflitti con index.html
         
         // Aggiorna anche il campo tipo automaticamente
         updateTipoField();
