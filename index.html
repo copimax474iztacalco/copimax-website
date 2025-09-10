@@ -5463,11 +5463,8 @@
         const textLogoTotal = orderData.textLogoQty * pagesToPrint * 5; // $5 per testo/logo
         const imagesTotal = orderData.imagesQty * pagesToPrint * 10; // $10 per immagini
         subtotal = textLogoTotal + imagesTotal;
-      } else if (orderData.color === 'bw' && q <= 100) {
-        // CORREZIONE: Per le prime 100 copie BN, prezzo fisso per copia (non per pagina)
-        subtotal = q * unitPrice;
       } else {
-        // Calcolo normale per >100 copie BN o colori
+        // Calcolo normale per tutte le copie BN e colori
         subtotal = q * pagesToPrint * unitPrice;
       }
       
