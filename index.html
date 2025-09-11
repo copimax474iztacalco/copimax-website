@@ -3958,7 +3958,8 @@
               <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
             </div>
             <div class="calc-total" id="total">$70.00 MXN</div>
-                            <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
+            <div id="impressions-display" style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
+            <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
           </div>
 
           <div class="calc-actions">
@@ -5456,16 +5457,19 @@
       const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
       const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
       
+      // Applica moltiplicatore per doble cara: 2 impressioni per foglio
+      const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
+      
       // Calcolo del subtotal in base al tipo di calcolo
       let subtotal;
       if (orderData.color === 'color' && orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
         // Calcolo misto: usa le quantità specifiche per testo/logo e immagini
-        const textLogoTotal = orderData.textLogoQty * pagesToPrint * 5; // $5 per testo/logo
-        const imagesTotal = orderData.imagesQty * pagesToPrint * 10; // $10 per immagini
+        const textLogoTotal = orderData.textLogoQty * pagesToPrint * sidesMultiplier * 5; // $5 per testo/logo
+        const imagesTotal = orderData.imagesQty * pagesToPrint * sidesMultiplier * 10; // $10 per immagini
         subtotal = textLogoTotal + imagesTotal;
       } else {
         // Calcolo normale per tutte le copie BN e colori
-        subtotal = q * pagesToPrint * unitPrice;
+        subtotal = q * pagesToPrint * sidesMultiplier * unitPrice;
       }
       
       console.log('📊 calculate() - Calcolo prezzo:');
@@ -5499,6 +5503,13 @@
       
       if (totalElement) {
         animateNumber(totalElement, total);
+        // Aggiorna anche la visualizzazione delle impressioni totali sotto il prezzo
+        const impressionsDisplay = document.getElementById('impressions-display');
+        if (impressionsDisplay) {
+          const pagesInfo = `${q} copias × ${pagesToPrint} páginas${sidesMultiplier === 2 ? ' × 2 caras' : ''}`;
+          const totalImpressions = q * pagesToPrint * sidesMultiplier;
+          impressionsDisplay.textContent = `${pagesInfo} = ${totalImpressions} impresiones`;
+        }
       }
       updateOrderSummary();
       console.log('✅ calculate() completata, totale:', total);
@@ -5552,7 +5563,8 @@
         const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
         const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
         const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
-        const totalPages = orderData.quantity * pagesToPrint;
+        const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = orderData.quantity * pagesToPrint * sidesMultiplier;
         
         console.log('📊 updateOrderSummary - Dettagli calcolo:');
         console.log('📊 orderData.pdfPages:', orderData.pdfPages);
@@ -5737,7 +5749,8 @@
       // Prepara i dati per l'email
       const pdfPages = orderData.pdfPages || 1;
       const copies = orderData.quantity || 1;
-      const totalPages = pdfPages * copies;
+      const sidesMultiplierEmail = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierEmail;
       
       // Calcola se richiede anticipo
       const requiresAnticipo = totalPages >= 1000;
@@ -5798,7 +5811,8 @@
       // Prepara il messaggio WhatsApp
       const pdfPages = orderData.pdfPages || 1;
       const copies = orderData.quantity || 1;
-      const totalPages = pdfPages * copies;
+      const sidesMultiplierWa = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierWa;
       
       // Calcola se richiede anticipo
       const requiresAnticipo = totalPages >= 1000;
@@ -6630,8 +6644,9 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
         // Mostra il dettaglio del calcolo se è disponibile
         const pdfPages = orderData.pdfPages || 1;
         const copies = orderData.quantity || 1;
-        const totalPages = pdfPages * copies;
-        finalSubtotal.textContent = `${subtotal.toFixed(2)} (${copies} copias × ${pdfPages} páginas)`;
+        const sidesMultiplierFinal = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = pdfPages * copies * sidesMultiplierFinal;
+        finalSubtotal.textContent = `${subtotal.toFixed(2)} (${copies} copias × ${pdfPages} páginas${sidesMultiplierFinal === 2 ? ' × 2 caras' : ''})`;
       }
       if (finalDelivery) finalDelivery.textContent = deliveryPrice > 0 ? `${deliveryPrice}` : 'GRATIS';
       
@@ -6837,7 +6852,8 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
       
       // Calcola le pagine totali per determinare i requisiti di pagamento
       const pdfPages = orderData.pdfPages || 1;
-      const totalPages = orderData.quantity * pdfPages;
+      const sidesMultiplierPayment = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = orderData.quantity * pdfPages * sidesMultiplierPayment;
       
       if (totalPages >= 1000) {
         const total = orderData.total + orderData.delivery.price + orderData.timing.price;
@@ -6868,8 +6884,9 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
       // Calcola le informazioni corrette del PDF
       const pdfPages = orderData.pdfPages || 1;
       const copies = orderData.quantity || 1;
-      const totalPages = pdfPages * copies;
-      const details = `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`;
+      const sidesMultiplierInfo = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierInfo;
+      const details = `${copies} copias × ${pdfPages} páginas${sidesMultiplierInfo === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`;
       
       let upsellsText = '';
       Object.values(orderData.upsells).forEach(upsell => {
@@ -6921,8 +6938,9 @@ ${specialNotes ? '📝 Notas: ' + specialNotes : ''}
       // Calcola le informazioni corrette del PDF
       const pdfPages = orderData.pdfPages || 1;
       const copies = orderData.quantity || 1;
-      const totalPages = pdfPages * copies;
-      const pageInfo = pdfPages > 1 ? `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales` : `${orderData.quantity} páginas`;
+      const sidesMultiplierMsg = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierMsg;
+      const pageInfo = pdfPages > 1 ? `${copies} copias × ${pdfPages} páginas${sidesMultiplierMsg === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones` : `${orderData.quantity * (sidesMultiplierMsg === 2 ? 2 : 1)} impresiones`;
 
       const requiresAnticipo = (orderData.quantity * (orderData.pdfPages || 1)) >= 1000;
       const msg = `Hola COPIMAX 👋
