@@ -3737,7 +3737,7 @@
               <div class="package-compact">
                 <div class="package-info">
                   <h4>1000 copias BN</h4>
-                  <div class="package-price">$350 MXN</div>
+                  <div class="package-price">$400 MXN</div>
                   <p id="package-face-type">BN una cara, mismo día</p>
                   <div class="face-toggle" style="margin-top: 8px;">
                     <button class="face-btn active" data-face="single" onclick="toggleFace(this, 'single')">Una Cara</button>
@@ -5223,17 +5223,17 @@
         const packagePrice = document.querySelector('.package-price');
         
         if (faceType === 'single') {
-          // Una Cara: 1000 copie × $0.40 = $400
+          // Una Cara: 1000 copias × 1 × $0.40 = $400
           packageFaceType.textContent = 'BN una cara, mismo día';
           packagePrice.textContent = '$400 MXN';
           packageCtaBtn.textContent = 'Pedir';
           packageCtaBtn.dataset.deal = '1000 BN una cara $400';
         } else {
-          // Doble Cara: 1000 copie × $0.35 = $350
+          // Doble Cara: 1000 copias × 2 × $0.35 = $700
           packageFaceType.textContent = 'BN doble cara, mismo día';
-          packagePrice.textContent = '$350 MXN';
+          packagePrice.textContent = '$700 MXN';
           packageCtaBtn.textContent = 'Pedir';
-          packageCtaBtn.dataset.deal = '1000 BN doble cara $350';
+          packageCtaBtn.dataset.deal = '1000 BN doble cara $700';
         }
       }
       
