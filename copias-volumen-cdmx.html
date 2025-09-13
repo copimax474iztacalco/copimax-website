@@ -32,9 +32,7 @@
 
       function getActiveColor(){
         const active = document.querySelector('.color-btn.active');
-        // fallback robusto a BN
-        const color = active && active.dataset && active.dataset.color ? active.dataset.color : 'bn';
-        return (color === 'bn' || color === 'color') ? color : 'bn';
+        return active ? active.dataset.color : 'bn';
       }
 
       function fmt(n){
@@ -44,8 +42,7 @@
       function recalcVolume(){
         const q = Math.max(0, parseInt(qtyEl.value||'0'));
         const pages = Math.max(1, parseInt(pagesEl.value||'1'));
-        const sidesVal = String(sidesEl.value||'').toLowerCase();
-        const sidesMultiplier = (sidesVal.includes('2') || sidesVal.includes('x2') || sidesVal.includes('double')) ? 2 : 1;
+        const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
         const color = getActiveColor();
 
         let unitPrice = 0.40; // BN una cara
@@ -60,26 +57,13 @@
         totalEl.textContent = fmt(total);
       }
 
+      // Espone la funzione anche globalmente per compatibilità con changeType/changeColor
+      window.recalcCalculator = recalcVolume;
+
       qtyEl.addEventListener('input', recalcVolume);
       pagesEl.addEventListener('input', recalcVolume);
       sidesEl.addEventListener('change', recalcVolume);
-      colorButtons.forEach(btn=>btn.addEventListener('click', function(){
-        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
-        this.classList.add('active');
-        recalcVolume();
-      }));
-
-      // Compatibilità con gli inline onclick esistenti
-      window.changeType = function(btn){
-        document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        recalcVolume();
-      };
-      window.changeColor = function(btn){
-        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        recalcVolume();
-      };
+      colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
 
       // Calcolo iniziale dopo il paint per evitare salti di layout
       window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
@@ -1363,6 +1347,7 @@
 
       <!-- JavaScript esterno -->
     <script src="js/main.js"></script>
+    <script src="js/calculator.js"></script>
 
   <!-- Bottone WhatsApp fisso in basso a destra -->
   <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
