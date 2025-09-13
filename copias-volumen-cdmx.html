@@ -42,7 +42,8 @@
       function recalcVolume(){
         const q = Math.max(0, parseInt(qtyEl.value||'0'));
         const pages = Math.max(1, parseInt(pagesEl.value||'1'));
-        const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
+        const sidesVal = String(sidesEl.value||'').toLowerCase();
+        const sidesMultiplier = (sidesVal.includes('2') || sidesVal.includes('x2') || sidesVal.includes('double')) ? 2 : 1;
         const color = getActiveColor();
 
         let unitPrice = 0.40; // BN una cara
