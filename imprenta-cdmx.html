@@ -1125,8 +1125,9 @@
                     }
                 }
                 
-                // Calcola il totale: q * pages = numero totale di pagine da stampare
-                let total = q * pages * pricePerPage;
+                // Calcola il totale: copias × páginas × lados × precio
+                const sidesMultiplier = sides === 'x2' ? 2 : 1;
+                let total = q * pages * sidesMultiplier * pricePerPage;
                 
                 // Aggiungi servizi aggiuntivi
                 if (engargoladoEl && engargoladoEl.checked) {

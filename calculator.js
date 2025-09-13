@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const sides = sidesEl.value;
         const colorBtn = document.querySelector('.color-btn.active');
         const typeBtn = document.querySelector('.type-btn.active');
+        const totalEl = document.getElementById('total-preview');
         
         let pricePerPage = 0.40; // Default BN una cara
         
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pricePerPage = 0.35; // BN doble cara
         }
         
-        // Se è a color, aumenta il prezzo
+        // Se è a color, aggiorna il prezzo
         if (colorBtn && colorBtn.dataset.color === 'color') {
             if (sides === 'x2') {
                 pricePerPage = 4.35; // Color doble cara
@@ -41,8 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        const total = q * pricePerPage;
-        // Non aggiorniamo più totalEl per evitare conflitti con index.html
+        // Applica moltiplicatore per doble cara: 2 impressioni per foglio
+        const sidesMultiplier = sides === 'x2' ? 2 : 1;
+        const total = q * sidesMultiplier * pricePerPage;
+        
+        // Aggiorna anteprima totale se presente nella pagina corrente
+        if (totalEl) {
+            totalEl.textContent = fmt(total);
+        }
         
         // Aggiorna anche il campo tipo automaticamente
         updateTipoField();
