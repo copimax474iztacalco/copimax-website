@@ -45,9 +45,14 @@
         const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
         const color = getActiveColor();
 
-        let unitPrice = 0.40; // BN una cara
+        let unitPrice = 0.40; // BN una cara (default)
         if(color === 'bn'){
-          unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40;
+          const impressions = q * pages * sidesMultiplier;
+          if (impressions <= 100) {
+            unitPrice = 1.00; // 1–100 impresiones: $1, aplica a x1 y x2
+          } else {
+            unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40; // +100 impresiones: 0.35 (x2) / 0.40 (x1)
+          }
         } else {
           unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
         }
@@ -1067,7 +1072,7 @@
     <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
     <section style="margin: 32px 0;">
       <div class="card p24" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu proyecto industrial - Respuesta en 2 horas</h3>
+        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu proyecto industrial - Respuesta en 2 minutos</h3>
         <form onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Tiraje: '+document.getElementById('q').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
           <label style="display:block;margin:8px 0 4px">Tiraje estimado</label>
           <input id="q" type="number" min="1" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
@@ -1087,7 +1092,7 @@
             <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫ BN</button>
             <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈 Color</button>
           </div>
-          <input id="t" type="text" placeholder="BN una cara / doble cara" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb;margin-top:8px">
+          <!-- Campo tipo autocompilado rimosso per evitare confusione -->
           <label style="display:block;margin:12px 0 4px">Plazo</label>
           <input id="p" type="text" placeholder="Ej: 48h" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
                       <div id="total-box" class="card" style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
