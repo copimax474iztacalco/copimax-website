@@ -65,6 +65,18 @@
       // Espone la funzione anche globalmente per compatibilità con changeType/changeColor
       window.recalcCalculator = recalcVolume;
 
+      // Definisci funzioni globali per compatibilità con gli attributi onclick
+      window.changeType = function(btn, type){
+        document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        recalcVolume();
+      };
+      window.changeColor = function(btn, color){
+        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        recalcVolume();
+      };
+
       qtyEl.addEventListener('input', recalcVolume);
       pagesEl.addEventListener('input', recalcVolume);
       sidesEl.addEventListener('change', recalcVolume);
@@ -72,6 +84,8 @@
 
       // Calcolo iniziale dopo il paint per evitare salti di layout
       window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
+      // Calcolo immediato
+      recalcVolume();
     })();
   </script>
   
