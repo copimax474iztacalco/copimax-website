@@ -21,72 +21,74 @@
   </script>
   <script>
     // Cálculo robusto específico para la página Volumen
-    (function initVolumeCalculator(){
-      const qtyEl = document.getElementById('q');
-      const pagesEl = document.getElementById('pages');
-      const sidesEl = document.getElementById('sides');
-      const totalEl = document.getElementById('total-preview');
-      const colorButtons = document.querySelectorAll('.color-btn');
+    document.addEventListener('DOMContentLoaded', function(){
+      function initVolumeCalculator(){
+        const qtyEl = document.getElementById('q');
+        const pagesEl = document.getElementById('pages');
+        const sidesEl = document.getElementById('sides');
+        const totalEl = document.getElementById('total-preview');
+        const colorButtons = document.querySelectorAll('.color-btn');
 
-      if(!qtyEl || !pagesEl || !sidesEl || !totalEl) return;
+        if(!qtyEl || !pagesEl || !sidesEl || !totalEl) return;
 
-      function getActiveColor(){
-        const active = document.querySelector('.color-btn.active');
-        return active ? active.dataset.color : 'bn';
-      }
-
-      function fmt(n){
-        return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:2});
-      }
-
-      function recalcVolume(){
-        const q = Math.max(0, parseInt(qtyEl.value||'0'));
-        const pages = Math.max(1, parseInt(pagesEl.value||'1'));
-        const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
-        const color = getActiveColor();
-
-        let unitPrice = 0.40; // BN una cara (default)
-        if(color === 'bn'){
-          const impressions = q * pages * sidesMultiplier;
-          if (impressions <= 100) {
-            unitPrice = 1.00; // 1–100 impresiones: $1, aplica a x1 y x2
-          } else {
-            unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40; // +100 impresiones: 0.35 (x2) / 0.40 (x1)
-          }
-        } else {
-          unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
+        function getActiveColor(){
+          const active = document.querySelector('.color-btn.active');
+          return active ? active.dataset.color : 'bn';
         }
 
-        // Total impresiones = copias × páginas × lados
-        const total = q * pages * sidesMultiplier * unitPrice;
-        totalEl.textContent = fmt(total);
+        function fmt(n){
+          return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:2});
+        }
+
+        function recalcVolume(){
+          const q = Math.max(0, parseInt(qtyEl.value||'0'));
+          const pages = Math.max(1, parseInt(pagesEl.value||'1'));
+          const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
+          const color = getActiveColor();
+
+          let unitPrice = 0.40; // BN una cara (default)
+          if(color === 'bn'){
+            const impressions = q * pages * sidesMultiplier;
+            if (impressions <= 100) {
+              unitPrice = 1.00; // 1–100 impresiones: $1, aplica a x1 y x2
+            } else {
+              unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40; // +100 impresiones: 0.35 (x2) / 0.40 (x1)
+            }
+          } else {
+            unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
+          }
+
+          // Total impresiones = copias × páginas × lados
+          const total = q * pages * sidesMultiplier * unitPrice;
+          totalEl.textContent = fmt(total);
+        }
+
+        // Espone la funzione anche globalmente per compatibilità con changeType/changeColor
+        window.recalcCalculator = recalcVolume;
+
+        // Definisci funzioni globali per compatibilità con gli attributi onclick
+        window.changeType = function(btn, type){
+          document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          recalcVolume();
+        };
+        window.changeColor = function(btn, color){
+          document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          recalcVolume();
+        };
+
+        qtyEl.addEventListener('input', recalcVolume);
+        pagesEl.addEventListener('input', recalcVolume);
+        sidesEl.addEventListener('change', recalcVolume);
+        colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
+
+        // Calcolo iniziale
+        recalcVolume();
       }
 
-      // Espone la funzione anche globalmente per compatibilità con changeType/changeColor
-      window.recalcCalculator = recalcVolume;
-
-      // Definisci funzioni globali per compatibilità con gli attributi onclick
-      window.changeType = function(btn, type){
-        document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        recalcVolume();
-      };
-      window.changeColor = function(btn, color){
-        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        recalcVolume();
-      };
-
-      qtyEl.addEventListener('input', recalcVolume);
-      pagesEl.addEventListener('input', recalcVolume);
-      sidesEl.addEventListener('change', recalcVolume);
-      colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
-
-      // Calcolo iniziale dopo il paint per evitare salti di layout
-      window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
-      // Calcolo immediato
-      recalcVolume();
-    })();
+      initVolumeCalculator();
+    });
   </script>
   
   <!-- Meta Pixel Code -->
