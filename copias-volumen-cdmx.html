@@ -32,7 +32,9 @@
 
       function getActiveColor(){
         const active = document.querySelector('.color-btn.active');
-        return active ? active.dataset.color : 'bn';
+        // fallback robusto a BN
+        const color = active && active.dataset && active.dataset.color ? active.dataset.color : 'bn';
+        return (color === 'bn' || color === 'color') ? color : 'bn';
       }
 
       function fmt(n){
@@ -61,7 +63,12 @@
       qtyEl.addEventListener('input', recalcVolume);
       pagesEl.addEventListener('input', recalcVolume);
       sidesEl.addEventListener('change', recalcVolume);
-      colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
+      colorButtons.forEach(btn=>btn.addEventListener('click', function(){
+        // imposta active correttamente
+        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+        this.classList.add('active');
+        recalcVolume();
+      }));
 
       // Calcolo iniziale dopo il paint per evitare salti di layout
       window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
@@ -1345,7 +1352,6 @@
 
       <!-- JavaScript esterno -->
     <script src="js/main.js"></script>
-    <script src="js/calculator.js"></script>
 
   <!-- Bottone WhatsApp fisso in basso a destra -->
   <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
