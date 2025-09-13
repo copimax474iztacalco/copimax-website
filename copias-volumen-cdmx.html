@@ -23,11 +23,12 @@
     // Cálculo robusto específico para la página Volumen
     (function initVolumeCalculator(){
       const qtyEl = document.getElementById('q');
+      const pagesEl = document.getElementById('pages');
       const sidesEl = document.getElementById('sides');
       const totalEl = document.getElementById('total-preview');
       const colorButtons = document.querySelectorAll('.color-btn');
 
-      if(!qtyEl || !sidesEl || !totalEl) return;
+      if(!qtyEl || !pagesEl || !sidesEl || !totalEl) return;
 
       function getActiveColor(){
         const active = document.querySelector('.color-btn.active');
@@ -40,6 +41,7 @@
 
       function recalcVolume(){
         const q = Math.max(0, parseInt(qtyEl.value||'0'));
+        const pages = Math.max(1, parseInt(pagesEl.value||'1'));
         const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
         const color = getActiveColor();
 
@@ -50,11 +52,13 @@
           unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
         }
 
-        const total = q * sidesMultiplier * unitPrice;
+        // Total impresiones = copias × páginas × lados
+        const total = q * pages * sidesMultiplier * unitPrice;
         totalEl.textContent = fmt(total);
       }
 
       qtyEl.addEventListener('input', recalcVolume);
+      pagesEl.addEventListener('input', recalcVolume);
       sidesEl.addEventListener('change', recalcVolume);
       colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
 
@@ -1063,7 +1067,9 @@
         <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu proyecto industrial - Respuesta en 2 horas</h3>
         <form onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Tiraje: '+document.getElementById('q').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
           <label style="display:block;margin:8px 0 4px">Tiraje estimado</label>
-          <input id="q" type="number" min="10000" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <input id="q" type="number" min="1" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <label style="display:block;margin:12px 0 4px">Número de páginas por copia</label>
+          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
           <label style="display:block;margin:12px 0 4px">Lados</label>
           <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
             <option value="x1">Una cara (x1)</option>
