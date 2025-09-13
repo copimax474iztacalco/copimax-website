@@ -19,6 +19,49 @@
     gtag('js', new Date());
     gtag('config', 'G-GGQPKN977H');
   </script>
+  <script>
+    // Cálculo robusto específico para la página Volumen
+    (function initVolumeCalculator(){
+      const qtyEl = document.getElementById('q');
+      const sidesEl = document.getElementById('sides');
+      const totalEl = document.getElementById('total-preview');
+      const colorButtons = document.querySelectorAll('.color-btn');
+
+      if(!qtyEl || !sidesEl || !totalEl) return;
+
+      function getActiveColor(){
+        const active = document.querySelector('.color-btn.active');
+        return active ? active.dataset.color : 'bn';
+      }
+
+      function fmt(n){
+        return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:2});
+      }
+
+      function recalcVolume(){
+        const q = Math.max(0, parseInt(qtyEl.value||'0'));
+        const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
+        const color = getActiveColor();
+
+        let unitPrice = 0.40; // BN una cara
+        if(color === 'bn'){
+          unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40;
+        } else {
+          unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
+        }
+
+        const total = q * sidesMultiplier * unitPrice;
+        totalEl.textContent = fmt(total);
+      }
+
+      qtyEl.addEventListener('input', recalcVolume);
+      sidesEl.addEventListener('change', recalcVolume);
+      colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
+
+      // Calcolo iniziale dopo il paint per evitare salti di layout
+      window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
+    })();
+  </script>
   
   <!-- Meta Pixel Code -->
   <script>

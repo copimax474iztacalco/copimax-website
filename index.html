@@ -7199,6 +7199,18 @@ ${ orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos 
       } else if (hash === '#order') {
         console.log('🔍 URL iniziale contiene #order, mostrando flusso ordine inline');
         showOrderPage(false);
+      } else if (hash === '#calculator') {
+        console.log('🔍 URL iniziale contiene #calculator, mostrando homepage e scrollando alla calcolatrice');
+        showHomePage(false);
+        // Scroll dolce alla calcolatrice con offset per header fisso
+        setTimeout(() => {
+          const target = document.getElementById('calculator');
+          if (target) {
+            const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+          }
+        }, 100);
       } else if (url.includes('/blog') || url.includes('blogpage')) {
         console.log('🔍 URL contiene /blog, mostrando sezione blog');
         showBlogPage();
