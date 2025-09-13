@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Calcolatrice JavaScript caricata');
     
     const qtyEl = document.getElementById('q');
+    const pagesEl = document.getElementById('pages');
     const sidesEl = document.getElementById('sides');
     
     if (!qtyEl || !sidesEl) {
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ricalcola il totale
     function recalc() {
         const q = Math.max(0, parseInt(qtyEl.value || '0'));
+        const pages = Math.max(1, parseInt((pagesEl && pagesEl.value) ? pagesEl.value : '1'));
         const sides = sidesEl.value;
         const colorBtn = document.querySelector('.color-btn.active');
         const typeBtn = document.querySelector('.type-btn.active');
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Applica moltiplicatore per doble cara: 2 impressioni per foglio
         const sidesMultiplier = sides === 'x2' ? 2 : 1;
-        const total = q * sidesMultiplier * pricePerPage;
+        const total = q * pages * sidesMultiplier * pricePerPage;
         
         // Aggiorna anteprima totale se presente nella pagina corrente
         if (totalEl) {
