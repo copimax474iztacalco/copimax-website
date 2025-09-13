@@ -64,11 +64,22 @@
       pagesEl.addEventListener('input', recalcVolume);
       sidesEl.addEventListener('change', recalcVolume);
       colorButtons.forEach(btn=>btn.addEventListener('click', function(){
-        // imposta active correttamente
         document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
         this.classList.add('active');
         recalcVolume();
       }));
+
+      // Compatibilità con gli inline onclick esistenti
+      window.changeType = function(btn){
+        document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        recalcVolume();
+      };
+      window.changeColor = function(btn){
+        document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        recalcVolume();
+      };
 
       // Calcolo iniziale dopo il paint per evitare salti di layout
       window.addEventListener('load', ()=> setTimeout(recalcVolume, 50));
