@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impresiones a Color y B/N por Volumen en CDMX | COPIMAX Iztacalco</title>
+  <meta name="description" content="Impresiones a color y blanco y negro por volumen en CDMX. Copias B/N desde $0.35 y color desde $3. Servicio rápido en Iztacalco. WhatsApp 55-4021-9892.">
+  <link rel="canonical" href="https://copimax.store/impresione-cdmx">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "COPIMAX",
+    "description": "Imprenta y centro de copias e impresiones por volumen en Iztacalco, CDMX",
+    "url": "https://copimax.store/impresione-cdmx",
+    "telephone": "+525540219892",
+    "email": "copimax474@hotmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vainilla 474",
+      "addressLocality": "Granjas México, Iztacalco",
+      "postalCode": "08400",
+      "addressRegion": "CDMX",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "19.4326",
+      "longitude": "-99.1332"
+    },
+    "openingHours": [
+      "Mo-Fr 08:30-18:00",
+      "Sa-Su 08:30-14:00"
+    ],
+    "priceRange": "$",
+    "sameAs": [
+      "https://wa.me/525540219892"
+    ]
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #1a1a1a; color: #fff; line-height: 1.6; }
+    .container { max-width: 500px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%); }
+    .logo { font-size: 42px; font-weight: 900; color: #CDFF00; margin-bottom: 10px; }
+    .subtitle { color: #999; font-size: 18px; margin-bottom: 8px; }
+    .location { color: #CDFF00; font-weight: 600; font-size: 16px; }
+
+    .calc-card { background: #2a2a2a; border-radius: 20px; padding: 25px; margin: 20px 0; box-shadow: 0 0 30px rgba(205, 255, 0, 0.2); }
+    .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .calc-title { font-size: 20px; font-weight: 700; color: #CDFF00; }
+    .section-label { color: #999; font-size: 13px; font-weight: 600; margin-bottom: 12px; display: block; }
+
+    .toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .toggle-option { background: #333; border: 2px solid #444; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all .25s; font-weight: 700; }
+    .toggle-option:hover { border-color: #CDFF00; }
+    .toggle-option.selected { background: #CDFF00; color: #1a1a1a; border-color: #CDFF00; }
+
+    .subsection { display: none; margin-bottom: 25px; }
+    .subsection.active { display: block; }
+
+    .option-card { background: #333; border: 2px solid #444; border-radius: 12px; padding: 16px; margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all .25s; }
+    .option-card:hover { border-color: #CDFF00; }
+    .option-card.selected { border-color: #CDFF00; background: #2a2a2a; }
+    .option-info h4 { font-size: 16px; margin-bottom: 3px; }
+    .option-info p { font-size: 12px; color: #999; }
+    .option-price { font-size: 24px; font-weight: 700; color: #CDFF00; }
+    .option-price span { font-size: 14px; }
+
+    .quantity-input { width: 100%; background: #333; border: 2px solid #444; color: #fff; font-size: 32px; font-weight: 700; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 10px; }
+    .quantity-input:focus { outline: none; border-color: #CDFF00; }
+    .quantity-note { font-size: 11px; color: #666; text-align: center; margin-bottom: 25px; }
+
+    .addon-item { background: #333; border-radius: 8px; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .addon-item:hover { background: #3a3a3a; }
+    .addon-label { display: flex; align-items: center; font-size: 14px; }
+    .addon-checkbox { width: 20px; height: 20px; margin-right: 12px; cursor: pointer; }
+    .addon-price { font-weight: 700; color: #CDFF00; }
+
+    .result-box { background: #CDFF00; color: #1a1a1a; border-radius: 12px; padding: 25px; margin: 25px 0; }
+    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .result-label { font-size: 13px; font-weight: 600; }
+    .result-badge { background: #1a1a1a; color: #CDFF00; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; }
+    .result-price { font-size: 48px; font-weight: 900; margin-bottom: 5px; }
+    .result-currency { font-size: 24px; }
+    .result-breakdown { font-size: 11px; opacity: .7; }
+
+    .btn { width: 100%; padding: 18px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all .25s; }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-whatsapp:hover { background: #22c55e; transform: translateY(-2px); }
+    .btn-call { background: #333; color: #fff; border: 2px solid #CDFF00; }
+    .btn-call:hover { background: #3a3a3a; }
+    .btn-icon { margin-right: 10px; font-size: 20px; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0; text-align: center; }
+    .stat-value { font-size: 32px; font-weight: 900; color: #CDFF00; }
+    .stat-label { font-size: 11px; color: #999; }
+
+    .section { background: #2a2a2a; border-radius: 20px; padding: 30px 20px; margin: 20px 0; }
+    .section-title { font-size: 28px; font-weight: 900; text-align: center; margin-bottom: 10px; }
+    .section-subtitle { text-align: center; color: #999; margin-bottom: 30px; font-size: 14px; }
+    .highlight { color: #CDFF00; }
+    .price-card { background: #333; border: 2px solid #444; border-radius: 16px; padding: 25px; margin-bottom: 20px; position: relative; }
+    .price-card.featured { border-color: #CDFF00; transform: scale(1.02); }
+    .badge { display: inline-block; background: #CDFF00; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; }
+    .badge-red { background: #ef4444; color: #fff; }
+    .price-card h3 { font-size: 22px; margin-bottom: 15px; }
+    .big-price { font-size: 48px; font-weight: 900; color: #CDFF00; margin-bottom: 10px; }
+    .big-price span { font-size: 24px; }
+    .savings { color: #ef4444; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .feature-list { list-style: none; margin-bottom: 20px; }
+    .feature-list li { padding: 8px 0; font-size: 13px; color: #ccc; }
+    .feature-list li:before { content: "✓"; color: #CDFF00; font-weight: 700; margin-right: 10px; }
+
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); cursor: pointer; z-index: 1000; text-decoration: none; font-size: 32px; color: #fff; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    .faq-item { background: #333; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+    .faq-question { padding: 18px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { background: #3a3a3a; }
+    .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: all .25s; color: #999; }
+    .faq-answer.open { padding: 0 18px 18px; max-height: 500px; }
+
+    .footer { background: #1a1a1a; padding: 40px 20px; text-align: center; border-top: 1px solid #333; }
+    .footer-logo { font-size: 28px; font-weight: 900; color: #CDFF00; margin-bottom: 15px; }
+    .footer-text { color: #666; font-size: 12px; margin-bottom: 20px; }
+    .footer-links { color: #999; font-size: 11px; margin-top: 20px; }
+    @media (max-width: 600px) { .result-price { font-size: 42px; } }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float">📱</a>
+
+  <div class="header">
+    <div class="logo">COPIMAX</div>
+    <div class="subtitle">Copias e Impresiones por Volumen</div>
+    <div class="location">📍 Vainilla 474, Iztacalco CDMX</div>
+  </div>
+
+  <div class="container">
+    <div class="calc-card">
+      <div class="calc-header">
+        <div class="calc-title">Calculadora de precios</div>
+        <div style="font-size: 28px;">🧮</div>
+      </div>
+
+      <!-- Tipo de trabajo: B/N vs Color -->
+      <label class="section-label">Tipo de impresión:</label>
+      <div class="toggle-grid">
+        <div id="tipo-bn" class="toggle-option selected" onclick="selectTipo('bn')">Blanco y Negro</div>
+        <div id="tipo-color" class="toggle-option" onclick="selectTipo('color')">Color</div>
+      </div>
+
+      <!-- Opciones B/N -->
+      <div class="subsection active" id="bn-options">
+        <div class="option-card selected" id="bn-2caras" onclick="selectBN('2caras')">
+          <div class="option-info">
+            <h4>Doble cara (2 lados)</h4>
+            <p>$0.35 por cada lado</p>
+          </div>
+          <div class="option-price">$0.35<span>/lado</span></div>
+        </div>
+        <div class="option-card" id="bn-1cara" onclick="selectBN('1cara')">
+          <div class="option-info">
+            <h4>Una sola cara</h4>
+            <p>$0.40 por hoja</p>
+          </div>
+          <div class="option-price">$0.40<span>/hoja</span></div>
+        </div>
+      </div>
+
+      <!-- Opciones Color -->
+      <div class="subsection" id="color-options">
+        <div class="option-card selected" id="c-texto" onclick="selectColor('texto')">
+          <div class="option-info">
+            <h4>Solo texto</h4>
+            <p>1-100 copias</p>
+          </div>
+          <div class="option-price">$5<span>/hoja</span></div>
+        </div>
+        <div class="option-card" id="c-imagen" onclick="selectColor('imagen')">
+          <div class="option-info">
+            <h4>Imagen completa</h4>
+            <p>1-100 copias</p>
+          </div>
+          <div class="option-price">$10<span>/hoja</span></div>
+        </div>
+        <div class="option-card" id="c-100plus" onclick="selectColor('100plus')">
+          <div class="option-info">
+            <h4>+100 copias</h4>
+            <p>Precio por volumen</p>
+          </div>
+          <div class="option-price">$4<span>/hoja</span></div>
+        </div>
+        <div class="option-card" id="c-300plus" onclick="selectColor('300plus')">
+          <div class="option-info">
+            <h4>+300 copias</h4>
+            <p>Mejor precio</p>
+          </div>
+          <div class="option-price">$3<span>/hoja</span></div>
+        </div>
+      </div>
+
+      <!-- Cantidad -->
+      <label class="section-label">Cantidad de hojas:</label>
+      <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="calcularPrecio()">
+      <div class="quantity-note" id="quantity-note">100 hojas = 200 páginas si imprimes a 2 caras</div>
+
+      <!-- Extras -->
+      <label class="section-label">Servicios Adicionales (opcional):</label>
+      <div class="addon-item" onclick="document.getElementById('engargolado').click()">
+        <div class="addon-label">
+          <input type="checkbox" id="engargolado" class="addon-checkbox" onchange="calcularPrecio()">
+          <span>Engargolado</span>
+        </div>
+        <div class="addon-price">+$20</div>
+      </div>
+      <div class="addon-item" onclick="document.getElementById('pastas').click()">
+        <div class="addon-label">
+          <input type="checkbox" id="pastas" class="addon-checkbox" onchange="calcularPrecio()">
+          <span>Pastas (cristalina e individual)</span>
+        </div>
+        <div class="addon-price">+$15</div>
+      </div>
+      <div class="addon-item" onclick="document.getElementById('empastado').click()">
+        <div class="addon-label">
+          <input type="checkbox" id="empastado" class="addon-checkbox" onchange="calcularPrecio()">
+          <span>Empastado</span>
+        </div>
+        <div class="addon-price">+$25</div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="result-box">
+        <div class="result-header">
+          <div class="result-label">Precio estimado:</div>
+          <div class="result-badge">Entrega 24-48h</div>
+        </div>
+        <div class="result-price">$<span id="precioFinal">35.00</span> <span class="result-currency">MXN</span></div>
+        <div class="result-breakdown" id="desglose">100 hojas × $0.35 por lado</div>
+      </div>
+
+      <!-- CTAs -->
+      <a href="#" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
+        <span class="btn-icon">📱</span> COTIZAR AHORA
+      </a>
+      <a href="tel:+525540219892" class="btn btn-call">
+        <span class="btn-icon">📞</span> LLAMAR: 55-4021-9892
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-value">4.9★</div>
+        <div class="stat-label">Clientes felices</div>
+      </div>
+      <div>
+        <div class="stat-value">12M+</div>
+        <div class="stat-label">Copias realizadas</div>
+      </div>
+    </div>
+
+    <!-- Precios -->
+    <div class="section">
+      <h2 class="section-title">Nuestros <span class="highlight">Precios</span></h2>
+      <p class="section-subtitle">Transparentes y competitivos • Entrega 24-48hrs</p>
+
+      <div class="price-card">
+        <div class="badge">COPIAS B/N</div>
+        <h3>Blanco y Negro</h3>
+        <div class="big-price">$0.35<span>/hoja</span></div>
+        <ul class="feature-list">
+          <li>Más de 100 copias: $0.35 c/u</li>
+          <li>1-100 copias: $1.00 c/u</li>
+          <li>Doble cara: $0.35 por lado</li>
+          <li>Una cara: $0.40 por hoja</li>
+        </ul>
+        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro" class="btn btn-whatsapp">
+          <span class="btn-icon">📱</span> Pedir Ahora
+        </a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="badge badge-red">COLOR</div>
+        <h3>Impresiones a Color</h3>
+        <div class="big-price">$3<span>/hoja</span></div>
+        <ul class="feature-list">
+          <li>1-100 copias TEXTO: $5 c/u</li>
+          <li>1-100 copias IMAGEN: $10 c/u</li>
+          <li>+100 copias: $4 c/u</li>
+          <li>+300 copias: $3 c/u (mejor precio)</li>
+        </ul>
+        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20impresiones%20a%20color" class="btn btn-whatsapp">
+          <span class="btn-icon">📱</span> Pedir Ahora
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+      <h2 class="section-title">Preguntas <span class="highlight">Frecuentes</span></h2>
+      <p class="section-subtitle">Todo lo que necesitas saber</p>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(1)">
+          <span>¿Cuál es la diferencia de precio entre B/N y color?</span>
+          <span id="icon-1">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-1">Las copias blanco y negro son más económicas (desde $0.35). Las impresiones a color van desde $3 hasta $10 dependiendo del contenido y volumen.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(2)">
+          <span>¿Cuánto cuesta imprimir a doble cara en B/N?</span>
+          <span id="icon-2">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-2">Para B/N, imprimir a doble cara cuesta $0.35 por cada lado. Una sola cara cuesta $0.40 por hoja.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(3)">
+          <span>¿Dónde están ubicados?</span>
+          <span id="icon-3">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-3">Estamos en Vainilla 474, Granjas México, Iztacalco, CDMX 08400. A minutos de UPIICSA y Metro Iztacalco.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(4)">
+          <span>¿Cuánto tardan en entregar?</span>
+          <span id="icon-4">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-4">Tiempo estándar de 24 a 48 horas. Servicio express el mismo día con cargo adicional.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(5)">
+          <span>¿Tienen precios para estudiantes?</span>
+          <span id="icon-5">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-5">Sí, contamos con precios especiales y engargolados desde $20 para tesis y trabajos.</div>
+      </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="section" style="background: #CDFF00; color: #1a1a1a;">
+      <h2 class="section-title" style="color: #1a1a1a;">¿Listo para imprimir?</h2>
+      <p class="section-subtitle" style="color: #333;">Cotiza gratis y recibe en 24-48 horas</p>
+      <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="btn btn-whatsapp">
+        <span class="btn-icon">📱</span> Cotizar por WhatsApp
+      </a>
+      <a href="tel:+525540219892" class="btn" style="background: #1a1a1a; color: #CDFF00;">
+        <span class="btn-icon">📞</span> 55-4021-9892
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">COPIMAX</div>
+    <div class="footer-text">
+      Centro de copias e impresiones en Iztacalco, CDMX<br>
+      Servicio profesional desde 1999<br><br>
+      Vainilla 474, Granjas México, Iztacalco • 08400 CDMX<br>
+      📞 55-4021-9892 • 📱 WhatsApp 24/7
+    </div>
+    <div class="footer-links">© 2025 COPIMAX</div>
+  </div>
+
+  <script>
+    let tipo = 'bn';
+    let bnTipo = '2caras';
+    let colorTipo = 'texto';
+
+    function selectTipo(nuevo) {
+      tipo = nuevo;
+      document.getElementById('tipo-bn').classList.toggle('selected', tipo === 'bn');
+      document.getElementById('tipo-color').classList.toggle('selected', tipo === 'color');
+      document.getElementById('bn-options').classList.toggle('active', tipo === 'bn');
+      document.getElementById('color-options').classList.toggle('active', tipo === 'color');
+      calcularPrecio();
+    }
+
+    function selectBN(op) {
+      bnTipo = op;
+      document.getElementById('bn-2caras').classList.toggle('selected', op === '2caras');
+      document.getElementById('bn-1cara').classList.toggle('selected', op === '1cara');
+      calcularPrecio();
+    }
+
+    function selectColor(op) {
+      colorTipo = op;
+      ['texto','imagen','100plus','300plus'].forEach(id => {
+        const el = document.getElementById('c-' + id);
+        if (el) el.classList.toggle('selected', id === op);
+      });
+      calcularPrecio();
+    }
+
+    function precioUnitario() {
+      if (tipo === 'bn') {
+        if (bnTipo === '2caras') return 0.35; // por lado
+        return 0.40; // por hoja
+      }
+      // color por hoja
+      switch (colorTipo) {
+        case 'texto': return 5;
+        case 'imagen': return 10;
+        case '100plus': return 4;
+        case '300plus': return 3;
+        default: return 5;
+      }
+    }
+
+    function calcularPrecio() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      let unit = precioUnitario();
+      let subtotal;
+      let desglose = '';
+
+      if (tipo === 'bn' && bnTipo === '2caras') {
+        // 2 caras: cada hoja tiene 2 lados
+        subtotal = qty * 2 * unit;
+        desglose = `${qty} hojas × 2 lados × $${unit.toFixed(2)} por lado`;
+        document.getElementById('quantity-note').textContent = `${qty} hojas = ${qty * 2} páginas si imprimes a 2 caras`;
+      } else if (tipo === 'bn' && bnTipo === '1cara') {
+        subtotal = qty * unit;
+        desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja`;
+        document.getElementById('quantity-note').textContent = `${qty} hojas = ${qty} páginas (1 cara)`;
+      } else {
+        subtotal = qty * unit;
+        desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja (color)`;
+        document.getElementById('quantity-note').textContent = `${qty} hojas a color`;
+      }
+
+      let extras = 0;
+      if (document.getElementById('engargolado').checked) extras += 20;
+      if (document.getElementById('pastas').checked) extras += 15;
+      if (document.getElementById('empastado').checked) extras += 25;
+
+      const total = subtotal + extras;
+      document.getElementById('precioFinal').textContent = total.toFixed(2);
+      document.getElementById('desglose').textContent = desglose + (extras > 0 ? ` + extras $${extras.toFixed(2)}` : '');
+    }
+
+    function enviarWhatsApp() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      const total = document.getElementById('precioFinal').textContent;
+      const tipoTxt = tipo === 'bn' ? (bnTipo === '2caras' ? 'B/N doble cara' : 'B/N una cara') : `Color (${colorTipo})`;
+      const msg = `Hola COPIMAX, quiero cotizar ${qty} hojas - ${tipoTxt}. Precio estimado $${total} MXN.`;
+      const url = `https://wa.me/525540219892?text=${encodeURIComponent(msg)}`;
+      window.location.href = url;
+    }
+
+    function toggleFAQ(i) {
+      const ans = document.getElementById(`faq-${i}`);
+      const icon = document.getElementById(`icon-${i}`);
+      const open = ans.classList.toggle('open');
+      if (icon) icon.textContent = open ? '▲' : '▼';
+    }
+
+    // Init
+    calcularPrecio();
+  </script>
+</body>
+</html>
+
+
