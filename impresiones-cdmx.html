@@ -406,7 +406,11 @@
     }
 
     function precioUnitario() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
       if (tipo === 'bn') {
+        // Regla homepage: 1-100 copias B/N a $1.00
+        if (qty <= 100) return 1.00;
+        // Más de 100: $0.35 por lado (doble cara) o $0.40 por hoja (una cara)
         if (bnTipo === '2caras') return 0.35; // por lado
         return 0.40; // por hoja
       }
@@ -426,16 +430,22 @@
       let subtotal;
       let desglose = '';
 
-      if (tipo === 'bn' && bnTipo === '2caras') {
-        // 2 caras: cada hoja tiene 2 lados
-        subtotal = qty * 2 * unit;
-        desglose = `${qty} hojas × 2 lados × $${unit.toFixed(2)} por lado`;
-        document.getElementById('quantity-note').textContent = `${qty} hojas = ${qty * 2} páginas si imprimes a 2 caras`;
-      } else if (tipo === 'bn' && bnTipo === '1cara') {
-        subtotal = qty * unit;
-        desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja`;
-        document.getElementById('quantity-note').textContent = `${qty} hojas = ${qty} páginas (1 cara)`;
+      if (tipo === 'bn') {
+        const sidesMultiplier = bnTipo === '2caras' ? 2 : 1;
+        // Lógica homepage: total = copias × páginas(=1) × caras × precio unitario
+        subtotal = qty * 1 * sidesMultiplier * unit;
+        if (qty <= 100) {
+          desglose = `${qty} hojas${sidesMultiplier===2? ' × 2 caras' : ''} × $${unit.toFixed(2)} por página`;
+        } else {
+          if (bnTipo === '2caras') {
+            desglose = `${qty} hojas × 2 lados × $${unit.toFixed(2)} por lado`;
+          } else {
+            desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja`;
+          }
+        }
+        document.getElementById('quantity-note').textContent = sidesMultiplier===2 ? `${qty} hojas = ${qty * 2} páginas si imprimes a 2 caras` : `${qty} hojas = ${qty} páginas (1 cara)`;
       } else {
+        // Color: por hoja, sin multiplicador de caras en esta página
         subtotal = qty * unit;
         desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja (color)`;
         document.getElementById('quantity-note').textContent = `${qty} hojas a color`;
