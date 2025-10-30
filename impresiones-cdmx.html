@@ -215,26 +215,61 @@
 
       <!-- Extras -->
       <label class="section-label">Servicios Adicionales (opcional):</label>
+      <div style="font-size:11px;color:#888;margin:-6px 0 10px 0;">ℹ️ Nota: se aplica cargo fijo por descarga de archivo de $5 MXN.</div>
+
+      <!-- Engargolado -->
       <div class="addon-item" onclick="document.getElementById('engargolado').click()">
         <div class="addon-label">
-          <input type="checkbox" id="engargolado" class="addon-checkbox" onchange="calcularPrecio()">
+          <input type="checkbox" id="engargolado" class="addon-checkbox">
           <span>Engargolado</span>
         </div>
-        <div class="addon-price">+$20</div>
+        <div class="addon-price" id="engargolado-total">+$20</div>
       </div>
-      <div class="addon-item" onclick="document.getElementById('pastas').click()">
-        <div class="addon-label">
-          <input type="checkbox" id="pastas" class="addon-checkbox" onchange="calcularPrecio()">
-          <span>Pastas (cristalina e individual)</span>
+      <div class="engargolado-options" style="margin:8px 0 12px 32px; display:none;">
+        <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+          <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+          <input type="number" id="engargolado-qty" min="1" value="1" style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+          <label style="font-size:12px;color:#aaa;">de</label>
+          <select id="engargolado-size" style="padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <option value="100">100 páginas</option>
+            <option value="200">200 páginas</option>
+            <option value="300">300 páginas</option>
+            <option value="400">400 páginas</option>
+          </select>
+          <span style="font-size:12px;color:#aaa;">Precio: <span id="engargolado-price">$20</span> c/u</span>
         </div>
-        <div class="addon-price">+$15</div>
       </div>
-      <div class="addon-item" onclick="document.getElementById('empastado').click()">
+
+      <!-- Folder individual -->
+      <div class="addon-item" onclick="document.getElementById('folders').click()">
         <div class="addon-label">
-          <input type="checkbox" id="empastado" class="addon-checkbox" onchange="calcularPrecio()">
-          <span>Empastado</span>
+          <input type="checkbox" id="folders" class="addon-checkbox">
+          <span>Folder (individual)</span>
         </div>
-        <div class="addon-price">+$25</div>
+        <div class="addon-price" id="folders-total">+$15</div>
+      </div>
+      <div class="folders-options" style="margin:8px 0 12px 32px; display:none;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+          <input type="number" id="folders-qty" min="1" value="1" style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+          <span style="font-size:12px;color:#aaa;">Precio: <span id="folders-price">$15</span> c/u</span>
+        </div>
+      </div>
+
+      <!-- Enmicado -->
+      <div class="addon-item" onclick="document.getElementById('enmicado').click()">
+        <div class="addon-label">
+          <input type="checkbox" id="enmicado" class="addon-checkbox">
+          <span>Enmicado</span>
+        </div>
+        <div class="addon-price" id="enmicado-total">+$25</div>
+      </div>
+      <div class="enmicado-options" style="margin:8px 0 12px 32px; display:none;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <label style="font-size:12px;color:#aaa;">Cantidad de hojas:</label>
+          <input type="number" id="enmicado-pages" min="1" value="1" style="width:80px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+          <span style="font-size:12px;color:#aaa;">Precio: <span id="enmicado-price">$25 por hoja</span></span>
+        </div>
       </div>
 
       <!-- Resultado -->
@@ -245,6 +280,7 @@
         </div>
         <div class="result-price">$<span id="precioFinal">35.00</span> <span class="result-currency">MXN</span></div>
         <div class="result-breakdown" id="desglose">100 hojas × $0.35 por lado</div>
+        <div class="result-breakdown" id="descarga-note" style="margin-top:6px;">Incluye descarga de archivo: $5.00 MXN</div>
       </div>
 
       <!-- CTAs -->
@@ -400,26 +436,38 @@
     }
 
     function selectColor(op) {
+      const el = document.getElementById('c-' + op);
+      if (el && el.classList.contains('disabled')) return; // ignora clic su opzioni non valide per la quantità
       colorTipo = op;
       ['texto','imagen','100plus','300plus'].forEach(id => {
-        const el = document.getElementById('c-' + id);
-        if (el) el.classList.toggle('selected', id === op);
+        const el2 = document.getElementById('c-' + id);
+        if (el2) el2.classList.toggle('selected', id === op);
       });
       calcularPrecio();
     }
 
     function enforceColorTiers() {
       const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      const cTexto = document.getElementById('c-texto');
+      const cImagen = document.getElementById('c-imagen');
       const c100 = document.getElementById('c-100plus');
       const c300 = document.getElementById('c-300plus');
-      const can100 = qty >= 100; // 100 o más
-      const can300 = qty >= 300; // 300 o más
-      c100.classList.toggle('disabled', !can100);
-      c300.classList.toggle('disabled', !can300);
-      // Se l'utente ha una opzione non valida, fallback alla migliore valida
-      if (colorTipo === '300plus' && !can300) colorTipo = can100 ? '100plus' : 'texto';
-      if (colorTipo === '100plus' && !can100) colorTipo = 'texto';
-      // Aggiorna selezione visiva coerente
+      const canBase = qty < 100;
+      const must100 = qty >= 100 && qty < 300;
+      const must300 = qty >= 300;
+      // Abilita solo il tier corretto
+      cTexto.classList.toggle('disabled', !canBase);
+      cImagen.classList.toggle('disabled', !canBase);
+      c100.classList.toggle('disabled', !must100);
+      c300.classList.toggle('disabled', !must300);
+      // Forza selezione coerente con la quantità
+      if (must300) {
+        colorTipo = '300plus';
+      } else if (must100) {
+        colorTipo = '100plus';
+      } else {
+        if (colorTipo !== 'texto' && colorTipo !== 'imagen') colorTipo = 'texto';
+      }
       ['texto','imagen','100plus','300plus'].forEach(id => {
         const el = document.getElementById('c-' + id);
         if (el) el.classList.toggle('selected', id === colorTipo);
@@ -478,20 +526,69 @@
       }
 
       let extras = 0;
-      if (document.getElementById('engargolado').checked) extras += 20;
-      if (document.getElementById('pastas').checked) extras += 15;
-      if (document.getElementById('empastado').checked) extras += 25;
+      // Engargolado dinámico
+      if (document.getElementById('engargolado').checked) {
+        const eQty = parseInt(document.getElementById('engargolado-qty').value || '1', 10);
+        const eSize = parseInt(document.getElementById('engargolado-size').value || '100', 10);
+        let pricePerUnit = 20;
+        if (eSize > 100) pricePerUnit = 40;
+        if (eSize > 200) pricePerUnit = 50;
+        if (eSize > 300) pricePerUnit = 60;
+        const eTotal = eQty * pricePerUnit;
+        extras += eTotal;
+        document.getElementById('engargolado-price').textContent = `$${pricePerUnit}`;
+        const eTotalEl = document.getElementById('engargolado-total');
+        if (eTotalEl) eTotalEl.textContent = `+$${eTotal}`;
+      }
+      // Folder dinámico
+      if (document.getElementById('folders').checked) {
+        const fQty = parseInt(document.getElementById('folders-qty').value || '1', 10);
+        const fUnit = 15;
+        const fTotal = fQty * fUnit;
+        extras += fTotal;
+        const fTotalEl = document.getElementById('folders-total');
+        const fPriceEl = document.getElementById('folders-price');
+        if (fTotalEl) fTotalEl.textContent = `+$${fTotal}`;
+        if (fPriceEl) fPriceEl.textContent = `$${fUnit}`;
+      }
+      // Enmicado dinámico
+      if (document.getElementById('enmicado').checked) {
+        const lPages = parseInt(document.getElementById('enmicado-pages').value || '1', 10);
+        const lUnit = 25;
+        const lTotal = lPages * lUnit;
+        extras += lTotal;
+        const lTotalEl = document.getElementById('enmicado-total');
+        const lPriceEl = document.getElementById('enmicado-price');
+        if (lTotalEl) lTotalEl.textContent = `+$${lTotal}`;
+        if (lPriceEl) lPriceEl.textContent = `$${lUnit} por hoja`;
+      }
+      const descarga = 5; // cargo fijo por descarga de archivo
 
-      const total = subtotal + extras;
+      const total = subtotal + extras + descarga;
       document.getElementById('precioFinal').textContent = total.toFixed(2);
-      document.getElementById('desglose').textContent = desglose + (extras > 0 ? ` + extras $${extras.toFixed(2)}` : '');
+      document.getElementById('desglose').textContent = desglose + (extras > 0 ? ` + extras $${extras.toFixed(2)}` : '') + ` + descarga $${descarga.toFixed(2)}`;
     }
 
     function enviarWhatsApp() {
       const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
       const total = document.getElementById('precioFinal').textContent;
       const tipoTxt = tipo === 'bn' ? (bnTipo === '2caras' ? 'B/N doble cara' : 'B/N una cara') : `Color (${colorTipo})`;
-      const msg = `Hola COPIMAX, quiero cotizar ${qty} hojas - ${tipoTxt}. Precio estimado $${total} MXN.`;
+      const ups = [];
+      if (document.getElementById('engargolado').checked) {
+        const eQty = parseInt(document.getElementById('engargolado-qty').value || '1', 10);
+        const eSize = parseInt(document.getElementById('engargolado-size').value || '100', 10);
+        ups.push(`Engargolado x${eQty} de ${eSize} páginas`);
+      }
+      if (document.getElementById('folders').checked) {
+        const fQty = parseInt(document.getElementById('folders-qty').value || '1', 10);
+        ups.push(`Folder x${fQty}`);
+      }
+      if (document.getElementById('enmicado').checked) {
+        const lPages = parseInt(document.getElementById('enmicado-pages').value || '1', 10);
+        ups.push(`Enmicado ${lPages} hojas`);
+      }
+      const upsTxt = ups.length ? ` | Extras: ${ups.join(', ')}` : '';
+      const msg = `Hola COPIMAX, quiero cotizar ${qty} hojas - ${tipoTxt}${upsTxt}. Precio estimado $${total} MXN (incluye descarga de archivo $5).`;
       const url = `https://wa.me/525540219892?text=${encodeURIComponent(msg)}`;
       window.location.href = url;
     }
@@ -511,6 +608,25 @@
     // Init
     enforceColorTiers();
     calcularPrecio();
+
+    // Addon interactions
+    const chkEng = document.getElementById('engargolado');
+    const chkFol = document.getElementById('folders');
+    const chkLam = document.getElementById('enmicado');
+    const engOpt = document.querySelector('.engargolado-options');
+    const folOpt = document.querySelector('.folders-options');
+    const lamOpt = document.querySelector('.enmicado-options');
+    if (chkEng) chkEng.addEventListener('change', () => { if (engOpt) engOpt.style.display = chkEng.checked ? 'block' : 'none'; calcularPrecio(); });
+    if (chkFol) chkFol.addEventListener('change', () => { if (folOpt) folOpt.style.display = chkFol.checked ? 'block' : 'none'; calcularPrecio(); });
+    if (chkLam) chkLam.addEventListener('change', () => { if (lamOpt) lamOpt.style.display = chkLam.checked ? 'block' : 'none'; calcularPrecio(); });
+    const engQty = document.getElementById('engargolado-qty');
+    const engSize = document.getElementById('engargolado-size');
+    const folQty = document.getElementById('folders-qty');
+    const lamPages = document.getElementById('enmicado-pages');
+    if (engQty) engQty.addEventListener('input', calcularPrecio);
+    if (engSize) engSize.addEventListener('change', calcularPrecio);
+    if (folQty) folQty.addEventListener('input', calcularPrecio);
+    if (lamPages) lamPages.addEventListener('input', calcularPrecio);
   </script>
 </body>
 </html>
