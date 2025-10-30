@@ -172,6 +172,54 @@
   </style>
 </head>
 <body>
+  <!-- Menu Mobile Semplificato -->
+  <button class="mobile-nav-button" onclick="toggleMobileMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <span class="mobile-logo">COPIMAX</span>
+      <button class="close-slide-menu" onclick="closeMobileSlideMenu()">×</button>
+    </div>
+    <div class="slide-menu-nav">
+      <a href="/" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="/servicios" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="/copias-volumen-cdmx" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="/nosotros" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="/blog" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="/contacto" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </div>
+    <div class="slide-menu-footer">
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='/'">
+        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+      </div>
+      <div class="main-navigation">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
+      </div>
+      <div class="contact-header">
+        <span>📞 55-4021-9892</span>
+        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+  </header>
 
   <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float" onclick="enviarWhatsApp(); return false;">📱</a>
 
@@ -399,7 +447,7 @@
           <li>Doble cara: $0.35 por lado</li>
           <li>Una cara: $0.40 por hoja</li>
         </ul>
-        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20cotizar%20copias%20blanco%20y%20negro%20por%20volumen.%20%F0%9F%93%9D" class="btn btn-whatsapp" target="_blank" rel="noopener">
           <span class="btn-icon">📱</span> Pedir Ahora
         </a>
       </div>
@@ -414,7 +462,7 @@
           <li>+100 copias: $4 c/u</li>
           <li>+300 copias: $3 c/u (mejor precio)</li>
         </ul>
-        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20impresiones%20a%20color" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX%2C%20quiero%20cotizar%20impresiones%20a%20color%20por%20volumen.%20%F0%9F%93%9D" class="btn btn-whatsapp" target="_blank" rel="noopener">
           <span class="btn-icon">📱</span> Pedir Ahora
         </a>
       </div>
@@ -504,6 +552,14 @@
   </div>
 
   <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+    function closeMobileSlideMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      if (menu) menu.classList.remove('open');
+    }
     let tipo = 'bn';
     let bnTipo = '2caras';
     let colorTipo = 'texto';
