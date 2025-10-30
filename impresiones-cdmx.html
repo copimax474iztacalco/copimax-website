@@ -173,7 +173,7 @@
 </head>
 <body>
 
-  <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float">📱</a>
+  <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float" onclick="enviarWhatsApp(); return false;">📱</a>
 
   <div class="header">
     <div class="logo">COPIMAX</div>
@@ -392,14 +392,14 @@
       <div class="price-card">
         <div class="badge">COPIAS B/N</div>
         <h3>Blanco y Negro</h3>
-        <div class="big-price">$0.35<span>/hoja</span></div>
+        <div class="big-price">Desde $0.35<span>/hoja</span></div>
         <ul class="feature-list">
           <li>Más de 100 copias: $0.35 c/u</li>
           <li>1-100 copias: $1.00 c/u</li>
           <li>Doble cara: $0.35 por lado</li>
           <li>Una cara: $0.40 por hoja</li>
         </ul>
-        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro" class="btn btn-whatsapp">
+        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
           <span class="btn-icon">📱</span> Pedir Ahora
         </a>
       </div>
@@ -407,14 +407,14 @@
       <div class="price-card featured">
         <div class="badge badge-red">COLOR</div>
         <h3>Impresiones a Color</h3>
-        <div class="big-price">$3<span>/hoja</span></div>
+        <div class="big-price">Desde $3<span>/hoja</span></div>
         <ul class="feature-list">
           <li>1-100 copias TEXTO: $5 c/u</li>
           <li>1-100 copias IMAGEN: $10 c/u</li>
           <li>+100 copias: $4 c/u</li>
           <li>+300 copias: $3 c/u (mejor precio)</li>
         </ul>
-        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20impresiones%20a%20color" class="btn btn-whatsapp">
+        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20impresiones%20a%20color" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
           <span class="btn-icon">📱</span> Pedir Ahora
         </a>
       </div>
@@ -483,7 +483,7 @@
     <div class="section" style="background: #CDFF00; color: #1a1a1a;">
       <h2 class="section-title" style="color: #1a1a1a;">¿Listo para imprimir?</h2>
       <p class="section-subtitle" style="color: #333;">Cotiza gratis y recibe en 24-48 horas</p>
-      <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="btn btn-whatsapp">
+      <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
         <span class="btn-icon">📱</span> Cotizar por WhatsApp
       </a>
       <a href="tel:+525540219892" class="btn" style="background: #1a1a1a; color: #CDFF00;">
@@ -661,23 +661,47 @@
     function enviarWhatsApp() {
       const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
       const total = document.getElementById('precioFinal').textContent;
-      const tipoTxt = tipo === 'bn' ? (bnTipo === '2caras' ? 'B/N doble cara' : 'B/N una cara') : `Color (${colorTipo})`;
+      const isBN = tipo === 'bn';
+      const sidesLabel = isBN ? (bnTipo === '2caras' ? 'Doble cara (2 lados)' : 'Una cara') : '—';
+      const colorLabel = isBN ? 'Blanco y Negro' : (colorTipo === 'texto' ? 'Color (solo texto)' : colorTipo === 'imagen' ? 'Color (imagen completa)' : colorTipo === '100plus' ? 'Color 100+' : 'Color 300+');
+      const unit = precioUnitario();
+      const bnNote = isBN && qty <= 100 ? 'Tarifa B/N 1–100: $1.00 por página' : '';
+
+      // Extras breakdown
       const ups = [];
+      let upsTotal = 0;
       if (document.getElementById('engargolado').checked) {
         const eQty = parseInt(document.getElementById('engargolado-qty').value || '1', 10);
         const eSize = parseInt(document.getElementById('engargolado-size').value || '100', 10);
-        ups.push(`Engargolado x${eQty} de ${eSize} páginas`);
+        let pricePerUnit = 20; if (eSize > 100) pricePerUnit = 40; if (eSize > 200) pricePerUnit = 50; if (eSize > 300) pricePerUnit = 60;
+        const eTotal = eQty * pricePerUnit; upsTotal += eTotal;
+        ups.push(`• Engargolado: ${eQty} × ${eSize} págs = $${eTotal}`);
       }
       if (document.getElementById('folders').checked) {
         const fQty = parseInt(document.getElementById('folders-qty').value || '1', 10);
-        ups.push(`Folder x${fQty}`);
+        const fTotal = fQty * 15; upsTotal += fTotal;
+        ups.push(`• Folder: ${fQty} × $15 = $${fTotal}`);
       }
       if (document.getElementById('enmicado').checked) {
         const lPages = parseInt(document.getElementById('enmicado-pages').value || '1', 10);
-        ups.push(`Enmicado ${lPages} hojas`);
+        const lTotal = lPages * 25; upsTotal += lTotal;
+        ups.push(`• Enmicado: ${lPages} hojas × $25 = $${lTotal}`);
       }
-      const upsTxt = ups.length ? ` | Extras: ${ups.join(', ')}` : '';
-      const msg = `Hola COPIMAX, quiero cotizar ${qty} hojas - ${tipoTxt}${upsTxt}. Precio estimado $${total} MXN (incluye descarga de archivo $5).`;
+      const descarga = 5;
+
+      const header = `Hola COPIMAX 👋\nQuiero cotizar un pedido de impresiones:`;
+      const detalles = [
+        `• Cantidad: ${qty} hojas`,
+        `• Tipo: ${colorLabel}${isBN ? ` | ${sidesLabel}` : ''}`,
+        `• Precio unitario: $${unit.toFixed(2)} MXN`,
+        bnNote ? `• Nota: ${bnNote}` : null
+      ].filter(Boolean).join('\n');
+
+      const extras = ups.length ? `\nExtras:\n${ups.join('\n')}` : '';
+      const totales = `\nDescarga de archivo: $${descarga.toFixed(2)}\nTotal estimado: $${total} MXN`;
+
+      const footer = `\n\nUbicación: Vainilla 474, Iztacalco (CDMX)\nTel: 55-4021-9892`;
+      const msg = `${header}\n${detalles}${extras}\n${totales}${footer}`;
       const url = `https://wa.me/525540219892?text=${encodeURIComponent(msg)}`;
       window.location.href = url;
     }
