@@ -65,6 +65,8 @@
     .option-card { background: #333; border: 2px solid #444; border-radius: 12px; padding: 16px; margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all .25s; }
     .option-card:hover { border-color: #CDFF00; }
     .option-card.selected { border-color: #CDFF00; background: #2a2a2a; }
+    .option-card.disabled { opacity: .5; cursor: not-allowed; }
+    .option-card.disabled:hover { border-color: #444; }
     .option-info h4 { font-size: 16px; margin-bottom: 3px; }
     .option-info p { font-size: 12px; color: #999; }
     .option-price { font-size: 24px; font-weight: 700; color: #CDFF00; }
@@ -192,14 +194,14 @@
         <div class="option-card" id="c-100plus" onclick="selectColor('100plus')">
           <div class="option-info">
             <h4>+100 copias</h4>
-            <p>Precio por volumen</p>
+            <p>Precio por volumen • Requiere 100+</p>
           </div>
           <div class="option-price">$4<span>/hoja</span></div>
         </div>
         <div class="option-card" id="c-300plus" onclick="selectColor('300plus')">
           <div class="option-info">
             <h4>+300 copias</h4>
-            <p>Mejor precio</p>
+            <p>Mejor precio • Requiere 300+</p>
           </div>
           <div class="option-price">$3<span>/hoja</span></div>
         </div>
@@ -207,8 +209,9 @@
 
       <!-- Cantidad -->
       <label class="section-label">Cantidad de hojas:</label>
-      <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="calcularPrecio()">
+      <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="onQtyChange()">
       <div class="quantity-note" id="quantity-note">100 hojas = 200 páginas si imprimes a 2 caras</div>
+      <div class="quantity-note" id="rule-note" style="color:#aaa"></div>
 
       <!-- Extras -->
       <label class="section-label">Servicios Adicionales (opcional):</label>
@@ -405,6 +408,24 @@
       calcularPrecio();
     }
 
+    function enforceColorTiers() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      const c100 = document.getElementById('c-100plus');
+      const c300 = document.getElementById('c-300plus');
+      const can100 = qty >= 100; // 100 o más
+      const can300 = qty >= 300; // 300 o más
+      c100.classList.toggle('disabled', !can100);
+      c300.classList.toggle('disabled', !can300);
+      // Se l'utente ha una opzione non valida, fallback alla migliore valida
+      if (colorTipo === '300plus' && !can300) colorTipo = can100 ? '100plus' : 'texto';
+      if (colorTipo === '100plus' && !can100) colorTipo = 'texto';
+      // Aggiorna selezione visiva coerente
+      ['texto','imagen','100plus','300plus'].forEach(id => {
+        const el = document.getElementById('c-' + id);
+        if (el) el.classList.toggle('selected', id === colorTipo);
+      });
+    }
+
     function precioUnitario() {
       const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
       if (tipo === 'bn') {
@@ -434,14 +455,17 @@
         const sidesMultiplier = bnTipo === '2caras' ? 2 : 1;
         // Lógica homepage: total = copias × páginas(=1) × caras × precio unitario
         subtotal = qty * 1 * sidesMultiplier * unit;
+        const ruleNote = document.getElementById('rule-note');
         if (qty <= 100) {
           desglose = `${qty} hojas${sidesMultiplier===2? ' × 2 caras' : ''} × $${unit.toFixed(2)} por página`;
+          if (ruleNote) ruleNote.textContent = 'Tarifa B/N 1–100: $1.00 por página (aplicada)';
         } else {
           if (bnTipo === '2caras') {
             desglose = `${qty} hojas × 2 lados × $${unit.toFixed(2)} por lado`;
           } else {
             desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja`;
           }
+          if (ruleNote) ruleNote.textContent = '';
         }
         document.getElementById('quantity-note').textContent = sidesMultiplier===2 ? `${qty} hojas = ${qty * 2} páginas si imprimes a 2 caras` : `${qty} hojas = ${qty} páginas (1 cara)`;
       } else {
@@ -449,6 +473,8 @@
         subtotal = qty * unit;
         desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja (color)`;
         document.getElementById('quantity-note').textContent = `${qty} hojas a color`;
+        const ruleNote = document.getElementById('rule-note');
+        if (ruleNote) ruleNote.textContent = '';
       }
 
       let extras = 0;
@@ -477,7 +503,13 @@
       if (icon) icon.textContent = open ? '▲' : '▼';
     }
 
+    function onQtyChange() {
+      enforceColorTiers();
+      calcularPrecio();
+    }
+
     // Init
+    enforceColorTiers();
     calcularPrecio();
   </script>
 </body>
