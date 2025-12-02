@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Calcolatrice JavaScript caricata');
     
     const qtyEl = document.getElementById('q');
+    const pagesEl = document.getElementById('pages');
     const sidesEl = document.getElementById('sides');
     const totalEl = document.getElementById('total-preview');
     
-    if (!qtyEl || !sidesEl || !totalEl) {
+    if (!qtyEl || !pagesEl || !sidesEl || !totalEl) {
         console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
         return;
     }
@@ -23,26 +24,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ricalcola il totale
     function recalc() {
         const q = Math.max(0, parseInt(qtyEl.value || '0'));
+        const pages = Math.max(1, parseInt(pagesEl.value || '1'));
         const sides = sidesEl.value;
         const colorBtn = document.querySelector('.color-btn.active');
-        const typeBtn = document.querySelector('.type-btn.active');
         
-        let pricePerPage = 0.40; // Default BN una cara
+        const totalImpressions = q * pages;
+        let unitPrice = 0;
         
-        if (sides === 'x2') {
-            pricePerPage = 0.35; // BN doble cara
-        }
+        const isColor = colorBtn && colorBtn.dataset.color === 'color';
         
-        // Se è a color, aumenta il prezzo
-        if (colorBtn && colorBtn.dataset.color === 'color') {
+        if (isColor) {
+            // Prezzi Colore (invariati per ora)
             if (sides === 'x2') {
-                pricePerPage = 4.35; // Color doble cara
+                unitPrice = 4.35; // Color doble cara
             } else {
-                pricePerPage = 5.00; // Color una cara
+                unitPrice = 5.00; // Color una cara
+            }
+        } else {
+            // Prezzi BN
+            if (totalImpressions <= 100) {
+                unitPrice = 1.00; // BN fino a 100 copie
+            } else {
+                // BN oltre 100 copie
+                if (sides === 'x2') {
+                    unitPrice = 0.35; // BN doble cara
+                } else {
+                    unitPrice = 0.40; // BN una cara
+                }
             }
         }
         
-        const total = q * pricePerPage;
+        const total = totalImpressions * unitPrice;
         totalEl.textContent = fmt(total);
         
         // Aggiorna anche il campo tipo automaticamente
@@ -61,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const sides = sidesEl.value;
             
             const color = colorBtn ? colorBtn.dataset.color : 'bn';
-            const type = typeBtn ? typeBtn.dataset.type : 'copia';
             
             tipoInput.value = `${color.toUpperCase()} ${sides === 'x2' ? 'doble cara' : 'una cara'}`;
         }
@@ -69,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Event listeners
     qtyEl.addEventListener('input', recalc);
+    pagesEl.addEventListener('input', recalc);
     sidesEl.addEventListener('change', recalc);
     
     // Calcolo iniziale

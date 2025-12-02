@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-  <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-  <link rel="shortcut icon" href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-  
+  <link rel="icon" type="image/x-icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="apple-touch-icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="shortcut icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGQPKN977H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-GGQPKN977H');
   </script>
   <script>
     // Cálculo robusto específico para la página Volumen
-    document.addEventListener('DOMContentLoaded', function(){
-      function initVolumeCalculator(){
+    document.addEventListener('DOMContentLoaded', function () {
+      function initVolumeCalculator() {
         const qtyEl = document.getElementById('q');
         const pagesEl = document.getElementById('pages');
         const sidesEl = document.getElementById('sides');
         const totalEl = document.getElementById('total-preview');
         const colorButtons = document.querySelectorAll('.color-btn');
 
-        if(!qtyEl || !pagesEl || !sidesEl || !totalEl) return;
+        if (!qtyEl || !pagesEl || !sidesEl || !totalEl) return;
 
-        function getActiveColor(){
+        function getActiveColor() {
           const active = document.querySelector('.color-btn.active');
           return active ? active.dataset.color : 'bn';
         }
 
-        function fmt(n){
-          return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:2});
+        function fmt(n) {
+          return n.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 2 });
         }
 
-        function recalcVolume(){
-          const q = Math.max(0, parseInt(qtyEl.value||'0'));
-          const pages = Math.max(1, parseInt(pagesEl.value||'1'));
+        function recalcVolume() {
+          const q = Math.max(0, parseInt(qtyEl.value || '0'));
+          const pages = Math.max(1, parseInt(pagesEl.value || '1'));
           const sidesMultiplier = sidesEl.value === 'x2' ? 2 : 1;
           const color = getActiveColor();
 
           let unitPrice = 0.40; // BN una cara (default)
-          if(color === 'bn'){
+          if (color === 'bn') {
             const impressions = q * pages * sidesMultiplier;
             if (impressions <= 100) {
               unitPrice = 1.00; // 1–100 impresiones: $1, aplica a x1 y x2
@@ -67,13 +73,13 @@
         window.recalcCalculator = recalcVolume;
 
         // Definisci funzioni globali per compatibilità con gli attributi onclick
-        window.changeType = function(btn, type){
-          document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+        window.changeType = function (btn, type) {
+          document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           recalcVolume();
         };
-        window.changeColor = function(btn, color){
-          document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+        window.changeColor = function (btn, color) {
+          document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           recalcVolume();
         };
@@ -81,7 +87,7 @@
         qtyEl.addEventListener('input', recalcVolume);
         pagesEl.addEventListener('input', recalcVolume);
         sidesEl.addEventListener('change', recalcVolume);
-        colorButtons.forEach(btn=>btn.addEventListener('click', recalcVolume));
+        colorButtons.forEach(btn => btn.addEventListener('click', recalcVolume));
 
         // Calcolo iniziale
         recalcVolume();
@@ -90,91 +96,242 @@
       initVolumeCalculator();
     });
   </script>
-  
+
   <!-- Meta Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1131571462234509');
-  fbq('track', 'PageView');
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1131571462234509');
+    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1131571462234509&ev=PageView&noscript=1"
-  /></noscript>
+      src="https://www.facebook.com/tr?id=1131571462234509&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
-  
+
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "t4iy5aqh55");
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "t4iy5aqh55");
   </script>
-  
+
   <title>Copias por Volumen en CDMX (10,000–100,000+) | COPIMAX</title>
-  <meta name="description" content="Especialistas en copias por volumen en CDMX. Tirajes 10,000–100,000+. Producción 24–48h, entrega en CDMX, precios por millar. Solicita cotización en 2 minutos."/>
+  <meta name="description"
+    content="Especialistas en copias por volumen en CDMX. Tirajes 10,000–100,000+. Producción 24–48h, entrega en CDMX, precios por millar. Solicita cotización en 2 minutos." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--primary1:#000;--primary2:#474747;--cta1:#b5ff00;--cta2:#ddff88;--text:#1f2937;--muted:#6b7280;--card:#fff}
-    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 24px;padding-top:20px}
-    header.header{position:sticky;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);color:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;min-height:80px}
-    .nav{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;min-height:80px}
-    .logo{display:flex;align-items:center;height:50px;cursor:pointer}
-    .logo img{height:50px;width:auto;filter:brightness(1.1)}
-    .main-navigation{display:flex;gap:0;align-items:center;background:rgba(255,255,255,0.08);border-radius:25px;padding:4px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1)}
-    .nav-link{color:#fff;text-decoration:none;font-weight:500;font-size:0.95rem;padding:12px 20px;border-radius:20px;transition:all .3s;position:relative}
-    .nav-link:hover{background:rgba(255,255,255,0.15);transform:translateY(-1px)}
-    .nav-link.active{background:rgba(255,255,255,0.2);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-    .contact-header{display:flex;gap:12px;align-items:center}
-    .whatsapp-btn{background:#25D366;color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;text-decoration:none}
-    h1{font-size:2.2rem;font-weight:900;letter-spacing:-.02em}
+    :root {
+      --primary1: #000;
+      --primary2: #474747;
+      --cta1: #b5ff00;
+      --cta2: #ddff88;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #fff
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fff;
+      overflow-x: hidden
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      padding-top: 20px
+    }
+
+    header.header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      color: #fff;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      min-height: 80px
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 80px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      cursor: pointer
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      filter: brightness(1.1)
+    }
+
+    .main-navigation {
+      display: flex;
+      gap: 0;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      padding: 4px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1)
+    }
+
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 12px 20px;
+      border-radius: 20px;
+      transition: all .3s;
+      position: relative
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px)
+    }
+
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+    }
+
+    .contact-header {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -.02em
+    }
+
     /* Titolo con verde faded stile del sito */
-    .title-faded{
-      background: linear-gradient(135deg,var(--cta1),var(--cta2));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      filter:saturate(110%);
-  }
-    .sub{color:#e5e7eb;margin-top:6px}
-    /* Hero Section */
-    .hero-section{
-      background:linear-gradient(135deg,#f8fafc,var(--cta2));
-      padding:100px 0;text-align:center
-    }
-    
-    .hero-content{max-width:800px;margin:0 auto}
-    
-    .hero-title{
-      font-size:3rem;font-weight:800;color:var(--primary1);
-      margin-bottom:1.5rem;line-height:1.2
-    }
-    
-    .hero-subtitle{
-      font-size:1.3rem;color:var(--text);max-width:600px;
-      margin:0 auto;line-height:1.6
+    .title-faded {
+      background: linear-gradient(135deg, var(--cta1), var(--cta2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: saturate(110%);
     }
 
-    .hero{padding:40px 0}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,.06)}
-    .card h3{font-size:1.1rem}
-    .p16{padding:16px}
-    .p24{padding:24px}
+    .sub {
+      color: #e5e7eb;
+      margin-top: 6px
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #f8fafc, var(--cta2));
+      padding: 100px 0;
+      text-align: center
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary1);
+      margin-bottom: 1.5rem;
+      line-height: 1.2
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6
+    }
+
+    .hero {
+      padding: 40px 0
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .06)
+    }
+
+    .card h3 {
+      font-size: 1.1rem
+    }
+
+    .p16 {
+      padding: 16px
+    }
+
+    .p24 {
+      padding: 24px
+    }
+
     /* .cta definito più sotto con stili ultra-aggressivi */
-    
+
     /* Bottoni tipo e colore - STILI ULTRA-AGGRESSIVI */
-    .type-btn, .color-btn {
+    .type-btn,
+    .color-btn {
       background: #f3f4f6 !important;
       color: #374151 !important;
       border: 2px solid #e5e7eb !important;
@@ -185,7 +342,7 @@
       cursor: pointer !important;
       transition: all 0.3s ease !important;
       flex: 1 !important;
-      -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
       touch-action: manipulation !important;
       user-select: none !important;
       position: relative !important;
@@ -196,23 +353,25 @@
       outline: none !important;
       box-sizing: border-box !important;
     }
-    
-    .type-btn:hover, .color-btn:hover {
+
+    .type-btn:hover,
+    .color-btn:hover {
       background: #e5e7eb !important;
       border-color: #d1d5db !important;
       transform: translateY(-1px) !important;
     }
-    
-    .type-btn.active, .color-btn.active {
+
+    .type-btn.active,
+    .color-btn.active {
       background: var(--cta1) !important;
       color: #000 !important;
       border-color: var(--cta1) !important;
-      box-shadow: 0 2px 8px rgba(181,255,0,0.3) !important;
+      box-shadow: 0 2px 8px rgba(181, 255, 0, 0.3) !important;
     }
-    
+
     /* Bottone CTA principale - STILI ULTRA-AGGRESSIVI */
     .cta {
-      background: linear-gradient(135deg,var(--cta1),var(--cta2)) !important;
+      background: linear-gradient(135deg, var(--cta1), var(--cta2)) !important;
       color: #000 !important;
       font-weight: 800 !important;
       border: none !important;
@@ -229,45 +388,46 @@
       box-sizing: border-box !important;
       width: 100% !important;
     }
-    
+
     .cta:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(181,255,0,0.3) !important;
+      box-shadow: 0 4px 12px rgba(181, 255, 0, 0.3) !important;
     }
-    
+
     /* Stili mobile per i bottoni */
     @media (max-width: 768px) {
+
       /* Header mobile */
       .header {
         display: none !important;
       }
-      
+
       /* Layout mobile */
       .wrap {
         padding: 0 16px;
         padding-top: 80px;
       }
-      
+
       .grid {
         grid-template-columns: 1fr;
         gap: 16px;
       }
-      
+
       .hero-section {
         padding: 40px 0;
       }
-      
+
       .hero-title {
         font-size: 1.8rem !important;
         padding: 0 16px;
         line-height: 1.2;
       }
-      
+
       .hero-subtitle {
         font-size: 1.1rem !important;
         padding: 0 16px;
       }
-      
+
       /* Hero CTA mobile */
       .hero-section .cta {
         font-size: 1.1rem !important;
@@ -276,38 +436,39 @@
         margin: 0 auto !important;
         display: block !important;
       }
-      
+
       /* Prezzi mobile */
       .card {
         margin: 16px 0;
       }
-      
+
       /* Grid prezzi mobile */
-      .card > div[style*="grid-template-columns"] {
+      .card>div[style*="grid-template-columns"] {
         grid-template-columns: 1fr !important;
         gap: 16px !important;
       }
-      
+
       /* Grid 4 colonne mobile */
       div[style*="grid-template-columns: repeat(4, 1fr)"] {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
       }
-      
+
       /* Calculadora centrada mobile */
       .card[style*="max-width: 600px"] {
         margin: 0 16px !important;
         max-width: none !important;
       }
-      
+
       /* Logística mobile */
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] {
         margin: 16px !important;
         max-width: none !important;
       }
-      
+
       /* Form mobile */
-      .type-btn, .color-btn {
+      .type-btn,
+      .color-btn {
         padding: 12px 16px !important;
         font-size: 1rem !important;
         min-height: 44px !important;
@@ -315,399 +476,403 @@
         align-items: center !important;
         justify-content: center !important;
       }
-      
+
       .cta {
         padding: 16px 24px !important;
         font-size: 1.1rem !important;
         min-height: 48px !important;
         width: 100% !important;
       }
-      
+
       /* Form benefit box mobile */
       div[style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
       }
-      
+
       /* FAQ mobile */
       details {
         margin-bottom: 16px;
       }
-      
+
       summary {
         padding: 12px;
         font-size: 1rem;
       }
-      
+
       .ans {
         padding: 0 12px 12px;
         font-size: 0.9rem;
       }
-      
+
       /* Titoli mobile */
       h2 {
         font-size: 1.5rem !important;
         padding: 0 8px;
       }
-      
+
       h3 {
         font-size: 1.2rem !important;
       }
-      
+
       /* Trust banner mobile */
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] {
         padding: 20px 16px !important;
         margin: 16px 0 !important;
       }
-      
+
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] p {
         font-size: 1rem !important;
         line-height: 1.4 !important;
       }
     }
-    
+
     /* OTTIMIZZAZIONI PER SCHERMI MOLTO PICCOLI (320px-480px) */
     @media (max-width: 480px) {
+
       /* Hero section extra small */
       .hero-section {
         padding: 30px 0 !important;
       }
-      
+
       .hero-title {
         font-size: 1.5rem !important;
         padding: 0 12px !important;
         line-height: 1.1 !important;
       }
-      
+
       .hero-subtitle {
         font-size: 1rem !important;
         padding: 0 12px !important;
       }
-      
+
       /* Hero CTA extra small */
       .hero-section .cta {
         font-size: 1rem !important;
         padding: 14px 20px !important;
         width: 95% !important;
       }
-      
+
       /* Proof social box mobile */
       .hero-section div[style*="background: rgba(255,255,255,0.95)"] {
         margin: 16px 12px 0 !important;
         padding: 16px !important;
       }
-      
+
       .hero-section div[style*="background: rgba(255,255,255,0.95)"] p {
         font-size: 0.9rem !important;
         line-height: 1.3 !important;
       }
-      
+
       /* Layout mobile extra small */
       .wrap {
         padding: 0 12px !important;
         padding-top: 70px !important;
       }
-      
+
       /* Card padding mobile */
       .card {
         padding: 16px !important;
         margin: 12px 0 !important;
       }
-      
+
       /* Titoli mobile extra small */
       h2 {
         font-size: 1.3rem !important;
         padding: 0 4px !important;
         margin-bottom: 16px !important;
       }
-      
+
       h3 {
         font-size: 1.1rem !important;
       }
-      
+
       /* Grid 4 colonne mobile extra small */
       div[style*="grid-template-columns: repeat(4, 1fr)"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
       }
-      
+
       /* Prezzi mobile extra small */
-      .card > div[style*="grid-template-columns"] {
+      .card>div[style*="grid-template-columns"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
       }
-      
+
       /* Calculadora mobile extra small */
       .card[style*="max-width: 600px"] {
         margin: 0 8px !important;
         padding: 16px !important;
       }
-      
+
       /* Logística mobile extra small */
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] {
         margin: 12px 8px !important;
       }
-      
+
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] h4 {
         font-size: 1.1rem !important;
         margin-bottom: 12px !important;
       }
-      
+
       /* Logística cards mobile extra small */
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] div[style*="background: #f8fafc"] {
         padding: 12px !important;
         margin-bottom: 8px !important;
       }
-      
+
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] div[style*="background: #f8fafc"] p {
         font-size: 0.85rem !important;
         line-height: 1.3 !important;
       }
-      
+
       /* Form mobile extra small */
-      .type-btn, .color-btn {
+      .type-btn,
+      .color-btn {
         padding: 10px 12px !important;
         font-size: 0.9rem !important;
         min-height: 40px !important;
       }
-      
+
       .cta {
         padding: 14px 20px !important;
         font-size: 1rem !important;
         min-height: 44px !important;
       }
-      
+
       /* Form benefit box mobile extra small */
       div[style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
         gap: 8px !important;
       }
-      
+
       /* FAQ mobile extra small */
       details {
         margin-bottom: 12px !important;
       }
-      
+
       summary {
         padding: 10px !important;
         font-size: 0.9rem !important;
       }
-      
+
       .ans {
         padding: 0 10px 10px !important;
         font-size: 0.85rem !important;
       }
-      
+
       /* Trust banner mobile extra small */
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] {
         padding: 16px 12px !important;
         margin: 12px 0 !important;
       }
-      
+
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] p {
         font-size: 0.9rem !important;
         line-height: 1.3 !important;
       }
-      
+
       /* Servizi adicionales mobile extra small */
       div[style*="text-align: center; padding: 16px"] {
         padding: 12px !important;
       }
-      
+
       div[style*="text-align: center; padding: 16px"] h3 {
         font-size: 0.9rem !important;
         margin-bottom: 6px !important;
       }
-      
+
       div[style*="text-align: center; padding: 16px"] p {
         font-size: 0.8rem !important;
         line-height: 1.3 !important;
       }
-      
+
       /* Footer mobile extra small */
       footer {
         padding: 30px 0 !important;
       }
-      
+
       footer h3 {
         font-size: 1.2rem !important;
         margin-bottom: 6px !important;
       }
-      
+
       footer p {
         font-size: 0.85rem !important;
         margin-bottom: 3px !important;
       }
-      
+
       footer div[style*="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
         font-size: 0.8rem !important;
       }
     }
-    
+
     /* OTTIMIZZAZIONI PER SCHERMI ULTRA-PICCOLI (320px) */
     @media (max-width: 320px) {
+
       /* Hero section ultra small */
       .hero-section {
         padding: 20px 0 !important;
       }
-      
+
       .hero-title {
         font-size: 1.3rem !important;
         padding: 0 8px !important;
         line-height: 1.1 !important;
       }
-      
+
       .hero-subtitle {
         font-size: 0.9rem !important;
         padding: 0 8px !important;
       }
-      
+
       /* Hero CTA ultra small */
       .hero-section .cta {
         font-size: 0.9rem !important;
         padding: 12px 16px !important;
         width: 98% !important;
       }
-      
+
       /* Proof social box ultra small */
       .hero-section div[style*="background: rgba(255,255,255,0.95)"] {
         margin: 12px 8px 0 !important;
         padding: 12px !important;
       }
-      
+
       .hero-section div[style*="background: rgba(255,255,255,0.95)"] p {
         font-size: 0.8rem !important;
         line-height: 1.2 !important;
       }
-      
+
       /* Layout ultra small */
       .wrap {
         padding: 0 8px !important;
         padding-top: 60px !important;
       }
-      
+
       /* Card padding ultra small */
       .card {
         padding: 12px !important;
         margin: 8px 0 !important;
       }
-      
+
       /* Titoli ultra small */
       h2 {
         font-size: 1.1rem !important;
         padding: 0 2px !important;
         margin-bottom: 12px !important;
       }
-      
+
       h3 {
         font-size: 1rem !important;
       }
-      
+
       /* Calculadora ultra small */
       .card[style*="max-width: 600px"] {
         margin: 0 4px !important;
         padding: 12px !important;
       }
-      
+
       /* Logística ultra small */
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] {
         margin: 8px 4px !important;
       }
-      
+
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] h4 {
         font-size: 1rem !important;
         margin-bottom: 8px !important;
       }
-      
+
       /* Logística cards ultra small */
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] div[style*="background: #f8fafc"] {
         padding: 8px !important;
         margin-bottom: 6px !important;
       }
-      
+
       div[style*="max-width: 600px"][style*="margin: 24px auto 0"] div[style*="background: #f8fafc"] p {
         font-size: 0.75rem !important;
         line-height: 1.2 !important;
       }
-      
+
       /* Form ultra small */
-      .type-btn, .color-btn {
+      .type-btn,
+      .color-btn {
         padding: 8px 10px !important;
         font-size: 0.8rem !important;
         min-height: 36px !important;
       }
-      
+
       .cta {
         padding: 12px 16px !important;
         font-size: 0.9rem !important;
         min-height: 40px !important;
       }
-      
+
       /* FAQ ultra small */
       details {
         margin-bottom: 8px !important;
       }
-      
+
       summary {
         padding: 8px !important;
         font-size: 0.8rem !important;
       }
-      
+
       .ans {
         padding: 0 8px 8px !important;
         font-size: 0.75rem !important;
       }
-      
+
       /* Trust banner ultra small */
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] {
         padding: 12px 8px !important;
         margin: 8px 0 !important;
       }
-      
+
       div[style*="background: linear-gradient(135deg, var(--cta1), var(--cta2))"] p {
         font-size: 0.8rem !important;
         line-height: 1.2 !important;
       }
-      
+
       /* Servizi adicionales ultra small */
       div[style*="text-align: center; padding: 16px"] {
         padding: 8px !important;
       }
-      
+
       div[style*="text-align: center; padding: 16px"] h3 {
         font-size: 0.8rem !important;
         margin-bottom: 4px !important;
       }
-      
+
       div[style*="text-align: center; padding: 16px"] p {
         font-size: 0.7rem !important;
         line-height: 1.2 !important;
       }
-      
+
       /* Footer ultra small */
       footer {
         padding: 20px 0 !important;
       }
-      
+
       footer h3 {
         font-size: 1rem !important;
         margin-bottom: 4px !important;
       }
-      
+
       footer p {
         font-size: 0.75rem !important;
         margin-bottom: 2px !important;
       }
-      
+
       footer div[style*="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
         grid-template-columns: 1fr !important;
         gap: 8px !important;
         font-size: 0.7rem !important;
       }
     }
-    
+
     /* Menu Mobile Styles */
     .mobile-nav-button {
       display: none;
@@ -726,7 +891,7 @@
       border-radius: 6px;
       padding: 4px;
     }
-    
+
     .hamburger-line {
       width: 100%;
       height: 3px;
@@ -734,7 +899,7 @@
       border-radius: 2px;
       transition: all 0.3s ease;
     }
-    
+
     .mobile-slide-menu {
       position: fixed;
       top: 0;
@@ -746,28 +911,28 @@
       z-index: 1000;
       transition: right 0.3s ease;
       padding: 20px;
-      box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
     }
-    
+
     .mobile-slide-menu.active {
       right: 0;
     }
-    
+
     .slide-menu-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
-    
+
     .mobile-logo {
       color: var(--cta1);
       font-size: 1.5rem;
       font-weight: 700;
     }
-    
+
     .close-slide-menu {
       background: none;
       border: none;
@@ -783,18 +948,18 @@
       border-radius: 50%;
       transition: all 0.3s ease;
     }
-    
+
     .close-slide-menu:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
-    
+
     .slide-menu-nav {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin-bottom: 30px;
     }
-    
+
     .slide-menu-nav a {
       color: white;
       text-decoration: none;
@@ -806,30 +971,30 @@
       align-items: center;
       gap: 10px;
     }
-    
+
     .slide-menu-nav a:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       transform: translateX(5px);
     }
-    
+
     .slide-menu-footer {
       margin-top: auto;
       padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
-    
+
     .mobile-contact {
       display: flex;
       flex-direction: column;
       gap: 15px;
       text-align: center;
     }
-    
+
     .mobile-contact span {
       color: white;
       font-size: 1rem;
     }
-    
+
     .mobile-contact .whatsapp {
       background: #25D366;
       color: white;
@@ -840,18 +1005,18 @@
       transition: all 0.3s ease;
       display: inline-block;
     }
-    
+
     .mobile-contact .whatsapp:hover {
       background: #128C7E;
       transform: translateY(-2px);
     }
-    
+
     @media (max-width: 768px) {
       .mobile-nav-button {
         display: flex;
       }
     }
-    
+
     /* Assicurati che i form non interferiscano con i bottoni */
     form button[type="button"],
     form button[type="submit"] {
@@ -862,6 +1027,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Menu Mobile Semplificato -->
   <button class="mobile-nav-button" onclick="toggleMobileMenu()">
@@ -877,27 +1043,30 @@
     </div>
     <div class="slide-menu-nav">
       <a href="/" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
-<a href="/servicios" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
-<a href="/copias-volumen-cdmx" onclick="closeMobileSlideMenu()">📦 Volumen</a>
-<a href="/nosotros" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
-<a href="/blog" onclick="closeMobileSlideMenu()">📝 Blog</a>
-<a href="/contacto" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+      <a href="/servicios" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="/copias-volumen-cdmx" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="/nosotros" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="/blog" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="/contacto" onclick="closeMobileSlideMenu()">📍 Contacto</a>
     </div>
-    
+
     <!-- Sezione contatti mobile -->
     <div class="slide-menu-footer">
       <div class="mobile-contact">
         <span>📞 55-4021-9892</span>
-        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?"
+          class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
       </div>
     </div>
   </nav>
 
-    <!-- Header desktop (nascosto su mobile) -->
+  <!-- Header desktop (nascosto su mobile) -->
   <header class="header">
     <nav class="nav">
       <div class="logo" onclick="window.location.href='/'">
-        <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="COPIMAX Logo">
+        <img
+          src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="COPIMAX Logo">
       </div>
       <!-- Menu Principale Elegante in Stile Apple -->
       <div class="main-navigation">
@@ -908,46 +1077,52 @@
         <a href="/blog" class="nav-link">Blog</a>
         <a href="/contacto" class="nav-link">Contacto</a>
       </div>
-      
+
       <div class="contact-header">
         <span>📞 +52 5540219892</span>
-        <a class="whatsapp-btn" href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="whatsapp-btn"
+          href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?"
+          target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </nav>
 
 
 
-    </header>
-  
+  </header>
 
-  
+
+
   <!-- Hero Section HOOK PSICOLOGICO -->
   <section class="hero-section">
     <div class="hero-content">
       <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        ¿Necesitas <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">50,000 copias</span> para <strong>MAÑANA</strong>?
+        ¿Necesitas <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">50,000 copias</span> para
+        <strong>MAÑANA</strong>?
       </h1>
-      
+
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
       <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
-        Las tienes listas en <strong>24 horas</strong> desde <span style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
+        Las tienes listas en <strong>24 horas</strong> desde <span
+          style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
       </p>
-      
+
       <!-- CTA GIGANTE E URGENTE -->
       <div style="margin: 32px 0;">
-        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20urgente%20para%2050,000%20copias%20para%20mañana.%20¿Pueden%20ayudarme?" 
-           class="cta" 
-           style="font-size: 1.3rem; padding: 20px 40px; display: inline-block; text-decoration: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(181,255,0,0.4);"
-           target="_blank" rel="noopener">
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20urgente%20para%2050,000%20copias%20para%20mañana.%20¿Pueden%20ayudarme?"
+          class="cta"
+          style="font-size: 1.3rem; padding: 20px 40px; display: inline-block; text-decoration: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(181,255,0,0.4);"
+          target="_blank" rel="noopener">
           🚀 COTIZAR AHORA - 2 MINUTOS
         </a>
       </div>
-      
+
       <!-- PROOF SOCIAL IMMEDIATO -->
-      <div style="background: rgba(255,255,255,0.95); padding: 20px; border-radius: 12px; margin-top: 24px; border: 2px solid var(--cta1);">
+      <div
+        style="background: rgba(255,255,255,0.95); padding: 20px; border-radius: 12px; margin-top: 24px; border: 2px solid var(--cta1);">
         <p style="font-size: 1rem; color: #000; margin: 0; font-weight: 600;">
-          🏆 <strong>Esta semana ya produjimos:</strong> 85,000 manuales → Universidad ✅ | 120,000 reportes → Banco ✅ | 200,000 folletos → Gobierno ✅
+          🏆 <strong>Esta semana ya produjimos:</strong> 85,000 manuales → Universidad ✅ | 120,000 reportes → Banco ✅ |
+          200,000 folletos → Gobierno ✅
         </p>
         <p style="font-size: 0.9rem; color: #666; margin: 8px 0 0 0;">
           <strong>500+ empresas</strong> confían en nosotros cada mes
@@ -961,43 +1136,52 @@
     <section style="margin-bottom: 32px;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          ¿Por qué somos la <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta líder en volumen</span>?
+          ¿Por qué somos la <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta líder
+            en volumen</span>?
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
           <div>
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               🏆 Experiencia Comprobada en Grandes Volúmenes
             </h3>
             <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Con más de dos décadas como <strong>imprenta especializada</strong>, hemos producido millones de copias para universidades, corporativos y dependencias gubernamentales. Nuestra <strong>imprenta</strong> maneja desde manuales estudiantiles hasta campañas publicitarias masivas.
+              Con más de dos décadas como <strong>imprenta especializada</strong>, hemos producido millones de copias
+              para universidades, corporativos y dependencias gubernamentales. Nuestra <strong>imprenta</strong> maneja
+              desde manuales estudiantiles hasta campañas publicitarias masivas.
             </p>
-      </div>
-          
+          </div>
+
           <div>
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               ⚙️ Tecnología Industrial Exclusiva
             </h3>
             <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Nuestra <strong>imprenta</strong> cuenta con equipos Xerox de producción industrial capaces de imprimir hasta 50,000 copias diarias manteniendo calidad offset. A diferencia de otras <strong>imprentas</strong>, garantizamos uniformidad en color y definición en toda tu producción.
+              Nuestra <strong>imprenta</strong> cuenta con equipos Xerox de producción industrial capaces de imprimir
+              hasta 50,000 copias diarias manteniendo calidad offset. A diferencia de otras <strong>imprentas</strong>,
+              garantizamos uniformidad en color y definición en toda tu producción.
             </p>
           </div>
-          
+
           <div>
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               📍 Ubicación Estratégica en Iztacalco
             </h3>
             <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Somos la <strong>imprenta</strong> más accesible para la zona empresarial UPIICSA y alrededores. Esta ubicación privilegiada nos permite ofrecer entregas express y recolecciones sin costo adicional en un radio de 15km.
+              Somos la <strong>imprenta</strong> más accesible para la zona empresarial UPIICSA y alrededores. Esta
+              ubicación privilegiada nos permite ofrecer entregas express y recolecciones sin costo adicional en un
+              radio de 15km.
             </p>
           </div>
-          
+
           <div>
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
               🚚 Logística Especializada para Volumen
             </h3>
             <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Nuestra <strong>imprenta</strong> maneja la logística completa: desde recepción de archivos digitales hasta empaquetado profesional y entrega programada. Trabajamos con empresas de mensajería especializadas en documentos corporativos.
+              Nuestra <strong>imprenta</strong> maneja la logística completa: desde recepción de archivos digitales
+              hasta empaquetado profesional y entrega programada. Trabajamos con empresas de mensajería especializadas
+              en documentos corporativos.
             </p>
           </div>
         </div>
@@ -1008,19 +1192,21 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Precios Transparentes</span> - Sin Sorpresas
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Precios Transparentes</span> - Sin
+          Sorpresas
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
           <!-- PREZZO POPOLARE -->
-          <div style="background: linear-gradient(135deg, var(--cta2), var(--cta1)); padding: 24px; border-radius: 16px; text-align: center; border: 3px solid var(--cta1);">
+          <div
+            style="background: linear-gradient(135deg, var(--cta2), var(--cta1)); padding: 24px; border-radius: 16px; text-align: center; border: 3px solid var(--cta1);">
             <div style="font-size: 2.5rem; margin-bottom: 8px;">🔥</div>
             <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
               MÁS POPULAR
             </h3>
             <div style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 8px;">
               $0.35
-      </div>
+            </div>
             <p style="font-size: 1rem; color: #000; margin-bottom: 16px; font-weight: 600;">
               Doble cara • 10,000+ copias
             </p>
@@ -1032,9 +1218,10 @@
               ⚡ Entrega en 24-48h
             </p>
           </div>
-          
+
           <!-- PREZZO STANDARD -->
-          <div style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
+          <div
+            style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
             <div style="font-size: 2.5rem; margin-bottom: 8px;">📄</div>
             <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
               ESTÁNDAR
@@ -1053,9 +1240,10 @@
               ⚡ Entrega en 24-48h
             </p>
           </div>
-          
+
           <!-- PREZZO VOLUME MASSIMO -->
-          <div style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
+          <div
+            style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
             <div style="font-size: 2.5rem; margin-bottom: 8px;">🏭</div>
             <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
               VOLUMEN MÁXIMO
@@ -1075,11 +1263,13 @@
             </p>
           </div>
         </div>
-        
+
         <!-- GARANZIE -->
-        <div style="text-align: center; margin-top: 24px; padding: 20px; background: #f0f9ff; border-radius: 12px; border: 1px solid #0ea5e9;">
+        <div
+          style="text-align: center; margin-top: 24px; padding: 20px; background: #f0f9ff; border-radius: 12px; border: 1px solid #0ea5e9;">
           <p style="font-size: 1rem; color: #0369a1; margin: 0; font-weight: 600;">
-            ✅ <strong>Garantía de calidad</strong> • ✅ <strong>Entrega puntual</strong> • ✅ <strong>Sin extras ocultos</strong>
+            ✅ <strong>Garantía de calidad</strong> • ✅ <strong>Entrega puntual</strong> • ✅ <strong>Sin extras
+              ocultos</strong>
           </p>
         </div>
       </div>
@@ -1088,12 +1278,16 @@
     <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
     <section style="margin: 32px 0;">
       <div class="card p24" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu proyecto industrial - Respuesta en 2 minutos</h3>
-        <form onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Tiraje: '+document.getElementById('q').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
-          <label style="display:block;margin:8px 0 4px">Tiraje estimado</label>
-          <input id="q" type="number" min="1" placeholder="Ej: 25000" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Número de páginas por copia</label>
-          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu
+          proyecto industrial - Respuesta en 2 minutos</h3>
+        <form
+          onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
+          <label style="display:block;margin:8px 0 4px">Cantidad de copias</label>
+          <input id="q" type="number" min="1" placeholder="Ej: 25000"
+            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <label style="display:block;margin:12px 0 4px">Número de páginas</label>
+          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
+            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
           <label style="display:block;margin:12px 0 4px">Lados</label>
           <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
             <option value="x1">Una cara (x1)</option>
@@ -1101,21 +1295,28 @@
           </select>
           <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
           <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️ Copia</button>
-            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨 Impresión</button>
+            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️
+              Copia</button>
+            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨
+              Impresión</button>
           </div>
           <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫ BN</button>
-            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈 Color</button>
+            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫
+              BN</button>
+            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈
+              Color</button>
           </div>
           <!-- Campo tipo autocompilado rimosso per evitare confusione -->
           <label style="display:block;margin:12px 0 4px">Plazo</label>
-          <input id="p" type="text" placeholder="Ej: 48h" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <input id="p" type="text" placeholder="Ej: 48h"
+            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
           <input type="hidden" id="t" value="">
-                      <div id="total-box" class="card" style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
+          <div id="total-box" class="card"
+            style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
             <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
             <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
-            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $0.40 (x1) • $0.35 (x2) • Color $5.00 (x1) • $4.35 (x2)</div>
+            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
+                x1) • $0.35 (>100 x2) • Color $5.00</div>
           </div>
           <!-- BENEFIT BOX AFFIANCATO -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
@@ -1132,18 +1333,20 @@
           </div>
         </form>
       </div>
-      
+
       <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
       <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
         <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
           <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
             <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
           </div>
           <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda (Iztacalco)</p>
+            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda
+              (Iztacalco)</p>
           </div>
           <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
@@ -1161,56 +1364,63 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Casos de Éxito</span> de Nuestra Imprenta
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Casos de Éxito</span> de Nuestra
+          Imprenta
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
           <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
               🎓 Universidad Tecnológica (85,000 manuales)
             </h3>
             <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              Produjimos <strong>85,000 manuales a doble cara</strong> en 72 horas para inicio de semestre. La <strong>imprenta</strong> logró entregar en 15 sedes simultáneamente sin retrasos.
+              Produjimos <strong>85,000 manuales a doble cara</strong> en 72 horas para inicio de semestre. La
+              <strong>imprenta</strong> logró entregar en 15 sedes simultáneamente sin retrasos.
             </p>
             <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
               ✅ Entrega puntual • ✅ Calidad uniforme • ✅ Logística coordinada
             </div>
           </div>
-          
+
           <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
               🏦 Corporativo Financiero (120,000 reportes)
             </h3>
             <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              <strong>Impresión urgente</strong> de reportes anuales con acabado profesional. Nuestra <strong>imprenta</strong> completó el proyecto en tiempo récord manteniendo estándares bancarios.
+              <strong>Impresión urgente</strong> de reportes anuales con acabado profesional. Nuestra
+              <strong>imprenta</strong> completó el proyecto en tiempo récord manteniendo estándares bancarios.
             </p>
             <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
               ✅ Estándares bancarios • ✅ Tiempo récord • ✅ Acabado profesional
             </div>
           </div>
-          
+
           <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
               🏛️ Campaña Gubernamental (200,000 folletos)
             </h3>
             <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              La mayor producción de nuestra <strong>imprenta</strong> en 2024: <strong>200,000 folletos informativos</strong> con entrega coordinada en toda <strong>CDMX</strong> en 48 horas.
+              La mayor producción de nuestra <strong>imprenta</strong> en 2024: <strong>200,000 folletos
+                informativos</strong> con entrega coordinada en toda <strong>CDMX</strong> en 48 horas.
             </p>
             <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
               ✅ Mayor producción 2024 • ✅ Entrega CDMX • ✅ 48 horas
             </div>
           </div>
         </div>
-        
+
       </div>
     </section>
 
 
     <!-- TRUST BANNER -->
     <section style="margin: 32px 0;">
-      <div style="background: linear-gradient(135deg, var(--cta1), var(--cta2)); padding: 24px; border-radius: 16px; text-align: center;">
+      <div
+        style="background: linear-gradient(135deg, var(--cta1), var(--cta2)); padding: 24px; border-radius: 16px; text-align: center;">
         <p style="font-size: 1.2rem; font-weight: 700; color: #000; margin: 0;">
-          🏆 <strong>Más de 500 empresas</strong> confían en nuestra <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta</strong> para proyectos de gran <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">volumen</strong>
+          🏆 <strong>Más de 500 empresas</strong> confían en nuestra <strong
+            style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta</strong> para proyectos de gran <strong
+            style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">volumen</strong>
         </p>
         <p style="font-size: 1rem; color: #000; margin: 8px 0 0 0;">
           Únete a universidades, bancos y dependencias gubernamentales
@@ -1221,32 +1431,79 @@
     <section class="faq" style="margin:24px 0">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Preguntas Frecuentes</span> sobre Imprenta por Volumen
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Preguntas Frecuentes</span> sobre
+          Imprenta por Volumen
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
           <div>
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Por qué elegir nuestra imprenta para grandes volúmenes?</summary><div class="ans">Somos la única <strong>imprenta en Iztacalco</strong> con capacidad industrial real para manejar 50,000+ copias diarias. Nuestros 26 años de experiencia nos respaldan como la <strong>imprenta</strong> más confiable para proyectos urgentes y de gran escala.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Qué hace diferente nuestra imprenta de la competencia?</summary><div class="ans">Nuestra <strong>imprenta</strong> combina tecnología industrial, ubicación estratégica y experiencia comprobada. Ofrecemos garantía de calidad, tiempos de entrega fijos y precios sin sorpresas desde la primera cotización.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Cómo garantiza la imprenta la calidad en grandes volúmenes?</summary><div class="ans">Implementamos controles de calidad cada 5,000 copias. Nuestra <strong>imprenta</strong> utiliza perfiles de color calibrados y papel de gramaje uniforme para asegurar que la copia 100,000 sea idéntica a la primera.</div></details>
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Por qué elegir nuestra imprenta para grandes
+                volúmenes?</summary>
+              <div class="ans">Somos la única <strong>imprenta en Iztacalco</strong> con capacidad industrial real para
+                manejar 50,000+ copias diarias. Nuestros 26 años de experiencia nos respaldan como la
+                <strong>imprenta</strong> más confiable para proyectos urgentes y de gran escala.
+              </div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Qué hace diferente nuestra imprenta de la
+                competencia?</summary>
+              <div class="ans">Nuestra <strong>imprenta</strong> combina tecnología industrial, ubicación estratégica y
+                experiencia comprobada. Ofrecemos garantía de calidad, tiempos de entrega fijos y precios sin sorpresas
+                desde la primera cotización.</div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Cómo garantiza la imprenta la calidad en
+                grandes volúmenes?</summary>
+              <div class="ans">Implementamos controles de calidad cada 5,000 copias. Nuestra <strong>imprenta</strong>
+                utiliza perfiles de color calibrados y papel de gramaje uniforme para asegurar que la copia 100,000 sea
+                idéntica a la primera.</div>
+            </details>
           </div>
-          
+
           <div>
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Nuestra imprenta maneja proyectos urgentes de gran volumen?</summary><div class="ans">Sí, somos la <strong>imprenta de emergencia</strong> para muchas instituciones. Con turnos extendidos y equipos de respaldo, podemos acelerar producción hasta 24 horas en casos especiales.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Qué formatos acepta la imprenta para archivos de gran volumen?</summary><div class="ans">Nuestra <strong>imprenta</strong> procesa PDF, Word, PowerPoint e InDesign. Ofrecemos revisión previa gratuita para optimizar archivos y reducir tiempos de producción en <strong>volúmenes</strong> altos.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Cómo preparo archivos para tirajes altos?</summary><div class="ans">PDF listo para imprimir, margenes/bleed si aplica, fuentes incrustadas. Podemos revisar un archivo de muestra.</div></details>
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Nuestra imprenta maneja proyectos urgentes de
+                gran volumen?</summary>
+              <div class="ans">Sí, somos la <strong>imprenta de emergencia</strong> para muchas instituciones. Con
+                turnos extendidos y equipos de respaldo, podemos acelerar producción hasta 24 horas en casos especiales.
+              </div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Qué formatos acepta la imprenta para archivos
+                de gran volumen?</summary>
+              <div class="ans">Nuestra <strong>imprenta</strong> procesa PDF, Word, PowerPoint e InDesign. Ofrecemos
+                revisión previa gratuita para optimizar archivos y reducir tiempos de producción en
+                <strong>volúmenes</strong> altos.
+              </div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Cómo preparo archivos para tirajes altos?
+              </summary>
+              <div class="ans">PDF listo para imprimir, margenes/bleed si aplica, fuentes incrustadas. Podemos revisar
+                un archivo de muestra.</div>
+            </details>
           </div>
-          
+
           <div>
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Aceptan mezclas BN/Color?</summary><div class="ans">Sí, cotizamos páginas a color por separado o por bloques definidos.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Requiere anticipo?</summary><div class="ans">Para 10k+ normalmente 50% anticipo; saldo contra entrega.</div></details>
-            
-            <details style="margin-bottom: 16px;"><summary style="font-weight: 600; color: var(--primary1);">¿Qué papel usan?</summary><div class="ans">Bond 75–90g para BN estándar; otras opciones bajo pedido.</div></details>
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Aceptan mezclas BN/Color?</summary>
+              <div class="ans">Sí, cotizamos páginas a color por separado o por bloques definidos.</div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Requiere anticipo?</summary>
+              <div class="ans">Para 10k+ normalmente 50% anticipo; saldo contra entrega.</div>
+            </details>
+
+            <details style="margin-bottom: 16px;">
+              <summary style="font-weight: 600; color: var(--primary1);">¿Qué papel usan?</summary>
+              <div class="ans">Bond 75–90g para BN estándar; otras opciones bajo pedido.</div>
+            </details>
           </div>
         </div>
       </div>
@@ -1256,54 +1513,64 @@
     <section style="margin: 32px 0;">
       <div class="card p24">
         <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Servicios Adicionales</span> de Nuestra Imprenta
+          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Servicios Adicionales</span> de
+          Nuestra Imprenta
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+          <div
+            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="font-size: 2rem; margin-bottom: 12px;">🎨</div>
             <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Diseño y Optimización de Archivos
             </h3>
             <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Nuestro equipo de diseño optimiza archivos para producción industrial, reduciendo costos de <strong>impresión</strong> hasta 30% en grandes <strong>volúmenes</strong>.
+              Nuestro equipo de diseño optimiza archivos para producción industrial, reduciendo costos de
+              <strong>impresión</strong> hasta 30% en grandes <strong>volúmenes</strong>.
             </p>
           </div>
-          
-          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+
+          <div
+            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="font-size: 2rem; margin-bottom: 12px;">📚</div>
             <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Acabados Profesionales para Volumen
             </h3>
             <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              La <strong>imprenta</strong> ofrece engargolado, enmicado y empastado industrial para grandes cantidades. Ideal para manuales corporativos y material educativo.
+              La <strong>imprenta</strong> ofrece engargolado, enmicado y empastado industrial para grandes cantidades.
+              Ideal para manuales corporativos y material educativo.
             </p>
           </div>
-          
-          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+
+          <div
+            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="font-size: 2rem; margin-bottom: 12px;">📦</div>
             <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Almacenamiento Temporal
             </h3>
             <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Nuestra <strong>imprenta</strong> cuenta con bodega climatizada para almacenar tu producción hasta por 30 días sin costo adicional.
+              Nuestra <strong>imprenta</strong> cuenta con bodega climatizada para almacenar tu producción hasta por 30
+              días sin costo adicional.
             </p>
           </div>
-          
-          <div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
+
+          <div
+            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="font-size: 2rem; margin-bottom: 12px;">🚚</div>
             <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Entrega Programada
             </h3>
             <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Coordinamos entregas escalonadas según tu calendario académico o empresarial. La <strong>imprenta</strong> puede dividir tu pedido en entregas semanales o quincenales.
+              Coordinamos entregas escalonadas según tu calendario académico o empresarial. La <strong>imprenta</strong>
+              puede dividir tu pedido en entregas semanales o quincenales.
             </p>
           </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 24px;">
           <p style="font-size: 1rem; color: var(--muted); margin: 0;">
-            💡 <strong>Servicios adicionales disponibles</strong> para optimizar tu proyecto de <strong>imprenta por volumen</strong> en <strong>CDMX</strong>
+            💡 <strong>Servicios adicionales disponibles</strong> para optimizar tu proyecto de <strong>imprenta por
+              volumen</strong> en <strong>CDMX</strong>
           </p>
         </div>
       </div>
@@ -1312,14 +1579,15 @@
 
   <footer style="background: #000; color: #fff; padding: 40px 0; margin-top: 40px;">
     <div class="wrap" style="display:flex;flex-direction:column;gap:20px;align-items:center">
-      
+
       <!-- Informazioni Imprenta -->
       <div style="text-align: center; margin-bottom: 20px;">
         <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--cta1); margin-bottom: 8px;">
           COPIMAX - Imprenta Industrial Iztacalco
         </h3>
         <p style="font-size: 1rem; color: #e5e7eb; margin-bottom: 4px;">
-          Especialistas en <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">impresión por volumen</strong> desde 1998
+          Especialistas en <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">impresión por volumen</strong>
+          desde 1998
         </p>
         <p style="font-size: 0.95rem; color: #d1d5db;">
           Zona UPIICSA • Iztacalco • Ciudad de México
@@ -1328,13 +1596,14 @@
           <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta líder en grandes volúmenes CDMX</strong>
         </p>
       </div>
-      
+
       <!-- Horarios Imprenta -->
       <div style="text-align: center; margin-bottom: 20px;">
         <h4 style="font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 12px;">
           Horarios de Imprenta:
         </h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 0.9rem; color: #e5e7eb;">
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 0.9rem; color: #e5e7eb;">
           <div>
             <strong>Lunes a Viernes:</strong><br>
             8:30 AM - 6:00 PM
@@ -1349,7 +1618,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Menu Footer -->
       <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center; margin-bottom: 20px;">
         <a href="/" style="color:#fff;text-decoration:none; font-weight: 500;">Inicio</a>
@@ -1359,24 +1628,23 @@
         <a href="/blog" style="color:#fff;text-decoration:none; font-weight: 500;">Blog</a>
         <a href="/contacto" style="color:#fff;text-decoration:none; font-weight: 500;">Contacto</a>
       </div>
-      
+
       <!-- Copyright -->
-      <div style="text-align: center; font-size: 0.9rem; color: #d1d5db; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; width: 100%;">
-        © 2025 COPIMAX – <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta</strong> copias por Volumen CDMX • Todos los derechos reservados
+      <div
+        style="text-align: center; font-size: 0.9rem; color: #d1d5db; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; width: 100%;">
+        © 2025 COPIMAX – <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta</strong> copias por Volumen
+        CDMX • Todos los derechos reservados
       </div>
     </div>
   </footer>
 
-      <!-- JavaScript esterno -->
-    <script src="js/main.js"></script>
-    <script src="js/calculator.js"></script>
+  <!-- JavaScript esterno -->
+  <script src="js/main.js"></script>
+  <script src="js/calculator.js?v=1.1"></script>
 
   <!-- Bottone WhatsApp fisso in basso a destra -->
-  <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?" 
-     class="whatsapp-fixed-btn" 
-     target="_blank" 
-     rel="noopener" 
-     title="Contactar por WhatsApp">
+  <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20informaciones%20sulle%20copias%20por%20volumen.%20¿Pueden%20ayudarme?"
+    class="whatsapp-fixed-btn" target="_blank" rel="noopener" title="Contactar por WhatsApp">
     💬
   </a>
 
@@ -1386,17 +1654,17 @@
       const menu = document.getElementById('mobileSlideMenu');
       menu.classList.toggle('active');
     }
-    
+
     function closeMobileSlideMenu() {
       const menu = document.getElementById('mobileSlideMenu');
       menu.classList.remove('active');
     }
-    
+
     // Chiudi menu quando si clicca fuori
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       const menu = document.getElementById('mobileSlideMenu');
       const button = document.querySelector('.mobile-nav-button');
-      
+
       if (!menu.contains(event.target) && !button.contains(event.target)) {
         menu.classList.remove('active');
       }
@@ -1404,4 +1672,5 @@
   </script>
 
 </body>
-  </html>
+
+</html>
