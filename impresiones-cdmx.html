@@ -125,9 +125,16 @@
     }
 
     .container {
-      max-width: 500px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 100%;
+        padding: 20px 16px;
+      }
     }
 
     /* Hero (pagina) - rinominato per evitare conflitto con header di navigazione */
@@ -867,6 +874,179 @@
 
   <div class="container">
 
+    <!-- CALCULADORA DESTACADA - Moved to top for better visibility -->
+    <div style="max-width: 800px; margin: 0 auto 40px;">
+      <div class="calc-card" id="calc-card">
+        <div class="calc-header">
+          <div class="calc-title">Calculadora de precios</div>
+          <div style="font-size: 28px;">🧮</div>
+        </div>
+
+        <!-- Tipo de trabajo: B/N vs Color -->
+        <label class="section-label">Tipo de impresión:</label>
+        <div class="toggle-grid">
+          <div id="tipo-bn" class="toggle-option selected" onclick="selectTipo('bn')">Blanco y Negro</div>
+          <div id="tipo-color" class="toggle-option" onclick="selectTipo('color')">Color</div>
+        </div>
+
+        <!-- Opciones B/N -->
+        <div class="subsection active" id="bn-options">
+          <div class="option-card selected" id="bn-2caras" onclick="selectBN('2caras')">
+            <div class="option-info">
+              <h4>Doble cara (2 lados)</h4>
+              <p>$0.35 por cada lado</p>
+            </div>
+            <div class="option-price">$0.35<span>/lado</span></div>
+          </div>
+          <div class="option-card" id="bn-1cara" onclick="selectBN('1cara')">
+            <div class="option-info">
+              <h4>Una sola cara</h4>
+              <p>$0.40 por hoja</p>
+            </div>
+            <div class="option-price">$0.40<span>/hoja</span></div>
+          </div>
+        </div>
+
+        <!-- Opciones Color -->
+        <div class="subsection" id="color-options">
+          <div class="option-card selected" id="c-texto" onclick="selectColor('texto')">
+            <div class="option-info">
+              <h4>Solo texto</h4>
+              <p>1-100 copias</p>
+            </div>
+            <div class="option-price">$5<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-imagen" onclick="selectColor('imagen')">
+            <div class="option-info">
+              <h4>Imagen completa</h4>
+              <p>1-100 copias</p>
+            </div>
+            <div class="option-price">$10<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-100plus" onclick="selectColor('100plus')">
+            <div class="option-info">
+              <h4>+100 copias</h4>
+              <p>Precio por volumen • Requiere 100+</p>
+            </div>
+            <div class="option-price">$4<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-300plus" onclick="selectColor('300plus')">
+            <div class="option-info">
+              <h4>+300 copias</h4>
+              <p>Mejor precio • Requiere 300+</p>
+            </div>
+            <div class="option-price">$3<span>/hoja</span></div>
+          </div>
+        </div>
+
+        <!-- Cantidad -->
+        <label class="section-label">Cantidad de hojas:</label>
+        <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="onQtyChange()">
+        <div class="quantity-note" id="quantity-note">100 hojas = 200 páginas si imprimes a 2 caras</div>
+        <div class="quantity-note" id="rule-note" style="color:#aaa"></div>
+
+        <!-- Extras -->
+        <label class="section-label">Servicios Adicionales (opcional):</label>
+        <div style="font-size:11px;color:#888;margin:-6px 0 10px 0;">ℹ️ Nota: se aplica cargo fijo por descarga de
+          archivo de $5 MXN.</div>
+
+        <!-- Engargolado -->
+        <div class="addon-item" onclick="document.getElementById('engargolado').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="engargolado" class="addon-checkbox">
+            <span>Engargolado</span>
+          </div>
+          <div class="addon-price" id="engargolado-total">+$20</div>
+        </div>
+        <div class="engargolado-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+            <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+            <input type="number" id="engargolado-qty" min="1" value="1"
+              style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <label style="font-size:12px;color:#aaa;">de</label>
+            <select id="engargolado-size"
+              style="padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+              <option value="100">100 páginas</option>
+              <option value="200">200 páginas</option>
+              <option value="300">300 páginas</option>
+              <option value="400">400 páginas</option>
+            </select>
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="engargolado-price">$20</span> c/u</span>
+          </div>
+        </div>
+
+        <!-- Folder individual -->
+        <div class="addon-item" onclick="document.getElementById('folders').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="folders" class="addon-checkbox">
+            <span>Folder (individual)</span>
+          </div>
+          <div class="addon-price" id="folders-total">+$15</div>
+        </div>
+        <div class="folders-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+            <input type="number" id="folders-qty" min="1" value="1"
+              style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="folders-price">$15</span> c/u</span>
+          </div>
+        </div>
+
+        <!-- Enmicado -->
+        <div class="addon-item" onclick="document.getElementById('enmicado').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="enmicado" class="addon-checkbox">
+            <span>Enmicado</span>
+          </div>
+          <div class="addon-price" id="enmicado-total">+$25</div>
+        </div>
+        <div class="enmicado-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <label style="font-size:12px;color:#aaa;">Cantidad de hojas:</label>
+            <input type="number" id="enmicado-pages" min="1" value="1"
+              style="width:80px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="enmicado-price">$25 por hoja</span></span>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="result-box">
+          <div class="result-header">
+            <div class="result-label">Precio estimado:</div>
+            <div class="result-badge">Entrega 24-48h</div>
+          </div>
+          <div class="result-price">$<span id="precioFinal">35.00</span> <span class="result-currency">MXN</span></div>
+          <div class="result-breakdown" id="desglose">100 hojas × $0.35 por lado</div>
+          <div class="result-breakdown" id="descarga-note" style="margin-top:6px;">Incluye descarga de archivo: $5.00
+            MXN</div>
+        </div>
+
+        <!-- CTAs -->
+        <a href="#" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
+          <span class="btn-icon">📱</span> COTIZAR AHORA
+        </a>
+        <a href="tel:+525540219892" class="btn btn-call">
+          <span class="btn-icon">📞</span> LLAMAR: 55-4021-9892
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-value">4.9★</div>
+        <div class="stat-label">Clientes felices</div>
+      </div>
+      <div>
+        <div class="stat-value">12M+</div>
+        <div class="stat-label">Copias realizadas</div>
+      </div>
+    </div>
+
     <!-- Tipos de Impresiones -->
     <section class="section">
       <h2 class="section-title">Nuestros <span class="highlight">Servicios</span></h2>
@@ -976,160 +1156,6 @@
         <li>✓ Ubicación céntrica en Iztacalco</li>
       </ul>
     </section>
-    <div class="calc-card" id="calc-card">
-      <div class="calc-header">
-        <div class="calc-title">Calculadora de precios</div>
-        <div style="font-size: 28px;">🧮</div>
-      </div>
-
-      <!-- Tipo de trabajo: B/N vs Color -->
-      <label class="section-label">Tipo de impresión:</label>
-      <div class="toggle-grid">
-        <div id="tipo-bn" class="toggle-option selected" onclick="selectTipo('bn')">Blanco y Negro</div>
-        <div id="tipo-color" class="toggle-option" onclick="selectTipo('color')">Color</div>
-      </div>
-
-      <!-- Opciones B/N -->
-      <div class="subsection active" id="bn-options">
-        <div class="option-card selected" id="bn-2caras" onclick="selectBN('2caras')">
-          <div class="option-info">
-            <h4>Doble cara (2 lados)</h4>
-            <p>$0.35 por cada lado</p>
-          </div>
-          <div class="option-price">$0.35<span>/lado</span></div>
-        </div>
-        <div class="option-card" id="bn-1cara" onclick="selectBN('1cara')">
-          <div class="option-info">
-            <h4>Una sola cara</h4>
-            <p>$0.40 por hoja</p>
-          </div>
-          <div class="option-price">$0.40<span>/hoja</span></div>
-        </div>
-      </div>
-
-      <!-- Opciones Color -->
-      <div class="subsection" id="color-options">
-        <div class="option-card selected" id="c-texto" onclick="selectColor('texto')">
-          <div class="option-info">
-            <h4>Solo texto</h4>
-            <p>1-100 copias</p>
-          </div>
-          <div class="option-price">$5<span>/hoja</span></div>
-        </div>
-        <div class="option-card" id="c-imagen" onclick="selectColor('imagen')">
-          <div class="option-info">
-            <h4>Imagen completa</h4>
-            <p>1-100 copias</p>
-          </div>
-          <div class="option-price">$10<span>/hoja</span></div>
-        </div>
-        <div class="option-card" id="c-100plus" onclick="selectColor('100plus')">
-          <div class="option-info">
-            <h4>+100 copias</h4>
-            <p>Precio por volumen • Requiere 100+</p>
-          </div>
-          <div class="option-price">$4<span>/hoja</span></div>
-        </div>
-        <div class="option-card" id="c-300plus" onclick="selectColor('300plus')">
-          <div class="option-info">
-            <h4>+300 copias</h4>
-            <p>Mejor precio • Requiere 300+</p>
-          </div>
-          <div class="option-price">$3<span>/hoja</span></div>
-        </div>
-      </div>
-
-      <!-- Cantidad -->
-      <label class="section-label">Cantidad de hojas:</label>
-      <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="onQtyChange()">
-      <div class="quantity-note" id="quantity-note">100 hojas = 200 páginas si imprimes a 2 caras</div>
-      <div class="quantity-note" id="rule-note" style="color:#aaa"></div>
-
-      <!-- Extras -->
-      <label class="section-label">Servicios Adicionales (opcional):</label>
-      <div style="font-size:11px;color:#888;margin:-6px 0 10px 0;">ℹ️ Nota: se aplica cargo fijo por descarga de archivo
-        de $5 MXN.</div>
-
-      <!-- Engargolado -->
-      <div class="addon-item" onclick="document.getElementById('engargolado').click()">
-        <div class="addon-label">
-          <input type="checkbox" id="engargolado" class="addon-checkbox">
-          <span>Engargolado</span>
-        </div>
-        <div class="addon-price" id="engargolado-total">+$20</div>
-      </div>
-      <div class="engargolado-options" style="margin:8px 0 12px 32px; display:none;">
-        <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-          <label style="font-size:12px;color:#aaa;">Cantidad:</label>
-          <input type="number" id="engargolado-qty" min="1" value="1"
-            style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
-          <label style="font-size:12px;color:#aaa;">de</label>
-          <select id="engargolado-size"
-            style="padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
-            <option value="100">100 páginas</option>
-            <option value="200">200 páginas</option>
-            <option value="300">300 páginas</option>
-            <option value="400">400 páginas</option>
-          </select>
-          <span style="font-size:12px;color:#aaa;">Precio: <span id="engargolado-price">$20</span> c/u</span>
-        </div>
-      </div>
-
-      <!-- Folder individual -->
-      <div class="addon-item" onclick="document.getElementById('folders').click()">
-        <div class="addon-label">
-          <input type="checkbox" id="folders" class="addon-checkbox">
-          <span>Folder (individual)</span>
-        </div>
-        <div class="addon-price" id="folders-total">+$15</div>
-      </div>
-      <div class="folders-options" style="margin:8px 0 12px 32px; display:none;">
-        <div style="display:flex; gap:10px; align-items:center;">
-          <label style="font-size:12px;color:#aaa;">Cantidad:</label>
-          <input type="number" id="folders-qty" min="1" value="1"
-            style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
-          <span style="font-size:12px;color:#aaa;">Precio: <span id="folders-price">$15</span> c/u</span>
-        </div>
-      </div>
-
-      <!-- Enmicado -->
-      <div class="addon-item" onclick="document.getElementById('enmicado').click()">
-        <div class="addon-label">
-          <input type="checkbox" id="enmicado" class="addon-checkbox">
-          <span>Enmicado</span>
-        </div>
-        <div class="addon-price" id="enmicado-total">+$25</div>
-      </div>
-      <div class="enmicado-options" style="margin:8px 0 12px 32px; display:none;">
-        <div style="display:flex; gap:10px; align-items:center;">
-          <label style="font-size:12px;color:#aaa;">Cantidad de hojas:</label>
-          <input type="number" id="enmicado-pages" min="1" value="1"
-            style="width:80px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
-          <span style="font-size:12px;color:#aaa;">Precio: <span id="enmicado-price">$25 por hoja</span></span>
-        </div>
-      </div>
-
-      <!-- Resultado -->
-      <div class="result-box">
-        <div class="result-header">
-          <div class="result-label">Precio estimado:</div>
-          <div class="result-badge">Entrega 24-48h</div>
-        </div>
-        <div class="result-price">$<span id="precioFinal">35.00</span> <span class="result-currency">MXN</span></div>
-        <div class="result-breakdown" id="desglose">100 hojas × $0.35 por lado</div>
-        <div class="result-breakdown" id="descarga-note" style="margin-top:6px;">Incluye descarga de archivo: $5.00 MXN
-        </div>
-      </div>
-
-      <!-- CTAs -->
-      <a href="#" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
-        <span class="btn-icon">📱</span> COTIZAR AHORA
-      </a>
-      <a href="tel:+525540219892" class="btn btn-call">
-        <span class="btn-icon">📞</span> LLAMAR: 55-4021-9892
-      </a>
-    </div>
-
     <!-- Stats -->
     <div class="stats">
       <div>
