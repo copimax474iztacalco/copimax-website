@@ -8035,13 +8035,21 @@
         });
 
         // 2. Gestione Input Principali (Quantità, Pagine)
-        ['quantity', 'pages'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) {
-            el.addEventListener('input', calculate);
-            el.addEventListener('change', calculate);
-          }
-        });
+        const qInput = document.getElementById('quantity');
+        if (qInput) {
+          qInput.addEventListener('input', calculate);
+          qInput.addEventListener('change', calculate);
+        }
+
+        const pInput = document.getElementById('pdf-pages-input');
+        if (pInput) {
+          pInput.addEventListener('input', () => {
+            // Aggiorna orderData.pdfPages
+            orderData.pdfPages = parseInt(pInput.value) || 1;
+            calculate();
+            if (typeof updatePdfInfo === 'function') updatePdfInfo();
+          });
+        }
 
         // 3. Gestione Upsells (Checkbox e Input)
         const upsells = [
@@ -8072,8 +8080,9 @@
         document.querySelectorAll('.color-type-option').forEach(opt => {
           opt.addEventListener('click', () => {
             // Rimuovi active dagli altri
-            document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active')); // Assumi che ci sia una classe active per stile
-            // Nota: l'HTML originale non sembra usare una classe active per questi, ma possiamo aggiungerla o gestire solo il dato
+            document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active'));
+            // Aggiungi active (opzionale per stile)
+            opt.classList.add('active');
 
             orderData.colorType = opt.dataset.colorType;
             console.log(`🎨 Tipo Colore: ${orderData.colorType}`);
@@ -8084,19 +8093,12 @@
         console.log('✅ Event Listeners configurati!');
       }
 
-
-      // PDF pages input
-      const pdfPagesInput = document.getElementById('pdf-pages-input');
-      if (pdfPagesInput) {
-        pdfPagesInput.addEventListener('input', () => {
-          const value = Math.max(1, parseInt(pdfPagesInput.value || '1'));
-          // Aggiorna orderData.pdfPages quando l'utente modifica l'input
-          orderData.pdfPages = value;
-          console.log('📄 PDF pages input modificato a:', value);
-          calculate();
-          updatePdfInfo();
-        });
-      }
+      // Inizializzazione ritardata per sicurezza
+      setTimeout(() => {
+        console.log('🚀 Avvio Calcolatrice...');
+        setupEventListeners();
+        calculate();
+      }, 500);
 
 
       // Calculator PDF upload
@@ -8120,120 +8122,7 @@
         calcRemoveFile.addEventListener('click', removeCalcFile);
       }
 
-      // Engargolado options event listeners
-      const engargoladoQty = document.getElementById('engargolado-qty');
-      const engargoladoSize = document.getElementById('engargolado-size');
 
-      if (engargoladoQty && engargoladoSize) {
-        engargoladoQty.addEventListener('input', updateEngargoladoPrice);
-        engargoladoSize.addEventListener('change', updateEngargoladoPrice);
-      }
-
-      // Folders options event listeners
-      const foldersQty = document.getElementById('folders-qty');
-      if (foldersQty) {
-        foldersQty.addEventListener('input', updateFoldersPrice);
-      }
-
-      // Laminated options event listeners
-      const laminatedPages = document.getElementById('laminated-pages');
-      if (laminatedPages) {
-        laminatedPages.addEventListener('input', updateLaminatedPrice);
-      }
-
-      function updateEngargoladoPrice() {
-        const qty = parseInt(engargoladoQty.value) || 1;
-        const size = parseInt(engargoladoSize.value) || 100;
-
-        // Calculate price based on size
-        let pricePerUnit = 20; // Base price for 100 pages
-        if (size > 100) pricePerUnit = 40;
-        if (size > 200) pricePerUnit = 50;
-        if (size > 300) pricePerUnit = 60;
-
-        const totalPrice = qty * pricePerUnit;
-
-        // Update display
-        const priceDisplay = document.getElementById('engargolado-price');
-        if (priceDisplay) {
-          priceDisplay.textContent = `$${pricePerUnit}`;
-        }
-
-        // Update checkbox data price
-        const engargoladoCheckbox = document.getElementById('engargolado');
-        if (engargoladoCheckbox) {
-          engargoladoCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = engargoladoCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.engargolado) {
-          orderData.upsells.engargolado.price = totalPrice;
-          orderData.upsells.engargolado.details = `${qty} engargolados de ${size} páginas`;
-          calculate();
-        }
-      }
-
-      function updateFoldersPrice() {
-        const qty = parseInt(foldersQty.value) || 1;
-        const pricePerFolder = 15; // $15 por folder individual
-        const totalPrice = qty * pricePerFolder;
-
-        // Update checkbox data price
-        const foldersCheckbox = document.getElementById('folders');
-        if (foldersCheckbox) {
-          foldersCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = foldersCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.folders) {
-          orderData.upsells.folders.price = totalPrice;
-          orderData.upsells.folders.details = `${qty} packs de 5 folders`;
-          calculate();
-        }
-      }
-
-      function updateLaminatedPrice() {
-        const pages = parseInt(laminatedPages.value) || 1;
-        const pricePerPage = 25; // $25 por hoja
-        const totalPrice = pages * pricePerPage;
-
-        // Update display
-        const priceDisplay = document.getElementById('laminated-price');
-        if (priceDisplay) {
-          priceDisplay.textContent = `$${pricePerPage} por hoja`;
-        }
-
-        // Update checkbox data price
-        const laminatedCheckbox = document.getElementById('laminated');
-        if (laminatedCheckbox) {
-          laminatedCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = laminatedCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.laminated) {
-          orderData.upsells.laminated.price = totalPrice;
-          orderData.upsells.laminated.details = `${pages} hojas enmicadas`;
-          calculate();
-        }
-      }
 
       // Order buttons
       console.log('Setting up order button event listeners...');
