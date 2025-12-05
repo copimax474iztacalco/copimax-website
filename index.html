@@ -80,7 +80,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -6906,7 +6906,7 @@
 
             <!-- INPUT PAGINE PDF -->
             <div style="margin-top: 16px;">
-              <label class="calc-label">📋 Número de páginas del PDF</label>
+              <label class="calc-label">📋 Número de páginas</label>
               <input type="number" class="calc-field" id="pdf-pages-input" placeholder="Ej: 123" value="1" min="1"
                 max="1000">
               <div class="quantity-examples" style="margin-top: 8px;">
@@ -7020,15 +7020,7 @@
           <div class="upsells">
             <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
 
-            <!-- New Download File Upsell -->
-            <div class="upsell-item">
-              <input type="checkbox" class="upsell-checkbox" id="download-file" data-price="5">
-              <div class="upsell-info">
-                <div class="upsell-title">Bajada de archivo</div>
-                <div class="upsell-desc">Costo por gestión de archivo digital</div>
-              </div>
-              <div class="upsell-price">+$5</div>
-            </div>
+            <!-- Download File Upsell Removed (Now Automatic) -->
 
             <div class="upsell-item">
               <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="20">
@@ -7095,6 +7087,8 @@
               <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
             </div>
             <div class="calc-total" id="total">$70.00 MXN</div>
+            <div id="file-fee-display" style="font-size:0.85rem;color:#666;margin-top:4px;display:none;">+ $5.00 Bajada
+              de archivo</div>
             <div id="impressions-display"
               style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
             <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
@@ -7884,7 +7878,7 @@
               rel="noopener" aria-label="Instagram COPIMAX">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
             <a href="https://www.tiktok.com/@copimax_upiicsa" class="social-icon tiktok" target="_blank" rel="noopener"
@@ -8691,11 +8685,25 @@
 
         // Add upsells
         let upsellTotal = 0;
+
+        // Automatic File Fee for Prints
+        if (orderData.type === 'prints') {
+          // Add to orderData upsells for summary
+          orderData.upsells['file_fee'] = { name: 'Bajada de archivo', price: 5 };
+        } else {
+          // Remove if not prints
+          if (orderData.upsells['file_fee']) {
+            delete orderData.upsells['file_fee'];
+          }
+        }
+
+        // Recalculate upsellTotal from scratch based on orderData.upsells
+        upsellTotal = 0;
         Object.values(orderData.upsells).forEach(upsell => {
           upsellTotal += upsell.price;
         });
 
-        const total = subtotal + upsellTotal;
+        const total = Math.ceil(subtotal + upsellTotal);
         orderData.total = total;
 
         console.log('📊 calculate() - Totale finale:');
@@ -8711,10 +8719,20 @@
           animateNumber(totalElement, total);
           // Aggiorna anche la visualizzazione delle impressioni totali sotto il prezzo
           const impressionsDisplay = document.getElementById('impressions-display');
+          const fileFeeDisplay = document.getElementById('file-fee-display');
+
+          if (fileFeeDisplay) {
+            if (orderData.type === 'prints') {
+              fileFeeDisplay.style.display = 'block';
+            } else {
+              fileFeeDisplay.style.display = 'none';
+            }
+          }
+
           if (impressionsDisplay) {
             const pagesInfo = `${q} copias × ${pagesToPrint} páginas${sidesMultiplier === 2 ? ' × 2 caras' : ''}`;
             const currentTotalImpressions = q * pagesToPrint * sidesMultiplier;
-            impressionsDisplay.textContent = `${pagesInfo} = ${currentTotalImpressions} impresiones`;
+            impressionsDisplay.textContent = `${pagesInfo} = ${currentTotalImpressions} impresiones ($${unitPrice.toFixed(2)}/u)`;
           }
         }
         updateOrderSummary();
