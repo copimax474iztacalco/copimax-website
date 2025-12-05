@@ -130,4 +130,33 @@
     <priority>0.9</priority>
   </url>
   
+  <!-- SPOKE PAGES - Hub & Spoke SEO Strategy -->
+  <url>
+    <loc>https://copimax.store/impresiones-baratas-cdmx</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://copimax.store/copias-baratas-cerca-de-mi</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://copimax.store/impresiones-por-volumen-cdmx</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://copimax.store/copias-por-mayoreo-cdmx</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
 </urlset>
