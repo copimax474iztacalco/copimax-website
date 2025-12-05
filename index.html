@@ -7851,7 +7851,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Global state
-      let orderData = {
+      // Global state defined outside DOMContentLoaded to be accessible everywhere
+      window.orderData = {
         quantity: 100,
         type: 'copies', // copies or prints
         color: 'bw', // bw or color
@@ -8879,6 +8880,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
     // GRIGLIA LIBRI - VERSIONE SEMPLICE E FUNZIONALE
     console.log('📚 Griglia libri - versione semplice...');
+    }); // Chiusura primo DOMContentLoaded
 
     // Inizializzazione quando il DOM è pronto
     document.addEventListener('DOMContentLoaded', function () {
