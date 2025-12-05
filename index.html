@@ -7876,941 +7876,825 @@
       const ADMIN_EMAIL = 'copimax474@gmail.com';
 
       // Calculator elements
-      console.log('Initializing calculator elements...');
-      const quantityInput = document.getElementById('quantity');
-      const totalElement = document.getElementById('total');
-      const options = document.querySelectorAll('.calc-option');
-      const upsellCheckboxes = document.querySelectorAll('.upsell-checkbox');
-      const btnWA = document.getElementById('btn-wa');
+      console.log('🚀 Inizializzazione Nuova Calcolatrice...');
+
+      // 1. Option Buttons (Type, Color, Sides)
+      document.querySelectorAll('.calc-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          // Gestione UI Active State
+          const group = opt.dataset.type ? 'type' : (opt.dataset.color ? 'color' : 'sides');
+          document.querySelectorAll(`.calc-option[data-${group}]`).forEach(el => el.classList.remove('active'));
+          opt.classList.add('active');
+
+          // Aggiorna Dati
+          if (group === 'type') window.orderData.type = opt.dataset.type;
+          if (group === 'sides') window.orderData.sides = opt.dataset.sides;
+          if (group === 'color') {
+            window.orderData.color = opt.dataset.color;
+            // Toggle Color Details
+            const details = document.getElementById('color-details');
+            if (details) details.style.display = (opt.dataset.color === 'color') ? 'block' : 'none';
+          }
+
+          calculate();
+        });
+      });
+
+      // 2. Color Details (Text vs Images)
+      document.querySelectorAll('.color-type-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active'));
+          opt.classList.add('active');
+          window.orderData.colorType = opt.dataset.colorType;
+          calculate();
+        });
+      });
+
+      // 3. Numeric Inputs (Quantity, Pages)
+      ['quantity', 'pdf-pages-input'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', calculate);
+          el.addEventListener('change', calculate);
+        }
+      });
+
+      // 4. Upsells (Checkbox & Quantity)
+      const upsellConfig = [
+        { check: 'check-engargolado', qty: 'qty-engargolado', inputs: 'inputs-engargolado' },
+        { check: 'check-enmicado', qty: 'qty-enmicado', inputs: 'inputs-enmicado' },
+        { check: 'check-folder', qty: 'qty-folder', inputs: 'inputs-folder' }
+      ];
+
+      upsellConfig.forEach(u => {
+        const check = document.getElementById(u.check);
+        const qty = document.getElementById(u.qty);
+        const inputs = document.getElementById(u.inputs);
+
+        if (check) {
+          check.addEventListener('change', () => {
+            if (inputs) inputs.style.display = check.checked ? 'block' : 'none';
+            calculate();
+          });
+        }
+        if (qty) {
+          qty.addEventListener('input', calculate);
+        }
+      });
+
+      // 5. Order Button
       const btnOrder = document.getElementById('btn-order');
-      const dealCTAs = document.querySelectorAll('.deal-cta');
-
-      console.log('Calculator elements found:', {
-        quantityInput: !!quantityInput,
-        totalElement: !!totalElement,
-        options: options.length,
-        upsellCheckboxes: upsellCheckboxes.length,
-        btnWA: !!btnWA,
-        btnOrder: !!btnOrder,
-        dealCTAs: dealCTAs.length
-      });
-
-      // Page navigation
-      const homepage = document.getElementById('homepage');
-      const orderPage = document.getElementById('orderpage');
-      const homepageContent = document.getElementById('homepage-content');
-      const blogPage = document.getElementById('blogpage');
-
-      // Order elements
-      const steps = document.querySelectorAll('.step');
-      const orderSections = document.querySelectorAll('.order-section');
-
-      // Initialize
-      console.log('🚀 Inizializzazione calcolatrice...');
-      calculate();
-      setupEventListeners();
-      setupValidationListeners();
-
-      // Funzione per gestire le opzioni dettagliate di colore
-      function setupColorDetailsListeners() {
-        // Event listeners per i tipi di colore
-        document.querySelectorAll('.color-type-option').forEach(option => {
-          option.addEventListener('click', () => {
-            // Rimuovi active da tutti
-            document.querySelectorAll('.color-type-option').forEach(opt => opt.classList.remove('active'));
-            // Aggiungi active al selezionato
-            option.classList.add('active');
-
-            // Aggiorna orderData
-            orderData.colorType = option.dataset.colorType;
-            calculate();
-          });
-        });
-
-        // Event listener per il checkbox calcolo misto
-        const mixedCheckbox = document.getElementById('mixed-calculation');
-        const mixedInputs = document.getElementById('mixed-inputs');
-
-        if (mixedCheckbox) {
-          mixedCheckbox.addEventListener('change', () => {
-            if (mixedCheckbox.checked) {
-              mixedInputs.style.display = 'grid';
-              orderData.mixedCalculation = true;
-            } else {
-              mixedInputs.style.display = 'none';
-              orderData.mixedCalculation = false;
-            }
-            calculate();
-          });
-        }
-
-        // Event listeners per gli input del calcolo misto
-        const textLogoQty = document.getElementById('text-logo-qty');
-        const imagesQty = document.getElementById('images-qty');
-
-        if (textLogoQty) {
-          textLogoQty.addEventListener('input', () => {
-            orderData.textLogoQty = parseInt(textLogoQty.value) || 0;
-            calculate();
-          });
-        }
-
-        if (imagesQty) {
-          imagesQty.addEventListener('input', () => {
-            orderData.imagesQty = parseInt(imagesQty.value) || 0;
-            calculate();
-          });
-        }
-      }
-
-      // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
-
-      // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
-      try {
-        if (typeof displayReviews === 'function') {
-          displayReviews();
-        }
-      } catch (e) {
-        console.warn('Reviews init skipped:', e);
-      }
-
-      // Verifica iniziale elementi pagamento
-      setTimeout(() => {
-        verifyPaymentElements();
-
-        // Controlla URL iniziale per mostrare la sezione corretta
-        checkInitialURL();
-      }, 500);
-
-      // Gestione navigazione browser (pulsante Indietro)
-      window.addEventListener('popstate', function (event) {
-        if (event.state && event.state.page === 'order') {
-          showOrderPage(false);
-        } else if (event.state && event.state.page === 'blog') {
-          showBlogPage();
-        } else {
-          showHomePage(false);
-        }
-      });
-
-      // Video Reels Functionality
-      initializeVideoReels();
-
-      function setupEventListeners() {
-        console.log('🔧 Configurazione Event Listeners...');
-
-        // 1. Gestione Bottoni Opzioni (.calc-option)
-        const options = document.querySelectorAll('.calc-option');
-        options.forEach(opt => {
-          opt.addEventListener('click', (e) => {
-            // Identifica il gruppo (type, color, sides)
-            const group = opt.dataset.type ? 'type' : (opt.dataset.color ? 'color' : 'sides');
-
-            // Rimuovi active dagli altri elementi dello stesso gruppo
-            document.querySelectorAll(`.calc-option[data-${group}]`).forEach(el => {
-              el.classList.remove('active');
-            });
-
-            // Attiva questo elemento
-            opt.classList.add('active');
-
-            // Aggiorna orderData
-            if (group === 'type') orderData.type = opt.dataset.type;
-            if (group === 'color') {
-              orderData.color = opt.dataset.color;
-              // Mostra/Nascondi dettagli colore
-              const colorDetails = document.getElementById('color-details');
-              if (colorDetails) {
-                colorDetails.style.display = (orderData.color === 'color') ? 'block' : 'none';
-              }
-              // Default colorType se non settato
-              if (orderData.color === 'color' && !orderData.colorType) {
-                orderData.colorType = 'text-logo';
-              }
-            }
-            if (group === 'sides') orderData.sides = opt.dataset.sides;
-
-            console.log(`👉 Opzione cambiata: ${group} -> ${opt.dataset[group]}`);
-            calculate();
-          });
-        });
-
-        // 2. Gestione Input Principali (Quantità, Pagine)
-        const qInput = document.getElementById('quantity');
-        if (qInput) {
-          qInput.addEventListener('input', calculate);
-          qInput.addEventListener('change', calculate);
-        }
-
-        const pInput = document.getElementById('pdf-pages-input');
-        if (pInput) {
-          pInput.addEventListener('input', () => {
-            // Aggiorna orderData.pdfPages
-            orderData.pdfPages = parseInt(pInput.value) || 1;
-            calculate();
-            if (typeof updatePdfInfo === 'function') updatePdfInfo();
-          });
-        }
-
-        // 3. Gestione Upsells (Checkbox e Input)
-        const upsells = [
-          { check: 'check-engargolado', inputs: 'inputs-engargolado', qty: 'qty-engargolado' },
-          { check: 'check-enmicado', inputs: 'inputs-enmicado', qty: 'qty-enmicado' },
-          { check: 'check-folder', inputs: 'inputs-folder', qty: 'qty-folder' }
-        ];
-
-        upsells.forEach(u => {
-          const checkEl = document.getElementById(u.check);
-          const inputsEl = document.getElementById(u.inputs);
-          const qtyEl = document.getElementById(u.qty);
-
-          if (checkEl) {
-            checkEl.addEventListener('change', () => {
-              // Mostra/Nascondi input quantità
-              if (inputsEl) inputsEl.style.display = checkEl.checked ? 'block' : 'none';
-              calculate();
-            });
-          }
-
-          if (qtyEl) {
-            qtyEl.addEventListener('input', calculate);
-          }
-        });
-
-        // 4. Gestione Dettagli Colore (Text/Logo vs Images)
-        document.querySelectorAll('.color-type-option').forEach(opt => {
-          opt.addEventListener('click', () => {
-            // Rimuovi active dagli altri
-            document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active'));
-            // Aggiungi active (opzionale per stile)
-            opt.classList.add('active');
-
-            orderData.colorType = opt.dataset.colorType;
-            console.log(`🎨 Tipo Colore: ${orderData.colorType}`);
-            calculate();
-          });
-        });
-
-        console.log('✅ Event Listeners configurati!');
-      }
-
-      // Inizializzazione ritardata per sicurezza
-      setTimeout(() => {
-        console.log('🚀 Avvio Calcolatrice...');
-        setupEventListeners();
-        calculate();
-      }, 500);
-
-
-      // Calculator PDF upload
-      const calcFileUpload = document.getElementById('calc-file-upload');
-      const calcFileInput = document.getElementById('calc-file-input');
-      const calcFilePreview = document.getElementById('calc-file-preview');
-      const calcRemoveFile = document.getElementById('calc-remove-file');
-
-      if (calcFileUpload && calcFileInput) {
-        calcFileUpload.addEventListener('click', () => calcFileInput.click());
-        calcFileUpload.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          calcFileUpload.classList.add('dragover');
-        });
-        calcFileUpload.addEventListener('dragleave', () => calcFileUpload.classList.remove('dragover'));
-        calcFileUpload.addEventListener('drop', handleCalcFileUpload);
-        calcFileInput.addEventListener('change', (e) => handleCalcFileUpload(e, true));
-      }
-
-      if (calcRemoveFile) {
-        calcRemoveFile.addEventListener('click', removeCalcFile);
-      }
-
-
-
-      // Order buttons
-      console.log('Setting up order button event listeners...');
       if (btnOrder) {
-        console.log('Adding click listener to order button');
-        btnOrder.addEventListener('click', (e) => {
-          console.log('Order button clicked:', e);
-          // Track order start
-          if (typeof trackOrderStart === 'function') {
-            const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
-            trackOrderStart(service, orderData.total);
-          }
-          // Open in-page order flow
-          showOrderPage();
-        });
-      } else {
-        console.error('Order button not found!');
+        btnOrder.addEventListener('click', () => showOrderPage(true));
       }
 
-      if (btnWA) {
-        console.log('Adding click listener to WhatsApp button');
-        btnWA.addEventListener('click', (e) => {
-          console.log('WhatsApp button clicked:', e);
-          sendWhatsAppOrder();
-        });
-      } else {
-        console.error('WhatsApp button not found!');
-      }
+      // Avvio Iniziale
+      calculate();
+    }); // END DOMContentLoaded
 
-      // Deal CTAs
-      dealCTAs.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const dealInfo = btn.dataset.deal;
-          const msg = `Hola COPIMAX 👋 Me interesa el paquete: ${dealInfo}. ¿Puedo enviar el archivo por aquí?`;
+    // Google Sheets / Webhook configuration (fill after deploying Apps Script)
+    // Example: const ORDERS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzCZ81riMFnaGBv7b2qO_EfFjHMI1prtacwQsm88WWtqEJJKlc5nTpv-yZY-te2eRjCg/exec';
+    const ORDERS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw2cSUA25aho1NdelA5RWlL6_HwhX_sk0Ul56tQ6wr4G88vw99OdYoUmI2CvbPdaC5wdg/exec';
+    const ADMIN_EMAIL = 'copimax474@gmail.com';
 
-          // Track package deal click
-          if (typeof trackWhatsAppClick === 'function') {
-            const price = dealInfo.match(/\$(\d+)/)?.[1] || 0;
-            trackWhatsAppClick(`Paquete: ${dealInfo}`, parseInt(price));
-          }
+    // Calculator elements (These are now mostly handled by the new DOMContentLoaded)
+    console.log('Initializing calculator elements...');
+    const quantityInput = document.getElementById('quantity');
+    const totalElement = document.getElementById('total');
+    const options = document.querySelectorAll('.calc-option');
+    const upsellCheckboxes = document.querySelectorAll('.upsell-checkbox');
+    const btnWA = document.getElementById('btn-wa');
+    const btnOrder = document.getElementById('btn-order');
+    const dealCTAs = document.querySelectorAll('.deal-cta');
 
-          window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
+    console.log('Calculator elements found:', {
+      quantityInput: !!quantityInput,
+      totalElement: !!totalElement,
+      options: options.length,
+      upsellCheckboxes: upsellCheckboxes.length,
+      btnWA: !!btnWA,
+      btnOrder: !!btnOrder,
+      dealCTAs: dealCTAs.length
+    });
+
+    // Page navigation
+    const homepage = document.getElementById('homepage');
+    const orderPage = document.getElementById('orderpage');
+    const homepageContent = document.getElementById('homepage-content');
+    const blogPage = document.getElementById('blogpage');
+
+    // Order elements
+    const steps = document.querySelectorAll('.step');
+    const orderSections = document.querySelectorAll('.order-section');
+
+    // Initialize (These calls are now handled by the new DOMContentLoaded)
+    // console.log('🚀 Inizializzazione calcolatrice...');
+    // calculate();
+    // setupEventListeners();
+    // setupValidationListeners();
+
+    // Funzione per gestire le opzioni dettagliate di colore (This is now handled by the new DOMContentLoaded)
+    function setupColorDetailsListeners() {
+      // Event listeners per i tipi di colore
+      document.querySelectorAll('.color-type-option').forEach(option => {
+        option.addEventListener('click', () => {
+          // Rimuovi active da tutti
+          document.querySelectorAll('.color-type-option').forEach(opt => opt.classList.remove('active'));
+          // Aggiungi active al selezionato
+          option.classList.add('active');
+
+          // Aggiorna orderData
+          orderData.colorType = option.dataset.colorType;
+          calculate();
         });
       });
 
-      // Funzione toggle per facce del pacchetto
-      function toggleFace(btn, faceType) {
-        // Rimuovi active da tutti i bottoni
-        document.querySelectorAll('.face-btn').forEach(b => b.classList.remove('active'));
+      // Event listener per il checkbox calcolo misto
+      const mixedCheckbox = document.getElementById('mixed-calculation');
+      const mixedInputs = document.getElementById('mixed-inputs');
 
-        // Aggiungi active al bottone cliccato
-        btn.classList.add('active');
-
-        // Aggiorna il testo, il prezzo e il data-deal
-        const packageFaceType = document.getElementById('package-face-type');
-        const packageCtaBtn = document.getElementById('package-cta-btn');
-        const packagePrice = document.querySelector('.package-price');
-
-        if (faceType === 'single') {
-          // Una Cara: 1000 copias × 1 × $0.40 = $400
-          packageFaceType.textContent = 'BN una cara, mismo día';
-          packagePrice.textContent = '$400 MXN';
-          packageCtaBtn.textContent = 'Pedir';
-          packageCtaBtn.dataset.deal = '1000 BN una cara $400';
-        } else {
-          // Doble Cara: 1000 copias × 2 × $0.35 = $700
-          packageFaceType.textContent = 'BN doble cara, mismo día';
-          packagePrice.textContent = '$700 MXN';
-          packageCtaBtn.textContent = 'Pedir';
-          packageCtaBtn.dataset.deal = '1000 BN doble cara $700';
-        }
-      }
-
-      // Rendi la funzione globale
-      window.toggleFace = toggleFace;
-
-      // File upload
-      const fileUpload = document.getElementById('file-upload');
-      const fileInput = document.getElementById('file-input');
-
-      if (fileUpload && fileInput) {
-        fileUpload.addEventListener('click', () => fileInput.click());
-        fileUpload.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          fileUpload.classList.add('dragover');
+      if (mixedCheckbox) {
+        mixedCheckbox.addEventListener('change', () => {
+          if (mixedCheckbox.checked) {
+            mixedInputs.style.display = 'grid';
+            orderData.mixedCalculation = true;
+          } else {
+            mixedInputs.style.display = 'none';
+            orderData.mixedCalculation = false;
+          }
+          calculate();
         });
-        fileUpload.addEventListener('dragleave', () => fileUpload.classList.remove('dragover'));
-        fileUpload.addEventListener('drop', handleFileUpload);
-        fileInput.addEventListener('change', (e) => handleFileUpload(e, true));
-
-        // Initialize upload stats
-        updateUploadStats();
       }
 
-      // Delivery options
-      setupDeliveryOptions();
+      // Event listeners per gli input del calcolo misto
+      const textLogoQty = document.getElementById('text-logo-qty');
+      const imagesQty = document.getElementById('images-qty');
+
+      if (textLogoQty) {
+        textLogoQty.addEventListener('input', () => {
+          orderData.textLogoQty = parseInt(textLogoQty.value) || 0;
+          calculate();
+        });
+      }
+
+      if (imagesQty) {
+        imagesQty.addEventListener('input', () => {
+          orderData.imagesQty = parseInt(imagesQty.value) || 0;
+          calculate();
+        });
+      }
     }
 
-    function setupValidationListeners() {
-        // Real-time validation with debouncing
-        const nameInput = document.getElementById('customer-name');
-        const emailInput = document.getElementById('customer-email');
-        const phoneInput = document.getElementById('customer-phone');
+    // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
 
-        if (nameInput) {
-          nameInput.addEventListener('input', debounce(() => validateName(nameInput.value), 500));
-        }
-
-        if (emailInput) {
-          emailInput.addEventListener('input', debounce(() => validateEmail(emailInput.value), 500));
-        }
-
-        if (phoneInput) {
-          phoneInput.addEventListener('input', debounce(() => validatePhone(phoneInput.value), 500));
-        }
+    // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
+    try {
+      if (typeof displayReviews === 'function') {
+        displayReviews();
       }
+    } catch (e) {
+      console.warn('Reviews init skipped:', e);
+    }
+
+    // Verifica iniziale elementi pagamento
+    setTimeout(() => {
+      verifyPaymentElements();
+
+      // Controlla URL iniziale per mostrare la sezione corretta
+      checkInitialURL();
+    }, 500);
+
+    // Gestione navigazione browser (pulsante Indietro)
+    window.addEventListener('popstate', function (event) {
+      if (event.state && event.state.page === 'order') {
+        showOrderPage(false);
+      } else if (event.state && event.state.page === 'blog') {
+        showBlogPage();
+      } else {
+        showHomePage(false);
+      }
+    });
+
+    // Video Reels Functionality
+    initializeVideoReels();
+
+    function setupEventListeners() {
+      console.log('🔧 Configurazione Event Listeners...');
+
+      // 1. Gestione Bottoni Opzioni (.calc-option)
+      const options = document.querySelectorAll('.calc-option');
+      options.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          // Identifica il gruppo (type, color, sides)
+          const group = opt.dataset.type ? 'type' : (opt.dataset.color ? 'color' : 'sides');
+
+          // Rimuovi active dagli altri elementi dello stesso gruppo
+          document.querySelectorAll(`.calc-option[data-${group}]`).forEach(el => {
+            el.classList.remove('active');
+          });
+
+          // Attiva questo elemento
+          opt.classList.add('active');
+
+          // Aggiorna orderData
+          if (group === 'type') orderData.type = opt.dataset.type;
+          if (group === 'color') {
+            orderData.color = opt.dataset.color;
+            // Mostra/Nascondi dettagli colore
+            const colorDetails = document.getElementById('color-details');
+            if (colorDetails) {
+              colorDetails.style.display = (orderData.color === 'color') ? 'block' : 'none';
+            }
+            // Default colorType se non settato
+            if (orderData.color === 'color' && !orderData.colorType) {
+              orderData.colorType = 'text-logo';
+            }
+          }
+          if (group === 'sides') orderData.sides = opt.dataset.sides;
+
+          console.log(`👉 Opzione cambiata: ${group} -> ${opt.dataset[group]}`);
+          calculate();
+        });
+      });
+
+      // 2. Gestione Input Principali (Quantità, Pagine)
+      const qInput = document.getElementById('quantity');
+      if (qInput) {
+        qInput.addEventListener('input', calculate);
+        qInput.addEventListener('change', calculate);
+      }
+
+      const pInput = document.getElementById('pdf-pages-input');
+      if (pInput) {
+        pInput.addEventListener('input', () => {
+          // Aggiorna orderData.pdfPages
+          orderData.pdfPages = parseInt(pInput.value) || 1;
+          calculate();
+          if (typeof updatePdfInfo === 'function') updatePdfInfo();
+        });
+      }
+
+      // 3. Gestione Upsells (Checkbox e Input)
+      const upsells = [
+        { check: 'check-engargolado', inputs: 'inputs-engargolado', qty: 'qty-engargolado' },
+        { check: 'check-enmicado', inputs: 'inputs-enmicado', qty: 'qty-enmicado' },
+        { check: 'check-folder', inputs: 'inputs-folder', qty: 'qty-folder' }
+      ];
+
+      upsells.forEach(u => {
+        const checkEl = document.getElementById(u.check);
+        const inputsEl = document.getElementById(u.inputs);
+        const qtyEl = document.getElementById(u.qty);
+
+        if (checkEl) {
+          checkEl.addEventListener('change', () => {
+            // Mostra/Nascondi input quantità
+            if (inputsEl) inputsEl.style.display = checkEl.checked ? 'block' : 'none';
+            calculate();
+          });
+        }
+
+        if (qtyEl) {
+          qtyEl.addEventListener('input', calculate);
+        }
+      });
+
+      // 4. Gestione Dettagli Colore (Text/Logo vs Images)
+      document.querySelectorAll('.color-type-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          // Rimuovi active dagli altri
+          document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active'));
+          // Aggiungi active (opzionale per stile)
+          opt.classList.add('active');
+
+          orderData.colorType = opt.dataset.colorType;
+          console.log(`🎨 Tipo Colore: ${orderData.colorType}`);
+          calculate();
+        });
+      });
+
+      console.log('✅ Event Listeners configurati!');
+    }
+
+    // Inizializzazione ritardata per sicurezza
+    setTimeout(() => {
+      console.log('🚀 Avvio Calcolatrice...');
+      setupEventListeners();
+      calculate();
+    }, 500);
+
+
+    // Calculator PDF upload
+    const calcFileUpload = document.getElementById('calc-file-upload');
+    const calcFileInput = document.getElementById('calc-file-input');
+    const calcFilePreview = document.getElementById('calc-file-preview');
+    const calcRemoveFile = document.getElementById('calc-remove-file');
+
+    if (calcFileUpload && calcFileInput) {
+      calcFileUpload.addEventListener('click', () => calcFileInput.click());
+      calcFileUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        calcFileUpload.classList.add('dragover');
+      });
+      calcFileUpload.addEventListener('dragleave', () => calcFileUpload.classList.remove('dragover'));
+      calcFileUpload.addEventListener('drop', handleCalcFileUpload);
+      calcFileInput.addEventListener('change', (e) => handleCalcFileUpload(e, true));
+    }
+
+    if (calcRemoveFile) {
+      calcRemoveFile.addEventListener('click', removeCalcFile);
+    }
+
+
+
+    // Order buttons
+    console.log('Setting up order button event listeners...');
+    if (btnOrder) {
+      console.log('Adding click listener to order button');
+      btnOrder.addEventListener('click', (e) => {
+        console.log('Order button clicked:', e);
+        // Track order start
+        if (typeof trackOrderStart === 'function') {
+          const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+          trackOrderStart(service, orderData.total);
+        }
+        // Open in-page order flow
+        showOrderPage();
+      });
+    } else {
+      console.error('Order button not found!');
+    }
+
+    if (btnWA) {
+      console.log('Adding click listener to WhatsApp button');
+      btnWA.addEventListener('click', (e) => {
+        console.log('WhatsApp button clicked:', e);
+        sendWhatsAppOrder();
+      });
+    } else {
+      console.error('WhatsApp button not found!');
+    }
+
+    // Deal CTAs
+    dealCTAs.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dealInfo = btn.dataset.deal;
+        const msg = `Hola COPIMAX 👋 Me interesa el paquete: ${dealInfo}. ¿Puedo enviar el archivo por aquí?`;
+
+        // Track package deal click
+        if (typeof trackWhatsAppClick === 'function') {
+          const price = dealInfo.match(/\$(\d+)/)?.[1] || 0;
+          trackWhatsAppClick(`Paquete: ${dealInfo}`, parseInt(price));
+        }
+
+        window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
+      });
+    });
+
+    // Funzione toggle per facce del pacchetto
+    function toggleFace(btn, faceType) {
+      // Rimuovi active da tutti i bottoni
+      document.querySelectorAll('.face-btn').forEach(b => b.classList.remove('active'));
+
+      // Aggiungi active al bottone cliccato
+      btn.classList.add('active');
+
+      // Aggiorna il testo, il prezzo e il data-deal
+      const packageFaceType = document.getElementById('package-face-type');
+      const packageCtaBtn = document.getElementById('package-cta-btn');
+      const packagePrice = document.querySelector('.package-price');
+
+      if (faceType === 'single') {
+        // Una Cara: 1000 copias × 1 × $0.40 = $400
+        packageFaceType.textContent = 'BN una cara, mismo día';
+        packagePrice.textContent = '$400 MXN';
+        packageCtaBtn.textContent = 'Pedir';
+        packageCtaBtn.dataset.deal = '1000 BN una cara $400';
+      } else {
+        // Doble Cara: 1000 copias × 2 × $0.35 = $700
+        packageFaceType.textContent = 'BN doble cara, mismo día';
+        packagePrice.textContent = '$700 MXN';
+        packageCtaBtn.textContent = 'Pedir';
+        packageCtaBtn.dataset.deal = '1000 BN doble cara $700';
+      }
+    }
+
+    // Rendi la funzione globale
+    window.toggleFace = toggleFace;
+
+    // File upload
+    const fileUpload = document.getElementById('file-upload');
+    const fileInput = document.getElementById('file-input');
+
+    if (fileUpload && fileInput) {
+      fileUpload.addEventListener('click', () => fileInput.click());
+      fileUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileUpload.classList.add('dragover');
+      });
+      fileUpload.addEventListener('dragleave', () => fileUpload.classList.remove('dragover'));
+      fileUpload.addEventListener('drop', handleFileUpload);
+      fileInput.addEventListener('change', (e) => handleFileUpload(e, true));
+
+      // Initialize upload stats
+      updateUploadStats();
+    }
+
+    // Delivery options
+    setupDeliveryOptions();
+
+    function setupValidationListeners() {
+      // Real-time validation with debouncing
+      const nameInput = document.getElementById('customer-name');
+      const emailInput = document.getElementById('customer-email');
+      const phoneInput = document.getElementById('customer-phone');
+
+      if (nameInput) {
+        nameInput.addEventListener('input', debounce(() => validateName(nameInput.value), 500));
+      }
+
+      if (emailInput) {
+        emailInput.addEventListener('input', debounce(() => validateEmail(emailInput.value), 500));
+      }
+
+      if (phoneInput) {
+        phoneInput.addEventListener('input', debounce(() => validatePhone(phoneInput.value), 500));
+      }
+    }
 
     // Debouncing utility
     function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-          const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-          };
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
           clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
+          func(...args);
         };
-      }
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
 
     // Validation functions
     function validateName(name) {
-        const validation = document.getElementById('name-validation');
-        const input = document.getElementById('customer-name');
+      const validation = document.getElementById('name-validation');
+      const input = document.getElementById('customer-name');
 
-        if (!name.trim()) {
-          showFieldValidation(input, validation, 'El nombre es requerido', 'error');
-          return false;
-        }
-
-        if (name.length < 2) {
-          showFieldValidation(input, validation, 'El nombre debe tener al menos 2 caracteres', 'warning');
-          return false;
-        }
-
-        showFieldValidation(input, validation, '✓ Nombre válido', 'success');
-        return true;
+      if (!name.trim()) {
+        showFieldValidation(input, validation, 'El nombre es requerido', 'error');
+        return false;
       }
+
+      if (name.length < 2) {
+        showFieldValidation(input, validation, 'El nombre debe tener al menos 2 caracteres', 'warning');
+        return false;
+      }
+
+      showFieldValidation(input, validation, '✓ Nombre válido', 'success');
+      return true;
+    }
 
     function validateEmail(email) {
-        const validation = document.getElementById('email-validation');
-        const input = document.getElementById('customer-email');
+      const validation = document.getElementById('email-validation');
+      const input = document.getElementById('customer-email');
 
-        if (!email.trim()) {
-          showFieldValidation(input, validation, 'El email es requerido', 'error');
-          return false;
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          showFieldValidation(input, validation, 'Formato de email inválido', 'error');
-          return false;
-        }
-
-        showFieldValidation(input, validation, '✓ Email válido', 'success');
-        return true;
+      if (!email.trim()) {
+        showFieldValidation(input, validation, 'El email es requerido', 'error');
+        return false;
       }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showFieldValidation(input, validation, 'Formato de email inválido', 'error');
+        return false;
+      }
+
+      showFieldValidation(input, validation, '✓ Email válido', 'success');
+      return true;
+    }
 
     function validatePhone(phone) {
-        const validation = document.getElementById('phone-validation');
-        const input = document.getElementById('customer-phone');
+      const validation = document.getElementById('phone-validation');
+      const input = document.getElementById('customer-phone');
 
-        if (!phone.trim()) {
-          showFieldValidation(input, validation, 'El teléfono es requerido', 'error');
-          return false;
-        }
-
-        const phoneRegex = /^[0-9\-\+\(\)\s]{10,15}$/;
-        if (!phoneRegex.test(phone)) {
-          showFieldValidation(input, validation, 'Formato de teléfono inválido', 'warning');
-          return false;
-        }
-
-        showFieldValidation(input, validation, '✓ Teléfono válido', 'success');
-        return true;
+      if (!phone.trim()) {
+        showFieldValidation(input, validation, 'El teléfono es requerido', 'error');
+        return false;
       }
+
+      const phoneRegex = /^[0-9\-\+\(\)\s]{10,15}$/;
+      if (!phoneRegex.test(phone)) {
+        showFieldValidation(input, validation, 'Formato de teléfono inválido', 'warning');
+        return false;
+      }
+
+      showFieldValidation(input, validation, '✓ Teléfono válido', 'success');
+      return true;
+    }
 
     function showFieldValidation(input, validation, message, type) {
-        if (input && validation) {
-          validation.textContent = message;
-          validation.className = `validation-message ${type}`;
+      if (input && validation) {
+        validation.textContent = message;
+        validation.className = `validation-message ${type}`;
 
-          input.className = `calc-field ${type}`;
+        input.className = `calc-field ${type}`;
 
-          // Remove validation classes after 3 seconds
-          setTimeout(() => {
-            input.className = 'calc-field';
-          }, 3000);
-        }
+        // Remove validation classes after 3 seconds
+        setTimeout(() => {
+          input.className = 'calc-field';
+        }, 3000);
       }
+    }
 
     // Video Reels Functionality
     function initializeVideoReels() {
-        const videoCards = document.querySelectorAll('.video-reel-card');
+      const videoCards = document.querySelectorAll('.video-reel-card');
 
-        if (videoCards.length === 0) return;
+      if (videoCards.length === 0) return;
 
-        videoCards.forEach((card, index) => {
-          const iframe = card.querySelector('.reel-video');
+      videoCards.forEach((card, index) => {
+        const iframe = card.querySelector('.reel-video');
 
-          if (!iframe) return;
+        if (!iframe) return;
 
-          // No overlay needed - Vimeo controls are always visible and functional
-          // Users can click directly on Vimeo player controls
-        });
+        // No overlay needed - Vimeo controls are always visible and functional
+        // Users can click directly on Vimeo player controls
+      });
 
-        // Mobile horizontal scroll enhancement
-        if (window.innerWidth <= 768) {
-          const reelsGrid = document.querySelector('.reels-grid');
-          if (reelsGrid) {
-            let isScrolling = false;
+      // Mobile horizontal scroll enhancement
+      if (window.innerWidth <= 768) {
+        const reelsGrid = document.querySelector('.reels-grid');
+        if (reelsGrid) {
+          let isScrolling = false;
 
-            reelsGrid.addEventListener('scroll', () => {
-              if (!isScrolling) {
-                isScrolling = true;
-                setTimeout(() => {
-                  isScrolling = false;
-                }, 150);
-              }
-            });
-          }
-        }
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-          // Reinitialize video behavior on resize
-          setTimeout(() => {
-            initializeVideoReels();
-          }, 100);
-        });
-      }
-
-    function calculate() {
-        console.log('🔄 Calcolo avviato...');
-
-        // 1. Recupera Valori Input
-        const quantity = parseInt(document.getElementById('quantity')?.value) || 1;
-        // FIX: Usa l'ID corretto 'pdf-pages-input' invece di 'pages'
-        const pagesInput = parseInt(document.getElementById('pdf-pages-input')?.value) || 1;
-
-        // Recupera opzioni selezionate dai data-attributes
-        // Nota: orderData viene aggiornato dagli event listeners
-        const type = orderData.type || 'copies'; // 'copies' o 'prints'
-        const color = orderData.color || 'bw';   // 'bw' o 'color'
-        const sides = orderData.sides || 'single'; // 'single' o 'double'
-        const colorType = orderData.colorType || 'text-logo'; // 'text-logo' o 'images' (default text-logo)
-
-        // 2. Calcolo Impressioni Totali
-        // Formula: Quantità * Pagine * Moltiplicatore Lati
-        const sideMultiplier = sides === 'double' ? 2 : 1;
-        const totalImpressions = quantity * pagesInput * sideMultiplier;
-
-        console.log(`📊 Dati: Qty=${quantity}, Pages=${pagesInput}, Sides=${sides} (x${sideMultiplier})`);
-        console.log(`📊 Totale Impressioni: ${totalImpressions}`);
-
-        let unitPrice = 0;
-
-        // 3. Determinazione Prezzo Unitario
-        if (color === 'bw') {
-          // --- BLANCO Y NEGRO ---
-          if (totalImpressions < 100) {
-            unitPrice = 1.00;
-          } else {
-            // Più di 100 impressioni
-            if (sides === 'double') {
-              unitPrice = 0.35;
-            } else {
-              unitPrice = 0.40;
+          reelsGrid.addEventListener('scroll', () => {
+            if (!isScrolling) {
+              isScrolling = true;
+              setTimeout(() => {
+                isScrolling = false;
+              }, 150);
             }
-          }
-        } else {
-          // --- COLOR ---
-          // Prezzi per volume colore
-          // 1-100: $5 (Text) / $10 (Img)
-          // 101-300: $4 (Text) / $4 (Img)
-          // 300+: $3 (Text) / $3 (Img)
-
-          if (totalImpressions <= 100) {
-            unitPrice = (colorType === 'images') ? 10.00 : 5.00;
-          } else if (totalImpressions <= 300) {
-            unitPrice = 4.00;
-          } else {
-            unitPrice = 3.00;
-          }
-        }
-
-        let subtotal = totalImpressions * unitPrice;
-        console.log(`💰 Prezzo Unitario: $${unitPrice}, Subtotale Stampa: $${subtotal}`);
-
-        // 4. Extra per Impresiones (Descarga archivo)
-        if (type === 'prints') {
-          subtotal += 5.00;
-          console.log('📂 Extra descarga archivo: +$5.00');
-        }
-
-        // 5. Calcolo Upsells
-        let upsellTotal = 0;
-
-        // Engargolado
-        const engargoladoCheck = document.getElementById('check-engargolado');
-        const engargoladoQty = parseInt(document.getElementById('qty-engargolado')?.value) || 0;
-        if (engargoladoCheck && engargoladoCheck.checked && engargoladoQty > 0) {
-          let engPrice = 15; // Default 1-50
-          if (pagesInput > 300) engPrice = 50;
-          else if (pagesInput > 200) engPrice = 30;
-          else if (pagesInput > 100) engPrice = 25;
-          else if (pagesInput > 50) engPrice = 20;
-
-          upsellTotal += engPrice * engargoladoQty;
-          console.log(`📚 Engargolado: ${engargoladoQty} x $${engPrice} = $${engPrice * engargoladoQty}`);
-        }
-
-        // Enmicado
-        const enmicadoCheck = document.getElementById('check-enmicado');
-        const enmicadoQty = parseInt(document.getElementById('qty-enmicado')?.value) || 0;
-        if (enmicadoCheck && enmicadoCheck.checked && enmicadoQty > 0) {
-          upsellTotal += 10.00 * enmicadoQty;
-          console.log(`🛡️ Enmicado: ${enmicadoQty} x $10 = $${10 * enmicadoQty}`);
-        }
-
-        // Folder
-        const folderCheck = document.getElementById('check-folder');
-        const folderQty = parseInt(document.getElementById('qty-folder')?.value) || 0;
-        if (folderCheck && folderCheck.checked && folderQty > 0) {
-          upsellTotal += 5.00 * folderQty;
-          console.log(`📁 Folder: ${folderQty} x $5 = $${5 * folderQty}`);
-        }
-
-        // 6. Totale Finale
-        const total = subtotal + upsellTotal;
-
-        // Aggiorna UI
-        if (totalElement) {
-          animateNumber(totalElement, total);
-        }
-
-        // Aggiorna anteprima dettagliata
-        const summary = document.getElementById('order-summary-text'); // Assicurati che esista questo ID o adattalo
-        if (summary) {
-          summary.innerHTML = `
-                ${quantity} ${type === 'copies' ? 'Copias' : 'Impresiones'} (${color === 'bw' ? 'B/N' : 'Color'})<br>
-                ${pagesInput} Páginas x ${sides === 'double' ? '2 Lados' : '1 Lado'}<br>
-                Total Impresiones: ${totalImpressions}
-             `;
-        }
-
-        orderData.total = total;
-      }
-
-    // Animate number with count-up effect
-    function animateNumber(element, targetValue) {
-        // Pulisce completamente il contenuto dell'elemento prima di iniziare l'animazione
-        element.textContent = '';
-        const currentValue = 0;
-        const startValue = currentValue;
-        const duration = 800; // milliseconds
-        const startTime = performance.now();
-
-        function updateNumber(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-
-          // Easing function for smooth animation
-          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-          const currentNumber = startValue + (targetValue - startValue) * easeOutQuart;
-
-          // Sostituisce completamente il contenuto con il nuovo prezzo
-          element.textContent = `$${currentNumber.toFixed(2)} MXN`;
-
-          if (progress < 1) {
-            requestAnimationFrame(updateNumber);
-          }
-        }
-
-        requestAnimationFrame(updateNumber);
-      }
-
-    function updateOrderSummary() {
-        // Update step 1 summary
-        const summaryService = document.getElementById('summary-service');
-        const summaryQuantity = document.getElementById('summary-quantity');
-        const summaryDetails = document.getElementById('summary-details');
-        const summaryTotal = document.getElementById('summary-total');
-
-        if (summaryService) {
-          summaryService.textContent =
-            `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`;
-        }
-
-        if (summaryQuantity) {
-          // Usa direttamente orderData.pdfPages invece dell'input HTML
-          const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
-          const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-          const pageEndInput = document.getElementById('page-end')?.value || '';
-          const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
-          const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
-          const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
-          const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
-          const totalPages = orderData.quantity * pagesToPrint * sidesMultiplier;
-
-          console.log('📊 updateOrderSummary - Dettagli calcolo:');
-          console.log('📊 orderData.pdfPages:', orderData.pdfPages);
-          console.log('📊 basePages:', basePages);
-          console.log('📊 pageStart:', pageStart);
-          console.log('📊 pageEnd:', pageEnd);
-          console.log('📊 hasRange:', hasRange);
-          console.log('📊 pagesToPrint:', pagesToPrint);
-          console.log('📊 orderData.quantity:', orderData.quantity);
-          console.log('📊 totalPages:', totalPages);
-
-          summaryQuantity.textContent = `${orderData.quantity} copias × ${pagesToPrint} páginas = ${totalPages} páginas totales`;
-        }
-        if (summaryDetails) summaryDetails.textContent = orderData.sides === 'double' ? 'Doble cara' : 'Una cara';
-        if (summaryTotal) summaryTotal.textContent = `${orderData.total.toFixed(2)} MXN`;
-
-        // Update upsells summary
-        const upsellsContainer = document.getElementById('summary-upsells');
-        if (upsellsContainer) {
-          upsellsContainer.innerHTML = '';
-          Object.values(orderData.upsells).forEach(upsell => {
-            const row = document.createElement('div');
-            row.className = 'summary-row';
-            const displayText = upsell.details ? `${upsell.name}: ${upsell.name}` : upsell.name;
-            row.innerHTML = `<span>${displayText}:</span><span>+$${upsell.price}</span>`;
-            upsellsContainer.appendChild(row);
           });
         }
       }
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        // Reinitialize video behavior on resize
+        setTimeout(() => {
+          initializeVideoReels();
+        }, 100);
+      });
+    }
 
     // Funzione per aggiornare le informazioni del PDF nel calcolatore
     function updatePdfInfo() {
-        const pdfInfo = document.getElementById('pdf-info');
-        const pdfPages = document.getElementById('pdf-pages');
-        const totalPages = document.getElementById('total-pages');
+      const pdfInfo = document.getElementById('pdf-info');
+      const pdfPages = document.getElementById('pdf-pages');
+      const totalPages = document.getElementById('total-pages');
 
-        if (pdfInfo && pdfPages && totalPages) {
-          // Usa direttamente orderData.pdfPages invece dell'input HTML
-          const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
-          const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-          const pageEndInput = document.getElementById('page-end')?.value || '';
-          const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
-          const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
-          const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
-          const copies = orderData.quantity || 1;
-          const total = pages * copies;
+      if (pdfInfo && pdfPages && totalPages) {
+        // Usa direttamente orderData.pdfPages invece dell'input HTML
+        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
+        const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
+        const pageEndInput = document.getElementById('page-end')?.value || '';
+        const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
+        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
+        const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
+        const copies = orderData.quantity || 1;
+        const total = pages * copies;
 
-          pdfPages.textContent = pages;
-          totalPages.textContent = total;
+        pdfPages.textContent = pages;
+        totalPages.textContent = total;
 
-          // Mostra sempre le informazioni del PDF
-          pdfInfo.style.display = 'block';
-        }
+        // Mostra sempre le informazioni del PDF
+        pdfInfo.style.display = 'block';
       }
+    }
 
     // Gestione del caricamento del PDF nel calcolatore con LETTURA REALE
     function handleCalcFileUpload(e, isInput = false) {
-        e.preventDefault();
-        const files = isInput ? e.target.files : e.dataTransfer.files;
+      e.preventDefault();
+      const files = isInput ? e.target.files : e.dataTransfer.files;
 
-        if (files.length === 0) return;
+      if (files.length === 0) return;
 
-        const file = files[0]; // Prendi solo il primo file
+      const file = files[0]; // Prendi solo il primo file
 
-        if (file.type !== 'application/pdf') {
-          alert('Por favor sube solo archivos PDF.');
-          return;
-        }
-
-        if (file.size > 10 * 1024 * 1024) {
-          alert('El archivo es muy grande. Máximo 10MB.');
-          return;
-        }
-
-        // LETTURA PDF REALE con PDF.js
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const typedarray = new Uint8Array(e.target.result);
-
-          // Carica PDF.js se non è già caricato
-          if (typeof pdfjsLib === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
-            script.onload = function () {
-              pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-              countPdfPages(typedarray, file);
-            };
-            document.head.appendChild(script);
-          } else {
-            countPdfPages(typedarray, file);
-          }
-        };
-        reader.readAsArrayBuffer(file);
-
-        // Rimuovi la classe dragover
-        const calcFileUpload = document.getElementById('calc-file-upload');
-        if (calcFileUpload) calcFileUpload.classList.remove('dragover');
+      if (file.type !== 'application/pdf') {
+        alert('Por favor sube solo archivos PDF.');
+        return;
       }
+
+      if (file.size > 10 * 1024 * 1024) {
+        alert('El archivo es muy grande. Máximo 10MB.');
+        return;
+      }
+
+      // LETTURA PDF REALE con PDF.js
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const typedarray = new Uint8Array(e.target.result);
+
+        // Carica PDF.js se non è già caricato
+        if (typeof pdfjsLib === 'undefined') {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+          script.onload = function () {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            countPdfPages(typedarray, file);
+          };
+          document.head.appendChild(script);
+        } else {
+          countPdfPages(typedarray, file);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+
+      // Rimuovi la classe dragover
+      const calcFileUpload = document.getElementById('calc-file-upload');
+      if (calcFileUpload) calcFileUpload.classList.remove('dragover');
+    }
 
     function countPdfPages(typedarray, file) {
-        pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
-          const realPages = pdf.numPages;
-          console.log('📄 PDF processato:', file.name, 'pagine reali:', realPages);
+      pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+        const realPages = pdf.numPages;
+        console.log('📄 PDF processato:', file.name, 'pagine reali:', realPages);
 
-          orderData.pdfFile = file;
-          orderData.pdfPages = realPages;
+        orderData.pdfFile = file;
+        orderData.pdfPages = realPages;
 
-          console.log('📄 orderData.pdfPages impostato a:', orderData.pdfPages);
-          console.log('📄 orderData completo dopo impostazione PDF:', orderData);
+        console.log('📄 orderData.pdfPages impostato a:', orderData.pdfPages);
+        console.log('📄 orderData completo dopo impostazione PDF:', orderData);
 
-          // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
-          if (!orderData.files) {
-            orderData.files = [];
-          }
-          // Controlla se il file è già presente per evitare duplicati
-          const existingFile = orderData.files.find(f => f.name === file.name);
-          if (!existingFile) {
-            orderData.files.push(file);
-            console.log('📁 File aggiunto a orderData.files:', file.name);
-            console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+        // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
+        if (!orderData.files) {
+          orderData.files = [];
+        }
+        // Controlla se il file è già presente per evitare duplicati
+        const existingFile = orderData.files.find(f => f.name === file.name);
+        if (!existingFile) {
+          orderData.files.push(file);
+          console.log('📁 File aggiunto a orderData.files:', file.name);
+          console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
 
-            // Aggiorna anche la visualizzazione dei file
-            displayUploadedFile(file);
-            updateUploadStats();
-          }
+          // Aggiorna anche la visualizzazione dei file
+          displayUploadedFile(file);
+          updateUploadStats();
+        }
 
-          // Mostra preview e informazioni reali
-          showCalcFilePreview(file.name, realPages);
-          // Aggiorna input visivo pagine per trasparenza
-          const inputEl = document.getElementById('pdf-pages-input');
-          if (inputEl) {
-            inputEl.value = String(realPages);
-            console.log('📄 Input pdf-pages-input aggiornato a:', inputEl.value);
-          }
-          updatePdfInfo();
+        // Mostra preview e informazioni reali
+        showCalcFilePreview(file.name, realPages);
+        // Aggiorna input visivo pagine per trasparenza
+        const inputEl = document.getElementById('pdf-pages-input');
+        if (inputEl) {
+          inputEl.value = String(realPages);
+          console.log('📄 Input pdf-pages-input aggiornato a:', inputEl.value);
+        }
+        updatePdfInfo();
 
-          // Ricalcola prezzo con pagine reali
-          calculate();
+        // Ricalcola prezzo con pagine reali
+        calculate();
 
-          console.log(`✅ PDF caricato: ${realPages} pagine reali`);
-        }).catch(function (error) {
-          console.error('❌ Errore lettura PDF:', error);
-          alert('❌ Errore nella lettura del PDF. Riprova con un file diverso.');
-        });
-      }
+        console.log(`✅ PDF caricato: ${realPages} pagine reali`);
+      }).catch(function (error) {
+        console.error('❌ Errore lettura PDF:', error);
+        alert('❌ Errore nella lettura del PDF. Riprova con un file diverso.');
+      });
+    }
 
     function showCalcFilePreview(fileName, pages) {
-        const calcFilePreview = document.getElementById('calc-file-preview');
-        const calcFileName = document.getElementById('calc-file-name');
-        const calcFilePages = document.getElementById('calc-file-pages');
+      const calcFilePreview = document.getElementById('calc-file-preview');
+      const calcFileName = document.getElementById('calc-file-name');
+      const calcFilePages = document.getElementById('calc-file-pages');
 
-        if (calcFilePreview && calcFileName && calcFilePages) {
-          calcFileName.textContent = fileName;
-          calcFilePages.textContent = pages;
-          calcFilePreview.style.display = 'block';
-        }
+      if (calcFilePreview && calcFileName && calcFilePages) {
+        calcFileName.textContent = fileName;
+        calcFilePages.textContent = pages;
+        calcFilePreview.style.display = 'block';
       }
+    }
 
     function removeCalcFile() {
-        // Rimuovi i dati del PDF
-        delete orderData.pdfFile;
-        delete orderData.pdfPages;
+      // Rimuovi i dati del PDF
+      delete orderData.pdfFile;
+      delete orderData.pdfPages;
 
-        // Nascondi il preview
-        const calcFilePreview = document.getElementById('calc-file-preview');
-        if (calcFilePreview) calcFilePreview.style.display = 'none';
+      // Nascondi il preview
+      const calcFilePreview = document.getElementById('calc-file-preview');
+      if (calcFilePreview) calcFilePreview.style.display = 'none';
 
-        // Nascondi le informazioni del PDF
-        const pdfInfo = document.getElementById('pdf-info');
-        if (pdfInfo) pdfInfo.style.display = 'none';
+      // Nascondi le informazioni del PDF
+      const pdfInfo = document.getElementById('pdf-info');
+      if (pdfInfo) pdfInfo.style.display = 'none';
 
-        // Ripristina input pagine a 1
-        const inputEl = document.getElementById('pdf-pages-input');
-        if (inputEl) inputEl.value = '1';
+      // Ripristina input pagine a 1
+      const inputEl = document.getElementById('pdf-pages-input');
+      if (inputEl) inputEl.value = '1';
 
-        // Ricalcola il prezzo
-        calculate();
-      }
+      // Ricalcola il prezzo
+      calculate();
+    }
 
     // SISTEMA IBRIDO GRATUITO: EmailJS + WhatsApp
     function inviaEmailOrdine(orderNumber, name, email, phone, finalTotal) {
-        // Prepara i dati per l'email
-        const pdfPages = orderData.pdfPages || 1;
-        const copies = orderData.quantity || 1;
-        const sidesMultiplierEmail = orderData.sides === 'double' ? 2 : 1;
-        const totalPages = pdfPages * copies * sidesMultiplierEmail;
+      // Prepara i dati per l'email
+      const pdfPages = orderData.pdfPages || 1;
+      const copies = orderData.quantity || 1;
+      const sidesMultiplierEmail = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierEmail;
 
-        // Calcola se richiede anticipo
-        const requiresAnticipo = totalPages >= 1000;
-        const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
+      // Calcola se richiede anticipo
+      const requiresAnticipo = totalPages >= 1000;
+      const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
 
-        // Prepara i servizi aggiuntivi
-        let upsellsText = '';
-        Object.values(orderData.upsells).forEach(upsell => {
-          upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
-        });
+      // Prepara i servizi aggiuntivi
+      let upsellsText = '';
+      Object.values(orderData.upsells).forEach(upsell => {
+        upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
+      });
 
-        // Prepara i dettagli di consegna
-        const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
-          orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+      // Prepara i dettagli di consegna
+      const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
+        orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
 
-        const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
-          orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+      const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
+        orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
 
-        // Prepara le note speciali
-        const specialNotes = document.getElementById('special-notes')?.value || '';
+      // Prepara le note speciali
+      const specialNotes = document.getElementById('special-notes')?.value || '';
 
-        // Prepara la lista dei file caricati
-        let filesList = '';
-        if (orderData.files && orderData.files.length > 0) {
-          filesList = orderData.files.map(file => `- ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
-        }
-
-        // Template parameters per EmailJS
-        const templateParams = {
-          orderNumber: orderNumber,
-          customerName: name,
-          customerEmail: email,
-          customerPhone: phone,
-          serviceType: `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`,
-          orderDetails: `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`,
-          upsells: upsellsText || 'Ninguno',
-          deliveryMethod: deliveryText,
-          deliveryTiming: timingText,
-          totalAmount: finalTotal.toFixed(2),
-          paymentMethod: orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia',
-          fileCount: orderData.files.length,
-          filesList: filesList || 'Ningún archivo',
-          specialNotes: specialNotes || 'Ninguna',
-          anticipoAmount: anticipoAmount,
-          requiresAnticipo: requiresAnticipo ? 'SÍ' : 'NO'
-        };
-
-        // Invia email usando EmailJS
-        emailjs.send('service_vcncpul', 'template_gj4wo8s', templateParams)
-          .then(function (response) {
-            console.log('✅ Email inviata con successo:', response);
-          }, function (error) {
-            console.error('❌ Errore invio email:', error);
-          });
+      // Prepara la lista dei file caricati
+      let filesList = '';
+      if (orderData.files && orderData.files.length > 0) {
+        filesList = orderData.files.map(file => `- ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
       }
 
-    function inviaOrdineWhatsApp(orderNumber, name, finalTotal) {
-        // Prepara il messaggio WhatsApp
-        const pdfPages = orderData.pdfPages || 1;
-        const copies = orderData.quantity || 1;
-        const sidesMultiplierWa = orderData.sides === 'double' ? 2 : 1;
-        const totalPages = pdfPages * copies * sidesMultiplierWa;
+      // Template parameters per EmailJS
+      const templateParams = {
+        orderNumber: orderNumber,
+        customerName: name,
+        customerEmail: email,
+        customerPhone: phone,
+        serviceType: `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`,
+        orderDetails: `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`,
+        upsells: upsellsText || 'Ninguno',
+        deliveryMethod: deliveryText,
+        deliveryTiming: timingText,
+        totalAmount: finalTotal.toFixed(2),
+        paymentMethod: orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia',
+        fileCount: orderData.files.length,
+        filesList: filesList || 'Ningún archivo',
+        specialNotes: specialNotes || 'Ninguna',
+        anticipoAmount: anticipoAmount,
+        requiresAnticipo: requiresAnticipo ? 'SÍ' : 'NO'
+      };
 
-        // Calcola se richiede anticipo
-        const requiresAnticipo = totalPages >= 1000;
-        const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
-
-        // Prepara i servizi aggiuntivi
-        let upsellsText = '';
-        Object.values(orderData.upsells).forEach(upsell => {
-          upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
+      // Invia email usando EmailJS
+      emailjs.send('service_vcncpul', 'template_gj4wo8s', templateParams)
+        .then(function (response) {
+          console.log('✅ Email inviata con successo:', response);
+        }, function (error) {
+          console.error('❌ Errore invio email:', error);
         });
+    }
 
-        // Prepara i dettagli di consegna
-        const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
-          orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+    function inviaOrdineWhatsApp(orderNumber, name, finalTotal) {
+      // Prepara il messaggio WhatsApp
+      const pdfPages = orderData.pdfPages || 1;
+      const copies = orderData.quantity || 1;
+      const sidesMultiplierWa = orderData.sides === 'double' ? 2 : 1;
+      const totalPages = pdfPages * copies * sidesMultiplierWa;
 
-        const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
-          orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+      // Calcola se richiede anticipo
+      const requiresAnticipo = totalPages >= 1000;
+      const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
 
-        // Prepara le note speciali
-        const specialNotes = document.getElementById('special-notes')?.value || '';
+      // Prepara i servizi aggiuntivi
+      let upsellsText = '';
+      Object.values(orderData.upsells).forEach(upsell => {
+        upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
+      });
 
-        // Prepara la lista dei file caricati
-        let filesList = '';
-        if (orderData.files && orderData.files.length > 0) {
-          filesList = orderData.files.map(file => `• ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
-        }
+      // Prepara i dettagli di consegna
+      const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
+        orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
 
-        // Crea il messaggio WhatsApp
-        const message = `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
+      const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
+        orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+
+      // Prepara le note speciali
+      const specialNotes = document.getElementById('special-notes')?.value || '';
+
+      // Prepara la lista dei file caricati
+      let filesList = '';
+      if (orderData.files && orderData.files.length > 0) {
+        filesList = orderData.files.map(file => `• ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
+      }
+
+      // Crea il messaggio WhatsApp
+      const message = `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
 
 👤 Cliente: ${name}
 📱 Tel: ${orderData.customer?.phone || 'No proporcionado'}
@@ -8839,44 +8723,44 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
 ¡Pedido listo para procesar!`;
 
-        // Codifica il messaggio per WhatsApp
-        const encodedMessage = encodeURIComponent(message);
+      // Codifica il messaggio per WhatsApp
+      const encodedMessage = encodeURIComponent(message);
 
-        // Apri WhatsApp con il messaggio pre-compilato
-        window.open(`https://wa.me/525540219892?text=${encodedMessage}`, '_blank');
-      }
+      // Apri WhatsApp con il messaggio pre-compilato
+      window.open(`https://wa.me/525540219892?text=${encodedMessage}`, '_blank');
+    }
 
     function confermaOrdineCompleto(orderNumber, name, email, phone, finalTotal) {
-        // 1. Email automatica al proprietario (GRATIS)
-        inviaEmailOrdine(orderNumber, name, email, phone, finalTotal);
+      // 1. Email automatica al proprietario (GRATIS)
+      inviaEmailOrdine(orderNumber, name, email, phone, finalTotal);
 
-        // 2. WhatsApp si apre automaticamente per il cliente (GRATIS)
-        inviaOrdineWhatsApp(orderNumber, name, finalTotal);
+      // 2. WhatsApp si apre automaticamente per il cliente (GRATIS)
+      inviaOrdineWhatsApp(orderNumber, name, finalTotal);
 
-        // 3. Conferma al cliente
-        setTimeout(() => {
-          alert('✅ ¡Pedido confirmado exitosamente!\n\n📧 Email enviado al negocio\n📱 WhatsApp abierto para enviar mensaje\n\nEl negocio se pondrá en contacto contigo pronto.');
-        }, 1000);
-      }
+      // 3. Conferma al cliente
+      setTimeout(() => {
+        alert('✅ ¡Pedido confirmado exitosamente!\n\n📧 Email enviado al negocio\n📱 WhatsApp abierto para enviar mensaje\n\nEl negocio se pondrá en contacto contigo pronto.');
+      }, 1000);
+    }
 
     function showOrderPage(shouldPush = true) {
-        if (homepage) homepage.style.display = 'none';
-        if (homepageContent) homepageContent.style.display = 'none';
-        if (orderPage) orderPage.classList.add('active');
-        updateOrderSummary();
-        window.scrollTo(0, 0);
+      if (homepage) homepage.style.display = 'none';
+      if (homepageContent) homepageContent.style.display = 'none';
+      if (orderPage) orderPage.classList.add('active');
+      updateOrderSummary();
+      window.scrollTo(0, 0);
 
-        // Assicurati che le opzioni di pagamento siano configurate
-        setTimeout(() => {
-          setupDeliveryOptions();
-          console.log('✅ Opzioni di pagamento configurate');
-        }, 100);
+      // Assicurati che le opzioni di pagamento siano configurate
+      setTimeout(() => {
+        setupDeliveryOptions();
+        console.log('✅ Opzioni di pagamento configurate');
+      }, 100);
 
-        // Aggiungi alla cronologia del browser per gestire il pulsante "Indietro"
-        if (shouldPush && window.history && window.history.pushState) {
-          window.history.pushState({ page: 'order' }, '', window.location.origin + '/#order');
-        }
+      // Aggiungi alla cronologia del browser per gestire il pulsante "Indietro"
+      if (shouldPush && window.history && window.history.pushState) {
+        window.history.pushState({ page: 'order' }, '', window.location.origin + '/#order');
       }
+    }
 
     // GRIGLIA LIBRI - VERSIONE SEMPLICE E FUNZIONALE
     console.log('📚 Griglia libri - versione semplice...');
