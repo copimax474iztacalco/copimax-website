@@ -135,41 +135,42 @@
         :root {
             --primary-green: #9AFF00;
             --lime-bright: #CCFF33;
-            --dark-bg: #1a1a1a;
-            --darker-bg: #0f0f0f;
-            --card-bg: #2a2a2a;
-            --text-light: #ffffff;
-            --text-gray: #b0b0b0;
+            --dark-bg: #000000;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #f5f5f7;
+            /* Apple-ish off-white */
+            --text-gray: #86868b;
+            /* Apple-ish gray */
+            --glass-border: rgba(255, 255, 255, 0.1);
             --gradient-green: linear-gradient(135deg, #9AFF00 0%, #CCFF33 100%);
-            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--dark-bg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            line-height: 1.5;
             color: var(--text-light);
-            line-height: 1.6;
+            background: var(--dark-bg);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* PREMIUM HEADER: Glassmorphism */
         .header {
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .nav {
@@ -178,228 +179,374 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* ESTILOS PREMIUM ESPECÍFICOS PARA ESTA PÁGINA */
+        /* Menu Desktop */
+        .main-navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 13px;
+            /* Apple style small but legible */
+            font-weight: 500;
+            padding: 8px 16px;
+            margin: 0 4px;
+            transition: opacity 0.3s ease;
+            letter-spacing: -0.01em;
+            opacity: 0.8;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .header-cta .instant-quote {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .header-cta .instant-quote:hover {
+            transform: scale(1.05);
+        }
+
+        /* HERO SECTION: TESLA STYLE */
         .hero-b2b {
-            min-height: 80vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            background: #000;
             position: relative;
             overflow: hidden;
-            padding: 80px 20px;
-            margin-top: 60px;
-            /* Offset fixed header */
+            padding: 120px 20px 80px;
+        }
+
+        /* Subtle glow effect instead of radial gradient */
+        .hero-b2b::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(154, 255, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .hero-b2b-content {
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
+            animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .badge-b2b {
             display: inline-block;
-            background: rgba(154, 255, 0, 0.1);
             color: var(--primary-green);
-            border: 1px solid var(--primary-green);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 12px;
             letter-spacing: 2px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 600;
+            text-transform: uppercase;
         }
 
         .hero-b2b h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
+            font-size: 56px;
+            /* High Impact */
+            line-height: 1.05;
             margin-bottom: 24px;
             color: #fff;
-            letter-spacing: -1px;
+            letter-spacing: -0.03em;
+            font-weight: 700;
         }
 
         .hero-b2b h1 .highlight {
-            color: transparent;
-            -webkit-text-stroke: 1px #fff;
-            font-style: italic;
+            color: var(--primary-green);
+            /* Removed stroke for cleaner look, added gradient text if supported */
+            background: var(--gradient-green);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: normal;
         }
 
         .hero-b2b p {
-            font-size: 1.25rem;
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            font-weight: 300;
+            font-size: 21px;
+            /* Comparable to Apple's lead text */
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin-bottom: 48px;
+            font-weight: 400;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-actions {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             justify-content: center;
         }
 
         .btn-primary {
             background: var(--primary-green);
             color: #000;
-            padding: 16px 32px;
-            border-radius: 4px;
+            padding: 14px 28px;
+            border-radius: 980px;
+            /* Pill shape */
             text-decoration: none;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 0 20px rgba(154, 255, 0, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(154, 255, 0, 0.3);
         }
 
         .btn-secondary {
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            padding: 16px 32px;
-            border-radius: 4px;
+            padding: 14px 28px;
+            border-radius: 980px;
             text-decoration: none;
             font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 15px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.2);
         }
 
+        /* SECTIONS */
         .b2b-section {
-            padding: 100px 0;
-            background: #111;
-            border-bottom: 1px solid #222;
+            padding: 120px 0;
+            background: #000;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1080px;
+            /* Tighter container for focus on large screens */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
+            max-width: 640px;
+            margin: 0 auto 80px;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 16px;
             color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
+        .section-header p {
+            font-size: 20px;
+            color: var(--text-gray);
+        }
+
+        /* GRID: Glass Cards */
         .b2b-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .b2b-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
             padding: 40px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .b2b-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--primary-green);
-            transform: translateY(-5px);
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .b2b-card .icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 24px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(154, 255, 0, 0.1);
+            border-radius: 12px;
+            color: var(--primary-green);
         }
 
         .b2b-card h3 {
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 20px;
             margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .b2b-card p {
-            color: #999;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.6;
         }
 
+        /* CEO ASSURANCES (NEW) */
+        .assurances-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #222;
+            /* Gap color */
+            border: 1px solid #222;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .assurance-item {
+            background: #0a0a0a;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .assurance-item h4 {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .assurance-item p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .assurance-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* FEATURE LIST */
         .split-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
+        }
+
+        .text-block h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
         }
 
         .feature-list {
             list-style: none;
-            margin-top: 30px;
         }
 
         .feature-list li {
-            margin-bottom: 20px;
-            padding-left: 20px;
-            border-left: 2px solid var(--primary-green);
-            color: #ccc;
+            margin-bottom: 30px;
+            padding-left: 0;
+            color: var(--text-gray);
+            font-size: 17px;
         }
 
         .feature-list strong {
             color: #fff;
             display: block;
             margin-bottom: 4px;
+            font-size: 19px;
+        }
+
+        .map-section {
+            height: 400px;
+            width: 100%;
+            filter: grayscale(100%) invert(90%);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
         }
 
         .b2b-footer {
             background: #000;
-            padding: 60px 0;
-            border-top: 1px solid #222;
+            padding: 80px 0 40px;
         }
 
         .footer-split {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .main-navigation .nav-link {
+        .footer-link {
+            display: block;
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .footer-link:hover {
             color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .header-cta .instant-quote {
-            background: var(--primary-green);
-            color: #000;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
         }
 
         /* Mobile Adjustments */
         @media(max-width: 768px) {
             .hero-b2b h1 {
-                font-size: 2.5rem;
+                font-size: 42px;
+            }
+
+            .hero-b2b p {
+                font-size: 18px;
             }
 
             .hero-actions {
@@ -410,9 +557,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .footer-split {
-                flex-direction: column;
-                gap: 20px;
+            .assurances-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                display: block;
                 text-align: center;
             }
 
@@ -420,9 +570,19 @@
                 display: none;
             }
 
-            /* Hide menu on mobile for simplicity in B2B landing */
             .logo {
-                flex-grow: 1;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .header-cta {
+                justify-content: center;
+            }
+
+            .footer-split {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
             }
         }
     </style>
@@ -544,32 +704,66 @@
         </div>
     </section>
 
-    <!-- CREDIBILITY: The "Why Us" -->
-    <section id="logistica" class="b2b-section" style="border-top: 1px solid #333;">
-        <div class="container" style="text-align: center;">
-            <p
-                style="text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 2rem;">
-                Empresas que confían en nuestra discreción
-            </p>
-            <div class="logo-grid"
-                style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.6;">
-                <span style="color:#555;">🏥 Grupo Hospitalario CDMX</span>
-                <span style="color:#555;">⚖️ Despachos Polanco</span>
-                <span style="color:#555;">🏗️ Constructoras Santa Fe</span>
+    <!-- CEO ASSURANCES: THE "TESLA" RELIABILITY FACTOR -->
+    <section class="b2b-section" style="padding-top: 0; background-color: #000;">
+        <div class="container">
+            <div class="assurances-grid">
+                <div class="assurance-item">
+                    <span class="assurance-number">99.9%</span>
+                    <h4>Uptime Operativo</h4>
+                    <p>Plantas de luz de respaldo y doble línea de fibra óptica. Su producción nunca se detiene por
+                        fallas externas.</p>
+                </div>
+                <div class="assurance-item">
+                    <span class="assurance-number">SAT 4.0</span>
+                    <h4>Compliance Fiscal</h4>
+                    <p>Facturación instantánea con Addendas automáticas. Sistema compatible con SAP/Oracle para
+                        proveedores Enterprise.</p>
+                </div>
+                <div class="assurance-item">
+                    <span class="assurance-number">NDA</span>
+                    <h4>Seguridad Legal</h4>
+                    <p>Firma de acuerdos de confidencialidad para cada proyecto. Destrucción certificada de pruebas de
+                        impresión.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- CREDIBILITY: The "Why Us" -->
+    <section id="logistica" class="b2b-section" style="border-top: 1px solid #111;">
+        <div class="container" style="text-align: center;">
+            <p
+                style="text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-size: 13px; margin-bottom: 2rem;">
+                Empresas que confían en nuestra discreción
+            </p>
+            <div class="logo-grid"
+                style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 0.5;">
+                <span style="color:#666; font-weight:600;">🏥 Grupo Hospitalario CDMX</span>
+                <span style="color:#666; font-weight:600;">⚖️ Despachos Polanco</span>
+                <span style="color:#666; font-weight:600;">🏗️ Constructoras Santa Fe</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <div class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15053.468285579998!2d-99.1128!3d19.3738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDIyJzI1LjciTiA5OcKwMDYnNDYuMSJX!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
     <!-- CTA FINAL B2B -->
-    <section id="contacto" class="b2b-section" style="background:#000; text-align:center;">
+    <section id="contacto" class="b2b-section" style="background:#000; text-align:center; padding: 100px 0;">
         <div class="container">
-            <h2 style="margin-bottom:20px;">Habilitación de Cuenta Corporativa</h2>
-            <p style="color:#999; margin-bottom:40px; max-width:600px; margin-left:auto; margin-right:auto;">
-                Hable directamente con la gerencia. Sin intermediarios, sin bots.
+            <h2 style="margin-bottom:20px; font-size: 48px;">Habilitación de Cuenta Corporativa</h2>
+            <p
+                style="color:var(--text-gray); margin-bottom:40px; max-width:600px; margin-left:auto; margin-right:auto; font-size: 18px;">
+                Hable directamente con la gerencia. Sin intermediarios.
                 Resolvemos su urgencia hoy mismo.
             </p>
             <a href="https://wa.me/5215540219892?text=Solicito%20alta%20de%20cuenta%20corporativa." class="btn-primary"
-                style="font-size:1.1rem; padding: 20px 40px;">
+                style="font-size:17px; padding: 18px 45px;">
                 Contactar Gerencia Ahora
             </a>
         </div>
@@ -580,19 +774,22 @@
         <div class="container">
             <div class="footer-split">
                 <div>
-                    <h4 style="margin-bottom:10px; color:#fff;">COPIMAX CORPORATE</h4>
-                    <p style="color:#666; font-size:0.9rem;">División de Servicios Empresariales</p>
+                    <h4 style="margin-bottom:16px; color:#fff;">COPIMAX CORPORATE</h4>
+                    <p style="color:var(--text-gray); font-size:14px; max-width: 300px;">
+                        División de Servicios Empresariales.<br>
+                        Infraestructura dedicada para proyectos de alto volumen y seguridad crítica.
+                    </p>
                 </div>
-                <div>
-                    <a href="mailto:corporativo@copimax.store"
-                        style="color:var(--text-gray); text-decoration:none; margin-right:20px;">corporativo@copimax.store</a>
-                    <a href="https://wa.me/5215540219892"
-                        style="color:var(--primary-green); text-decoration:none;">Línea Directa B2B</a>
+                <div style="text-align: right;">
+                    <a href="mailto:copimax474@gmail.com" class="footer-link">copimax474@gmail.com</a>
+                    <a href="https://wa.me/5215540219892" class="footer-link" style="color: var(--primary-green);">Línea
+                        Directa B2B: 55-4021-9892</a>
+                    <p class="footer-link" style="opacity: 0.6; pointer-events: none;">CDMX, México</p>
                 </div>
             </div>
             <div
-                style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #444; text-align: center;">
-                © 2025 COPIMAX. Todos los derechos reservados. Uso exclusivo B2B.
+                style="margin-top: 60px; border-top: 1px solid #222; padding-top: 30px; font-size: 12px; color: #444; text-align: center;">
+                © 2025 COPIMAX. Todos los derechos reservados. Uso exclusivo Empresas & Gobierno.
             </div>
         </div>
     </footer>
