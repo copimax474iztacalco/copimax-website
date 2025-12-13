@@ -441,7 +441,13 @@
 
             .hero-b2b-content {
                 display: contents;
-                /* Unwrap Text/Buttons to reorder */
+                /* UNWRAP to allow mixing children with video */
+            }
+
+            .badge-b2b {
+                order: 0;
+                width: 100%;
+                margin-bottom: 20px;
             }
 
             .hero-b2b h1 {
@@ -467,8 +473,11 @@
                 width: 100%;
                 display: flex;
                 justify-content: center;
-                margin: 10px 0 30px;
+                margin: 20px 0 30px;
                 position: relative;
+                /* Ensure it takes space */
+                height: auto;
+                min-height: auto;
             }
 
             .hero-actions {
@@ -484,18 +493,25 @@
             .btn-primary,
             .btn-secondary {
                 width: 100%;
+                margin-left: 0 !important;
             }
 
             .video-placeholder-3-4 {
                 width: 100%;
-                max-width: 340px !important;
+                max-width: 360px !important;
                 /* Slightly wider */
                 aspect-ratio: 4/3 !important;
                 /* USER REQUEST: 4:3 FORMAT */
-                margin: 24px auto 32px !important;
+                margin: 0 auto !important;
                 /* Clear spacing from text and buttons */
                 box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
                 transform: none !important;
+                position: relative !important;
+                /* FIX: Override absolute positioning */
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
                 border-radius: 20px;
             }
 
@@ -536,14 +552,22 @@
                 width: 100%;
             }
 
-            .beast-image {
+            .beast-content p {
                 order: 2;
+                font-size: 18px;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .beast-image {
+                order: 3;
                 width: 100%;
                 margin: 10px 0;
             }
 
             .beast-specs {
-                order: 3;
+                order: 4;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 15px;
@@ -554,7 +578,7 @@
             /* Force HUDs to flow vertically under everything */
             .hud-overlay {
                 position: relative;
-                order: 4;
+                order: 5;
                 top: auto !important;
                 right: auto !important;
                 bottom: auto !important;
@@ -1017,6 +1041,26 @@
             color: #fff;
         }
 
+        .footer-right-col {
+            text-align: right;
+        }
+
+        .footer-desc-text {
+            color: var(--text-gray);
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        @media(max-width: 768px) {
+            .footer-right-col {
+                text-align: center !important;
+            }
+
+            .footer-desc-text {
+                margin: 0 auto;
+            }
+        }
+
         /* SCROLL REVEAL ANIMATION */
         .reveal {
             opacity: 0;
@@ -1230,7 +1274,7 @@
             </div>
 
             <div class="header-cta">
-                <a href="https://wa.me/525540219892?text=COPIMAX%20B2B:%20Requiero%20asistencia%20corporativa."
+                <a href="https://wa.me/525540219892?text=Hola%20Equipo%20Copimax%2C%20mi%20empresa%20%5BNOMBRE_EMPRESA%5D%20requiere%20cotizar%20un%20proyecto%20de%20%5BTIPO_DE_SERVICIO%5D.%20Me%20gustar%C3%ADa%20recibir%20atenci%C3%B3n%20corporativa."
                     class="instant-quote" target="_blank" rel="noopener">Soporte 24/7</a>
             </div>
         </nav>
@@ -1247,7 +1291,7 @@
                 protocolos de confidencialidad y logística dedicada.
             </p>
             <div class="hero-actions">
-                <a href="https://wa.me/5215540219892?text=Hola,%20soy%20de%20[EMPRESA]%20y%20me%20interesa%20abrir%20cuenta%20corporativa."
+                <a href="https://wa.me/5215540219892?text=Hola%20Equipo%20Copimax%2C%20mi%20empresa%20%5BNOMBRE_EMPRESA%5D%20requiere%20cotizar%20un%20proyecto%20de%20%5BTIPO_DE_SERVICIO%5D.%20Me%20gustar%C3%ADa%20recibir%20atenci%C3%B3n%20corporativa."
                     class="btn-primary">
                     ABRIR CUENTA CORPORATIVA
                 </a>
@@ -1505,12 +1549,12 @@
             <div class="footer-split">
                 <div>
                     <h4 style="margin-bottom:16px; color:#fff;">COPIMAX CORPORATE</h4>
-                    <p style="color:var(--text-gray); font-size:14px; max-width: 300px;">
+                    <p class="footer-desc-text">
                         División de Servicios Empresariales.<br>
                         Infraestructura dedicada para proyectos de alto volumen y seguridad crítica.
                     </p>
                 </div>
-                <div style="text-align: right;">
+                <div class="footer-right-col">
                     <a href="mailto:copimax474@gmail.com" class="footer-link">copimax474@gmail.com</a>
                     <a href="https://wa.me/5215540219892" class="footer-link" style="color: var(--primary-green);">Línea
                         Directa B2B: 55-4021-9892</a>
