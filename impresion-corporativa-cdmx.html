@@ -270,7 +270,8 @@
             width: 100%;
             /* FULL BLEED to fix "box edges" look */
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 0.8fr 1.2fr;
+            /* Video takes 60% of space */
             /* Equal split for huge video */
             gap: 40px;
             align-items: center;
@@ -400,7 +401,7 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
             /* GIGANTIC VIDEO ON DESKTOP */
             aspect-ratio: 9/16;
             background: #000;
