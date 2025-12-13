@@ -265,16 +265,24 @@
 
         /* HERO SECTION: INDUSTRIAL DEEP REFACTORED */
         .hero-b2b {
-            min-height: 90vh;
+            min-height: 75vh;
+            /* Reduced height for tighter feel */
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1fr;
+            /* Symmetrical balance */
+            gap: 20px;
+            /* Closer connection */
             align-items: center;
             justify-content: center;
-            padding: 120px 5%;
+            padding: 40px 5%;
+            /* Much less vertical whitespace */
             background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, #000000 100%);
             position: relative;
             overflow: hidden;
+            max-width: 1400px;
+            /* Restrain width on ultra-wide */
+            margin: 0 auto;
+            /* Center the section itself if screen is huge */
         }
 
         /* Subtle glow effect */
@@ -294,6 +302,8 @@
         .hero-b2b-content {
             z-index: 2;
             text-align: left;
+            padding-left: 5%;
+            /* Nudge text towards center visual balance */
             animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -333,7 +343,8 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 320px;
+            max-width: 400px;
+            /* Bigger video presence */
             aspect-ratio: 9/16;
             /* Vertical format matching the file */
             background: #000;
@@ -346,6 +357,9 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-right: auto;
+            /* Push towards center from right column */
+            margin-left: 0;
         }
 
         /* Subtle hover lift, no rotation */
@@ -1196,8 +1210,8 @@
                 <div class="visual-block">
                     <!-- Premium Printer Visual -->
                     <div class="printer-card-container">
-                        <img src="printer-final.png" alt="Centro de Copiado con 25 años de experiencia"
-                            class="printer-hero-img">
+                        <img src="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Centro de Copiado con 25 años de experiencia" class="printer-hero-img">
 
                         <!-- Floating Spec Badge -->
                         <div class="printer-badge badge-top-right">
