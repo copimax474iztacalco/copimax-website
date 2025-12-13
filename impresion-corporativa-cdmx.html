@@ -263,18 +263,18 @@
             transform: scale(1.05);
         }
 
-        /* HERO SECTION: INDUSTRIAL DEEP */
+        /* HERO SECTION: INDUSTRIAL DEEP REFACTORED */
         .hero-b2b {
-            min-height: 85vh;
-            display: flex;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-            /* Reverted to Deep Radial */
+            padding: 120px 5%;
+            background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, #000000 100%);
             position: relative;
             overflow: hidden;
-            padding: 120px 20px 80px;
         }
 
         /* Subtle glow effect */
@@ -283,109 +283,111 @@
             position: absolute;
             width: 800px;
             height: 400px;
-            background: radial-gradient(circle, rgba(154, 255, 0, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-            /* Reduced opacity for darker feel */
+            background: radial-gradient(circle, rgba(154, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.5;
             z-index: 0;
             pointer-events: none;
         }
 
-        /* PRINTER VISUAL SHOWCASE */
-        .printer-card-container {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 400px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .printer-hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .printer-card-container:hover .printer-hero-img {
-            transform: scale(1.05);
-        }
-
-        .printer-badge {
-            position: absolute;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 12px 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #fff;
-            pointer-events: none;
+        .hero-b2b-content {
             z-index: 2;
+            text-align: left;
+            animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .badge-top-right {
-            top: 24px;
-            right: 24px;
-        }
-
-        .badge-bottom-left {
-            bottom: 24px;
-            left: 24px;
-        }
-
-        .badge-text small {
-            display: block;
-            color: var(--primary-green);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
+        .hero-b2b h1 {
+            font-size: 56px;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            color: #fff;
+            letter-spacing: -0.03em;
             font-weight: 700;
         }
 
-        .badge-text strong {
-            font-size: 13px;
-            color: #fff;
-            font-weight: 500;
+        .hero-b2b p {
+            font-size: 20px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 90%;
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-green);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary-green);
-            animation: pulse-dot 2s infinite;
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-start;
         }
 
-        @keyframes pulse-dot {
-            0% {
-                opacity: 0.5;
-                transform: scale(0.9);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 0.5;
-                transform: scale(0.9);
-            }
+        /* Video Placeholder Refined Position */
+        .hero-b2b-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
         }
 
-        .hero-b2b-content {
-            z-index: 2;
-            max-width: 900px;
-            animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .video-placeholder-3-4 {
+            position: relative;
+            transform: rotateY(-10deg) rotateX(2deg);
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 9/16;
+            /* TikTok/Reel format as requested 3:4 or 9:16 is mostly vertical */
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #111 0%, #050505 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            z-index: 5;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(154, 255, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+        }
+
+        .video-placeholder-3-4:hover {
+            transform: rotateY(0deg) scale(1.02);
+            border-color: var(--primary-green);
+        }
+
+        @media(max-width: 900px) {
+            .hero-b2b {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 140px 20px 60px;
+                min-height: auto;
+            }
+
+            .hero-b2b-content {
+                text-align: center;
+            }
+
+            .hero-b2b h1 {
+                font-size: 42px;
+            }
+
+            .hero-b2b p {
+                max-width: 100%;
+                font-size: 18px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .video-placeholder-3-4 {
+                margin: 40px auto 0;
+                transform: none;
+                width: 280px;
+            }
         }
 
         /* "THE BEAST" SECTION STYLES */
@@ -1165,7 +1167,7 @@
                 <div class="visual-block">
                     <!-- Premium Printer Visual -->
                     <div class="printer-card-container">
-                        <img src="./img_printer_v2.png" alt="Centro de Copiado con 25 años de experiencia"
+                        <img src="printer-final.png" alt="Centro de Copiado con 25 años de experiencia"
                             class="printer-hero-img">
 
                         <!-- Floating Spec Badge -->
@@ -1220,26 +1222,27 @@
     <section id="logistica" class="b2b-section" style="border-top: 1px solid #111;">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
-                <h2 style="font-size: 32px; color: #fff; margin-bottom: 20px; font-weight: 700;">Logística Blindada CDMX
-                </h2>
+                <h2 style="font-size: 32px; color: #fff; margin-bottom: 20px; font-weight: 700;">Logística &
+                    Conectividad CDMX</h2>
                 <p style="color: var(--text-gray); font-size: 18px; line-height: 1.6;">
-                    Más que copias, entregamos certidumbre. Nuestra flotilla dedicada opera rutas exclusivas para el
-                    sector corporativo, garantizando la llegan a su escritorio antes de su primera reunión.
+                    Eficiencia en cada entrega. Coordinamos el envío seguro de su producción mediante plataformas
+                    digitales o transporte dedicado, asegurando que el material llegue impecable a <strong>Santa Fe,
+                        Polanco</strong> o cualquier corporativo de la ciudad.
                 </p>
             </div>
 
             <div class="b2b-grid">
                 <div class="b2b-card" style="border-left: 3px solid var(--primary-green);">
-                    <h3 style="font-size: 20px;">🏢 Ruta Santa Fe / Lomas</h3>
-                    <p style="font-size: 15px;">Salida diaria 6:30 AM vía Constituyentes. Entrega prioritaria en
-                        corporativos de <strong>Javier Barros Sierra, Santa Fe y Paseo de las Palmas</strong>. Acceso
-                        verificado a zonas de carga.</p>
+                    <h3 style="font-size: 20px;">⚡ Envíos Express / Apps</h3>
+                    <p style="font-size: 15px;">Compatible con <strong>Uber Flash, DiDi Entrega y Lalamove</strong>.
+                        Nosotros gestionamos el empaquetado y la logística de salida; usted cubre el envío y monitorea
+                        el trayecto en tiempo real. Ideal para urgencias "Same Day".</p>
                 </div>
                 <div class="b2b-card" style="border-left: 3px solid #fff;">
-                    <h3 style="font-size: 20px;">🏛️ Ruta Polanco / Reforma</h3>
-                    <p style="font-size: 15px;">Cobertura total en <strong>Torre Mayor, Virreyes y zona hotelera de
-                            Polanco</strong>. Protocolo de entrega en recepción con acuse digital y notificación
-                        WhatsApp en tiempo real.</p>
+                    <h3 style="font-size: 20px;">🚛 Volumen & Corporativo</h3>
+                    <p style="font-size: 15px;">Para cargas tarimadas o de alta confidencialidad, recibimos a su unidad
+                        de transporte en nuestras instalaciones o <strong>cotizamos flete exclusivo</strong> directo a
+                        sus oficinas en zonas de acceso controlado.</p>
                 </div>
             </div>
 
