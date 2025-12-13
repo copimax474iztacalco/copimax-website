@@ -1355,6 +1355,91 @@
     </div>
   </section>
 
+  <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO (Relocated) -->
+  <section style="margin: 32px 0;">
+    <div class="card p24" style="max-width: 600px; margin: 0 auto;">
+      <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu
+        proyecto industrial - Respuesta en 2 minutos</h3>
+      <form
+        onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
+        <label style="display:block;margin:8px 0 4px">Cantidad de copias</label>
+        <input id="q" type="number" min="1" placeholder="Ej: 25000"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Número de páginas</label>
+        <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Lados</label>
+        <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <option value="x1">Una cara (x1)</option>
+          <option value="x2">Doble cara (x2)</option>
+        </select>
+        <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️
+            Copia</button>
+          <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨
+            Impresión</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫
+            BN</button>
+          <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈
+            Color</button>
+        </div>
+        <!-- Campo tipo autocompilado rimosso per evitare confusione -->
+        <label style="display:block;margin:12px 0 4px">Plazo</label>
+        <input id="p" type="text" placeholder="Ej: 48h"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <input type="hidden" id="t" value="">
+        <div id="total-box" class="card"
+          style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
+          <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
+          <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
+          <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
+              x1) • $0.35 (>100 x2) • Color $5.00</div>
+        </div>
+        <!-- BENEFIT BOX AFFIANCATO -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+          <button class="cta" type="submit" style="font-size: 1.1rem; padding: 16px 24px;">
+            🚀 COTIZAR AHORA
+          </button>
+          <div style="background: #f0f9ff; padding: 16px; border-radius: 12px; border: 1px solid #0ea5e9;">
+            <p style="font-size: 0.9rem; color: #0369a1; margin: 0; font-weight: 600;">
+              ✅ Cotización en 2 minutos<br>
+              ✅ Sin compromiso<br>
+              ✅ Precios finales
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
+    <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
+      <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
+        <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+          <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
+          <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
+        </div>
+        <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+          <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
+          <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda
+            (Iztacalco)</p>
+        </div>
+        <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+          <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
+          <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por lotes/folio, paletizada</p>
+        </div>
+        <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
+          <p style="color: var(--text); margin: 0; font-weight: 600;">✅ Control de calidad</p>
+          <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Factura y control por muestra</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- NUOVA SEZIONE UBICACIONES OTTIMIZZATA -->
   <section
     style="margin: 40px 0; background: linear-gradient(135deg, #f8fafc, #e5e7eb); padding: 40px 0; border-radius: 20px;">
@@ -1706,89 +1791,8 @@
     </section>
 
     <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
-    <section style="margin: 32px 0;">
-      <div class="card p24" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu
-          proyecto industrial - Respuesta en 2 minutos</h3>
-        <form
-          onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
-          <label style="display:block;margin:8px 0 4px">Cantidad de copias</label>
-          <input id="q" type="number" min="1" placeholder="Ej: 25000"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Número de páginas</label>
-          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Lados</label>
-          <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-            <option value="x1">Una cara (x1)</option>
-            <option value="x2">Doble cara (x2)</option>
-          </select>
-          <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️
-              Copia</button>
-            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨
-              Impresión</button>
-          </div>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫
-              BN</button>
-            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈
-              Color</button>
-          </div>
-          <!-- Campo tipo autocompilado rimosso per evitare confusione -->
-          <label style="display:block;margin:12px 0 4px">Plazo</label>
-          <input id="p" type="text" placeholder="Ej: 48h"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <input type="hidden" id="t" value="">
-          <div id="total-box" class="card"
-            style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
-            <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
-            <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
-            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
-                x1) • $0.35 (>100 x2) • Color $5.00</div>
-          </div>
-          <!-- BENEFIT BOX AFFIANCATO -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
-            <button class="cta" type="submit" style="font-size: 1.1rem; padding: 16px 24px;">
-              🚀 COTIZAR AHORA
-            </button>
-            <div style="background: #f0f9ff; padding: 16px; border-radius: 12px; border: 1px solid #0ea5e9;">
-              <p style="font-size: 0.9rem; color: #0369a1; margin: 0; font-weight: 600;">
-                ✅ Cotización en 2 minutos<br>
-                ✅ Sin compromiso<br>
-                ✅ Precios finales
-              </p>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
-      <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
-        <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda
-              (Iztacalco)</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por lotes/folio, paletizada</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">✅ Control de calidad</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Factura y control por muestra</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- CALCULADORA MOVIDA ARRIBA -->
+    <div style="display:none;"></div>
 
     <!-- Sezione Casos de Éxito -->
     <section style="margin: 32px 0;">
