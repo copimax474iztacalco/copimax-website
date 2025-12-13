@@ -261,6 +261,95 @@
             pointer-events: none;
         }
 
+        /* PRINTER VISUAL SHOWCASE */
+        .printer-card-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .printer-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .printer-card-container:hover .printer-hero-img {
+            transform: scale(1.05);
+        }
+
+        .printer-badge {
+            position: absolute;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .badge-top-right {
+            top: 24px;
+            right: 24px;
+        }
+
+        .badge-bottom-left {
+            bottom: 24px;
+            left: 24px;
+        }
+
+        .badge-text small {
+            display: block;
+            color: var(--primary-green);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .badge-text strong {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-green);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+        }
+
         .hero-b2b-content {
             z-index: 2;
             max-width: 900px;
@@ -415,12 +504,14 @@
         }
 
         .hero-b2b h1 .highlight {
-            color: var(--primary-green);
-            /* Removed stroke for cleaner look, added gradient text if supported */
-            background: var(--gradient-green);
-            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-stroke: 1px #fff;
+            /* Reverted to Outline Style as requested */
+            background: none;
+            -webkit-background-clip: border-box;
             -webkit-text-fill-color: transparent;
-            font-style: normal;
+            font-style: italic;
+            /* Adding italic for extra style if suitable, or keep normal. User didn't specify, but "bellissimo" often implies italic for this style. I'll stick to normal or inherit unless... let's keep it normal for now but make sure it stands out. Actually, outline text looks great. */
         }
 
         .hero-b2b p {
@@ -505,51 +596,66 @@
             color: var(--text-gray);
         }
 
-        /* GRID: Glass Cards */
+        /* GRID: Premium 2x2 Layout */
         .b2b-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            /* Force 2 columns for symmetry */
+            gap: 30px;
         }
 
         .b2b-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 20px;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 48px;
+            /* More breathing room */
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .b2b-card:hover {
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            border-color: rgba(154, 255, 0, 0.3);
+            /* Green tint on border */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .b2b-card .icon {
-            font-size: 24px;
+            font-size: 32px;
             margin-bottom: 24px;
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(154, 255, 0, 0.1);
-            border-radius: 12px;
+            border-radius: 16px;
             color: var(--primary-green);
+            border: 1px solid rgba(154, 255, 0, 0.2);
         }
 
         .b2b-card h3 {
             color: #fff;
-            font-size: 20px;
-            margin-bottom: 12px;
-            font-weight: 600;
+            font-size: 24px;
+            /* Larger title */
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .b2b-card p {
-            color: var(--text-gray);
-            font-size: 16px;
+            color: #aaa;
+            font-size: 17px;
             line-height: 1.6;
+        }
+
+        @media(max-width: 768px) {
+            .b2b-grid {
+                grid-template-columns: 1fr;
+                /* Stack on mobile */
+            }
         }
 
         /* CEO ASSURANCES (NEW) */
@@ -655,6 +761,100 @@
             color: #fff;
         }
 
+        /* SCROLL REVEAL ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SECONDARY BUTTON */
+        .btn-secondary-calc {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            margin-left: 20px;
+        }
+
+        .btn-secondary-calc:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media(max-width: 768px) {
+            .btn-secondary-calc {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+        }
+
+        /* HERO SERVICES TICKER */
+        .hero-ticker-wrap {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker-scroll 30s linear infinite;
+        }
+
+        .ticker-item {
+            color: #888;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .ticker-item span {
+            /* The dot */
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
         /* Mobile Adjustments */
         @media(max-width: 768px) {
             .hero-b2b h1 {
@@ -741,10 +941,11 @@
             <div class="hero-actions">
                 <a href="https://wa.me/5215540219892?text=Hola,%20soy%20de%20[EMPRESA]%20y%20me%20interesa%20abrir%20cuenta%20corporativa."
                     class="btn-primary">
-                    Hablar con un Gerente de Cuenta
+                    ABRIR CUENTA CORPORATIVA
                 </a>
-                <a href="#soluciones" class="btn-secondary">
-                    Ver Capacidades
+                <a href="/#calculator" class="btn-secondary"
+                    style="margin-left: 15px; border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 18px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+                    CALCULAR PROYECTO 🧮
                 </a>
             </div>
         </div>
@@ -760,38 +961,39 @@
                 <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop"
                     alt="Impresora Industrial de Alto Volumen Canon" class="beast-image">
                 <div class="hud-overlay hud-top-right">
-                    STATUS: ONLINE<br>
-                    TEMP: 34°C
+                    PRECIO MAYOREO<br>
+                    <span style="color:#fff; font-weight:700;">DESDE $0.35</span>
                 </div>
                 <div class="hud-overlay hud-bottom-left">
-                    JOB_QUEUE: EMPTY<br>
-                    READY FOR INPUT
+                    ENTREGA EXPRESS<br>
+                    <span style="color:#fff; font-weight:700;">MISMO DÍA (24H)</span>
                 </div>
             </div>
             <div class="beast-content">
-                <h2><span>POTENCIA DE FUEGO</span>INFRAESTRUCTURA DE GRADO MILITAR</h2>
+                <h2><span>CAPACIDAD INDUSTRIAL</span>MAQUILA DE IMPRESIÓN MASIVA</h2>
                 <p style="color: #999; font-size: 1.1rem; line-height: 1.6;">
-                    No jugamos a la "papelería". Operamos con maquinaria de producción ligera y offset digital capaz de
-                    triturar cargas de trabajo masivas sin sudar. Calidad consistente desde el pliego 1 hasta el
-                    1,000,000.
+                    Superamos los límites de cualquier copiadora de oficina. Nuestra planta de producción procesa más de
+                    <strong>200,000 impresiones diarias</strong> con calidad offset digital constante. Utilizamos
+                    exclusivamente <strong>Papel HP Ultra White</strong> de alta blancura para una presentación
+                    impecable.
                 </p>
 
                 <div class="beast-specs">
                     <div class="spec-box">
-                        <span class="spec-val">100 PPM</span>
-                        <span class="spec-label">Velocidad Crucero</span>
+                        <span class="spec-val">200k+</span>
+                        <span class="spec-label">Paginas por Día</span>
                     </div>
                     <div class="spec-box">
-                        <span class="spec-val">2400 DPI</span>
-                        <span class="spec-label">Resolución Nativa</span>
+                        <span class="spec-val">HP Ultra</span>
+                        <span class="spec-label">Papel Premium</span>
                     </div>
                     <div class="spec-box">
-                        <span class="spec-val">350 GSM</span>
-                        <span class="spec-label">Grosor Máximo</span>
+                        <span class="spec-val">75 g/m²</span>
+                        <span class="spec-label">Blancura 99%</span>
                     </div>
                     <div class="spec-box">
-                        <span class="spec-val">24/7</span>
-                        <span class="spec-label">Operatividad</span>
+                        <span class="spec-val">Ecolabel</span>
+                        <span class="spec-label">Certificación</span>
                     </div>
                 </div>
             </div>
@@ -853,12 +1055,27 @@
                     </ul>
                 </div>
                 <div class="visual-block">
-                    <!-- Placeholder for professional visual -->
-                    <div
-                        style="background: #2a2a2a; height: 300px; border-radius: 12px; display:flex; align-items:center; justify-content:center; border:1px solid #333;">
-                        <span
-                            style="color:#555; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem;">Infraestructura
-                            Certificada</span>
+                    <!-- Premium Printer Visual -->
+                    <div class="printer-card-container">
+                        <img src="https://images.unsplash.com/photo-1588619461336-6797b1397b2f?q=80&w=1500&auto=format&fit=crop"
+                            alt="Centro de Ploteo y Producción Canon" class="printer-hero-img">
+
+                        <!-- Floating Spec Badge -->
+                        <div class="printer-badge badge-top-right">
+                            <div class="badge-text" style="text-align:right;">
+                                <small>COLOR CERTIFIED</small>
+                                <strong>PANTONE® CALIBRATED</strong>
+                            </div>
+                        </div>
+
+                        <!-- Production Status -->
+                        <div class="printer-badge badge-bottom-left">
+                            <div class="status-dot"></div>
+                            <div class="badge-text">
+                                <small>SYSTEM STATUS</small>
+                                <strong>ONLINE / READY</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -910,7 +1127,7 @@
     <!-- MAP SECTION -->
     <div class="map-section">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.567086888461!2d-99.10266392398553!3d19.39572458187532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fc2e3e5c9a7d%3A0x8c70417937397637!2sC.%20Vainilla%20474%2C%20Granjas%20M%C3%A9xico%2C%20Iztacalco%2C%2008400%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1703640000000!5m2!1ses!2smx"
+            src="https://maps.google.com/maps?q=Vainilla+474,+Iztacalco,+08400,+Ciudad+de+México&t=&z=17&ie=UTF8&iwloc=&output=embed"
             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
@@ -955,6 +1172,27 @@
             </div>
         </div>
     </footer>
+    <script>
+        // SCROLL REVEAL OBSERVER
+        const revealElements = document.querySelectorAll('.beast-section, .b2b-section, .b2b-grid, .assurances-grid, .printer-card-container');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // entry.target.classList.add('reveal'); 
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px"
+        });
+
+        revealElements.forEach(el => {
+            el.classList.add('reveal');
+            sectionObserver.observe(el);
+        });
+    </script>
 </body>
 
 </html>
