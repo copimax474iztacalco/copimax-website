@@ -321,38 +321,38 @@
             justify-content: flex-start;
         }
 
-        /* Video Placeholder Refined Position */
+        /* Video Placeholder Refined Position - STABLE VERSION */
         .hero-b2b-visual {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
+            /* No perspective to avoid jitter */
         }
 
         .video-placeholder-3-4 {
             position: relative;
-            transform: rotateY(-10deg) rotateX(2deg);
             width: 100%;
             max-width: 320px;
             aspect-ratio: 9/16;
-            /* TikTok/Reel format as requested 3:4 or 9:16 is mostly vertical */
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, #111 0%, #050505 100%);
+            /* Vertical format matching the file */
+            background: #000;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
             z-index: 5;
-            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(154, 255, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Subtle hover lift, no rotation */
         .video-placeholder-3-4:hover {
-            transform: rotateY(0deg) scale(1.02);
-            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 20px rgba(154, 255, 0, 0.2);
+            border-color: rgba(154, 255, 0, 0.3);
         }
 
         @media(max-width: 900px) {
@@ -385,7 +385,6 @@
 
             .video-placeholder-3-4 {
                 margin: 40px auto 0;
-                transform: none;
                 width: 280px;
             }
         }
@@ -492,6 +491,16 @@
         @media(max-width: 768px) {
             .beast-container {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .beast-section {
+                padding: 60px 0;
+            }
+
+            .beast-content h2 {
+                font-size: 36px;
+                /* Adjusted for mobile readability */
             }
 
             .hud-overlay {
@@ -502,6 +511,15 @@
                 left: auto;
                 display: inline-block;
                 margin: 10px 5px 0 0;
+            }
+
+            .section-header h2 {
+                font-size: 32px !important;
+                /* Force override for standard sections */
+            }
+
+            .container {
+                padding: 0 20px;
             }
         }
 
@@ -605,38 +623,47 @@
         }
 
         .container {
-            max-width: 1080px;
-            /* Tighter container for focus on large screens */
+            max-width: 1280px;
+            /* Spacious Premium Desktop Width */
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
         .section-header {
             text-align: center;
-            max-width: 640px;
+            max-width: 800px;
             margin: 0 auto 80px;
         }
 
         .section-header h2 {
-            font-size: 40px;
-            margin-bottom: 16px;
+            font-size: 48px;
+            /* Bigger Headlines */
+            margin-bottom: 24px;
             color: #fff;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
 
         .section-header p {
-            font-size: 20px;
+            font-size: 21px;
             color: var(--text-gray);
+            line-height: 1.6;
         }
 
         /* GRID: Premium 2x2 Layout */
         .b2b-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            /* Force 2 columns for symmetry */
-            gap: 30px;
+            gap: 40px;
+            /* Better gap */
         }
+
+        /* ... [OMITTED card styles usually here, assuming unchanged or I'll patch context if needed] ... */
+        /* I need to be careful not to delete card styles if I am replacing a huge chunk.
+           Let's look at the TargetContent carefully.
+           I will target just the .container and .section-header to be safe, then another call for mobile.
+        */
+
 
         .b2b-card {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -1038,12 +1065,14 @@
         <div class="hero-b2b-visual" style="position: relative;">
             <!-- Abstract architectural element -->
 
-            <!-- VIDEO PLACEHOLDER 3:4 -->
+            <!-- VIDEO REAL 3:4 -->
             <div class="video-placeholder-3-4">
-                <div style="text-align: center; opacity: 0.5;">
-                    <span style="font-size: 40px;">▶️</span>
-                    <p style="font-size: 12px; margin-top: 10px; color: #fff;">VIDEO LOOP<br>3:4 FORMAT</p>
-                </div>
+                <video autoplay loop muted playsinline
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                    <source
+                        src="copimax_centro_de_copiado_impresiones_corporate_por_mayoreo_copias_baratas_cdmx_iztacalco.webm"
+                        type="video/webm">
+                </video>
             </div>
         </div>
     </section>
