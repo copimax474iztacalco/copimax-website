@@ -303,13 +303,18 @@
 
         .hero-b2b-content {
             z-index: 2;
-            text-align: left;
+            text-align: center;
+            /* FORCED CENTER ALIGNMENT */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding-left: 0;
-            /* Align perfectly with grid line */
             animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .hero-b2b h1 {
+            text-align: center;
+            /* FORCED CENTER */
             font-size: 64px;
             /* Slightly larger for impact */
             line-height: 1.05;
@@ -320,6 +325,8 @@
         }
 
         .hero-b2b p {
+            text-align: center;
+            /* FORCED CENTER */
             font-size: 20px;
             color: var(--text-gray);
             line-height: 1.6;
@@ -331,7 +338,8 @@
         .hero-actions {
             display: flex;
             gap: 16px;
-            justify-content: flex-start;
+            justify-content: center;
+            /* FORCED CENTER BUTTONS */
         }
 
         .btn-primary {
@@ -392,7 +400,7 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 750px;
+            max-width: 800px;
             /* GIGANTIC VIDEO ON DESKTOP */
             aspect-ratio: 9/16;
             background: #000;
@@ -1536,6 +1544,33 @@
         </a>
     </div>
 
+    <script>
+        // JS FORCER FOR MOBILE LAYOUT
+        document.addEventListener('DOMContentLoaded', function () {
+            function enforceMobileLayout() {
+                var isMobile = window.innerWidth <= 900;
+                var heroContent = document.querySelector('.hero-b2b-content');
+                var heroVisual = document.querySelector('.hero-b2b-visual'); // The wrapper
+                var heroP = document.querySelector('.hero-b2b p');
+                var heroWrapper = document.querySelector('.hero-b2b');
+
+                if (isMobile && heroContent && heroVisual && heroP) {
+                    // FORCE: Titles -> Text -> VIDEO -> Buttons
+                    // Move Video Wrapper INSIDE content, immediately after Paragraph
+                    if (heroP.nextElementSibling !== heroVisual) {
+                        heroP.after(heroVisual);
+                    }
+                } else if (!isMobile && heroWrapper && heroVisual) {
+                    // Move back to main Grid wrapper if needed
+                    if (heroVisual.parentNode !== heroWrapper) {
+                        heroWrapper.appendChild(heroVisual);
+                    }
+                }
+            }
+            enforceMobileLayout();
+            window.addEventListener('resize', enforceMobileLayout);
+        });
+    </script>
 </body>
 
 </html>

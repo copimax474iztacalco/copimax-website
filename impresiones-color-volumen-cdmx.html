@@ -222,11 +222,14 @@
     :root {
       --primary1: #000;
       --primary2: #474747;
-      --cta1: #b5ff00;
-      --cta2: #ddff88;
+      --cta1: #00E5FF;
+      /* CYAN FOR COLOR PRINTING (CMYK) */
+      --cta2: #FF0099;
+      /* MAGENTA ACCENT */
       --text: #1f2937;
       --muted: #6b7280;
-      --card: #fff
+      --card: #fff;
+      --spectrum: linear-gradient(90deg, #00E5FF, #FF0099, #FFFF00);
     }
 
     body {
@@ -1226,8 +1229,9 @@
     <div class="hero-content">
       <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        Impresiones Color Volumen | <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Calidad
-          Agencia</span> | Desde <strong>$3.50</strong>
+        Impresiones Color Volumen | <span
+          style="background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">Calidad
+          Espectacular</span> | Desde <strong>$3.50</strong>
       </h1>
 
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
@@ -1256,6 +1260,57 @@
           <strong>500+ empresas</strong> confían en nosotros cada mes
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA (MOVED TO TOP) -->
+  <section style="margin: 32px 0;">
+    <div class="card p24"
+      style="max-width: 600px; margin: 0 auto; border: 2px solid var(--cta2); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15);">
+      <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">🎨 Cotiza
+        Impresión a Color</h3>
+      <form
+        onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen COLOR. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
+        <label style="display:block;margin:8px 0 4px">Cantidad de impresiones</label>
+        <input id="q" type="number" min="1" placeholder="Ej: 1000"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Número de páginas por juego</label>
+        <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Lados</label>
+        <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <option value="x1">Una cara (x1)</option>
+          <option value="x2">Doble cara (x2)</option>
+        </select>
+        <label style="display:block;margin:12px 0 4px">Modo de Color</label>
+        <!-- Forziamo Color Active per questa pagina -->
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button type="button" class="color-btn active" data-color="color" onclick="changeColor(this, 'color')"
+            style="background:var(--cta1) !important; color:#fff !important;">🌈
+            Full Color</button>
+          <button type="button" class="color-btn" data-color="bn" onclick="changeColor(this, 'bn')">⚫
+            B/N (Económico)</button>
+        </div>
+        <!-- Campo tipo autocompilado rimosso per evitare confusione -->
+        <label style="display:block;margin:12px 0 4px">Plazo deseado</label>
+        <input id="p" type="text" placeholder="Ej: Hoy mismo"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <input type="hidden" id="t" value="">
+        <div id="total-box" class="card"
+          style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f0f9ff">
+          <div style="font-weight:700;margin-bottom:6px; color:var(--cta2);">Total estimado (Color)</div>
+          <div id="total-preview" style="font-size:1.5rem;color:#000; font-weight:800;">$0.00 MXN</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:4px">Precios Volumen: Color desde $3.50 | B/N desde
+            $0.35</div>
+        </div>
+        <!-- BENEFIT BOX AFFIANCATO -->
+        <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px;">
+          <button class="cta" type="submit"
+            style="font-size: 1.1rem; padding: 16px 24px; background: var(--spectrum) !important; color: #fff !important; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+            🚀 COTIZAR COLOR AHORA
+          </button>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -1703,90 +1758,7 @@
       </div>
     </section>
 
-    <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
-    <section style="margin: 32px 0;">
-      <div class="card p24" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu
-          proyecto industrial - Respuesta en 2 minutos</h3>
-        <form
-          onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
-          <label style="display:block;margin:8px 0 4px">Cantidad de copias</label>
-          <input id="q" type="number" min="1" placeholder="Ej: 25000"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Número de páginas</label>
-          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Lados</label>
-          <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-            <option value="x1">Una cara (x1)</option>
-            <option value="x2">Doble cara (x2)</option>
-          </select>
-          <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️
-              Copia</button>
-            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨
-              Impresión</button>
-          </div>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫
-              BN</button>
-            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈
-              Color</button>
-          </div>
-          <!-- Campo tipo autocompilado rimosso per evitare confusione -->
-          <label style="display:block;margin:12px 0 4px">Plazo</label>
-          <input id="p" type="text" placeholder="Ej: 48h"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <input type="hidden" id="t" value="">
-          <div id="total-box" class="card"
-            style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
-            <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
-            <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
-            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
-                x1) • $0.35 (>100 x2) • Color $5.00</div>
-          </div>
-          <!-- BENEFIT BOX AFFIANCATO -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
-            <button class="cta" type="submit" style="font-size: 1.1rem; padding: 16px 24px;">
-              🚀 COTIZAR AHORA
-            </button>
-            <div style="background: #f0f9ff; padding: 16px; border-radius: 12px; border: 1px solid #0ea5e9;">
-              <p style="font-size: 0.9rem; color: #0369a1; margin: 0; font-weight: 600;">
-                ✅ Cotización en 2 minutos<br>
-                ✅ Sin compromiso<br>
-                ✅ Precios finales
-              </p>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
-      <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
-        <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda
-              (Iztacalco)</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por lotes/folio, paletizada</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">✅ Control de calidad</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Factura y control por muestra</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- CALCULATOR REMOVED FROM HERE -->
 
     <!-- Sezione Casos de Éxito -->
     <section style="margin: 32px 0;">
