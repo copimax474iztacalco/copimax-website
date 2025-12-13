@@ -389,25 +389,21 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 480px;
-            /* Larger as requested */
+            max-width: 600px;
+            /* +30% Larger */
             aspect-ratio: 9/16;
-            /* Vertical format matching the file */
             background: #000;
             border-radius: 24px;
-            /* Softer corners */
             border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
             z-index: 5;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-            /* Deeper shadow */
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-right: auto;
-            /* Push towards center from right column */
-            margin-left: 0;
+            margin: 0 auto;
+            /* Center it */
         }
 
         /* Subtle hover lift, no rotation */
@@ -420,42 +416,55 @@
         @media(max-width: 900px) {
             .hero-b2b {
                 display: flex;
-                /* Flex column is safer for mobile stacking than grid */
                 flex-direction: column;
                 text-align: center;
                 padding: 100px 20px 60px;
-                /* More top padding for nav */
                 min-height: auto;
                 height: auto;
+                gap: 20px;
             }
 
+            /* UNWRAP CONSTRAINT TO ALLOW INTERLEAVING */
             .hero-b2b-content {
-                text-align: center;
-                padding-left: 0;
-                width: 100%;
-                order: 1;
-                /* Text first */
+                display: contents;
             }
 
+            /* ORDER 1: TITLE */
             .hero-b2b h1 {
+                order: 1;
                 font-size: 42px;
-                margin-bottom: 16px;
+                margin-bottom: 10px;
+                width: 100%;
             }
 
+            /* ORDER 2: PARAGRAPH */
             .hero-b2b p {
+                order: 2;
                 max-width: 100%;
                 font-size: 18px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto 10px;
+                width: 100%;
             }
 
+            /* ORDER 3: VIDEO (VISUAL WRAPPER) */
+            .hero-b2b-visual {
+                order: 3;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin: 20px 0 30px;
+                /* Space above and below */
+                position: relative;
+            }
+
+            /* ORDER 4: BUTTONS */
             .hero-actions {
+                order: 4;
                 justify-content: center;
                 flex-direction: column;
                 gap: 16px;
-                margin-bottom: 40px;
-                /* Space between buttons and video */
                 width: 100%;
+                margin: 0;
             }
 
             .btn-primary,
@@ -465,15 +474,13 @@
             }
 
             .video-placeholder-3-4 {
-                order: 2;
-                /* Video second */
-                margin: 0 auto;
-                /* Center horizontal */
                 width: 100%;
-                max-width: 300px;
-                /* Reasonable size for mobile */
+                max-width: 320px;
+                /* Perfect mobile width */
+                margin: 0;
+                /* Wrapper handles margin */
                 transform: none !important;
-                /* Force reset any desk transform */
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             }
         }
 
@@ -1281,27 +1288,19 @@
                             legales/clínicos.</li>
                     </ul>
                 </div>
-                <div class="visual-block">
-                    <!-- Premium Printer Visual -->
-                    <div class="printer-card-container">
+                <div class="visual-block" style="display: flex; justify-content: center; align-items: center;">
+                    <!-- Premium Printer Visual - Compact & Rounded -->
+                    <div class="printer-card-container"
+                        style="position: relative; width: 100%; max-width: 400px; height: 350px; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6);">
                         <img src="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Centro de Copiado con 25 años de experiencia" class="printer-hero-img">
+                            alt="Centro de Copiado con 25 años de experiencia" class="printer-hero-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
 
-                        <!-- Floating Spec Badge -->
-                        <div class="printer-badge badge-top-right">
-                            <div class="badge-text" style="text-align:right;">
-                                <small>COLOR CERTIFIED</small>
-                                <strong>PANTONE® CALIBRATED</strong>
-                            </div>
-                        </div>
-
-                        <!-- Production Status -->
-                        <div class="printer-badge badge-bottom-left">
-                            <div class="status-dot"></div>
-                            <div class="badge-text">
-                                <small>SYSTEM STATUS</small>
-                                <strong>ONLINE / READY</strong>
-                            </div>
+                        <!-- Simple Trust Badge -->
+                        <div class="printer-badge badge-bottom-right"
+                            style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); color: #fff; padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                            <span style="color: var(--primary-green); font-size: 16px;">★</span>
+                            <span style="font-size: 13px; font-weight: 700;">25+ Años</span>
                         </div>
                     </div>
                 </div>
