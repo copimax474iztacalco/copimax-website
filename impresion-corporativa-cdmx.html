@@ -270,9 +270,9 @@
             width: 100%;
             /* FULL BLEED to fix "box edges" look */
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            /* Video takes 60% of space */
-            /* Equal split for huge video */
+            grid-template-columns: 0.9fr 1.1fr;
+            /* Balanced split for Cinematic Video */
+            /* Video takes slightly more space */
             gap: 40px;
             align-items: center;
             justify-content: center;
@@ -403,7 +403,8 @@
             width: 100%;
             max-width: 1200px;
             /* GIGANTIC VIDEO ON DESKTOP */
-            aspect-ratio: 9/16;
+            /* CUSTOM CINEMATIC RATIO FOR MAJESTIC LOOK */
+            aspect-ratio: 16/9;
             background: #000;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.08);
