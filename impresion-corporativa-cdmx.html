@@ -270,8 +270,8 @@
             width: 100%;
             /* FULL BLEED to fix "box edges" look */
             display: grid;
-            grid-template-columns: minmax(0, 700px) minmax(0, 500px);
-            /* Constrain content columns, center them */
+            grid-template-columns: 1fr 1fr;
+            /* Equal split for huge video */
             gap: 40px;
             align-items: center;
             justify-content: center;
@@ -281,6 +281,9 @@
             /* Softer, centered gradient blending to black */
             position: relative;
             overflow: hidden;
+            max-width: 1600px;
+            /* Allow wider spread */
+            margin: 0 auto;
         }
 
         /* Subtle glow effect */
@@ -389,8 +392,8 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 600px;
-            /* +30% Larger */
+            max-width: 750px;
+            /* GIGANTIC VIDEO ON DESKTOP */
             aspect-ratio: 9/16;
             background: #000;
             border-radius: 24px;
@@ -401,35 +404,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
+            /* No transform transition needed */
             margin: 0 auto;
             /* Center it */
         }
 
         /* Subtle hover lift, no rotation */
         .video-placeholder-3-4:hover {
-            transform: translateY(-5px);
             box-shadow: 0 50px 90px rgba(0, 0, 0, 0.9), 0 0 30px rgba(154, 255, 0, 0.15);
             border-color: rgba(154, 255, 0, 0.2);
+            /* transform removed */
         }
 
         @media(max-width: 900px) {
+
+            /* SUPER FLEX HERO VISUAL FIX */
             .hero-b2b {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 text-align: center;
                 padding: 100px 20px 60px;
+                gap: 20px;
                 min-height: auto;
                 height: auto;
-                gap: 20px;
             }
 
-            /* UNWRAP CONSTRAINT TO ALLOW INTERLEAVING */
             .hero-b2b-content {
                 display: contents;
+                /* Unwrap Text/Buttons to reorder */
             }
 
-            /* ORDER 1: TITLE */
             .hero-b2b h1 {
                 order: 1;
                 font-size: 42px;
@@ -437,50 +443,125 @@
                 width: 100%;
             }
 
-            /* ORDER 2: PARAGRAPH */
             .hero-b2b p {
                 order: 2;
-                max-width: 100%;
                 font-size: 18px;
-                margin: 0 auto 10px;
+                margin-bottom: 20px;
                 width: 100%;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            /* ORDER 3: VIDEO (VISUAL WRAPPER) */
+            /* VISUAL (VIDEO) IS SEPARATE SIBLING - ORDER 3 */
             .hero-b2b-visual {
                 order: 3;
                 width: 100%;
                 display: flex;
                 justify-content: center;
-                margin: 20px 0 30px;
-                /* Space above and below */
+                margin: 10px 0 30px;
                 position: relative;
             }
 
-            /* ORDER 4: BUTTONS */
             .hero-actions {
                 order: 4;
-                justify-content: center;
-                flex-direction: column;
-                gap: 16px;
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                justify-content: center;
                 margin: 0;
             }
 
             .btn-primary,
             .btn-secondary {
                 width: 100%;
-                /* Full width buttons on mobile */
             }
 
             .video-placeholder-3-4 {
-                width: 100%;
                 max-width: 320px;
-                /* Perfect mobile width */
-                margin: 0;
-                /* Wrapper handles margin */
-                transform: none !important;
+                /* Force mobile width */
+                width: 100%;
+                margin: 0 auto;
                 box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                transform: none !important;
+            }
+
+            /* THE BEAST (INDUSTRIAL) REORDERING */
+            /* Goal: Title -> Image -> Stats -> HUDs */
+            .beast-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .beast-section {
+                padding: 60px 0;
+            }
+
+            .beast-content {
+                display: contents;
+                /* Unwrap to mix with visual */
+            }
+
+            .beast-visual {
+                display: contents;
+                /* Unwrap to mix image and HUDs */
+            }
+
+            .beast-content h2 {
+                order: 1;
+                text-align: center;
+                font-size: 36px;
+                width: 100%;
+            }
+
+            .beast-image {
+                order: 2;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .beast-specs {
+                order: 3;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            /* Force HUDs to flow vertically under everything */
+            .hud-overlay {
+                position: relative;
+                order: 4;
+                top: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                display: table;
+                /* Centers with margin auto properly */
+                margin: 10px auto;
+                width: auto;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: none;
+                /* Perf fix */
+            }
+
+            /* Ensure HUD content is visible */
+            .hud-top-right,
+            .hud-bottom-left {
+                transform: none;
+            }
+
+            .section-header h2 {
+                font-size: 32px !important;
+                /* Force override for standard sections */
+            }
+
+            .container {
+                padding: 0 20px;
             }
         }
 
