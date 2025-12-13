@@ -265,33 +265,32 @@
 
         /* HERO SECTION: INDUSTRIAL DEEP REFACTORED */
         .hero-b2b {
-            min-height: 75vh;
-            /* Reduced height for tighter feel */
+            min-height: 85vh;
+            /* Restore some height for grandeur */
+            width: 100%;
+            /* FULL BLEED to fix "box edges" look */
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* Symmetrical balance */
-            gap: 20px;
-            /* Closer connection */
+            grid-template-columns: minmax(0, 700px) minmax(0, 500px);
+            /* Constrain content columns, center them */
+            gap: 40px;
             align-items: center;
             justify-content: center;
-            padding: 40px 5%;
-            /* Much less vertical whitespace */
-            background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, #000000 100%);
+            /* Center the grid in the viewport */
+            padding: 40px 20px;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #000 70%);
+            /* Softer, centered gradient blending to black */
             position: relative;
             overflow: hidden;
-            max-width: 1400px;
-            /* Restrain width on ultra-wide */
-            margin: 0 auto;
-            /* Center the section itself if screen is huge */
         }
 
         /* Subtle glow effect */
         .hero-b2b::after {
             content: '';
             position: absolute;
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(154, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at center, rgba(154, 255, 0, 0.03) 0%, transparent 70%);
+            /* Softer, larger glow */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -302,13 +301,14 @@
         .hero-b2b-content {
             z-index: 2;
             text-align: left;
-            padding-left: 5%;
-            /* Nudge text towards center visual balance */
+            padding-left: 0;
+            /* Align perfectly with grid line */
             animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .hero-b2b h1 {
-            font-size: 56px;
+            font-size: 64px;
+            /* Slightly larger for impact */
             line-height: 1.05;
             margin-bottom: 24px;
             color: #fff;
@@ -331,6 +331,52 @@
             justify-content: flex-start;
         }
 
+        .btn-primary {
+            display: inline-flex;
+            /* Centering Fix */
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-green);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(154, 255, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            /* Centering Fix */
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            /* Sligthly more visible */
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
         /* Video Placeholder Refined Position - STABLE VERSION */
         .hero-b2b-visual {
             position: relative;
@@ -343,16 +389,18 @@
         .video-placeholder-3-4 {
             position: relative;
             width: 100%;
-            max-width: 400px;
-            /* Bigger video presence */
+            max-width: 480px;
+            /* Larger as requested */
             aspect-ratio: 9/16;
             /* Vertical format matching the file */
             background: #000;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            /* Softer corners */
+            border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
             z-index: 5;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            /* Deeper shadow */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -365,24 +413,33 @@
         /* Subtle hover lift, no rotation */
         .video-placeholder-3-4:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 20px rgba(154, 255, 0, 0.2);
-            border-color: rgba(154, 255, 0, 0.3);
+            box-shadow: 0 50px 90px rgba(0, 0, 0, 0.9), 0 0 30px rgba(154, 255, 0, 0.15);
+            border-color: rgba(154, 255, 0, 0.2);
         }
 
         @media(max-width: 900px) {
             .hero-b2b {
-                grid-template-columns: 1fr;
+                display: flex;
+                /* Flex column is safer for mobile stacking than grid */
+                flex-direction: column;
                 text-align: center;
-                padding: 140px 20px 60px;
+                padding: 100px 20px 60px;
+                /* More top padding for nav */
                 min-height: auto;
+                height: auto;
             }
 
             .hero-b2b-content {
                 text-align: center;
+                padding-left: 0;
+                width: 100%;
+                order: 1;
+                /* Text first */
             }
 
             .hero-b2b h1 {
                 font-size: 42px;
+                margin-bottom: 16px;
             }
 
             .hero-b2b p {
@@ -395,11 +452,28 @@
             .hero-actions {
                 justify-content: center;
                 flex-direction: column;
+                gap: 16px;
+                margin-bottom: 40px;
+                /* Space between buttons and video */
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                /* Full width buttons on mobile */
             }
 
             .video-placeholder-3-4 {
-                margin: 40px auto 0;
-                width: 280px;
+                order: 2;
+                /* Video second */
+                margin: 0 auto;
+                /* Center horizontal */
+                width: 100%;
+                max-width: 300px;
+                /* Reasonable size for mobile */
+                transform: none !important;
+                /* Force reset any desk transform */
             }
         }
 
