@@ -1535,9 +1535,9 @@
 
     .services-packages-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 48px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto
     }
 
@@ -1580,8 +1580,8 @@
 
     /* Servicios Compactos */
     .services-compact {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px
     }
 
@@ -6806,7 +6806,7 @@
     <section id="services-packages" class="services-packages">
       <div class="container">
         <div class="services-packages-header">
-          <h2 class="section-title">Nuestros Servicios de Imprenta y Paquetes</h2>
+          <h2 class="section-title">Servicios Principales</h2>
           <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:1.1rem">Todos tus documentos con
             la mejor calidad</p>
         </div>
@@ -6845,268 +6845,231 @@
             </div>
           </div>
 
-          <!-- Paquetes -->
-          <div class="packages-section">
-            <div class="packages-header">
-              <span class="deal-badge">PRECIOS COPIAS</span>
-              <h3 class="subsection-title">Paquetes Populares</h3>
-            </div>
-            <div class="packages-compact">
-              <div class="package-compact">
-                <div class="package-info">
-                  <h4>1000 copias BN</h4>
-                  <div class="package-price">$400 MXN</div>
-                  <p id="package-face-type">BN una cara, mismo día</p>
-                  <div class="face-toggle" style="margin-top: 8px;">
-                    <button class="face-btn active" data-face="single" onclick="toggleFace(this, 'single')">Una
-                      Cara</button>
-                    <button class="face-btn" data-face="double" onclick="toggleFace(this, 'double')">Doble Cara</button>
-                  </div>
-                </div>
-                <button class="package-cta" data-deal="1000 BN una cara $350" id="package-cta-btn">Pedir</button>
-              </div>
-              <div class="package-compact">
-                <div class="package-info">
-                  <h4>200 color</h4>
-                  <div class="package-price">$1000 MXN</div>
-                  <p>Textos/logos</p>
-                </div>
-                <button class="package-cta" data-deal="200 color texto/logos $1000">Pedir</button>
-              </div>
-              <div class="package-compact">
-                <div class="package-info">
-                  <h4>25,000 copias BN</h4>
-                  <div class="package-price">$8,750 / $10,000 MXN</div>
-                  <p>Tarifa fija por página • 24–48h</p>
-                </div>
-                <a class="package-cta" href="/copias-volumen-cdmx">Cotizar volumen</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </section>
+  </div>
+  </section>
 
-    <!-- Calculator -->
-    <section id="calculator" class="calculator-section">
-      <div class="container">
-        <div class="calc-hero">
-          <h2>Calculadora de precios COPIMAX</h2>
-          <p>Calcula tu precio exacto y cotiza tu orden al instante. Precios claros y sin sorpresas.</p>
+  <!-- Calculator -->
+  <section id="calculator" class="calculator-section">
+    <div class="container">
+      <div class="calc-hero">
+        <h2>Calculadora de precios COPIMAX</h2>
+        <p>Calcula tu precio exacto y cotiza tu orden al instante. Precios claros y sin sorpresas.</p>
+      </div>
+
+      <div class="calculator-card">
+        <div class="calc-input">
+          <label class="calc-label">📄 Cantidad de copias</label>
+          <input type="number" class="calc-field" id="quantity" placeholder="Ej: 100" value="100" min="1">
+          <div class="quantity-examples">
+            <span>100 copias = 1 tesis</span>
+            <span>500 = material de oficina</span>
+          </div>
+
+          <!-- INPUT PAGINE PDF -->
+          <div style="margin-top: 16px;">
+            <label class="calc-label">📋 Número de páginas</label>
+            <input type="number" class="calc-field" id="pdf-pages-input" placeholder="Ej: 123" value="1" min="1"
+              max="1000">
+            <div class="quantity-examples" style="margin-top: 8px;">
+              <span>Si no sabes, deja en 1</span>
+              <span>El precio se calcula: copias × páginas</span>
+            </div>
+          </div>
+
+
         </div>
 
-        <div class="calculator-card">
-          <div class="calc-input">
-            <label class="calc-label">📄 Cantidad de copias</label>
-            <input type="number" class="calc-field" id="quantity" placeholder="Ej: 100" value="100" min="1">
-            <div class="quantity-examples">
-              <span>100 copias = 1 tesis</span>
-              <span>500 = material de oficina</span>
+        <div class="calc-options">
+          <div class="calc-option active" data-type="copies">
+            <div class="option-icon">📋</div>
+            <div class="option-content">
+              <strong>Copias</strong><br>Documentos existentes
             </div>
+            <div class="option-check">✅</div>
+          </div>
+          <div class="calc-option" data-type="prints">
+            <div class="option-icon">💻</div>
+            <div class="option-content">
+              <strong>Impresiones</strong><br>Desde archivo digital
+            </div>
+            <div class="option-check">✅</div>
+          </div>
+        </div>
 
-            <!-- INPUT PAGINE PDF -->
-            <div style="margin-top: 16px;">
-              <label class="calc-label">📋 Número de páginas</label>
-              <input type="number" class="calc-field" id="pdf-pages-input" placeholder="Ej: 123" value="1" min="1"
-                max="1000">
-              <div class="quantity-examples" style="margin-top: 8px;">
-                <span>Si no sabes, deja en 1</span>
-                <span>El precio se calcula: copias × páginas</span>
+        <div class="calc-options">
+          <div class="calc-option active" data-color="bw">
+            <div class="option-icon">⚫</div>
+            <div class="option-content">
+              <strong>Blanco y Negro</strong><br>$0.35 - $1.00
+            </div>
+            <div class="option-check">✅</div>
+          </div>
+          <div class="calc-option" data-color="color">
+            <div class="option-icon">🎨</div>
+            <div class="option-content">
+              <strong>A Color</strong><br>$3 - $10
+            </div>
+            <div class="option-check">✅</div>
+          </div>
+        </div>
+
+        <!-- Opzioni dettagliate per stampa a colori -->
+        <div class="color-details" id="color-details"
+          style="display: none; margin-top: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
+          <h4 style="margin-bottom: 12px; font-weight: 600; color: #374151;">Tipo de impresión a color</h4>
+          <div class="color-type-options"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+            <div class="color-type-option" data-color-type="text-logo">
+              <div
+                style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                <div style="font-weight: 600; margin-bottom: 4px;">📝 Texto y Logo</div>
+                <div style="font-size: 0.9rem; color: #6b7280;">$5.00 por copia</div>
               </div>
             </div>
-
-
+            <div class="color-type-option" data-color-type="images">
+              <div
+                style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                <div style="font-weight: 600; margin-bottom: 4px;">🖼️ Imágenes</div>
+                <div style="font-size: 0.9rem; color: #6b7280;">$10.00 por copia</div>
+              </div>
+            </div>
           </div>
 
-          <div class="calc-options">
-            <div class="calc-option active" data-type="copies">
-              <div class="option-icon">📋</div>
-              <div class="option-content">
-                <strong>Copias</strong><br>Documentos existentes
-              </div>
-              <div class="option-check">✅</div>
+          <!-- Opzione per calcolo misto -->
+          <div class="mixed-calculation" style="margin-top: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <input type="checkbox" id="mixed-calculation" style="margin: 0;">
+              <label for="mixed-calculation" style="font-weight: 600; color: #374151;">Calcular precio mixto</label>
             </div>
-            <div class="calc-option" data-type="prints">
-              <div class="option-icon">💻</div>
-              <div class="option-content">
-                <strong>Impresiones</strong><br>Desde archivo digital
+
+            <div class="mixed-inputs" id="mixed-inputs"
+              style="display: none; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias
+                  texto/logo:</label>
+                <input type="number" id="text-logo-qty" min="0" value="0"
+                  style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
               </div>
-              <div class="option-check">✅</div>
+              <div>
+                <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias con
+                  imágenes:</label>
+                <input type="number" id="images-qty" min="0" value="0"
+                  style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="calc-options">
-            <div class="calc-option active" data-color="bw">
-              <div class="option-icon">⚫</div>
-              <div class="option-content">
-                <strong>Blanco y Negro</strong><br>$0.35 - $1.00
-              </div>
-              <div class="option-check">✅</div>
+        <div class="calc-options">
+          <div class="calc-option active" data-sides="double">
+            <div class="option-icon">📄</div>
+            <div class="option-content">
+              <strong>Doble Cara</strong><br>$0.35 por copia
             </div>
-            <div class="calc-option" data-color="color">
-              <div class="option-icon">🎨</div>
-              <div class="option-content">
-                <strong>A Color</strong><br>$3 - $10
-              </div>
-              <div class="option-check">✅</div>
-            </div>
+            <div class="option-check">✅</div>
           </div>
+          <div class="calc-option" data-sides="single">
+            <div class="option-icon">📃</div>
+            <div class="option-content">
+              <strong>Una Cara</strong><br>$0.40 por copia
+            </div>
+            <div class="option-check">✅</div>
+          </div>
+        </div>
 
-          <!-- Opzioni dettagliate per stampa a colori -->
-          <div class="color-details" id="color-details"
-            style="display: none; margin-top: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
-            <h4 style="margin-bottom: 12px; font-weight: 600; color: #374151;">Tipo de impresión a color</h4>
-            <div class="color-type-options"
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-              <div class="color-type-option" data-color-type="text-logo">
-                <div
-                  style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                  <div style="font-weight: 600; margin-bottom: 4px;">📝 Texto y Logo</div>
-                  <div style="font-size: 0.9rem; color: #6b7280;">$5.00 por copia</div>
+        <!-- Upsells -->
+        <div class="upsells">
+          <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
+
+          <!-- Download File Upsell Removed (Now Automatic) -->
+
+          <div class="upsell-item">
+            <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="20">
+            <div class="upsell-info">
+              <div class="upsell-title">Engargolado</div>
+              <div class="upsell-desc">Encuadernado profesional con espiral</div>
+              <div class="engargolado-options" style="margin-top: 8px; display: none;">
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                  <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
+                  <input type="number" id="engargolado-qty" min="1" value="1"
+                    style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  <!-- Removed size selector, will calculate automatically -->
+                </div>
+                <div style="font-size: 0.8rem; color: #666;">
+                  Precio: <span id="engargolado-price">$20</span> por engargolado
                 </div>
               </div>
-              <div class="color-type-option" data-color-type="images">
-                <div
-                  style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                  <div style="font-weight: 600; margin-bottom: 4px;">🖼️ Imágenes</div>
-                  <div style="font-size: 0.9rem; color: #6b7280;">$10.00 por copia</div>
-                </div>
-              </div>
             </div>
-
-            <!-- Opzione per calcolo misto -->
-            <div class="mixed-calculation" style="margin-top: 16px;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <input type="checkbox" id="mixed-calculation" style="margin: 0;">
-                <label for="mixed-calculation" style="font-weight: 600; color: #374151;">Calcular precio mixto</label>
-              </div>
-
-              <div class="mixed-inputs" id="mixed-inputs"
-                style="display: none; grid-template-columns: 1fr 1fr; gap: 12px;">
-                <div>
-                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias
-                    texto/logo:</label>
-                  <input type="number" id="text-logo-qty" min="0" value="0"
-                    style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
-                </div>
-                <div>
-                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias con
-                    imágenes:</label>
-                  <input type="number" id="images-qty" min="0" value="0"
-                    style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
-                </div>
-              </div>
-            </div>
+            <div class="upsell-price">+$20</div>
           </div>
-
-          <div class="calc-options">
-            <div class="calc-option active" data-sides="double">
-              <div class="option-icon">📄</div>
-              <div class="option-content">
-                <strong>Doble Cara</strong><br>$0.35 por copia
-              </div>
-              <div class="option-check">✅</div>
-            </div>
-            <div class="calc-option" data-sides="single">
-              <div class="option-icon">📃</div>
-              <div class="option-content">
-                <strong>Una Cara</strong><br>$0.40 por copia
-              </div>
-              <div class="option-check">✅</div>
-            </div>
-          </div>
-
-          <!-- Upsells -->
-          <div class="upsells">
-            <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
-
-            <!-- Download File Upsell Removed (Now Automatic) -->
-
-            <div class="upsell-item">
-              <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="20">
-              <div class="upsell-info">
-                <div class="upsell-title">Engargolado</div>
-                <div class="upsell-desc">Encuadernado profesional con espiral</div>
-                <div class="engargolado-options" style="margin-top: 8px; display: none;">
-                  <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                    <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
-                    <input type="number" id="engargolado-qty" min="1" value="1"
-                      style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                    <!-- Removed size selector, will calculate automatically -->
-                  </div>
-                  <div style="font-size: 0.8rem; color: #666;">
-                    Precio: <span id="engargolado-price">$20</span> por engargolado
-                  </div>
+          <div class="upsell-item">
+            <input type="checkbox" class="upsell-checkbox" id="folders" data-price="15">
+            <div class="upsell-info">
+              <div class="upsell-title">Folders</div>
+              <div class="upsell-desc">Carpeta protectora individual</div>
+              <div class="folders-options" style="margin-top: 8px; display: none;">
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                  <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
+                  <input type="number" id="folders-qty" min="1" value="1"
+                    style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  <span style="font-size: 0.9rem; color: #666;">(1 folder individual)</span>
+                </div>
+                <div style="font-size: 0.8rem; color: #666;">
+                  Precio: <span id="folders-price">$15</span> por folder
                 </div>
               </div>
-              <div class="upsell-price">+$20</div>
             </div>
-            <div class="upsell-item">
-              <input type="checkbox" class="upsell-checkbox" id="folders" data-price="15">
-              <div class="upsell-info">
-                <div class="upsell-title">Folders</div>
-                <div class="upsell-desc">Carpeta protectora individual</div>
-                <div class="folders-options" style="margin-top: 8px; display: none;">
-                  <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                    <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
-                    <input type="number" id="folders-qty" min="1" value="1"
-                      style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span style="font-size: 0.9rem; color: #666;">(1 folder individual)</span>
-                  </div>
-                  <div style="font-size: 0.8rem; color: #666;">
-                    Precio: <span id="folders-price">$15</span> por folder
-                  </div>
+            <div class="upsell-price">+$15</div>
+          </div>
+          <div class="upsell-item">
+            <input type="checkbox" class="upsell-checkbox" id="laminated" data-price="25">
+            <div class="upsell-info">
+              <div class="upsell-title">Enmicado</div>
+              <div class="upsell-desc">Protección con plástico</div>
+              <div class="laminated-options" style="margin-top: 8px; display: none;">
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                  <label style="font-size: 0.9rem; color: #666;">Cantidad de hojas:</label>
+                  <input type="number" id="laminated-pages" min="1" value="1" step="1"
+                    style="width: 80px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  <span style="font-size: 0.9rem; color: #666;">hojas</span>
+                </div>
+                <div style="font-size: 0.8rem; color: #666;">
+                  Precio: <span id="laminated-price">$25</span> por hoja
                 </div>
               </div>
-              <div class="upsell-price">+$15</div>
             </div>
-            <div class="upsell-item">
-              <input type="checkbox" class="upsell-checkbox" id="laminated" data-price="25">
-              <div class="upsell-info">
-                <div class="upsell-title">Enmicado</div>
-                <div class="upsell-desc">Protección con plástico</div>
-                <div class="laminated-options" style="margin-top: 8px; display: none;">
-                  <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                    <label style="font-size: 0.9rem; color: #666;">Cantidad de hojas:</label>
-                    <input type="number" id="laminated-pages" min="1" value="1" step="1"
-                      style="width: 80px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span style="font-size: 0.9rem; color: #666;">hojas</span>
-                  </div>
-                  <div style="font-size: 0.8rem; color: #666;">
-                    Precio: <span id="laminated-price">$25</span> por hoja
-                  </div>
-                </div>
-              </div>
-              <div class="upsell-price">+$25</div>
-            </div>
+            <div class="upsell-price">+$25</div>
           </div>
+        </div>
 
-          <div class="calc-result">
-            <div class="result-header">
-              <div>Precio estimado</div>
-              <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
-            </div>
-            <div class="calc-total" id="total">$70.00 MXN</div>
-            <div id="file-fee-display" style="font-size:0.85rem;color:#666;margin-top:4px;display:none;">+ $5.00 Bajada
-              de archivo</div>
-            <div id="impressions-display"
-              style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
-            <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
+        <div class="calc-result">
+          <div class="result-header">
+            <div>Precio estimado</div>
+            <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
           </div>
+          <div class="calc-total" id="total">$70.00 MXN</div>
+          <div id="file-fee-display" style="font-size:0.85rem;color:#666;margin-top:4px;display:none;">+ $5.00 Bajada
+            de archivo</div>
+          <div id="impressions-display"
+            style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
+          <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
+        </div>
 
-          <div class="calc-actions">
-            <button id="btn-wa" class="cta-primary cta-whatsapp">
-              <span class="cta-icon">📱</span>
-              <span class="cta-text">COTIZAR AHORA</span>
-            </button>
-            <a href="tel:+525540219892" class="cta-primary cta-call">
-              <span class="cta-icon">📞</span>
-              <span class="cta-text">LLAMAR</span>
-            </a>
-          </div>
+        <div class="calc-actions">
+          <button id="btn-wa" class="cta-primary cta-whatsapp">
+            <span class="cta-icon">📱</span>
+            <span class="cta-text">COTIZAR AHORA</span>
+          </button>
+          <a href="tel:+525540219892" class="cta-primary cta-call">
+            <span class="cta-icon">📞</span>
+            <span class="cta-text">LLAMAR</span>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   </div>
 
   <!-- Continue with Homepage content -->
