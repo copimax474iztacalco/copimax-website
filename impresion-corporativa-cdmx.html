@@ -43,6 +43,8 @@
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop">
 
+    <link rel="canonical" href="https://copimax.store/impresion-corporativa-cdmx">
+
     <!-- STRUCTURED DATA FOR GOOGLE -->
     <script type="application/ld+json">
     {
@@ -66,6 +68,36 @@
         "areaServed": ["Santa Fe", "Polanco", "Reforma", "Lomas de Chapultepec", "Iztacalco"],
         "description": "Servicios de impresión corporativa de alto volumen y logística confidencial para empresas en CDMX.",
         "url": "https://copimax.store/impresion-corporativa-cdmx"
+    }
+    </script>
+
+    <!-- FAQ JSON-LD SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Tienen cobertura de entrega en Santa Fe y Polanco?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, contamos con rutas logísticas diarias a las 7:00 AM y 2:00 PM cubriendo Santa Fe (Javier Barros Sierra, Vasco de Quiroga) y Polanco (Masaryk, Reforma). Entregamos en torres corporativas con protocolos de seguridad."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Cuál es su capacidad de impresión diaria?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestra planta de producción en Iztacalco tiene una capacidad instalada de 400,000 impresiones cada 24 horas, permitiendo manejar proyectos de alto volumen para licitaciones o peaks de temporada."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Ofrecen crédito a empresas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, habilitamos cuentas corporativas con plazos de crédito a 30 días naturales y facturación consolidada mensual con Addenda para proveedores Enterprise."
+        }
+      }]
     }
     </script>
 
@@ -900,6 +932,58 @@
                 gap: 40px;
                 text-align: center;
             }
+
+            .footer-split {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+
+        /* 3:4 VIDEO PLACEHOLDER */
+        .video-placeholder-3-4 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            /* Adjust size as needed, ratio is key */
+            aspect-ratio: 3/4;
+            background: #222;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            z-index: 5;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* STICKY MOBILE BAR */
+        .sticky-mobile-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            display: none;
+            /* Hidden on desktop */
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @media(max-width: 768px) {
+            .sticky-mobile-bar {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -949,8 +1033,16 @@
                 </a>
             </div>
         </div>
-        <div class="hero-b2b-visual">
+        <div class="hero-b2b-visual" style="position: relative;">
             <!-- Abstract architectural element -->
+
+            <!-- VIDEO PLACEHOLDER 3:4 -->
+            <div class="video-placeholder-3-4">
+                <div style="text-align: center; opacity: 0.5;">
+                    <span style="font-size: 40px;">▶️</span>
+                    <p style="font-size: 12px; margin-top: 10px; color: #fff;">VIDEO LOOP<br>3:4 FORMAT</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1064,8 +1156,8 @@
                         </li>
                         <li><strong>Material de Marketing:</strong> Flyers, Brochures y Catálogos en alta resolución.
                         </li>
-                        <li><strong>Planos Arquitectónicos:</strong> Ploteo de alta precisión para despachos y
-                            constructoras.</li>
+                        <li><strong>B/N y Color:</strong> Alta fidelidad en reportes financieros, legales y
+                            administrativos.</li>
                         <li><strong>Gestión de Archivo:</strong> Digitalización masiva y duplicación de expedientes
                             legales/clínicos.</li>
                     </ul>
@@ -1073,7 +1165,7 @@
                 <div class="visual-block">
                     <!-- Premium Printer Visual -->
                     <div class="printer-card-container">
-                        <img src="copias25.png" alt="Centro de Copiado con 25 años de experiencia"
+                        <img src="./img_printer_v2.png" alt="Centro de Copiado con 25 años de experiencia"
                             class="printer-hero-img">
 
                         <!-- Floating Spec Badge -->
@@ -1126,9 +1218,33 @@
 
     <!-- CREDIBILITY: The "Why Us" -->
     <section id="logistica" class="b2b-section" style="border-top: 1px solid #111;">
-        <div class="container" style="text-align: center;">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+                <h2 style="font-size: 32px; color: #fff; margin-bottom: 20px; font-weight: 700;">Logística Blindada CDMX
+                </h2>
+                <p style="color: var(--text-gray); font-size: 18px; line-height: 1.6;">
+                    Más que copias, entregamos certidumbre. Nuestra flotilla dedicada opera rutas exclusivas para el
+                    sector corporativo, garantizando la llegan a su escritorio antes de su primera reunión.
+                </p>
+            </div>
+
+            <div class="b2b-grid">
+                <div class="b2b-card" style="border-left: 3px solid var(--primary-green);">
+                    <h3 style="font-size: 20px;">🏢 Ruta Santa Fe / Lomas</h3>
+                    <p style="font-size: 15px;">Salida diaria 6:30 AM vía Constituyentes. Entrega prioritaria en
+                        corporativos de <strong>Javier Barros Sierra, Santa Fe y Paseo de las Palmas</strong>. Acceso
+                        verificado a zonas de carga.</p>
+                </div>
+                <div class="b2b-card" style="border-left: 3px solid #fff;">
+                    <h3 style="font-size: 20px;">🏛️ Ruta Polanco / Reforma</h3>
+                    <p style="font-size: 15px;">Cobertura total en <strong>Torre Mayor, Virreyes y zona hotelera de
+                            Polanco</strong>. Protocolo de entrega en recepción con acuse digital y notificación
+                        WhatsApp en tiempo real.</p>
+                </div>
+            </div>
+
             <p
-                style="text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-size: 13px; margin-bottom: 2rem;">
+                style="text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-size: 13px; margin: 60px 0 2rem; text-align: center;">
                 Empresas que confían en nuestra discreción
             </p>
             <div class="logo-grid"
@@ -1209,6 +1325,17 @@
             sectionObserver.observe(el);
         });
     </script>
+    <div class="sticky-mobile-bar">
+        <a href="tel:5540219892"
+            style="background: #333; color: #fff; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; flex: 1;">
+            📞 Llamar
+        </a>
+        <a href="https://wa.me/5215540219892?text=Soporte%20B2B%20Urgente"
+            style="background: var(--primary-green); color: #000; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; flex: 2; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span style="font-size: 18px;">💬</span> Chat Corporativo
+        </a>
+    </div>
+
 </body>
 
 </html>
