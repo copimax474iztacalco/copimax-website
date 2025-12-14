@@ -327,25 +327,51 @@
         /* HERO SECTION: INDUSTRIAL DEEP REFACTORED */
         .hero-b2b {
             min-height: 85vh;
-            /* Restore some height for grandeur */
             width: 100%;
-            /* FULL BLEED to fix "box edges" look */
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            /* Balanced split for Cinematic Video */
-            /* Video takes slightly more space */
+            display: flex;
+            flex-direction: column;
             gap: 40px;
             align-items: center;
             justify-content: center;
-            /* Center the grid in the viewport */
-            padding: 40px 20px;
+            padding: 80px 20px;
             background: radial-gradient(circle at 50% 50%, #111 0%, #000 70%);
-            /* Softer, centered gradient blending to black */
             position: relative;
             overflow: hidden;
-            max-width: 1600px;
-            /* Allow wider spread */
+            max-width: 100%;
             margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-b2b-content {
+            max-width: 900px;
+            z-index: 10;
+        }
+
+        .hero-b2b-visual {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 3:4 VIDEO PLACEHOLDER */
+        .video-placeholder-3-4 {
+            position: relative;
+            width: 450px;
+            /* Increased by 50% from 300px */
+            aspect-ratio: 3/4;
+            background: #222;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transform: none;
+            /* Removed centering translate since flex handles it */
         }
 
         /* Subtle glow effect */
@@ -587,27 +613,7 @@
             /* No perspective to avoid jitter */
         }
 
-        .video-placeholder-3-4 {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            /* GIGANTIC VIDEO ON DESKTOP */
-            /* CUSTOM CINEMATIC RATIO FOR MAJESTIC LOOK */
-            aspect-ratio: 16/9;
-            background: #000;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            overflow: hidden;
-            z-index: 5;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: box-shadow 0.3s ease;
-            /* No transform transition needed */
-            margin: 0 auto;
-            /* Center it */
-        }
+
 
         /* Subtle hover lift, no rotation */
         .video-placeholder-3-4:hover {
@@ -1399,25 +1405,8 @@
             }
         }
 
-        /* 3:4 VIDEO PLACEHOLDER */
-        .video-placeholder-3-4 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            /* Adjust size as needed, ratio is key */
-            aspect-ratio: 3/4;
-            background: #222;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            z-index: 5;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* 3:4 VIDEO PLACEHOLDER - Consolidated in main style block */
+        /* STICKY MOBILE BAR */
 
         /* STICKY MOBILE BAR */
         .sticky-mobile-bar {
