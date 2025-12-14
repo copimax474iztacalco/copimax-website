@@ -329,25 +329,39 @@
             min-height: 85vh;
             width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 40px;
+            flex-direction: row;
+            /* Desktop: Row Layout */
+            gap: 60px;
+            /* Improved spacing */
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
-            background: radial-gradient(circle at 50% 50%, #111 0%, #000 70%);
+            padding: 80px 40px;
+            background: radial-gradient(circle at 70% 50%, #111 0%, #000 70%);
             position: relative;
             overflow: hidden;
-            max-width: 100%;
+            max-width: 1600px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
+        }
+
+        /* MOBILE LAYOUT ADJUSTMENTS */
+        @media (max-width: 960px) {
+            .hero-b2b {
+                flex-direction: column;
+                /* Mobile: Stack */
+                text-align: center;
+                padding: 60px 20px;
+                gap: 40px;
+            }
         }
 
         .hero-b2b-content {
-            max-width: 900px;
+            flex: 1;
             z-index: 10;
         }
 
         .hero-b2b-visual {
+            flex: 1;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -391,20 +405,21 @@
 
         .hero-b2b-content {
             z-index: 2;
-            text-align: center;
-            /* FORCED CENTER ALIGNMENT */
+            text-align: left;
+            /* Desktop: Left Align */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
+            /* Desktop: Left Align */
             padding-left: 0;
             animation: fadeIn 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            max-width: 650px;
         }
 
         .hero-b2b h1 {
-            text-align: center;
-            /* FORCED CENTER */
+            text-align: left;
+            /* Desktop: Left Align */
             font-size: 64px;
-            /* Slightly larger for impact */
             line-height: 1.05;
             margin-bottom: 24px;
             color: #fff;
@@ -413,8 +428,8 @@
         }
 
         .hero-b2b p {
-            text-align: center;
-            /* FORCED CENTER */
+            text-align: left;
+            /* Desktop: Left Align */
             font-size: 20px;
             color: var(--text-gray);
             line-height: 1.6;
@@ -426,8 +441,33 @@
         .hero-actions {
             display: flex;
             gap: 16px;
-            justify-content: center;
-            /* FORCED CENTER BUTTONS */
+            justify-content: flex-start;
+            /* Desktop: Left Align */
+        }
+
+        /* MOBILE RESPONSIVE OVERRIDES */
+        @media (max-width: 960px) {
+            .hero-b2b-content {
+                align-items: center;
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .hero-b2b h1 {
+                text-align: center;
+                font-size: 42px;
+            }
+
+            .hero-b2b p {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
         }
 
         .btn-primary {

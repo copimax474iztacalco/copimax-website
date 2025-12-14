@@ -1724,12 +1724,14 @@
       }
 
       /* Primary services in a horizontal row with scroll */
+      /* Primary services stacked vertically for better mobile readability */
       .services-compact {
-        flex-direction: row;
-        gap: 12px;
-        overflow-x: auto;
-        padding-bottom: 6px;
-        scroll-snap-type: x mandatory
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        overflow-x: visible;
+        padding-bottom: 0;
+        scroll-snap-type: none;
       }
 
       .services-compact::-webkit-scrollbar {
@@ -1744,8 +1746,9 @@
       .service-compact {
         padding: 12px;
         gap: 12px;
-        min-width: 220px;
-        scroll-snap-align: start
+        width: 100%;
+        min-width: 0;
+        scroll-snap-align: none;
       }
 
       .service-icon {
