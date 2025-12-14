@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
-    <title>Imprenta Express CDMX - ¡Entrega Hoy Mismo! | Urgencias en 2 Horas | COPIMAX</title>
+    <title>Imprenta Urgente CDMX - ¡Entrega Hoy Mismo! | Precios de Maquila</title>
     <meta name="description"
-        content="¿Imprenta urgente en CDMX? Imprimimos tus proyectos HOY. Servicio express en 2 horas. Tesis, manuales, presentaciones. Entrega mismo día. ¡Cotiza ahora!" />
+        content="¿Imprenta urgente en CDMX? Imprimimos tus proyectos HOY. Precios de maquila desde $0.35. Tesis, manuales y publicidad. ¡Cotiza y recoge en 2 horas!">
     <meta name="keywords"
-        content="imprenta CDMX, impresión digital CDMX, imprenta urgente, imprenta express cdmx, impresiones urgentes, imprenta Iztacalco, entrega mismo dia" />
+        content="imprenta CDMX, impresión digital CDMX, copias económicas CDMX, centro de copiado Iztacalco, impresiones por volumen CDMX, imprenta Iztacalco">
     <meta name="author" content="COPIMAX">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://copimax.store/imprenta-cdmx">
@@ -80,7 +80,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -735,14 +735,14 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>
-                        <span class="highlight">Imprenta Express CDMX:</span><br>
-                        Entrega Hoy Mismo<br>
-                        Urgencias en 2 Horas
+                        <span class="highlight">Imprenta en CDMX:</span><br>
+                        Centro de Copias<br>
+                        e Impresiones
                     </h1>
                     <p class="hero-subtitle">
                         Con más de 25 años de experiencia, <strong>COPIMAX</strong> es tu
-                        <strong>imprenta express en CDMX</strong> para proyectos urgentes,
-                        entregas mismo día y trabajos de último minuto.
+                        <strong>imprenta en CDMX</strong> de confianza para copias rápidas,
+                        impresiones a color y trabajos por mayoreo.
                     </p>
 
                     <div class="hero-stats">
@@ -822,8 +822,7 @@
 
                 <div class="service-card">
                     <h3>20,000+ copias BN</h3>
-                    <p>Volumen alto para empresas grandes. Precios especiales para pedidos urgentes con entrega
-                        programada y
+                    <p>Volumen alto para empresas grandes. Precios especiales por mayoreo con entrega programada y
                         servicio dedicado.</p>
                     <div class="price-tag">$0.35 - $0.40</div>
                 </div>
@@ -1054,7 +1053,7 @@
                 <div class="footer-section">
                     <h3>COPIMAX Iztacalco</h3>
                     <p>Tu <strong>imprenta en CDMX</strong> de confianza desde hace más de 25 años. Especialistas en
-                        impresiones digitales urgentes y servicios corporativos.</p>
+                        copias por mayoreo, impresiones digitales y servicios corporativos.</p>
                     <p style="margin-top: 15px; color: #a3e635; font-weight: 600;">
                         "La mejor relación calidad-precio en impresiones CDMX"
                     </p>
@@ -1067,7 +1066,7 @@
                         <li>• Impresiones a color alta calidad</li>
                         <li>• Escaneos digitales instantáneos</li>
                         <li>• Engargolados y anillados profesionales</li>
-                        <li>• Trabajos express empresariales</li>
+                        <li>• Trabajos por mayoreo empresarial</li>
                     </ul>
                 </div>
 
@@ -1093,7 +1092,7 @@
                         <li>• Toda la Ciudad de México</li>
                     </ul>
                     <p style="margin-top: 15px; font-size: 0.85rem; color: #888;">
-                        <strong>Imprenta express</strong> especializada en <strong>impresiones CDMX</strong> y
+                        <strong>Centro de copiado</strong> especializado en <strong>impresiones CDMX</strong> y
                         servicios empresariales.
                     </p>
                 </div>
@@ -1101,7 +1100,7 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2025 COPIMAX Iztacalco. Todos los derechos reservados. | <strong>Imprenta en CDMX</strong> |
-                    Impresiones urgentes y rápidas | Imprenta express profesional</p>
+                    Copias e impresiones rápidas y económicas | Centro de copiado profesional</p>
             </div>
         </div>
     </footer>

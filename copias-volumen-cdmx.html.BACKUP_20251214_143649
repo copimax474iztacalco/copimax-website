@@ -126,9 +126,9 @@
     })(window, document, "clarity", "script", "t4iy5aqh55");
   </script>
 
-  <title>Copias Volumen Industrial CDMX | Producción Masiva 5,000-20,000 | Desde $0.35 | COPIMAX</title>
+  <title>Copias por Volumen CDMX | Cerca de Tu Ubicación | Desde $0.35 | COPIMAX</title>
   <meta name="description"
-    content="Servicio de copias por volumen industrial en CDMX. Producción masiva desde $0.35/hoja. Ideal para universidades, eventos, campañas. Capacidad 5,000-20,000 copias. ¡Cotiza gratis!" />
+    content="Copias por volumen cerca de tu ubicación en CDMX. Desde $0.35/hoja. Entrega 24-48hrs en Iztacalco, Benito Juárez, Coyoacán, Iztapalapa. Mayoreo +10,000 copias. ¡Cotiza gratis!" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1226,9 +1226,8 @@
     <div class="hero-content">
       <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        Copias por Volumen Industrial CDMX | <span
-          style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Producción
-          Masiva</span> | Desde <strong>$0.35</strong>
+        Copias por Volumen en CDMX | <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Cerca
+          de Tu Ubicación</span> | Desde <strong>$0.35</strong>
       </h1>
 
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
@@ -1456,7 +1455,7 @@
           <!-- TESTIMONIANZA 3 -->
           <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">
-              "Nuestra empresa en Iztapalapa necesitaba <strong>copias por volumen</strong> cada mes.
+              "Nuestra empresa en Iztapalapa necesitaba <strong>copias por mayoreo</strong> cada mes.
               COPIMAX nos da servicio con recolección gratis. Excelente calidad y siempre puntuales.
               Ya llevamos 6 meses trabajando con ellos."
             </p>
@@ -1497,6 +1496,18 @@
             </h4>
             <p style="color: #666; font-size: 0.9rem; margin: 0;">
               Encuentra el centro de copias más cercano a tu ubicación en CDMX
+            </p>
+          </a>
+
+          <!-- LINK SPOKE 2 -->
+          <a href="/copias-por-mayoreo-cdmx"
+            style="background: #fff; padding: 20px; border-radius: 12px; border: 2px solid #e5e7eb; text-decoration: none; transition: all 0.3s ease; display: block;">
+            <div style="font-size: 2rem; margin-bottom: 8px;">🏢</div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; color: #000; margin-bottom: 8px;">
+              Copias por Mayoreo
+            </h4>
+            <p style="color: #666; font-size: 0.9rem; margin: 0;">
+              Servicio empresarial con contratos y facturación CFDI 4.0
             </p>
           </a>
 
@@ -1996,10 +2007,10 @@
 
             <details style="margin-bottom: 16px;">
               <summary style="font-weight: 600; color: var(--primary1);">
-                ❓ ¿Hacen copias por volumen cerca de mi empresa/universidad?
+                ❓ ¿Hacen copias por mayoreo cerca de mi empresa/universidad?
               </summary>
               <div class="ans">
-                Sí, damos servicio de <strong>copias por volumen</strong> en toda la CDMX. Tenemos clientes en
+                Sí, damos servicio de <strong>copias por mayoreo</strong> en toda la CDMX. Tenemos clientes en
                 Iztacalco, Benito Juárez, Coyoacán, Iztapalapa y más. <strong>Recolectamos y entregamos sin
                   costo</strong>
                 en pedidos mayores a 5,000 copias. Servicio express 24-48 horas.
@@ -2050,9 +2061,9 @@
             <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
               Acabados Profesionales para Volumen
             </h3>
-            <p class="ans">
-              Nuestro servicio de <strong>producción industrial</strong> está diseñado para pedidos grandes de 5,000 a
-              20,000 copias, ideal para universidades, eventos corporativos y campañas de marketing.
+            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
+              La <strong>imprenta</strong> ofrece engargolado, enmicado y empastado industrial para grandes cantidades.
+              Ideal para manuales corporativos y material educativo.
             </p>
           </div>
 

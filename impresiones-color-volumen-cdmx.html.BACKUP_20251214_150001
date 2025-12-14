@@ -126,19 +126,19 @@
     })(window, document, "clarity", "script", "t4iy5aqh55");
   </script>
 
-  <title>Copias Volumen Industrial CDMX | Producción Masiva 5,000-20,000 | Desde $0.35 | COPIMAX</title>
+  <title>Impresiones a Color por Volumen CDMX | Calidad Láser | Desde $3.50</title>
   <meta name="description"
-    content="Servicio de copias por volumen industrial en CDMX. Producción masiva desde $0.35/hoja. Ideal para universidades, eventos, campañas. Capacidad 5,000-20,000 copias. ¡Cotiza gratis!" />
+    content="Impresión digital a color por volumen. Folletos, catálogos, revistas y volantes. Calidad fotográfica en papel bond, couché y opalina. ¡Mejoramos cualquier cotización!" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "COPIMAX - Copias por Volumen CDMX",
+    "name": "COPIMAX - Impresiones Color Volumen",
     "image": "https://copimax.store/logo.jpg",
-    "@id": "https://copimax.store/copias-volumen-cdmx",
+    "@id": "https://copimax.store/impresiones-color-volumen-cdmx",
     "url": "https://copimax.store",
     "telephone": "+52-55-4021-9892",
-    "priceRange": "$0.35 - $5",
+    "priceRange": "$3.50 - $20",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Vainilla 474",
@@ -196,10 +196,10 @@
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Copias por Volumen B/N",
-            "description": "Copias por volumen desde $0.35/hoja para 10,000+ copias"
+            "name": "Copias Color por Volumen",
+            "description": "Impresión digital color desde $3.50/hoja"
           },
-          "price": "0.35",
+          "price": "3.50",
           "priceCurrency": "MXN",
           "availability": "https://schema.org/InStock",
           "areaServed": "Ciudad de México"
@@ -222,11 +222,14 @@
     :root {
       --primary1: #000;
       --primary2: #474747;
-      --cta1: #b5ff00;
-      --cta2: #ddff88;
+      --cta1: #00E5FF;
+      /* CYAN FOR COLOR PRINTING (CMYK) */
+      --cta2: #FF0099;
+      /* MAGENTA ACCENT */
       --text: #1f2937;
       --muted: #6b7280;
-      --card: #fff
+      --card: #fff;
+      --spectrum: linear-gradient(90deg, #00E5FF, #FF0099, #FFFF00);
     }
 
     body {
@@ -252,7 +255,7 @@
       background: rgba(0, 0, 0, 0.95);
       backdrop-filter: blur(20px);
       color: #fff;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
       min-height: 80px
     }
@@ -331,8 +334,9 @@
 
     h1 {
       font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: -.02em
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
     }
 
     /* Titolo con verde faded stile del sito */
@@ -362,11 +366,12 @@
     }
 
     .hero-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 800;
       color: var(--primary1);
-      margin-bottom: 1.5rem;
-      line-height: 1.2
+      margin-bottom: 24px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
     }
 
     .hero-subtitle {
@@ -389,9 +394,15 @@
 
     .card {
       background: #fff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(229, 231, 235, 0.6);
       border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, .06)
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
     .card h3 {
@@ -414,12 +425,12 @@
       background: #f3f4f6 !important;
       color: #374151 !important;
       border: 2px solid #e5e7eb !important;
-      border-radius: 8px !important;
-      padding: 8px 16px !important;
-      font-size: 0.9rem !important;
+      border-radius: 10px !important;
+      padding: 10px 18px !important;
+      font-size: 0.95rem !important;
       font-weight: 600 !important;
       cursor: pointer !important;
-      transition: all 0.3s ease !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
       flex: 1 !important;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
       touch-action: manipulation !important;
@@ -431,6 +442,7 @@
       text-decoration: none !important;
       outline: none !important;
       box-sizing: border-box !important;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     }
 
     .type-btn:hover,
@@ -455,10 +467,11 @@
       font-weight: 800 !important;
       border: none !important;
       border-radius: 12px !important;
-      padding: 12px 18px !important;
+      padding: 14px 24px !important;
       cursor: pointer !important;
-      transition: all 0.3s ease !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
       position: relative !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
       z-index: 10 !important;
       pointer-events: auto !important;
       display: inline-block !important;
@@ -1226,15 +1239,14 @@
     <div class="hero-content">
       <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        Copias por Volumen Industrial CDMX | <span
-          style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Producción
-          Masiva</span> | Desde <strong>$0.35</strong>
+        Impresiones Color Volumen | <span
+          style="background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">Calidad
+          Espectacular</span> | Desde <strong>$3.50</strong>
       </h1>
 
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
       <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
-        Las tienes listas en <strong>24 horas</strong> desde <span
-          style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
+        Flyers, Catálogos y Revistas. Calidad Fotográfica. Tiempo récord.
       </p>
 
       <!-- CTA GIGANTE E URGENTE -->
@@ -1243,7 +1255,7 @@
           class="cta"
           style="font-size: 1.3rem; padding: 20px 40px; display: inline-block; text-decoration: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(181,255,0,0.4);"
           target="_blank" rel="noopener">
-          🚀 COTIZAR AHORA - 2 MINUTOS
+          🚀 COTIZAR COLOR AHORA
         </a>
       </div>
 
@@ -1261,142 +1273,222 @@
     </div>
   </section>
 
-  <!-- SEZIONE UBICACIONES - CATTURA "CERCA DE MI UBICACION" -->
-  <section
-    style="margin: 40px 0; background: linear-gradient(135deg, #f8fafc, #e5e7eb); padding: 40px 0; border-radius: 20px;">
-    <div class="wrap">
-      <h2 style="font-size: 2.2rem; font-weight: 800; color: #000; margin-bottom: 16px; text-align: center;">
-        📍 Copias por Volumen <span style="color: var(--cta1);">Cerca de Tu Ubicación</span> en CDMX
+  <!-- CALCULADORA (MOVED TO TOP) -->
+  <section style="margin: 32px 0;">
+    <div class="card p24"
+      style="max-width: 600px; margin: 0 auto; border: 2px solid var(--cta2); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15);">
+      <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">🎨 Cotiza
+        Impresión a Color</h3>
+      <form
+        onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen COLOR. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
+        <label style="display:block;margin:8px 0 4px">Cantidad de impresiones</label>
+        <input id="q" type="number" min="1" placeholder="Ej: 1000"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Número de páginas por juego</label>
+        <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <label style="display:block;margin:12px 0 4px">Lados</label>
+        <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+          <option value="x1">Una cara (x1)</option>
+          <option value="x2">Doble cara (x2)</option>
+        </select>
+        <label style="display:block;margin:12px 0 4px">Modo de Color</label>
+        <!-- Forziamo Color Active per questa pagina -->
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button type="button" class="color-btn active" data-color="color" onclick="changeColor(this, 'color')"
+            style="background:var(--cta1) !important; color:#fff !important; width: 100%;">🌈
+            Full Color (Láser)</button>
+        </div>
+        <!-- Campo tipo autocompilado rimosso per evitare confusione -->
+        <label style="display:block;margin:12px 0 4px">Plazo deseado</label>
+        <input id="p" type="text" placeholder="Ej: Hoy mismo"
+          style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
+        <input type="hidden" id="t" value="">
+        <div id="total-box" class="card"
+          style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f0f9ff">
+          <div style="font-weight:700;margin-bottom:6px; color:var(--cta2);">Total estimado (Color)</div>
+          <div id="total-preview" style="font-size:1.5rem;color:#000; font-weight:800;">$0.00 MXN</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:4px">Precios Volumen: Color desde $3.50</div>
+        </div>
+        <!-- BENEFIT BOX AFFIANCATO -->
+        <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px;">
+          <button class="cta" type="submit"
+            style="font-size: 1.1rem; padding: 16px 24px; background: var(--spectrum) !important; color: #fff !important; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+            🚀 COTIZAR COLOR AHORA
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONFRONTO PREZZI VS COMPETENZA -->
+  <section style="margin: 40px 0;">
+    <div class="card p24">
+      <h2 style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 16px; text-align: center;">
+        💰 ¿Por qué somos <span style="color: var(--cta1);">las Copias Más Baratas</span> en CDMX?
       </h2>
 
       <p
         style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Servicio de copias por volumen con <strong>entrega gratis</strong> en toda la Ciudad de México.
-        Encuentra tu zona más cercana:
+        Compara nuestros precios con Office Depot, Officemax y otras copisterías:
       </p>
 
-      <!-- GRID ZONAS CDMX -->
+      <!-- TABLA COMPARATIVA OPTIMIZADA -->
+      <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        <table style="max-width: 900px; margin: 0 auto 24px; border-collapse: collapse; width: 100%; min-width: 600px;">
+          <thead>
+            <tr style="background: linear-gradient(135deg, var(--primary1), var(--primary2)); color: #fff;">
+              <th
+                style="padding: 12px 8px; text-align: left; font-size: 0.9rem; border: 1px solid #444; white-space: nowrap;">
+                Servicio</th>
+              <th
+                style="padding: 12px 8px; text-align: center; font-size: 0.9rem; border: 1px solid #444; white-space: nowrap;">
+                Office<br>Depot</th>
+              <th
+                style="padding: 12px 8px; text-align: center; font-size: 0.9rem; border: 1px solid #444; white-space: nowrap;">
+                Officemax</th>
+              <th
+                style="padding: 12px 8px; text-align: center; font-size: 0.9rem; border: 1px solid #444; background: var(--cta1); color: #000; white-space: nowrap;">
+                COPIMAX ✓</th>
+              <th
+                style="padding: 12px 8px; text-align: center; font-size: 0.9rem; border: 1px solid #444; white-space: nowrap;">
+                Tu Ahorro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; font-weight: 600; font-size: 0.9rem;">1,000
+                Flyers Color</td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$5.50
+              </td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$4.50
+              </td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000; font-size: 0.9rem;">
+                $3.50</td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700; font-size: 0.9rem;">
+                $2,000</td>
+            </tr>
+            <tr style="background: #fff;">
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; font-weight: 600; font-size: 0.9rem;">100
+                Catálogos (20 págs)</td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$150.00
+              </td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$120.00
+              </td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000; font-size: 0.9rem;">
+                $85.00</td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700; font-size: 0.9rem;">
+                $6,500</td>
+            </tr>
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; font-weight: 600; font-size: 0.9rem;">5,000 Hojas
+                Color</td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$5.00
+              </td>
+              <td style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 0.9rem;">$4.00
+              </td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000; font-size: 0.9rem;">
+                $3.20</td>
+              <td
+                style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700; font-size: 0.9rem;">
+                $9,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PROOF SOCIALE -->
       <div
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px;">
+        style="text-align: center; padding: 24px; background: #f0f9ff; border-radius: 12px; border: 2px solid #0ea5e9;">
+        <p style="font-size: 1.2rem; color: #0369a1; margin: 0; font-weight: 700;">
+          💰 Con COPIMAX ahorras hasta <span style="color: #10b981; font-size: 1.4rem;">65%</span> en copias por
+          volumen CDMX.<br>
+          Sin sacrificar calidad ni tiempo de entrega.
+        </p>
+      </div>
 
-        <!-- ZONA 1: IZTACALCO (SEDE PRINCIPAL) -->
+    </div>
+  </section>
+
+  <!-- NUOVA SEZIONE UBICACIONES OTTIMIZZATA -->
+  <section
+    style="margin: 40px 0; background: linear-gradient(135deg, #f8fafc, #e5e7eb); padding: 40px 0; border-radius: 20px;">
+    <div class="wrap">
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #000; margin-bottom: 16px; text-align: center;">
+        📍 Nuestra <span style="color: var(--cta1);">Ubicación</span> y Servicio a Toda CDMX
+      </h2>
+
+      <p
+        style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        <strong>1 sola sede</strong> en Iztacalco con servicio a toda la Ciudad de México
+      </p>
+
+      <!-- SEDE PRINCIPAL -->
+      <div
+        style="background: linear-gradient(135deg, var(--cta1), var(--cta2)); padding: 32px; border-radius: 16px; border: 3px solid var(--cta1); margin-bottom: 32px; position: relative;">
         <div
-          style="background: linear-gradient(135deg, var(--cta1), var(--cta2)); padding: 24px; border-radius: 16px; border: 3px solid var(--cta1); position: relative;">
-          <div
-            style="position: absolute; top: 12px; right: 12px; background: #000; color: var(--cta1); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
-            🏆 SEDE PRINCIPAL
-          </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 12px; margin-top: 8px;">
-            Iztacalco
-          </h3>
-          <p style="color: #000; font-weight: 600; margin-bottom: 12px; line-height: 1.6;">
-            📍 Vainilla 474, a 5 min del Metro Apatlaco<br>
-            💰 Copias desde $0.35/hoja<br>
-            ⚡ Entrega mismo día<br>
-            🚇 Metro: Apatlaco (Línea 8)
-          </p>
-          <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 8px; margin-top: 12px;">
-            <strong>Colonias cercanas:</strong><br>
-            Vainilla, Agrícola Oriental, Gabriel Ramos Millán, UPIICSA
-          </div>
+          style="position: absolute; top: 12px; right: 12px; background: #000; color: var(--cta1); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 800;">
+          🏢 SEDE ÚNICA
         </div>
+        <h3 style="font-size: 1.8rem; font-weight: 800; color: #000; margin-bottom: 16px; margin-top: 8px;">
+          COPIMAX Iztacalco
+        </h3>
+        <p style="color: #000; font-weight: 600; margin-bottom: 16px; line-height: 1.8; font-size: 1.1rem;">
+          📍 <strong>Vainilla 474, Iztacalco, CDMX 08400</strong><br>
+          🚇 A 5 minutos del Metro Apatlaco (Línea 8)<br>
+          💰 Color desde $3.50/hoja<br>
+          ⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00<br>
+          📞 +52 55-4021-9892
+        </p>
 
-        <!-- ZONA 2: BENITO JUÁREZ -->
-        <div style="background: #fff; padding: 24px; border-radius: 16px; border: 2px solid #e5e7eb;">
-          <h3 style="font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-            Benito Juárez
-          </h3>
-          <p style="color: #666; font-weight: 600; margin-bottom: 12px; line-height: 1.6;">
-            📍 Servicio a domicilio gratis (+5,000 copias)<br>
-            💰 Desde $0.35/hoja<br>
-            ⚡ Entrega 24-48hrs<br>
-            🚚 Recolección sin costo
-          </p>
-          <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-top: 12px;">
-            <strong>Colonias:</strong><br>
-            Del Valle, Narvarte, Portales, Nápoles, Xoco
-          </div>
+        <div style="text-align: center; margin-top: 24px;">
+          <a href="https://www.google.com/maps/place/Vainilla+474,+Granjas+M%C3%A9xico,+Iztacalco,+08400+Ciudad+de+M%C3%A9xico,+CDMX/@19.4094,-99.1306,17z"
+            target="_blank" class="cta"
+            style="display: inline-block; font-size: 1.1rem; padding: 16px 32px; text-decoration: none;">
+            📍 Ver en Google Maps
+          </a>
         </div>
-
-        <!-- ZONA 3: COYOACÁN -->
-        <div style="background: #fff; padding: 24px; border-radius: 16px; border: 2px solid #e5e7eb;">
-          <h3 style="font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-            Coyoacán
-          </h3>
-          <p style="color: #666; font-weight: 600; margin-bottom: 12px; line-height: 1.6;">
-            📍 Servicio express para universidades<br>
-            💰 Descuento estudiantes 15%<br>
-            ⚡ Entrega 24-48hrs<br>
-            🎓 Especialistas en tesis
-          </p>
-          <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-top: 12px;">
-            <strong>Colonias:</strong><br>
-            Ciudad Universitaria, Copilco, Pedregal, Santo Domingo
-          </div>
-        </div>
-
-        <!-- ZONA 4: IZTAPALAPA -->
-        <div style="background: #fff; padding: 24px; border-radius: 16px; border: 2px solid #e5e7eb;">
-          <h3 style="font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-            Iztapalapa
-          </h3>
-          <p style="color: #666; font-weight: 600; margin-bottom: 12px; line-height: 1.6;">
-            📍 Recolección gratis en tu ubicación<br>
-            💰 Desde $0.35/hoja<br>
-            ⚡ Entrega 24-48hrs<br>
-            🏢 Servicio empresarial
-          </p>
-          <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-top: 12px;">
-            <strong>Colonias:</strong><br>
-            UAM Iztapalapa, Escuadrón 201, Cabeza de Juárez
-          </div>
-        </div>
-
       </div>
 
-      <!-- CTA MAPA -->
-      <div style="text-align: center; margin-top: 32px;">
-        <a href="https://www.google.com/maps/place/Vainilla+474,+Granjas+M%C3%A9xico,+Iztacalco,+08400+Ciudad+de+M%C3%A9xico,+CDMX/@19.4094,-99.1306,17z"
-          target="_blank" class="cta"
-          style="display: inline-block; font-size: 1.2rem; padding: 18px 36px; text-decoration: none;">
-          📍 Ver Mapa y Calcular Distancia desde Tu Ubicación
-        </a>
-      </div>
-
-      <!-- INDICAZIONI STRADALI -->
-      <div style="margin-top: 40px; background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb;">
+      <!-- SERVICIO A TODA CDMX -->
+      <div style="background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb;">
         <h3 style="font-size: 1.6rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          ¿Cómo Llegar a Nuestra Ubicación?
+          🚚 Servicio a Toda CDMX
         </h3>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <!-- Zonas que servimos -->
           <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h4 style="font-size: 1.1rem; font-weight: 600; color: #000; margin-bottom: 12px;">
-              🚇 Desde Metro Apatlaco
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #000; margin-bottom: 12px;">📍 Zonas que Servimos
             </h4>
-            <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">
-              Sal por la salida norte → Camina 5 minutos por Vainilla →
-              Llegaste a COPIMAX (Vainilla 474)
-            </p>
+            <ul style="color: #666; line-height: 1.8; padding-left: 20px;">
+              <li><strong>Iztacalco</strong> (sede)</li>
+              <li>Benito Juárez</li>
+              <li>Coyoacán</li>
+              <li>Iztapalapa</li>
+              <li>Venustiano Carranza</li>
+              <li>Cuauhtémoc</li>
+              <li>Y más zonas de CDMX</li>
+            </ul>
           </div>
 
+          <!-- Opciones de entrega -->
           <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h4 style="font-size: 1.1rem; font-weight: 600; color: #000; margin-bottom: 12px;">
-              🚗 En Auto desde Viaducto
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #000; margin-bottom: 12px;">🚚 Opciones de Entrega
             </h4>
-            <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">
-              Toma Viaducto dirección oriente → Salida Eje 3 →
-              2 cuadras sur → Vainilla 474
+            <p style="color: #666; line-height: 1.8; margin-bottom: 12px;">
+              <strong style="color: #000;">1. Recoges en tienda</strong><br>
+              <span style="color: #10b981; font-weight: 600;">✓ Sin costo adicional</span>
             </p>
-          </div>
-
-          <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h4 style="font-size: 1.1rem; font-weight: 600; color: #000; margin-bottom: 12px;">
-              🚌 En Transporte Público
-            </h4>
-            <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">
-              Rutas: 8, 13, 34 pasan por Vainilla →
-              Baja en Vainilla esq. Añil
+            <p style="color: #666; line-height: 1.8;">
+              <strong style="color: #000;">2. Entrega a domicilio</strong><br>
+              Disponible vía app de paquetería o taxi<br>
+              <span style="color: #ef4444; font-weight: 700;">⚠️ Cliente paga la tarifa de envío</span>
             </p>
           </div>
         </div>
@@ -1438,7 +1530,7 @@
           <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">
               "Necesitaba 5,000 copias urgentes para mi tesis. COPIMAX está <strong>cerca de CU</strong>
-              y me las entregaron en 24 horas. Precio inmejorable: $0.35 por hoja.
+              y me las entregaron en 24 horas. <strong>Precio inmejorable a color</strong>.
               Ahorré más de $2,000 vs Office Depot."
             </p>
             <div style="display: flex; align-items: center; gap: 12px;">
@@ -1456,8 +1548,8 @@
           <!-- TESTIMONIANZA 3 -->
           <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid var(--cta1);">
             <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">
-              "Nuestra empresa en Iztapalapa necesitaba <strong>copias por volumen</strong> cada mes.
-              COPIMAX nos da servicio con recolección gratis. Excelente calidad y siempre puntuales.
+              "Nuestra empresa en Iztapalapa necesitaba <strong>copias por mayoreo</strong> cada mes.
+              Entrega disponible vía paquetería/taxi. Excelente calidad y siempre puntuales.
               Ya llevamos 6 meses trabajando con ellos."
             </p>
             <div style="display: flex; align-items: center; gap: 12px;">
@@ -1477,404 +1569,19 @@
     </div>
   </section>
 
-  <!-- INTERNAL LINKING VERSO SPOKE -->
-  <section style="margin: 40px 0;">
-    <div class="wrap">
-      <div
-        style="background: linear-gradient(135deg, #f8fafc, #e5e7eb); padding: 32px; border-radius: 16px; text-align: center;">
-        <h3 style="font-size: 1.6rem; font-weight: 700; color: #000; margin-bottom: 20px;">
-          🔍 ¿Buscas algo más específico?
-        </h3>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-
-          <!-- LINK SPOKE 1 -->
-          <a href="/copias-baratas-cerca-de-mi"
-            style="background: #fff; padding: 20px; border-radius: 12px; border: 2px solid #e5e7eb; text-decoration: none; transition: all 0.3s ease; display: block;">
-            <div style="font-size: 2rem; margin-bottom: 8px;">📍</div>
-            <h4 style="font-size: 1.1rem; font-weight: 700; color: #000; margin-bottom: 8px;">
-              Copias Baratas Cerca de Ti
-            </h4>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">
-              Encuentra el centro de copias más cercano a tu ubicación en CDMX
-            </p>
-          </a>
-
-          <!-- LINK HUB IMPRESIONES -->
-          <a href="/impresiones-cdmx"
-            style="background: #fff; padding: 20px; border-radius: 12px; border: 2px solid #e5e7eb; text-decoration: none; transition: all 0.3s ease; display: block;">
-            <div style="font-size: 2rem; margin-bottom: 8px;">🎨</div>
-            <h4 style="font-size: 1.1rem; font-weight: 700; color: #000; margin-bottom: 8px;">
-              Impresiones a Color
-            </h4>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">
-              Impresiones profesionales a color desde $3/hoja
-            </p>
-          </a>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <main class="wrap">
     <!-- Sezione Autorità SEO -->
-    <section style="margin-bottom: 32px;">
-      <div class="card p24">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          ¿Por qué somos la <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">imprenta líder
-            en volumen</span>?
-        </h2>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
-              🏆 Experiencia Comprobada en Grandes Volúmenes
-            </h3>
-            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Con más de dos décadas como <strong>imprenta especializada</strong>, hemos producido millones de copias
-              para universidades, corporativos y dependencias gubernamentales. Nuestra <strong>imprenta</strong> maneja
-              desde manuales estudiantiles hasta campañas publicitarias masivas.
-            </p>
-          </div>
-
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
-              ⚙️ Tecnología Industrial Exclusiva
-            </h3>
-            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Nuestra <strong>imprenta</strong> cuenta con equipos Xerox de producción industrial capaces de imprimir
-              hasta 50,000 copias diarias manteniendo calidad offset. A diferencia de otras <strong>imprentas</strong>,
-              garantizamos uniformidad en color y definición en toda tu producción.
-            </p>
-          </div>
-
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
-              📍 Ubicación Estratégica en Iztacalco
-            </h3>
-            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Somos la <strong>imprenta</strong> más accesible para la zona empresarial UPIICSA y alrededores. Esta
-              ubicación privilegiada nos permite ofrecer entregas express y recolecciones sin costo adicional en un
-              radio de 15km.
-            </p>
-          </div>
-
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 10px;">
-              🚚 Logística Especializada para Volumen
-            </h3>
-            <p style="color: var(--text); line-height: 1.5; margin-bottom: 12px; font-size: 0.9rem;">
-              Nuestra <strong>imprenta</strong> maneja la logística completa: desde recepción de archivos digitales
-              hasta empaquetado profesional y entrega programada. Trabajamos con empresas de mensajería especializadas
-              en documentos corporativos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- PREZZI CHIARISSIMI (10 secondi per capire) -->
-    <section style="margin: 32px 0;">
-      <div class="card p24">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Precios Transparentes</span> - Sin
-          Sorpresas
-        </h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-          <!-- PREZZO POPOLARE -->
-          <div
-            style="background: linear-gradient(135deg, var(--cta2), var(--cta1)); padding: 24px; border-radius: 16px; text-align: center; border: 3px solid var(--cta1);">
-            <div style="font-size: 2.5rem; margin-bottom: 8px;">🔥</div>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-              MÁS POPULAR
-            </h3>
-            <div style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 8px;">
-              $0.35
-            </div>
-            <p style="font-size: 1rem; color: #000; margin-bottom: 16px; font-weight: 600;">
-              Doble cara • 10,000+ copias
-            </p>
-            <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
-              <strong>Ejemplo:</strong><br>
-              25,000 hojas doble cara = 50,000 impresiones → <strong>$17,500</strong>
-            </div>
-            <p style="font-size: 0.9rem; color: #000; margin: 0;">
-              ⚡ Entrega en 24-48h
-            </p>
-          </div>
 
-          <!-- PREZZO STANDARD -->
-          <div
-            style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 8px;">📄</div>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-              ESTÁNDAR
-            </h3>
-            <div style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 8px;">
-              $0.40
-            </div>
-            <p style="font-size: 1rem; color: #666; margin-bottom: 16px; font-weight: 600;">
-              Una cara • 10,000+ copias
-            </p>
-            <div style="background: #e5e7eb; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
-              <strong>Ejemplo:</strong><br>
-              50,000 impresiones (una cara) = <strong>$20,000</strong>
-            </div>
-            <p style="font-size: 0.9rem; color: #666; margin: 0;">
-              ⚡ Entrega en 24-48h
-            </p>
-          </div>
-
-          <!-- PREZZO VOLUME MASSIMO -->
-          <div
-            style="background: #f8fafc; padding: 24px; border-radius: 16px; text-align: center; border: 2px solid #e5e7eb;">
-            <div style="font-size: 2.5rem; margin-bottom: 8px;">🏭</div>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: #000; margin-bottom: 12px;">
-              VOLUMEN MÁXIMO
-            </h3>
-            <div style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 8px;">
-              $0.35
-            </div>
-            <p style="font-size: 1rem; color: #666; margin-bottom: 16px; font-weight: 600;">
-              Doble cara • 100,000+ copias
-            </p>
-            <div style="background: #e5e7eb; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
-              <strong>Ejemplo:</strong><br>
-              50,000 hojas doble cara = 100,000 impresiones → <strong>$35,000</strong>
-            </div>
-            <p style="font-size: 0.9rem; color: #666; margin: 0;">
-              ⚡ Entrega en 48-72h
-            </p>
-          </div>
-        </div>
-
-        <!-- GARANZIE -->
-        <div
-          style="text-align: center; margin-top: 24px; padding: 20px; background: #f0f9ff; border-radius: 12px; border: 1px solid #0ea5e9;">
-          <p style="font-size: 1rem; color: #0369a1; margin: 0; font-weight: 600;">
-            ✅ <strong>Garantía de calidad</strong> • ✅ <strong>Entrega puntual</strong> • ✅ <strong>Sin extras
-              ocultos</strong>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONFRONTO PREZZI VS COMPETENZA -->
-    <section style="margin: 40px 0;">
-      <div class="card p24">
-        <h2 style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 16px; text-align: center;">
-          💰 ¿Por qué somos <span style="color: var(--cta1);">las Copias Más Baratas</span> en CDMX?
-        </h2>
-
-        <p
-          style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
-          Compara nuestros precios con Office Depot, Officemax y otras copisterías:
-        </p>
-
-        <!-- TABLA COMPARATIVA -->
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
-            <thead>
-              <tr style="background: linear-gradient(135deg, var(--primary1), var(--primary2)); color: #fff;">
-                <th style="padding: 16px; text-align: left; font-size: 1rem; border: 1px solid #444;">Servicio</th>
-                <th style="padding: 16px; text-align: center; font-size: 1rem; border: 1px solid #444;">Office Depot
-                </th>
-                <th style="padding: 16px; text-align: center; font-size: 1rem; border: 1px solid #444;">Officemax</th>
-                <th
-                  style="padding: 16px; text-align: center; font-size: 1rem; border: 1px solid #444; background: var(--cta1); color: #000;">
-                  COPIMAX ✓</th>
-                <th style="padding: 16px; text-align: center; font-size: 1rem; border: 1px solid #444;">Tu Ahorro</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background: #f8fafc;">
-                <td style="padding: 14px; border: 1px solid #e5e7eb; font-weight: 600;">1,000 copias B/N</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$1.20/hoja</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$1.00/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000;">
-                  $0.50/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700;">
-                  Ahorras $500</td>
-              </tr>
-              <tr style="background: #fff;">
-                <td style="padding: 14px; border: 1px solid #e5e7eb; font-weight: 600;">10,000 copias B/N</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$1.00/hoja</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$0.90/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000;">
-                  $0.35/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700;">
-                  Ahorras $5,500</td>
-              </tr>
-              <tr style="background: #f8fafc;">
-                <td style="padding: 14px; border: 1px solid #e5e7eb; font-weight: 600;">50,000 copias B/N</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$0.90/hoja</td>
-                <td style="padding: 14px; border: 1px solid #e5e7eb; text-align: center;">$0.80/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000;">
-                  $0.35/hoja</td>
-                <td
-                  style="padding: 14px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700;">
-                  Ahorras $22,500</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- PROOF SOCIALE -->
-        <div
-          style="text-align: center; padding: 24px; background: #f0f9ff; border-radius: 12px; border: 2px solid #0ea5e9;">
-          <p style="font-size: 1.2rem; color: #0369a1; margin: 0; font-weight: 700;">
-            💰 Con COPIMAX ahorras hasta <span style="color: #10b981; font-size: 1.4rem;">65%</span> en copias por
-            volumen CDMX.<br>
-            Sin sacrificar calidad ni tiempo de entrega.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CALCULADORA CENTRATA CON LOGÍSTICA SOTTO -->
-    <section style="margin: 32px 0;">
-      <div class="card p24" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="margin-bottom:10px; font-size: 1.4rem; font-weight: 700; color: #000; text-align: center;">Cotiza tu
-          proyecto industrial - Respuesta en 2 minutos</h3>
-        <form
-          onsubmit="event.preventDefault();window.open('https://wa.me/525540219892?text=' + encodeURIComponent('Hola COPIMAX, necesito cotización por volumen. Copias: '+document.getElementById('q').value+'\nPáginas: '+document.getElementById('pages').value+'\nLados: '+(document.getElementById('sides').value==='x2'?'Doble cara (x2)':'Una cara (x1)')+'\nTipo: '+document.getElementById('t').value+'\nPlazo: '+document.getElementById('p').value+'\nEstimado: '+document.getElementById('total-preview').textContent), '_blank');">
-          <label style="display:block;margin:8px 0 4px">Cantidad de copias</label>
-          <input id="q" type="number" min="1" placeholder="Ej: 25000"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Número de páginas</label>
-          <input id="pages" type="number" min="1" value="1" placeholder="Ej: 1"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <label style="display:block;margin:12px 0 4px">Lados</label>
-          <select id="sides" style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-            <option value="x1">Una cara (x1)</option>
-            <option value="x2">Doble cara (x2)</option>
-          </select>
-          <label style="display:block;margin:12px 0 4px">Tipo de trabajo</label>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="type-btn active" data-type="copia" onclick="changeType(this, 'copia')">🖨️
-              Copia</button>
-            <button type="button" class="type-btn" data-type="impresion" onclick="changeType(this, 'impresion')">🎨
-              Impresión</button>
-          </div>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <button type="button" class="color-btn active" data-color="bn" onclick="changeColor(this, 'bn')">⚫
-              BN</button>
-            <button type="button" class="color-btn" data-color="color" onclick="changeColor(this, 'color')">🌈
-              Color</button>
-          </div>
-          <!-- Campo tipo autocompilado rimosso per evitare confusione -->
-          <label style="display:block;margin:12px 0 4px">Plazo</label>
-          <input id="p" type="text" placeholder="Ej: 48h"
-            style="width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb">
-          <input type="hidden" id="t" value="">
-          <div id="total-box" class="card"
-            style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc">
-            <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
-            <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
-            <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
-                x1) • $0.35 (>100 x2) • Color $5.00</div>
-          </div>
-          <!-- BENEFIT BOX AFFIANCATO -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
-            <button class="cta" type="submit" style="font-size: 1.1rem; padding: 16px 24px;">
-              🚀 COTIZAR AHORA
-            </button>
-            <div style="background: #f0f9ff; padding: 16px; border-radius: 12px; border: 1px solid #0ea5e9;">
-              <p style="font-size: 0.9rem; color: #0369a1; margin: 0; font-weight: 600;">
-                ✅ Cotización en 2 minutos<br>
-                ✅ Sin compromiso<br>
-                ✅ Precios finales
-              </p>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- LOGÍSTICA CENTRATA SOTTO LA CALCULADORA -->
-      <div style="max-width: 600px; margin: 24px auto 0; text-align: center;">
-        <h4 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 16px;">Logística y SLA</h4>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; text-align: left;">
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">⚡ Producción continua</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">24–48h para tirajes de 10k–50k</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">🚚 Entrega CDMX</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por zonas o retiro en tienda
-              (Iztacalco)</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">📦 Entrega especializada</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Por lotes/folio, paletizada</p>
-          </div>
-          <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <p style="color: var(--text); margin: 0; font-weight: 600;">✅ Control de calidad</p>
-            <p style="color: var(--muted); margin: 4px 0 0 0; font-size: 0.9rem;">Factura y control por muestra</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- CALCULATOR REMOVED FROM HERE -->
 
     <!-- Sezione Casos de Éxito -->
-    <section style="margin: 32px 0;">
-      <div class="card p24">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Casos de Éxito</span> de Nuestra
-          Imprenta
-        </h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
-              🎓 Universidad Tecnológica (85,000 manuales)
-            </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              Produjimos <strong>85,000 manuales a doble cara</strong> en 72 horas para inicio de semestre. La
-              <strong>imprenta</strong> logró entregar en 15 sedes simultáneamente sin retrasos.
-            </p>
-            <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
-              ✅ Entrega puntual • ✅ Calidad uniforme • ✅ Logística coordinada
-            </div>
-          </div>
-
-          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
-              🏦 Corporativo Financiero (120,000 reportes)
-            </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              <strong>Impresión urgente</strong> de reportes anuales con acabado profesional. Nuestra
-              <strong>imprenta</strong> completó el proyecto en tiempo récord manteniendo estándares bancarios.
-            </p>
-            <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
-              ✅ Estándares bancarios • ✅ Tiempo récord • ✅ Acabado profesional
-            </div>
-          </div>
-
-          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cta1);">
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary1); margin-bottom: 12px;">
-              🏛️ Campaña Gubernamental (200,000 folletos)
-            </h3>
-            <p style="color: var(--text); line-height: 1.6; margin-bottom: 8px;">
-              La mayor producción de nuestra <strong>imprenta</strong> en 2024: <strong>200,000 folletos
-                informativos</strong> con entrega coordinada en toda <strong>CDMX</strong> en 48 horas.
-            </p>
-            <div style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">
-              ✅ Mayor producción 2024 • ✅ Entrega CDMX • ✅ 48 horas
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
 
 
     <!-- TRUST BANNER -->
@@ -1978,7 +1685,8 @@
               </summary>
               <div class="ans">
                 Estamos en <strong>Vainilla 474, Iztacalco, CDMX</strong>. A 5 minutos del Metro Apatlaco.
-                Ofrecemos servicio de <strong>recolección y entrega GRATIS</strong> para pedidos mayores a 5,000 copias
+                Ofrecemos servicio de <strong>entrega disponible vía paquetería/taxi</strong> para pedidos mayores a
+                5,000 copias
                 en toda la Ciudad de México (Iztacalco, Benito Juárez, Coyoacán, Iztapalapa y más).
               </div>
             </details>
@@ -1988,7 +1696,8 @@
                 ❓ ¿Cuál es el precio real de copias por volumen cerca de mi ubicación?
               </summary>
               <div class="ans">
-                Nuestros precios para <strong>copias por volumen</strong> van desde <strong>$0.35/hoja</strong> para
+                Nuestros precios para <strong>copias color por volumen</strong> van desde <strong>$3.50/hoja</strong>
+                para
                 pedidos de 10,000+ copias. El precio incluye <strong>entrega en tu ubicación</strong> si estás en CDMX.
                 Sin costos ocultos ni cargos adicionales. Cotiza gratis por WhatsApp.
               </div>
@@ -1996,10 +1705,10 @@
 
             <details style="margin-bottom: 16px;">
               <summary style="font-weight: 600; color: var(--primary1);">
-                ❓ ¿Hacen copias por volumen cerca de mi empresa/universidad?
+                ❓ ¿Hacen copias por mayoreo cerca de mi empresa/universidad?
               </summary>
               <div class="ans">
-                Sí, damos servicio de <strong>copias por volumen</strong> en toda la CDMX. Tenemos clientes en
+                Sí, damos servicio de <strong>copias por mayoreo</strong> en toda la CDMX. Tenemos clientes en
                 Iztacalco, Benito Juárez, Coyoacán, Iztapalapa y más. <strong>Recolectamos y entregamos sin
                   costo</strong>
                 en pedidos mayores a 5,000 copias. Servicio express 24-48 horas.
@@ -2024,71 +1733,7 @@
     </section>
 
     <!-- Sezione Servizi Complementari -->
-    <section style="margin: 32px 0;">
-      <div class="card p24">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #000; margin-bottom: 24px; text-align: center;">
-          <span style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Servicios Adicionales</span> de
-          Nuestra Imprenta
-        </h2>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-          <div
-            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2rem; margin-bottom: 12px;">🎨</div>
-            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
-              Diseño y Optimización de Archivos
-            </h3>
-            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Nuestro equipo de diseño optimiza archivos para producción industrial, reduciendo costos de
-              <strong>impresión</strong> hasta 30% en grandes <strong>volúmenes</strong>.
-            </p>
-          </div>
-
-          <div
-            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2rem; margin-bottom: 12px;">📚</div>
-            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
-              Acabados Profesionales para Volumen
-            </h3>
-            <p class="ans">
-              Nuestro servicio de <strong>producción industrial</strong> está diseñado para pedidos grandes de 5,000 a
-              20,000 copias, ideal para universidades, eventos corporativos y campañas de marketing.
-            </p>
-          </div>
-
-          <div
-            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2rem; margin-bottom: 12px;">📦</div>
-            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
-              Almacenamiento Temporal
-            </h3>
-            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Nuestra <strong>imprenta</strong> cuenta con bodega climatizada para almacenar tu producción hasta por 30
-              días sin costo adicional.
-            </p>
-          </div>
-
-          <div
-            style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="font-size: 2rem; margin-bottom: 12px;">🚚</div>
-            <h3 style="font-size: 1rem; font-weight: 600; color: var(--primary1); margin-bottom: 8px;">
-              Entrega Programada
-            </h3>
-            <p style="color: var(--text); line-height: 1.4; font-size: 0.85rem;">
-              Coordinamos entregas escalonadas según tu calendario académico o empresarial. La <strong>imprenta</strong>
-              puede dividir tu pedido en entregas semanales o quincenales.
-            </p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 24px;">
-          <p style="font-size: 1rem; color: var(--muted); margin: 0;">
-            💡 <strong>Servicios adicionales disponibles</strong> para optimizar tu proyecto de <strong>imprenta por
-              volumen</strong> en <strong>CDMX</strong>
-          </p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer style="background: #000; color: #fff; padding: 40px 0; margin-top: 40px;">
