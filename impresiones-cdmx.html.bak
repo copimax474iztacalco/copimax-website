@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impresiones Baratas CDMX | Por Volumen | Desde $3 Color | COPIMAX</title>
+  <meta name="description"
+    content="Impresiones baratas en CDMX desde $3 color, $0.35 B/N. Impresiones por volumen con entrega 24-48hrs. Iztacalco, Benito Juárez, Coyoacán. ¡Cotiza gratis!">
+  <meta name="keywords"
+    content="copias cdmx, impresiones cdmx, copias iztacalco, impresiones iztacalco, copias por volumen cdmx, impresiones mayoreo, engargolado cdmx, copias baratas cdmx, impresiones color cdmx, papel opalina cdmx, copimax iztacalco">
+  <meta name="author" content="COPIMAX">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Copias e Impresiones CDMX Iztacalco | COPIMAX">
+  <meta property="og:description"
+    content="Centro de copias e impresiones en Iztacalco. Desde $0.35 por copia. Engargolado, papel carta, oficio y opalina. 25+ años de experiencia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://copimax.store/impresiones-cdmx">
+  <meta property="og:locale" content="es_MX">
+  <link rel="icon" type="image/x-icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="apple-touch-icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="shortcut icon"
+    href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <link rel="canonical" href="https://copimax.store/impresiones-cdmx">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "COPIMAX - Copias e Impresiones CDMX",
+    "description": "Centro de copias e impresiones por volumen en Iztacalco, CDMX. Especialistas en copias B/N, impresiones a color, engargolado y servicios de papelería para empresas, estudiantes y particulares.",
+    "image": "https://copimax.store/logo.jpg",
+    "@id": "https://copimax.store/impresiones-cdmx",
+    "url": "https://copimax.store",
+    "telephone": "+52-55-4021-9892",
+    "email": "copimax474@hotmail.com",
+    "priceRange": "$0.35 - $5",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vainilla 474",
+      "addressLocality": "Iztacalco",
+      "addressRegion": "CDMX",
+      "postalCode": "08400",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.4094,
+      "longitude": -99.1306
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:30",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "08:30",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/copimax",
+      "https://instagram.com/copimax",
+      "https://wa.me/525540219892"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Ciudad de México"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Copias e Impresiones",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Copias Blanco y Negro",
+            "description": "Copias B/N desde $0.35 por lado para más de 100 copias"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Impresiones a Color",
+            "description": "Impresiones a color desde $3 por hoja para pedidos de 300+ copias"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Engargolado",
+            "description": "Servicio de engargolado profesional desde $20 para 100 páginas"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 100%;
+        padding: 20px 16px;
+      }
+    }
+
+    /* Hero (pagina) - rinominato per evitare conflitto con header di navigazione */
+    .page-hero {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+
+    .hero-logo-text {
+      font-size: 42px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .location {
+      color: #CDFF00;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .calc-card {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 0 30px rgba(205, 255, 0, 0.2);
+    }
+
+    .calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .calc-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #CDFF00;
+    }
+
+    .section-label {
+      color: #999;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .toggle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .toggle-option {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .25s;
+      font-weight: 700;
+    }
+
+    .toggle-option:hover {
+      border-color: #CDFF00;
+    }
+
+    .toggle-option.selected {
+      background: #CDFF00;
+      color: #1a1a1a;
+      border-color: #CDFF00;
+    }
+
+    .subsection {
+      display: none;
+      margin-bottom: 25px;
+    }
+
+    .subsection.active {
+      display: block;
+    }
+
+    .option-card {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all .25s;
+    }
+
+    .option-card:hover {
+      border-color: #CDFF00;
+    }
+
+    .option-card.selected {
+      border-color: #CDFF00;
+      background: #2a2a2a;
+    }
+
+    .option-card.disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .option-card.disabled:hover {
+      border-color: #444;
+    }
+
+    .option-info h4 {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .option-info p {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .option-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #CDFF00;
+    }
+
+    .option-price span {
+      font-size: 14px;
+    }
+
+    .quantity-input {
+      width: 100%;
+      background: #333;
+      border: 2px solid #444;
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .quantity-input:focus {
+      outline: none;
+      border-color: #CDFF00;
+    }
+
+    .quantity-note {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .addon-item {
+      background: #333;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .addon-item:hover {
+      background: #3a3a3a;
+    }
+
+    .addon-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .addon-checkbox {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .addon-price {
+      font-weight: 700;
+      color: #CDFF00;
+    }
+
+    .result-box {
+      background: #CDFF00;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .result-badge {
+      background: #1a1a1a;
+      color: #CDFF00;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .result-price {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .result-currency {
+      font-size: 24px;
+    }
+
+    .result-breakdown {
+      font-size: 11px;
+      opacity: .7;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all .25s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      background: #22c55e;
+      transform: translateY(-2px);
+    }
+
+    .btn-call {
+      background: #333;
+      color: #fff;
+      border: 2px solid #CDFF00;
+    }
+
+    .btn-call:hover {
+      background: #3a3a3a;
+    }
+
+    .btn-icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 900;
+      color: #CDFF00;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .section {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin: 20px 0;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      color: #CDFF00;
+    }
+
+    .price-card {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: #CDFF00;
+      transform: scale(1.02);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #CDFF00;
+      color: #1a1a1a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .badge-red {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .price-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .big-price {
+      font-size: 48px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 10px;
+    }
+
+    .big-price span {
+      font-size: 24px;
+    }
+
+    .savings {
+      color: #ef4444;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .feature-list li {
+      padding: 8px 0;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .feature-list li:before {
+      content: "✓";
+      color: #CDFF00;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      text-decoration: none;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .faq-item {
+      background: #333;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 18px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background: #3a3a3a;
+    }
+
+    .faq-answer {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all .25s;
+      color: #999;
+    }
+
+    .faq-answer.open {
+      padding: 0 18px 18px;
+      max-height: 500px;
+    }
+
+    .footer {
+      background: #1a1a1a;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 15px;
+    }
+
+    .footer-text {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      color: #999;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
+    /* Stili header/menu copiati dalla home (semplificati e coerenti) */
+    .mobile-nav-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      left: auto;
+      z-index: 1100;
+      background: transparent;
+      border: none;
+      cursor: pointer
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      margin: 5px 0
+    }
+
+    .mobile-slide-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, .2);
+      z-index: 1200;
+      transition: left .3s ease;
+      display: flex;
+      flex-direction: column
+    }
+
+    .mobile-slide-menu.open {
+      left: 0
+    }
+
+    .slide-menu-header {
+      background: linear-gradient(135deg, #000, #474747);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff
+    }
+
+    .slide-menu-nav {
+      flex: 1;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column
+    }
+
+    .slide-menu-nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .slide-menu-nav a:hover {
+      background: #f8f9fa;
+      color: #000
+    }
+
+    .slide-menu-footer {
+      padding: 20px;
+      border-top: 1px solid #f0f0f0;
+      background: #f8f9fa
+    }
+
+    .slide-menu-footer .mobile-contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px
+    }
+
+    .slide-menu-footer .mobile-contact span {
+      color: #111;
+      font-weight: 600
+    }
+
+    .slide-menu-footer .mobile-contact a.whatsapp {
+      background: #25D366;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .slide-menu-footer .mobile-contact a.whatsapp:hover {
+      filter: brightness(0.95)
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #0f0f0f;
+      border-bottom: 1px solid #222
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px
+    }
+
+    .logo img {
+      height: 36px;
+      width: auto;
+      display: block
+    }
+
+    .main-navigation {
+      display: flex;
+      gap: 18px
+    }
+
+    .nav-link {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px
+    }
+
+    .nav-link:hover {
+      color: #c6ff00
+    }
+
+    .contact-header {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600
+    }
+
+    @media(max-width:768px) {
+
+      .main-navigation,
+      .contact-header {
+        display: none
+      }
+    }
+
+    @media(min-width:769px) {
+
+      .mobile-nav-button,
+      .mobile-slide-menu {
+        display: none
+      }
+    }
+
+    @media (max-width: 600px) {
+      .result-price {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Menu Mobile Semplificato -->
+  <button class="mobile-nav-button" onclick="toggleMobileMenu()">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="mobile-slide-menu" id="mobileSlideMenu">
+    <div class="slide-menu-header">
+      <span class="mobile-logo">COPIMAX</span>
+      <button class="close-slide-menu" onclick="closeMobileSlideMenu()">×</button>
+    </div>
+    <div class="slide-menu-nav">
+      <a href="/" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
+      <a href="/servicios" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
+      <a href="/copias-volumen-cdmx" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="/nosotros" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
+      <a href="/blog" onclick="closeMobileSlideMenu()">📝 Blog</a>
+      <a href="/contacto" onclick="closeMobileSlideMenu()">📍 Contacto</a>
+    </div>
+    <div class="slide-menu-footer">
+      <div class="mobile-contact">
+        <span>📞 55-4021-9892</span>
+        <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?"
+          class="whatsapp" target="_blank" onclick="closeMobileSlideMenu()">💬 WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo" onclick="window.location.href='/'">
+        <img
+          src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="COPIMAX Logo">
+      </div>
+      <div class="main-navigation">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
+        <a href="/nosotros" class="nav-link">Nosotros</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contacto" class="nav-link">Contacto</a>
+      </div>
+      <div class="contact-header">
+        <span>📞 55-4021-9892</span>
+        <a class="whatsapp-btn"
+          href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotización%20para%20copias%20e%20impresiones.%20¿Pueden%20ayudarme?"
+          target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float"
+    onclick="enviarWhatsApp(); return false;">📱</a>
+
+  <div class="page-hero">
+    <div class="hero-logo-text">COPIMAX</div>
+    <h1>Impresiones Baratas CDMX | Por Volumen | Desde $3 Color</h1>
+
+    <p class="hero-description" style="max-width:720px;margin:15px auto;color:#bbb;font-size:16px;">
+      <strong>Impresiones baratas en CDMX</strong> desde $3 por hoja a color. Especialistas en <strong>impresiones por
+        volumen</strong>
+      para empresas, estudiantes y particulares. Servicio express 24-48 horas.
+      Entrega gratis en Iztacalco, Benito Juárez, Coyoacán.
+    </p>
+
+    <div class="quick-stats" style="margin-top: 20px; font-size: 14px; color: #CDFF00; font-weight: 600;">
+      📍 Vainilla 474, Iztacalco CDMX <br>
+      ⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00 <br>
+      🚀 Entrega en 24-48 horas <br>
+      ⭐ 4.9 estrellas (Google Reviews)
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- CALCULADORA DESTACADA - Moved to top for better visibility -->
+    <div style="max-width: 800px; margin: 0 auto 40px;">
+      <div class="calc-card" id="calc-card">
+        <div class="calc-header">
+          <div class="calc-title">Calculadora de precios</div>
+          <div style="font-size: 28px;">🧮</div>
+        </div>
+
+        <!-- Tipo de trabajo: B/N vs Color -->
+        <label class="section-label">Tipo de impresión:</label>
+        <div class="toggle-grid">
+          <div id="tipo-bn" class="toggle-option selected" onclick="selectTipo('bn')">Blanco y Negro</div>
+          <div id="tipo-color" class="toggle-option" onclick="selectTipo('color')">Color</div>
+        </div>
+
+        <!-- Opciones B/N -->
+        <div class="subsection active" id="bn-options">
+          <div class="option-card selected" id="bn-2caras" onclick="selectBN('2caras')">
+            <div class="option-info">
+              <h4>Doble cara (2 lados)</h4>
+              <p>$0.35 por cada lado</p>
+            </div>
+            <div class="option-price">$0.35<span>/lado</span></div>
+          </div>
+          <div class="option-card" id="bn-1cara" onclick="selectBN('1cara')">
+            <div class="option-info">
+              <h4>Una sola cara</h4>
+              <p>$0.40 por hoja</p>
+            </div>
+            <div class="option-price">$0.40<span>/hoja</span></div>
+          </div>
+        </div>
+
+        <!-- Opciones Color -->
+        <div class="subsection" id="color-options">
+          <div class="option-card selected" id="c-texto" onclick="selectColor('texto')">
+            <div class="option-info">
+              <h4>Solo texto</h4>
+              <p>1-100 copias</p>
+            </div>
+            <div class="option-price">$5<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-imagen" onclick="selectColor('imagen')">
+            <div class="option-info">
+              <h4>Imagen completa</h4>
+              <p>1-100 copias</p>
+            </div>
+            <div class="option-price">$10<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-100plus" onclick="selectColor('100plus')">
+            <div class="option-info">
+              <h4>+100 copias</h4>
+              <p>Precio por volumen • Requiere 100+</p>
+            </div>
+            <div class="option-price">$4<span>/hoja</span></div>
+          </div>
+          <div class="option-card" id="c-300plus" onclick="selectColor('300plus')">
+            <div class="option-info">
+              <h4>+300 copias</h4>
+              <p>Mejor precio • Requiere 300+</p>
+            </div>
+            <div class="option-price">$3<span>/hoja</span></div>
+          </div>
+        </div>
+
+        <!-- Cantidad -->
+        <label class="section-label">Cantidad de hojas:</label>
+        <input type="number" id="cantidad" class="quantity-input" value="100" min="1" oninput="onQtyChange()">
+        <div class="quantity-note" id="quantity-note">100 hojas = 200 páginas si imprimes a 2 caras</div>
+        <div class="quantity-note" id="rule-note" style="color:#aaa"></div>
+
+        <!-- Extras -->
+        <label class="section-label">Servicios Adicionales (opcional):</label>
+        <div style="font-size:11px;color:#888;margin:-6px 0 10px 0;">ℹ️ Nota: se aplica cargo fijo por descarga de
+          archivo de $5 MXN.</div>
+
+        <!-- Engargolado -->
+        <div class="addon-item" onclick="document.getElementById('engargolado').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="engargolado" class="addon-checkbox">
+            <span>Engargolado</span>
+          </div>
+          <div class="addon-price" id="engargolado-total">+$20</div>
+        </div>
+        <div class="engargolado-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+            <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+            <input type="number" id="engargolado-qty" min="1" value="1"
+              style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <label style="font-size:12px;color:#aaa;">de</label>
+            <select id="engargolado-size"
+              style="padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+              <option value="100">100 páginas</option>
+              <option value="200">200 páginas</option>
+              <option value="300">300 páginas</option>
+              <option value="400">400 páginas</option>
+            </select>
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="engargolado-price">$20</span> c/u</span>
+          </div>
+        </div>
+
+        <!-- Folder individual -->
+        <div class="addon-item" onclick="document.getElementById('folders').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="folders" class="addon-checkbox">
+            <span>Folder (individual)</span>
+          </div>
+          <div class="addon-price" id="folders-total">+$15</div>
+        </div>
+        <div class="folders-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <label style="font-size:12px;color:#aaa;">Cantidad:</label>
+            <input type="number" id="folders-qty" min="1" value="1"
+              style="width:70px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="folders-price">$15</span> c/u</span>
+          </div>
+        </div>
+
+        <!-- Enmicado -->
+        <div class="addon-item" onclick="document.getElementById('enmicado').click()">
+          <div class="addon-label">
+            <input type="checkbox" id="enmicado" class="addon-checkbox">
+            <span>Enmicado</span>
+          </div>
+          <div class="addon-price" id="enmicado-total">+$25</div>
+        </div>
+        <div class="enmicado-options" style="margin:8px 0 12px 32px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <label style="font-size:12px;color:#aaa;">Cantidad de hojas:</label>
+            <input type="number" id="enmicado-pages" min="1" value="1"
+              style="width:80px;padding:6px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;">
+            <span style="font-size:12px;color:#aaa;">Precio: <span id="enmicado-price">$25 por hoja</span></span>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="result-box">
+          <div class="result-header">
+            <div class="result-label">Precio estimado:</div>
+            <div class="result-badge">Entrega 24-48h</div>
+          </div>
+          <div class="result-price">$<span id="precioFinal">35.00</span> <span class="result-currency">MXN</span></div>
+          <div class="result-breakdown" id="desglose">100 hojas × $0.35 por lado</div>
+          <div class="result-breakdown" id="descarga-note" style="margin-top:6px;">Incluye descarga de archivo: $5.00
+            MXN</div>
+        </div>
+
+        <!-- CTAs -->
+        <a href="#" class="btn btn-whatsapp" onclick="enviarWhatsApp(); return false;">
+          <span class="btn-icon">📱</span> COTIZAR AHORA
+        </a>
+        <a href="tel:+525540219892" class="btn btn-call">
+          <span class="btn-icon">📞</span> LLAMAR: 55-4021-9892
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-value">4.9★</div>
+        <div class="stat-label">Clientes felices</div>
+      </div>
+      <div>
+        <div class="stat-value">12M+</div>
+        <div class="stat-label">Copias realizadas</div>
+      </div>
+    </div>
+
+    <!-- Tipos de Impresiones -->
+    <section class="section">
+      <h2 class="section-title">Nuestros <span class="highlight">Servicios</span></h2>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+
+        <div class="price-card">
+          <div class="badge">COPIAS B/N</div>
+          <h3>Copias Blanco y Negro</h3>
+          <ul class="feature-list">
+            <li>Documentos oficiales</li>
+            <li>Tesis y reportes</li>
+            <li>Manuales y folletos</li>
+            <li>Material didáctico</li>
+            <li>Papel carta, oficio y opalina</li>
+          </ul>
+          <div class="big-price">Desde $0.35<span>/lado</span></div>
+          <a href="#calc-card" class="btn btn-call" style="margin-top: 10px; font-size: 14px;">Calcular precio →</a>
+        </div>
+
+        <div class="price-card featured">
+          <div class="badge badge-red">IMPRESIONES COLOR</div>
+          <h3>Impresiones a Color</h3>
+          <ul class="feature-list">
+            <li>Presentaciones corporativas</li>
+            <li>Material promocional</li>
+            <li>Flyers y volantes</li>
+            <li>Infografías y reportes</li>
+            <li>Alta calidad</li>
+          </ul>
+          <div class="big-price">Desde $3<span>/hoja</span></div>
+          <a href="#calc-card" class="btn btn-whatsapp" style="margin-top: 10px; font-size: 14px;">Cotizar ahora →</a>
+        </div>
+
+      </div>
+
+      <!-- Servicios Adicionales -->
+      <div style="margin-top: 30px; padding: 20px; background: #333; border-radius: 12px;">
+        <h3 style="text-align: center; margin-bottom: 20px; color: #CDFF00;">Servicios Adicionales</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          <div style="text-align: center; padding: 15px;">
+            <div style="font-size: 32px; margin-bottom: 8px;">📚</div>
+            <strong style="color: #fff;">Engargolado</strong>
+            <p style="font-size: 13px; color: #999; margin-top: 5px;">Desde $20 (100 págs)</p>
+          </div>
+          <div style="text-align: center; padding: 15px;">
+            <div style="font-size: 32px; margin-bottom: 8px;">📄</div>
+            <strong style="color: #fff;">Papel Oficio</strong>
+            <p style="font-size: 13px; color: #999; margin-top: 5px;">Desde $0.70/hoja</p>
+          </div>
+          <div style="text-align: center; padding: 15px;">
+            <div style="font-size: 32px; margin-bottom: 8px;">🔍</div>
+            <strong style="color: #fff;">Escaneo</strong>
+            <p style="font-size: 13px; color: #999; margin-top: 5px;">Disponible</p>
+          </div>
+          <div style="text-align: center; padding: 15px;">
+            <div style="font-size: 32px; margin-bottom: 8px;">🛡️</div>
+            <strong style="color: #fff;">Enmicado</strong>
+            <p style="font-size: 13px; color: #999; margin-top: 5px;">Protección profesional</p>
+          </div>
+          <div style="text-align: center; padding: 15px;">
+            <div style="font-size: 32px; margin-bottom: 8px;">✨</div>
+            <strong style="color: #fff;">Papel Opalina</strong>
+            <p style="font-size: 13px; color: #999; margin-top: 5px;">Alta calidad</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Por qué COPIMAX -->
+    <section class="section">
+      <h2 class="section-title">¿Por qué <span class="highlight">COPIMAX</span>?</h2>
+      <p
+        style="text-align: center; color: #ccc; font-size: 16px; margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Somos tu mejor opción para copias e impresiones por volumen en CDMX, sin importar si eres:
+      </p>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div style="background: #333; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 10px;">🏢</div>
+          <h4 style="color: #CDFF00; margin-bottom: 10px;">Empresas</h4>
+          <p style="color: #ccc; font-size: 14px;">Flyers, presentaciones, documentos corporativos y material
+            promocional por volumen</p>
+        </div>
+        <div style="background: #333; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 10px;">🎓</div>
+          <h4 style="color: #CDFF00; margin-bottom: 10px;">Estudiantes</h4>
+          <p style="color: #ccc; font-size: 14px;">Tesis, trabajos, apuntes y proyectos con engargolado profesional</p>
+        </div>
+        <div style="background: #333; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 10px;">👨‍🏫</div>
+          <h4 style="color: #CDFF00; margin-bottom: 10px;">Maestros</h4>
+          <p style="color: #ccc; font-size: 14px;">Material didáctico, exámenes y guías de estudio en grandes cantidades
+          </p>
+        </div>
+        <div style="background: #333; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 10px;">👤</div>
+          <h4 style="color: #CDFF00; margin-bottom: 10px;">Particulares</h4>
+          <p style="color: #ccc; font-size: 14px;">Cualquier necesidad de impresión o copia, grande o pequeña cantidad
+          </p>
+        </div>
+      </div>
+      <ul class="feature-list" style="font-size: 16px; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+        <li>✓ Más de 25 años de experiencia en CDMX</li>
+        <li>✓ Precios competitivos por volumen y mayoreo</li>
+        <li>✓ Entrega rápida 24-48 horas</li>
+        <li>✓ Calidad garantizada en todas las copias</li>
+        <li>✓ Ubicación céntrica en Iztacalco</li>
+      </ul>
+    </section>
+    <!-- Stats -->
+    <div class="stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-value">4.9★</div>
+        <div class="stat-label">Clientes felices</div>
+      </div>
+      <div>
+        <div class="stat-value">12M+</div>
+        <div class="stat-label">Copias realizadas</div>
+      </div>
+    </div>
+
+    <!-- Precios -->
+    <!-- Tabla Comparativa de Precios -->
+    <div class="section">
+      <h2 class="section-title">Tabla de <span class="highlight">Precios</span></h2>
+
+      <!-- Copias e Impresiones -->
+      <h3 style="font-size: 1.3rem; margin: 20px 0 15px; color: #fff;">Copias e Impresiones</h3>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; color: #ddd; font-size: 14px;">
+          <thead>
+            <tr style="background: #333; color: #CDFF00;">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">CANTIDAD</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">BLANCO Y NEGRO</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">COLOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">1-100 hojas</td>
+              <td style="padding: 12px;">$1.00 MXN por hoja</td>
+              <td style="padding: 12px;">$5.00 MXN por hoja</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">101+ hojas (1 lado)</td>
+              <td style="padding: 12px;">$0.40 MXN por hoja</td>
+              <td style="padding: 12px;">$4.00 MXN por hoja</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">101+ hojas (2 lados)</td>
+              <td style="padding: 12px;">$0.35 MXN por lado</td>
+              <td style="padding: 12px;">-</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">300+ hojas</td>
+              <td style="padding: 12px;">$0.35 MXN por lado</td>
+              <td style="padding: 12px;">$3.00 MXN por hoja</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Engargolado -->
+      <h3 style="font-size: 1.3rem; margin: 30px 0 15px; color: #fff;">Engargolado</h3>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; color: #ddd; font-size: 14px;">
+          <thead>
+            <tr style="background: #333; color: #CDFF00;">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">PÁGINAS</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">PRECIO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">Hasta 100 páginas</td>
+              <td style="padding: 12px;">$20 MXN</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">Hasta 150 páginas</td>
+              <td style="padding: 12px;">$30 MXN</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">Hasta 200 páginas</td>
+              <td style="padding: 12px;">$40 MXN</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">Hasta 300 páginas</td>
+              <td style="padding: 12px;">$50 MXN</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 12px; color: #999; margin-top: 10px; text-align: center;">* Descuentos disponibles para
+          engargolado por mayoreo</p>
+      </div>
+
+      <!-- Papel Oficio -->
+      <h3 style="font-size: 1.3rem; margin: 30px 0 15px; color: #fff;">Papel Tamaño Oficio</h3>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; color: #ddd; font-size: 14px;">
+          <thead>
+            <tr style="background: #333; color: #CDFF00;">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">TIPO</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #444;">PRECIO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #333;">
+              <td style="padding: 12px;">Precio regular</td>
+              <td style="padding: 12px;">$1.00 MXN por hoja</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">Por volumen</td>
+              <td style="padding: 12px;">$0.70 MXN por hoja</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Trabajos Recientes -->
+    <div class="section">
+      <h2 class="section-title">Trabajos <span class="highlight">Recientes</span></h2>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div style="background: #333; padding: 15px; border-radius: 12px;">
+          <div
+            style="height: 150px; background: #444; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+            <span>📚</span>
+          </div>
+          <h4 style="color: #CDFF00;">500 tesis engargoladas</h4>
+          <p style="font-size: 12px; color: #999;">Universidad - Entrega 48h</p>
+        </div>
+        <div style="background: #333; padding: 15px; border-radius: 12px;">
+          <div
+            style="height: 150px; background: #444; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+            <span>📄</span>
+          </div>
+          <h4 style="color: #CDFF00;">10,000 copias B/N</h4>
+          <p style="font-size: 12px; color: #999;">Empresa - Material corporativo</p>
+        </div>
+        <div style="background: #333; padding: 15px; border-radius: 12px;">
+          <div
+            style="height: 150px; background: #444; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+            <span>🎨</span>
+          </div>
+          <h4 style="color: #CDFF00;">3,000 flyers a color</h4>
+          <p style="font-size: 12px; color: #999;">Negocio local - Campaña</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+      <h2 class="section-title">Preguntas <span class="highlight">Frecuentes</span></h2>
+      <p class="section-subtitle">Todo lo que necesitas saber</p>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(1)">
+          <span>¿Cuál es la diferencia de precio entre B/N y color?</span>
+          <span id="icon-1">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-1">Las copias blanco y negro son más económicas (desde $0.35). Las impresiones a
+          color van desde $3 hasta $10 dependiendo del contenido y volumen.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(2)">
+          <span>¿Cuánto cuesta imprimir a doble cara en B/N?</span>
+          <span id="icon-2">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-2">Para B/N, imprimir a doble cara cuesta $0.35 por cada lado. Una sola cara
+          cuesta $0.40 por hoja.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(3)">
+          <span>¿Dónde están ubicados?</span>
+          <span id="icon-3">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-3">Estamos en Vainilla 474, Granjas México, Iztacalco, CDMX 08400. A minutos de
+          UPIICSA y Metro Iztacalco.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(4)">
+          <span>¿Cuánto tardan en entregar?</span>
+          <span id="icon-4">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-4">Tiempo estándar de 24 a 48 horas. Servicio express el mismo día con cargo
+          adicional.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(5)">
+          <span>¿Tienen precios para estudiantes?</span>
+          <span id="icon-5">▼</span>
+        </div>
+        <div class="faq-answer" id="faq-5">Sí, contamos con precios especiales y engargolados desde $20 para tesis y
+          trabajos.</div>
+      </div>
+    </div>
+
+    <!-- Local SEO -->
+    <div class="section">
+      <h2 class="section-title">Cobertura en <span class="highlight">CDMX</span></h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; color: #ccc; font-size: 14px;">
+        <div>
+          <h4 style="color: #fff; margin-bottom: 10px;">Zonas de Entrega:</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 5px;">📍 Iztacalco (sede principal)</li>
+            <li style="margin-bottom: 5px;">📍 Benito Juárez</li>
+            <li style="margin-bottom: 5px;">📍 Iztapalapa</li>
+            <li style="margin-bottom: 5px;">📍 Coyoacán</li>
+            <li style="margin-bottom: 5px;">📍 Cuauhtémoc</li>
+            <li style="margin-bottom: 5px;">📍 Venustiano Carranza</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: #fff; margin-bottom: 10px;">Ubicación:</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 5px;">→ A 5 min del Metro Apatlaco</li>
+            <li style="margin-bottom: 5px;">→ Cerca de Viaducto y Eje 3</li>
+            <li style="margin-bottom: 5px;">→ Zona de fácil acceso desde Periférico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section style="max-width: 800px; margin: 3rem auto 2rem; padding: 0 1rem;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Copias e Impresiones por Volumen en CDMX</h2>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: #d1d5db; margin-bottom: 1rem;">
+        En COPIMAX somos especialistas en <strong>copias e impresiones por volumen</strong> y <strong>mayoreo en Ciudad
+          de
+          México</strong>. Nuestro centro ofrece servicios profesionales para empresas, estudiantes, maestros y
+        particulares que necesitan copias e impresiones en grandes o pequeñas cantidades.
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: #d1d5db;">
+        Ya sea que necesites <strong>impresiones a color</strong> para flyers y presentaciones, <strong>copias B/N por
+          mayoreo</strong> para documentos, o <strong>engargolado profesional</strong> para tesis y manuales, contamos
+        con la experiencia y precios competitivos para cumplir con tus requerimientos. Nuestros tiempos de entrega
+        rápidos (24-48 horas) nos convierten en la mejor opción de <strong>copias e impresiones en Iztacalco,
+          CDMX</strong>.
+        <a href="/copias-volumen-cdmx" style="color:#c6ff00; text-decoration: underline;">Copias por volumen</a> ·
+        <a href="/contacto" style="color:#c6ff00; text-decoration: underline;">Contacto</a>
+      </p>
+    </section>
+
+    <!-- CTA Final -->
+    <div class="section" style="background: #CDFF00; color: #1a1a1a;">
+      <h2 class="section-title" style="color: #1a1a1a;">¿Listo para imprimir?</h2>
+      <p class="section-subtitle" style="color: #333;">Cotiza gratis y recibe en 24-48 horas</p>
+      <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="btn btn-whatsapp"
+        onclick="enviarWhatsApp(); return false;">
+        <span class="btn-icon">📱</span> Cotizar por WhatsApp
+      </a>
+      <a href="tel:+525540219892" class="btn" style="background: #1a1a1a; color: #CDFF00;">
+        <span class="btn-icon">📞</span> 55-4021-9892
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">COPIMAX</div>
+    <div class="footer-text">
+      Centro de copias e impresiones en Iztacalco, CDMX<br>
+      Servicio profesional desde 1999<br><br>
+      Vainilla 474, Granjas México, Iztacalco • 08400 CDMX<br>
+      📞 55-4021-9892 • 📱 WhatsApp 24/7
+    </div>
+    <div class="footer-links">© 2025 COPIMAX</div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+    function closeMobileSlideMenu() {
+      const menu = document.getElementById('mobileSlideMenu');
+      if (menu) menu.classList.remove('open');
+    }
+    let tipo = 'bn';
+    let bnTipo = '2caras';
+    let colorTipo = 'texto';
+
+    function selectTipo(nuevo) {
+      tipo = nuevo;
+      document.getElementById('tipo-bn').classList.toggle('selected', tipo === 'bn');
+      document.getElementById('tipo-color').classList.toggle('selected', tipo === 'color');
+      document.getElementById('bn-options').classList.toggle('active', tipo === 'bn');
+      document.getElementById('color-options').classList.toggle('active', tipo === 'color');
+      calcularPrecio();
+    }
+
+    function selectBN(op) {
+      bnTipo = op;
+      document.getElementById('bn-2caras').classList.toggle('selected', op === '2caras');
+      document.getElementById('bn-1cara').classList.toggle('selected', op === '1cara');
+      calcularPrecio();
+    }
+
+    function selectColor(op) {
+      const el = document.getElementById('c-' + op);
+      if (el && el.classList.contains('disabled')) return; // ignora clic su opzioni non valide per la quantità
+      colorTipo = op;
+      ['texto', 'imagen', '100plus', '300plus'].forEach(id => {
+        const el2 = document.getElementById('c-' + id);
+        if (el2) el2.classList.toggle('selected', id === op);
+      });
+      calcularPrecio();
+    }
+
+    function enforceColorTiers() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      const cTexto = document.getElementById('c-texto');
+      const cImagen = document.getElementById('c-imagen');
+      const c100 = document.getElementById('c-100plus');
+      const c300 = document.getElementById('c-300plus');
+      const canBase = qty < 100;
+      const must100 = qty >= 100 && qty < 300;
+      const must300 = qty >= 300;
+      // Abilita solo il tier corretto
+      cTexto.classList.toggle('disabled', !canBase);
+      cImagen.classList.toggle('disabled', !canBase);
+      c100.classList.toggle('disabled', !must100);
+      c300.classList.toggle('disabled', !must300);
+      // Forza selezione coerente con la quantità
+      if (must300) {
+        colorTipo = '300plus';
+      } else if (must100) {
+        colorTipo = '100plus';
+      } else {
+        if (colorTipo !== 'texto' && colorTipo !== 'imagen') colorTipo = 'texto';
+      }
+      ['texto', 'imagen', '100plus', '300plus'].forEach(id => {
+        const el = document.getElementById('c-' + id);
+        if (el) el.classList.toggle('selected', id === colorTipo);
+      });
+    }
+
+    function precioUnitario() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      if (tipo === 'bn') {
+        // Regla homepage: 1-100 copias B/N a $1.00
+        if (qty <= 100) return 1.00;
+        // Más de 100: $0.35 por lado (doble cara) o $0.40 por hoja (una cara)
+        if (bnTipo === '2caras') return 0.35; // por lado
+        return 0.40; // por hoja
+      }
+      // color por hoja
+      switch (colorTipo) {
+        case 'texto': return 5;
+        case 'imagen': return 10;
+        case '100plus': return 4;
+        case '300plus': return 3;
+        default: return 5;
+      }
+    }
+
+    function calcularPrecio() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      let unit = precioUnitario();
+      let subtotal;
+      let desglose = '';
+
+      if (tipo === 'bn') {
+        const sidesMultiplier = bnTipo === '2caras' ? 2 : 1;
+        // Lógica homepage: total = copias × páginas(=1) × caras × precio unitario
+        subtotal = qty * 1 * sidesMultiplier * unit;
+        const ruleNote = document.getElementById('rule-note');
+        if (qty <= 100) {
+          desglose = `${qty} hojas${sidesMultiplier === 2 ? ' × 2 caras' : ''} × $${unit.toFixed(2)} por página`;
+          if (ruleNote) ruleNote.textContent = 'Tarifa B/N 1–100: $1.00 por página (aplicada)';
+        } else {
+          if (bnTipo === '2caras') {
+            desglose = `${qty} hojas × 2 lados × $${unit.toFixed(2)} por lado`;
+          } else {
+            desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja`;
+          }
+          if (ruleNote) ruleNote.textContent = '';
+        }
+        document.getElementById('quantity-note').textContent = sidesMultiplier === 2 ? `${qty} hojas = ${qty * 2} páginas si imprimes a 2 caras` : `${qty} hojas = ${qty} páginas (1 cara)`;
+      } else {
+        // Color: por hoja, sin multiplicador de caras en esta página
+        subtotal = qty * unit;
+        desglose = `${qty} hojas × $${unit.toFixed(2)} por hoja (color)`;
+        document.getElementById('quantity-note').textContent = `${qty} hojas a color`;
+        const ruleNote = document.getElementById('rule-note');
+        if (ruleNote) ruleNote.textContent = '';
+      }
+
+      let extras = 0;
+      // Engargolado dinámico
+      if (document.getElementById('engargolado').checked) {
+        const eQty = parseInt(document.getElementById('engargolado-qty').value || '1', 10);
+        const eSize = parseInt(document.getElementById('engargolado-size').value || '100', 10);
+        let pricePerUnit = 20;
+        if (eSize > 100) pricePerUnit = 40;
+        if (eSize > 200) pricePerUnit = 50;
+        if (eSize > 300) pricePerUnit = 60;
+        const eTotal = eQty * pricePerUnit;
+        extras += eTotal;
+        document.getElementById('engargolado-price').textContent = `$${pricePerUnit}`;
+        const eTotalEl = document.getElementById('engargolado-total');
+        if (eTotalEl) eTotalEl.textContent = `+$${eTotal}`;
+      }
+      // Folder dinámico
+      if (document.getElementById('folders').checked) {
+        const fQty = parseInt(document.getElementById('folders-qty').value || '1', 10);
+        const fUnit = 15;
+        const fTotal = fQty * fUnit;
+        extras += fTotal;
+        const fTotalEl = document.getElementById('folders-total');
+        const fPriceEl = document.getElementById('folders-price');
+        if (fTotalEl) fTotalEl.textContent = `+$${fTotal}`;
+        if (fPriceEl) fPriceEl.textContent = `$${fUnit}`;
+      }
+      // Enmicado dinámico
+      if (document.getElementById('enmicado').checked) {
+        const lPages = parseInt(document.getElementById('enmicado-pages').value || '1', 10);
+        const lUnit = 25;
+        const lTotal = lPages * lUnit;
+        extras += lTotal;
+        const lTotalEl = document.getElementById('enmicado-total');
+        const lPriceEl = document.getElementById('enmicado-price');
+        if (lTotalEl) lTotalEl.textContent = `+$${lTotal}`;
+        if (lPriceEl) lPriceEl.textContent = `$${lUnit} por hoja`;
+      }
+      const descarga = 5; // cargo fijo por descarga de archivo
+
+      const total = subtotal + extras + descarga;
+      document.getElementById('precioFinal').textContent = total.toFixed(2);
+      document.getElementById('desglose').textContent = desglose + (extras > 0 ? ` + extras $${extras.toFixed(2)}` : '') + ` + descarga $${descarga.toFixed(2)}`;
+    }
+
+    function enviarWhatsApp() {
+      const qty = Math.max(1, parseInt(document.getElementById('cantidad').value || '1', 10));
+      const total = document.getElementById('precioFinal').textContent;
+      const isBN = tipo === 'bn';
+      const sidesLabel = isBN ? (bnTipo === '2caras' ? 'Doble cara (2 lados)' : 'Una cara') : '—';
+      const colorLabel = isBN ? 'Blanco y Negro' : (colorTipo === 'texto' ? 'Color (solo texto)' : colorTipo === 'imagen' ? 'Color (imagen completa)' : colorTipo === '100plus' ? 'Color 100+' : 'Color 300+');
+      const unit = precioUnitario();
+      const bnNote = isBN && qty <= 100 ? 'Tarifa B/N 1–100: $1.00 por página' : '';
+
+      // Extras breakdown
+      const ups = [];
+      let upsTotal = 0;
+      if (document.getElementById('engargolado').checked) {
+        const eQty = parseInt(document.getElementById('engargolado-qty').value || '1', 10);
+        const eSize = parseInt(document.getElementById('engargolado-size').value || '100', 10);
+        let pricePerUnit = 20; if (eSize > 100) pricePerUnit = 40; if (eSize > 200) pricePerUnit = 50; if (eSize > 300) pricePerUnit = 60;
+        const eTotal = eQty * pricePerUnit; upsTotal += eTotal;
+        ups.push(`• Engargolado: ${eQty} × ${eSize} págs = $${eTotal}`);
+      }
+      if (document.getElementById('folders').checked) {
+        const fQty = parseInt(document.getElementById('folders-qty').value || '1', 10);
+        const fTotal = fQty * 15; upsTotal += fTotal;
+        ups.push(`• Folder: ${fQty} × $15 = $${fTotal}`);
+      }
+      if (document.getElementById('enmicado').checked) {
+        const lPages = parseInt(document.getElementById('enmicado-pages').value || '1', 10);
+        const lTotal = lPages * 25; upsTotal += lTotal;
+        ups.push(`• Enmicado: ${lPages} hojas × $25 = $${lTotal}`);
+      }
+      const descarga = 5;
+
+      const header = `Hola COPIMAX 👋\nQuiero cotizar un pedido de impresiones:`;
+      const detalles = [
+        `• Cantidad: ${qty} hojas`,
+        `• Tipo: ${colorLabel}${isBN ? ` | ${sidesLabel}` : ''}`,
+        `• Precio unitario: $${unit.toFixed(2)} MXN`,
+        bnNote ? `• Nota: ${bnNote}` : null
+      ].filter(Boolean).join('\n');
+
+      const extras = ups.length ? `\nExtras:\n${ups.join('\n')}` : '';
+      const totales = `\nDescarga de archivo: $${descarga.toFixed(2)}\nTotal estimado: $${total} MXN`;
+
+      const footer = `\n\nUbicación: Vainilla 474, Iztacalco (CDMX)\nTel: 55-4021-9892`;
+      const msg = `${header}\n${detalles}${extras}\n${totales}${footer}`;
+      const url = `https://wa.me/525540219892?text=${encodeURIComponent(msg)}`;
+      window.location.href = url;
+    }
+
+    function toggleFAQ(i) {
+      const ans = document.getElementById(`faq-${i}`);
+      const icon = document.getElementById(`icon-${i}`);
+      const open = ans.classList.toggle('open');
+      if (icon) icon.textContent = open ? '▲' : '▼';
+    }
+
+    function onQtyChange() {
+      enforceColorTiers();
+      calcularPrecio();
+    }
+
+    // Init
+    enforceColorTiers();
+    calcularPrecio();
+
+    // Addon interactions
+    const chkEng = document.getElementById('engargolado');
+    const chkFol = document.getElementById('folders');
+    const chkLam = document.getElementById('enmicado');
+    const engOpt = document.querySelector('.engargolado-options');
+    const folOpt = document.querySelector('.folders-options');
+    const lamOpt = document.querySelector('.enmicado-options');
+    if (chkEng) chkEng.addEventListener('change', () => { if (engOpt) engOpt.style.display = chkEng.checked ? 'block' : 'none'; calcularPrecio(); });
+    if (chkFol) chkFol.addEventListener('change', () => { if (folOpt) folOpt.style.display = chkFol.checked ? 'block' : 'none'; calcularPrecio(); });
+    if (chkLam) chkLam.addEventListener('change', () => { if (lamOpt) lamOpt.style.display = chkLam.checked ? 'block' : 'none'; calcularPrecio(); });
+    const engQty = document.getElementById('engargolado-qty');
+    const engSize = document.getElementById('engargolado-size');
+    const folQty = document.getElementById('folders-qty');
+    const lamPages = document.getElementById('enmicado-pages');
+    if (engQty) engQty.addEventListener('input', calcularPrecio);
+    if (engSize) engSize.addEventListener('change', calcularPrecio);
+    if (folQty) folQty.addEventListener('input', calcularPrecio);
+    if (lamPages) lamPages.addEventListener('input', calcularPrecio);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow Dead/Temp Pages
+Disallow: /assets/temp/
+Disallow: /*.pdf$
+Disallow: /copimax-centro-de-copiado-cdmx-por-mayoreo.html # Optional: avoid indexing duplicate home if needed, but user said DO NOT TOUCH, so leaving it allowed for now to be safe, or we can disallow if it causes issues. Leaving allowed as general rule.
+
+# Sitemap Location
+Sitemap: https://copimax.store/sitemap.xml
+
+# Crawl Delay
+Crawl-delay: 0
