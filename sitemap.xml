@@ -50,7 +50,7 @@
     <loc>https://copimax.store/copias-volumen-cdmx</loc>
     <lastmod>2025-08-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   
   <url>
@@ -60,26 +60,11 @@
     <priority>0.7</priority>
   </url>
   
-  <url>
-    <loc>https://copimax.store/centro-copiado-cdmx-guia-2025</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
-  <url>
-    <loc>https://copimax.store/fotocopias-economicas-cdmx-precios-2025</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
-  <url>
-    <loc>https://copimax.store/papeleria-cdmconfianzax-servicios-centro-</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
   <url>
     <loc>https://copimax.store/tesis-guia-2025</loc>
@@ -88,19 +73,9 @@
     <priority>0.8</priority>
   </url>
   
-  <url>
-    <loc>https://copimax.store/copias-baratas-iztacalco</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
-  <url>
-    <loc>https://copimax.store/papeleria-estudiantes-iztacalco</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
   <url>
     <loc>https://copimax.store/impresion-corporativa-cdmx</loc>
@@ -113,7 +88,7 @@
     <loc>https://copimax.store/copimax-centro-de-copiado-cdmx-por-mayoreo</loc>
     <lastmod>2025-08-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
   <url>
@@ -131,12 +106,7 @@
   </url>
   
   <!-- SPOKE PAGES - Hub & Spoke SEO Strategy -->
-  <url>
-    <loc>https://copimax.store/impresiones-baratas-cdmx</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
   
   <url>
     <loc>https://copimax.store/copias-baratas-cerca-de-mi</loc>
