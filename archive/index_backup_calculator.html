@@ -61,7 +61,7 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGQPKN977H"></script>
   <script>
-    // console.log('🚀 Script principale caricato...');
+    console.log('🚀 Script principale caricato...');
 
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -120,8 +120,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "19.39732",
-      "longitude": "-99.09302"
+      "latitude": "19.4326",
+      "longitude": "-99.1332"
     },
     "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
     "priceRange": "$",
@@ -151,7 +151,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Impresión a Color",
-            "description": "Impresión color desde $3"
+            "description": "Impresión color desde $5"
           },
           "price": "5.00",
           "priceCurrency": "MXN"
@@ -170,14 +170,14 @@
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
+      "ratingValue": "4.9",
       "reviewCount": "150"
     }
   }
   </script>
 
   <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function () {
       // Inizializza EmailJS con le tue credenziali
@@ -186,12 +186,12 @@
   </script>
 
   <!-- Google Analytics & Conversion Tracking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGQPKN977H"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-GGQPKN977H', {
+    gtag('config', 'GA_MEASUREMENT_ID', {
       'custom_map': {
         'dimension1': 'service_type',
         'dimension2': 'order_value',
@@ -456,8 +456,7 @@
         /* Ridotto da 48px */
       }
 
-      .services-section,
-      .packages-section {
+      .services-section {
         padding: 28px;
         /* Ridotto da 32px */
       }
@@ -1522,7 +1521,7 @@
       }
     }
 
-    /* Servicios y Paquetes - Sección Unificada */
+    /* Servicios Principales - Layout Horizontal */
     .services-packages {
       background: var(--bg);
       padding: 64px 0
@@ -1534,21 +1533,20 @@
     }
 
     .services-packages-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
+      display: flex;
+      justify-content: center;
       max-width: 1200px;
       margin: 0 auto
     }
 
     /* Subsecciones */
-    .services-section,
-    .packages-section {
+    .services-section {
       background: #fff;
       border-radius: 20px;
       padding: 32px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2)
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%
     }
 
     .subsection-title {
@@ -1560,40 +1558,29 @@
       line-height: 1.3
     }
 
-    .packages-header {
-      text-align: center;
-      margin-bottom: 24px
-    }
-
-    .deal-badge {
-      display: inline-block;
-      background: #111827;
-      color: #fff;
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: .9rem;
-      font-weight: 800;
-      letter-spacing: .5px;
-      margin-bottom: 12px;
-      word-wrap: break-word
-    }
-
-    /* Servicios Compactos */
+    /* Servicios Compactos - Layout Horizontal */
     .services-compact {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap
     }
 
     .service-compact {
       display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       gap: 16px;
-      padding: 16px;
+      padding: 24px;
       background: linear-gradient(135deg, #f8fafc, #f1f5f9);
       border-radius: 16px;
       border: 1px solid #e2e8f0;
-      transition: all 0.3s ease
+      transition: all 0.3s ease;
+      min-width: 250px;
+      max-width: 300px;
+      flex: 1
     }
 
     .service-compact:hover {
@@ -1707,13 +1694,12 @@
       }
 
       .services-packages-grid {
-        grid-template-columns: 1fr;
+        display: flex;
         gap: 24px;
         max-width: 100%
       }
 
-      .services-section,
-      .packages-section {
+      .services-section {
         padding: 20px;
         border-radius: 16px
       }
@@ -1724,14 +1710,12 @@
       }
 
       /* Primary services in a horizontal row with scroll */
-      /* Primary services stacked vertically for better mobile readability */
       .services-compact {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        overflow-x: visible;
-        padding-bottom: 0;
-        scroll-snap-type: none;
+        flex-direction: row;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory
       }
 
       .services-compact::-webkit-scrollbar {
@@ -1746,9 +1730,8 @@
       .service-compact {
         padding: 12px;
         gap: 12px;
-        width: 100%;
-        min-width: 0;
-        scroll-snap-align: none;
+        min-width: 220px;
+        scroll-snap-align: start
       }
 
       .service-icon {
@@ -1854,8 +1837,7 @@
         max-width: 100%
       }
 
-      .services-section,
-      .packages-section {
+      .services-section {
         padding: 16px;
         border-radius: 12px
       }
@@ -1993,8 +1975,7 @@
         gap: 16px
       }
 
-      .services-section,
-      .packages-section {
+      .services-section {
         padding: 16px;
         border-radius: 12px
       }
@@ -2143,39 +2124,6 @@
       .services-packages-header p {
         font-size: 1rem;
         margin-bottom: 20px;
-      }
-
-      /* Pacchetti più compatti */
-      .packages-section {
-        padding: 16px;
-      }
-
-      .packages-header h3 {
-        font-size: 1.3rem;
-        margin-bottom: 16px;
-      }
-
-
-      .package-info h4 {
-        font-size: 1rem;
-        margin-bottom: 6px;
-      }
-
-      .package-price {
-        font-size: 1.1rem;
-        margin-bottom: 6px;
-      }
-
-      .package-info p {
-        font-size: 0.85rem;
-        margin-bottom: 8px;
-      }
-
-      .package-cta {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        width: 100%;
-        margin-top: 8px;
       }
 
       /* Calcolatrice più compatta - RIMOSSA DUPLICATA */
@@ -5613,8 +5561,7 @@
         gap: 20px;
       }
 
-      .services-section,
-      .packages-section {
+      .services-section {
         padding: 16px;
       }
 
@@ -6105,9 +6052,8 @@
         gap: 12px;
       }
 
-      /* Services & Packages - Extra Compact */
-      .services-section,
-      .packages-section {
+      /* Services - Extra Compact */
+      .services-section {
         padding: 12px;
       }
 
@@ -6655,7 +6601,7 @@
     <div class="slide-menu-nav">
       <a href="/" onclick="closeMobileSlideMenu()">🏠 Inicio</a>
       <a href="/servicios" onclick="closeMobileSlideMenu()">🖨️ Servicios</a>
-      <a href="/copimax-centro-de-copiado-cdmx-por-mayoreo" onclick="closeMobileSlideMenu()">📦 Volumen</a>
+      <a href="/copias-volumen-cdmx" onclick="closeMobileSlideMenu()">📦 Volumen</a>
       <a href="/nosotros" onclick="closeMobileSlideMenu()">🏢 Nosotros</a>
       <a href="/blog" onclick="closeMobileSlideMenu()">📝 Blog</a>
       <a href="/contacto" onclick="closeMobileSlideMenu()">📍 Contacto</a>
@@ -6684,7 +6630,7 @@
       <div class="main-navigation">
         <a href="/" class="nav-link active">Inicio</a>
         <a href="/servicios" class="nav-link">Servicios</a>
-        <a href="/copimax-centro-de-copiado-cdmx-por-mayoreo" class="nav-link">Volumen</a>
+        <a href="/copias-volumen-cdmx" class="nav-link">Volumen</a>
         <a href="/nosotros" class="nav-link">Nosotros</a>
         <a href="/blog" class="nav-link">Blog</a>
         <a href="/contacto" class="nav-link">Contacto</a>
@@ -6746,8 +6692,7 @@
 
         <div class="hero-cta">
           <a href="#calculator" class="cta-primary">🛒 COTIZAR AHORA</a>
-          <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20quiero%20una%20cotización%20express.%20¿Pueden%20ayudarme?"
-            class="cta-primary">💬 COTIZAR EXPRESS</a>
+          <a href="#services-packages" class="cta-primary">💰 VER PRECIOS Y PAQUETES</a>
         </div>
       </div>
     </section>
@@ -6806,7 +6751,7 @@
       </div>
     </section>
 
-    <!-- Servicios Principales - Sección Unificada -->
+    <!-- Servicios y Paquetes - Sección Unificada -->
     <section id="services-packages" class="services-packages">
       <div class="container">
         <div class="services-packages-header">
@@ -6818,7 +6763,6 @@
         <div class="services-packages-grid">
           <!-- Servicios -->
           <div class="services-section">
-            <h3 class="subsection-title">Servicios Principales</h3>
             <div class="services-compact">
               <div class="service-compact">
                 <div class="service-icon">📄</div>
@@ -6833,7 +6777,7 @@
               <div class="service-compact">
                 <div class="service-icon">🎨</div>
                 <div class="service-info">
-                  <h4><a href="/servicios" style="color:#111">Impresión Color desde $3 (mayoreo)</a></h4>
+                  <h4><a href="/servicios" style="color:#111">Impresión Color</a></h4>
                   <div class="service-price-compact">$5 - $10</div>
                   <p>Textos y fotos</p>
                 </div>
@@ -6848,232 +6792,228 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-  </div>
-  </section>
+    </section>
 
-  <!-- Calculator -->
-  <section id="calculator" class="calculator-section">
-    <div class="container">
-      <div class="calc-hero">
-        <h2>Calculadora de precios COPIMAX</h2>
-        <p>Calcula tu precio exacto y cotiza tu orden al instante. Precios claros y sin sorpresas.</p>
-      </div>
-
-      <div class="calculator-card">
-        <div class="calc-input">
-          <label class="calc-label">📄 Cantidad de copias</label>
-          <input type="number" class="calc-field" id="quantity" placeholder="Ej: 100" value="100" min="1">
-          <div class="quantity-examples">
-            <span>100 copias = 1 tesis</span>
-            <span>500 = material de oficina</span>
-          </div>
-
-          <!-- INPUT PAGINE PDF -->
-          <div style="margin-top: 16px;">
-            <label class="calc-label">📋 Número de páginas</label>
-            <input type="number" class="calc-field" id="pdf-pages-input" placeholder="Ej: 123" value="1" min="1"
-              max="1000">
-            <div class="quantity-examples" style="margin-top: 8px;">
-              <span>Si no sabes, deja en 1</span>
-              <span>El precio se calcula: copias × páginas</span>
-            </div>
-          </div>
-
-
+    <!-- Calculator -->
+    <section id="calculator" class="calculator-section">
+      <div class="container">
+        <div class="calc-hero">
+          <h2>Calculadora de precios COPIMAX</h2>
+          <p>Calcula tu precio exacto y cotiza tu orden al instante. Precios claros y sin sorpresas.</p>
         </div>
 
-        <div class="calc-options">
-          <div class="calc-option active" data-type="copies">
-            <div class="option-icon">📋</div>
-            <div class="option-content">
-              <strong>Copias</strong><br>Documentos existentes
+        <div class="calculator-card">
+          <div class="calc-input">
+            <label class="calc-label">📄 Cantidad de copias</label>
+            <input type="number" class="calc-field" id="quantity" placeholder="Ej: 100" value="100" min="1">
+            <div class="quantity-examples">
+              <span>100 copias = 1 tesis</span>
+              <span>500 = material de oficina</span>
             </div>
-            <div class="option-check">✅</div>
-          </div>
-          <div class="calc-option" data-type="prints">
-            <div class="option-icon">💻</div>
-            <div class="option-content">
-              <strong>Impresiones</strong><br>Desde archivo digital
-            </div>
-            <div class="option-check">✅</div>
-          </div>
-        </div>
 
-        <div class="calc-options">
-          <div class="calc-option active" data-color="bw">
-            <div class="option-icon">⚫</div>
-            <div class="option-content">
-              <strong>Blanco y Negro</strong><br>$0.35 - $1.00
-            </div>
-            <div class="option-check">✅</div>
-          </div>
-          <div class="calc-option" data-color="color">
-            <div class="option-icon">🎨</div>
-            <div class="option-content">
-              <strong>A Color</strong><br>$5/$10 (1-100) • $4 (101-300) • $3.00 (>300)
-            </div>
-            <div class="option-check">✅</div>
-          </div>
-        </div>
-
-        <!-- Opzioni dettagliate per stampa a colori -->
-        <div class="color-details" id="color-details"
-          style="display: none; margin-top: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
-          <h4 style="margin-bottom: 12px; font-weight: 600; color: #374151;">Tipo de impresión a color</h4>
-          <div class="color-type-options"
-            style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-            <div class="color-type-option" data-color-type="text-logo">
-              <div
-                style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                <div style="font-weight: 600; margin-bottom: 4px;">📝 Texto y Logo</div>
-                <div style="font-size: 0.9rem; color: #6b7280;">$5.00 por copia</div>
+            <!-- INPUT PAGINE PDF -->
+            <div style="margin-top: 16px;">
+              <label class="calc-label">📋 Número de páginas</label>
+              <input type="number" class="calc-field" id="pdf-pages-input" placeholder="Ej: 123" value="1" min="1"
+                max="1000">
+              <div class="quantity-examples" style="margin-top: 8px;">
+                <span>Si no sabes, deja en 1</span>
+                <span>El precio se calcula: copias × páginas</span>
               </div>
             </div>
-            <div class="color-type-option" data-color-type="images">
-              <div
-                style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                <div style="font-weight: 600; margin-bottom: 4px;">🖼️ Imágenes</div>
-                <div style="font-size: 0.9rem; color: #6b7280;">$10.00 por copia</div>
+
+
+          </div>
+
+          <div class="calc-options">
+            <div class="calc-option active" data-type="copies">
+              <div class="option-icon">📋</div>
+              <div class="option-content">
+                <strong>Copias</strong><br>Documentos existentes
               </div>
+              <div class="option-check">✅</div>
             </div>
-          </div>
-
-          <!-- Opzione per calcolo misto -->
-          <div class="mixed-calculation" style="margin-top: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <input type="checkbox" id="mixed-calculation" style="margin: 0;">
-              <label for="mixed-calculation" style="font-weight: 600; color: #374151;">Calcular precio mixto</label>
-            </div>
-
-            <div class="mixed-inputs" id="mixed-inputs"
-              style="display: none; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div>
-                <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias
-                  texto/logo:</label>
-                <input type="number" id="text-logo-qty" min="0" value="0"
-                  style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
+            <div class="calc-option" data-type="prints">
+              <div class="option-icon">💻</div>
+              <div class="option-content">
+                <strong>Impresiones</strong><br>Desde archivo digital
               </div>
-              <div>
-                <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias con
-                  imágenes:</label>
-                <input type="number" id="images-qty" min="0" value="0"
-                  style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
+              <div class="option-check">✅</div>
+            </div>
+          </div>
+
+          <div class="calc-options">
+            <div class="calc-option active" data-color="bw">
+              <div class="option-icon">⚫</div>
+              <div class="option-content">
+                <strong>Blanco y Negro</strong><br>$0.35 - $0.40
               </div>
+              <div class="option-check">✅</div>
+            </div>
+            <div class="calc-option" data-color="color">
+              <div class="option-icon">🎨</div>
+              <div class="option-content">
+                <strong>A Color</strong><br>$5 - $10
+              </div>
+              <div class="option-check">✅</div>
             </div>
           </div>
-        </div>
 
-        <div class="calc-options">
-          <div class="calc-option active" data-sides="double">
-            <div class="option-icon">📄</div>
-            <div class="option-content">
-              <strong>Doble Cara</strong><br>$0.35 por copia
-            </div>
-            <div class="option-check">✅</div>
-          </div>
-          <div class="calc-option" data-sides="single">
-            <div class="option-icon">📃</div>
-            <div class="option-content">
-              <strong>Una Cara</strong><br>$0.40 por copia
-            </div>
-            <div class="option-check">✅</div>
-          </div>
-        </div>
-
-        <!-- Upsells -->
-        <div class="upsells">
-          <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
-
-          <!-- Download File Upsell Removed (Now Automatic) -->
-
-          <div class="upsell-item">
-            <input type="checkbox" class="upsell-checkbox" id="engargolado" data-price="20">
-            <div class="upsell-info">
-              <div class="upsell-title">Engargolado</div>
-              <div class="upsell-desc">Encuadernado profesional con espiral</div>
-              <div class="engargolado-options" style="margin-top: 8px; display: none;">
-                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                  <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
-                  <input type="number" id="engargolado-qty" min="1" value="1"
-                    style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                  <!-- Removed size selector, will calculate automatically -->
+          <!-- Opzioni dettagliate per stampa a colori -->
+          <div class="color-details" id="color-details"
+            style="display: none; margin-top: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
+            <h4 style="margin-bottom: 12px; font-weight: 600; color: #374151;">Tipo de impresión a color</h4>
+            <div class="color-type-options"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+              <div class="color-type-option" data-color-type="text-logo">
+                <div
+                  style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                  <div style="font-weight: 600; margin-bottom: 4px;">📝 Texto y Logo</div>
+                  <div style="font-size: 0.9rem; color: #6b7280;">$5 MXN por copia</div>
                 </div>
-                <div style="font-size: 0.8rem; color: #666;">
-                  Precio: <span id="engargolado-price">$20</span> por engargolado
+              </div>
+              <div class="color-type-option" data-color-type="images">
+                <div
+                  style="padding: 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                  <div style="font-weight: 600; margin-bottom: 4px;">🖼️ Imágenes</div>
+                  <div style="font-size: 0.9rem; color: #6b7280;">$10 MXN por copia</div>
                 </div>
               </div>
             </div>
-            <div class="upsell-price">+$20</div>
-          </div>
-          <div class="upsell-item">
-            <input type="checkbox" class="upsell-checkbox" id="folders" data-price="15">
-            <div class="upsell-info">
-              <div class="upsell-title">Folders</div>
-              <div class="upsell-desc">Carpeta protectora individual</div>
-              <div class="folders-options" style="margin-top: 8px; display: none;">
-                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                  <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
-                  <input type="number" id="folders-qty" min="1" value="1"
-                    style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                  <span style="font-size: 0.9rem; color: #666;">(1 folder individual)</span>
+
+            <!-- Opzione per calcolo misto -->
+            <div class="mixed-calculation" style="margin-top: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <input type="checkbox" id="mixed-calculation" style="margin: 0;">
+                <label for="mixed-calculation" style="font-weight: 600; color: #374151;">Calcular precio mixto</label>
+              </div>
+
+              <div class="mixed-inputs" id="mixed-inputs"
+                style="display: none; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias
+                    texto/logo:</label>
+                  <input type="number" id="text-logo-qty" min="0" value="0"
+                    style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
                 </div>
-                <div style="font-size: 0.8rem; color: #666;">
-                  Precio: <span id="folders-price">$15</span> por folder
+                <div>
+                  <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 4px;">Copias con
+                    imágenes:</label>
+                  <input type="number" id="images-qty" min="0" value="0"
+                    style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;">
                 </div>
               </div>
             </div>
-            <div class="upsell-price">+$15</div>
           </div>
-          <div class="upsell-item">
-            <input type="checkbox" class="upsell-checkbox" id="laminated" data-price="25">
-            <div class="upsell-info">
-              <div class="upsell-title">Enmicado</div>
-              <div class="upsell-desc">Protección con plástico</div>
-              <div class="laminated-options" style="margin-top: 8px; display: none;">
-                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                  <label style="font-size: 0.9rem; color: #666;">Cantidad de hojas:</label>
-                  <input type="number" id="laminated-pages" min="1" value="1" step="1"
-                    style="width: 80px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
-                  <span style="font-size: 0.9rem; color: #666;">hojas</span>
-                </div>
-                <div style="font-size: 0.8rem; color: #666;">
-                  Precio: <span id="laminated-price">$25</span> por hoja
+
+          <div class="calc-options">
+            <div class="calc-option active" data-sides="double">
+              <div class="option-icon">📄</div>
+              <div class="option-content">
+                <strong>Doble Cara</strong><br>$0.35 por copia
+              </div>
+              <div class="option-check">✅</div>
+            </div>
+            <div class="calc-option" data-sides="single">
+              <div class="option-icon">📃</div>
+              <div class="option-content">
+                <strong>Una Cara</strong><br>$0.40 por copia
+              </div>
+              <div class="option-check">✅</div>
+            </div>
+          </div>
+
+          <!-- Upsells -->
+          <div class="upsells">
+            <h4 style="margin-bottom:15px;font-weight:700;color:#374151">Servicios Adicionales</h4>
+
+            <!-- Engargolado -->
+            <div class="upsell-item">
+              <input type="checkbox" class="upsell-checkbox" id="check-engargolado">
+              <div class="upsell-info">
+                <div class="upsell-title">Engargolado</div>
+                <div class="upsell-desc">Espiral plástico y pastas</div>
+                <div class="upsell-inputs" id="inputs-engargolado" style="display: none; margin-top: 8px;">
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
+                    <input type="number" id="qty-engargolado" min="1" value="1"
+                      style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">
+                    $15 (1-50 págs) • $20 (51-100) • $25 (101-200) • $30 (201-300) • $50 (300+)
+                  </div>
                 </div>
               </div>
+              <div class="upsell-price">Desde $15</div>
             </div>
-            <div class="upsell-price">+$25</div>
-          </div>
-        </div>
 
-        <div class="calc-result">
-          <div class="result-header">
-            <div>Precio estimado</div>
-            <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
-          </div>
-          <div class="calc-total" id="total">$70.00 MXN</div>
-          <div id="file-fee-display" style="font-size:0.85rem;color:#666;margin-top:4px;display:none;">+ $5.00 Bajada
-            de archivo</div>
-          <div id="impressions-display"
-            style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
-          <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
-        </div>
+            <!-- Enmicado -->
+            <div class="upsell-item">
+              <input type="checkbox" class="upsell-checkbox" id="check-enmicado">
+              <div class="upsell-info">
+                <div class="upsell-title">Enmicado</div>
+                <div class="upsell-desc">Protección térmica rígida</div>
+                <div class="upsell-inputs" id="inputs-enmicado" style="display: none; margin-top: 8px;">
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
+                    <input type="number" id="qty-enmicado" min="1" value="1"
+                      style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">
+                    $10.00 por unidad
+                  </div>
+                </div>
+              </div>
+              <div class="upsell-price">$10.00</div>
+            </div>
 
-        <div class="calc-actions">
-          <button id="btn-wa" class="cta-primary cta-whatsapp">
-            <span class="cta-icon">📱</span>
-            <span class="cta-text">WHATSAPP</span>
-          </button>
-          <a href="tel:+525540219892" class="cta-primary cta-call">
-            <span class="cta-icon">📞</span>
-            <span class="cta-text">LLAMAR</span>
-          </a>
+            <!-- Folder -->
+            <div class="upsell-item">
+              <input type="checkbox" class="upsell-checkbox" id="check-folder">
+              <div class="upsell-info">
+                <div class="upsell-title">Folder</div>
+                <div class="upsell-desc">Carpeta beige tamaño carta/oficio</div>
+                <div class="upsell-inputs" id="inputs-folder" style="display: none; margin-top: 8px;">
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <label style="font-size: 0.9rem; color: #666;">Cantidad:</label>
+                    <input type="number" id="qty-folder" min="1" value="1"
+                      style="width: 60px; padding: 4px; border: 1px solid #ddd; border-radius: 4px;">
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">
+                    $5.00 por unidad
+                  </div>
+                </div>
+              </div>
+              <div class="upsell-price">$5.00</div>
+            </div>
+          </div>
+
+          <div class="calc-result">
+            <div class="result-header">
+              <div>Precio estimado</div>
+              <div class="scarcity-badge" id="dynamic-scarcity-badge">⏰ Últimos 3 lugares para entrega hoy</div>
+            </div>
+            <div class="calc-total" id="total">$70.00 MXN</div>
+            <div id="impressions-display"
+              style="font-size:0.95rem;color:#1a1a1a;opacity:0.85;font-weight:600;margin-top:4px"></div>
+            <div class="result-badge">Precio garantizado • Sin costos ocultos</div>
+          </div>
+
+          <div class="calc-actions">
+            <button id="btn-wa" class="cta-primary cta-whatsapp">
+              <span class="cta-icon">📱</span>
+              <span class="cta-text">COTIZAR AHORA</span>
+            </button>
+            <a href="tel:+525540219892" class="cta-primary cta-call">
+              <span class="cta-icon">📞</span>
+              <span class="cta-text">LLAMAR</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 
   <!-- Continue with Homepage content -->
@@ -7141,7 +7081,7 @@
             <div class="about-image-container">
               <img
                 src="https://images.unsplash.com/photo-1756067520753-dd852da7ddb1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="COPIMAX - Negocio familiar en Iztacalco" loading="lazy">
+                alt="COPIMAX - Negocio familiar en Iztacalco">
               <div class="image-overlay">
                 <div class="overlay-content">
                   <div class="overlay-icon">🏠</div>
@@ -7163,7 +7103,7 @@
             <div class="rev-top">
               <div class="avatar"><img
                   src="https://images.unsplash.com/photo-1544005313-ff6d9a16f38a?w=96&h=96&fit=crop&crop=faces"
-                  alt="Editorial MX" loading="lazy"></div>
+                  alt="Editorial MX"></div>
               <div class="review-info">
                 <div class="review-name">Editorial MX</div>
                 <div class="review-stars">★★★★★</div>
@@ -7177,7 +7117,7 @@
             <div class="rev-top">
               <div class="avatar"><img
                   src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=96&h=96&fit=crop&crop=faces"
-                  alt="Carlos M." loading="lazy"></div>
+                  alt="Carlos M."></div>
               <div class="review-info">
                 <div class="review-name">Carlos M.</div>
                 <div class="review-stars">★★★★★</div>
@@ -7191,7 +7131,7 @@
             <div class="rev-top">
               <div class="avatar"><img
                   src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=96&h=96&fit=crop&crop=faces"
-                  alt="Ana L." loading="lazy"></div>
+                  alt="Ana L."></div>
               <div class="review-info">
                 <div class="review-name">Ana L.</div>
                 <div class="review-stars">★★★★★</div>
@@ -7270,7 +7210,7 @@
               <div class="book-image">
                 <img
                   src="https://images.unsplash.com/photo-1756681746498-440eedd02907?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Close Up Series" loading="lazy">
+                  alt="Close Up Series">
               </div>
               <div class="book-info">
                 <div class="book-title">Close Up Series</div>
@@ -7284,7 +7224,7 @@
               <div class="book-image">
                 <img
                   src="https://images.unsplash.com/photo-1756596273303-a885ccdfb903?q=80&w=914&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Evolve Series" loading="lazy">
+                  alt="Evolve Series">
               </div>
               <div class="book-info">
                 <div class="book-title">Evolve Series</div>
@@ -7298,7 +7238,7 @@
               <div class="book-image">
                 <img
                   src="https://images.unsplash.com/photo-1756720648877-8212d71fdc6b?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Empower Series" loading="lazy">
+                  alt="Empower Series">
               </div>
               <div class="book-info">
                 <div class="book-title">Empower Series</div>
@@ -7312,7 +7252,7 @@
               <div class="book-image">
                 <img
                   src="https://images.unsplash.com/photo-1756729750437-c37be37160d8?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Interchange Series" loading="lazy">
+                  alt="Interchange Series">
               </div>
               <div class="book-info">
                 <div class="book-title">Interchange Series</div>
@@ -7324,7 +7264,7 @@
 
           <!-- Pulsante Ver más -->
           <div class="ver-mas-container">
-            <a href="/libros-ingles" class="ver-mas-btn">Ver más libros</a>
+            <a href="libros-ingles.html" class="ver-mas-btn">Ver más libros</a>
           </div>
         </div>
 
@@ -7350,7 +7290,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=200&fit=crop"
-              alt="Abogado revisando documentos legales" class="legal-img" loading="lazy">
+              alt="Guía de Impresión">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Impresión</div>
@@ -7367,7 +7307,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop"
-              alt="Documentos notariales y contratos" class="legal-img" loading="lazy">
+              alt="Diseño de Menús">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Diseño</div>
@@ -7384,7 +7324,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop"
-              alt="Profesional legal trabajando en oficina" class="legal-img" loading="lazy">
+              alt="Tesis Universitaria">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Educación</div>
@@ -7401,7 +7341,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop"
-              alt="Consultor legal en reunión" class="legal-img" loading="lazy">
+              alt="Marketing Impreso">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Marketing</div>
@@ -7418,7 +7358,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=200&fit=crop"
-              alt="Asesora legal profesional" class="legal-img" loading="lazy">
+              alt="Papel y Materiales">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Materiales</div>
@@ -7435,7 +7375,7 @@
         <div class="blog-card">
           <div class="blog-image">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=200&fit=crop"
-              alt="Experto legal en despacho" class="legal-img" loading="lazy">
+              alt="Ahorro en Impresión">
           </div>
           <div class="blog-content">
             <div class="blog-tag">Ahorro</div>
@@ -7845,7 +7785,7 @@
               rel="noopener" aria-label="Instagram COPIMAX">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
             <a href="https://www.tiktok.com/@copimax_upiicsa" class="social-icon tiktok" target="_blank" rel="noopener"
@@ -7901,7 +7841,7 @@
     "address":{"@type":"PostalAddress","streetAddress":"Vainilla 474","addressLocality":"Iztacalco","postalCode":"08400","addressRegion":"CDMX","addressCountry":"MX"},
     "telephone":"+52-55-4021-9892",
     "email":"copimax474@hotmail.com",
-    "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
+    "openingHours":["Mo-Fr 08:30-18:00","Sa-Su 08:30-14:00"],
     "priceRange":"$",
             "url":"https://copimax.store",
     "sameAs":[]
@@ -7911,7 +7851,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Global state
-      let orderData = {
+      // Global state defined outside DOMContentLoaded to be accessible everywhere
+      window.orderData = {
         quantity: 100,
         type: 'copies', // copies or prints
         color: 'bw', // bw or color
@@ -7935,259 +7876,231 @@
       const ADMIN_EMAIL = 'copimax474@gmail.com';
 
       // Calculator elements
-      // console.log('Initializing calculator elements...');
+      console.log('Initializing calculator elements...');
       const quantityInput = document.getElementById('quantity');
       const totalElement = document.getElementById('total');
       const options = document.querySelectorAll('.calc-option');
       const upsellCheckboxes = document.querySelectorAll('.upsell-checkbox');
       const btnWA = document.getElementById('btn-wa');
-
+      const btnOrder = document.getElementById('btn-order');
       const dealCTAs = document.querySelectorAll('.deal-cta');
 
-      // console.log('Calculator elements found:', {
-      quantityInput: !!quantityInput,
+      console.log('Calculator elements found:', {
+        quantityInput: !!quantityInput,
         totalElement: !!totalElement,
-          options: options.length,
-            upsellCheckboxes: upsellCheckboxes.length,
-              btnWA: !!btnWA,
-
-                dealCTAs: dealCTAs.length
-    });
-
-    // Page navigation
-    const homepage = document.getElementById('homepage');
-    const orderPage = document.getElementById('orderpage');
-    const homepageContent = document.getElementById('homepage-content');
-    const blogPage = document.getElementById('blogpage');
-
-    // Order elements
-    const steps = document.querySelectorAll('.step');
-    const orderSections = document.querySelectorAll('.order-section');
-
-    // Initialize
-    // console.log('🚀 Inizializzazione calcolatrice...');
-    calculate();
-    setupEventListeners();
-    setupValidationListeners();
-
-    // Funzione per gestire le opzioni dettagliate di colore
-    function setupColorDetailsListeners() {
-      // Event listeners per i tipi di colore
-      document.querySelectorAll('.color-type-option').forEach(option => {
-        option.addEventListener('click', () => {
-          // Rimuovi active da tutti
-          document.querySelectorAll('.color-type-option').forEach(opt => opt.classList.remove('active'));
-          // Aggiungi active al selezionato
-          option.classList.add('active');
-
-          // Aggiorna orderData
-          orderData.colorType = option.dataset.colorType;
-          calculate();
-        });
+        options: options.length,
+        upsellCheckboxes: upsellCheckboxes.length,
+        btnWA: !!btnWA,
+        btnOrder: !!btnOrder,
+        dealCTAs: dealCTAs.length
       });
 
-      // Event listener per il checkbox calcolo misto
-      const mixedCheckbox = document.getElementById('mixed-calculation');
-      const mixedInputs = document.getElementById('mixed-inputs');
+      // Page navigation
+      const homepage = document.getElementById('homepage');
+      const orderPage = document.getElementById('orderpage');
+      const homepageContent = document.getElementById('homepage-content');
+      const blogPage = document.getElementById('blogpage');
 
-      if (mixedCheckbox) {
-        mixedCheckbox.addEventListener('change', () => {
-          if (mixedCheckbox.checked) {
-            mixedInputs.style.display = 'grid';
-            orderData.mixedCalculation = true;
-          } else {
-            mixedInputs.style.display = 'none';
-            orderData.mixedCalculation = false;
-          }
-          calculate();
-        });
-      }
+      // Order elements
+      const steps = document.querySelectorAll('.step');
+      const orderSections = document.querySelectorAll('.order-section');
 
-      // Event listeners per gli input del calcolo misto
-      const textLogoQty = document.getElementById('text-logo-qty');
-      const imagesQty = document.getElementById('images-qty');
+      // Initialize
+      console.log('🚀 Inizializzazione calcolatrice...');
+      calculate();
+      setupEventListeners();
+      setupValidationListeners();
 
-      if (textLogoQty) {
-        textLogoQty.addEventListener('input', () => {
-          orderData.textLogoQty = parseInt(textLogoQty.value) || 0;
-          calculate();
-        });
-      }
+      // Funzione per gestire le opzioni dettagliate di colore
+      function setupColorDetailsListeners() {
+        // Event listeners per i tipi di colore
+        document.querySelectorAll('.color-type-option').forEach(option => {
+          option.addEventListener('click', () => {
+            // Rimuovi active da tutti
+            document.querySelectorAll('.color-type-option').forEach(opt => opt.classList.remove('active'));
+            // Aggiungi active al selezionato
+            option.classList.add('active');
 
-      if (imagesQty) {
-        imagesQty.addEventListener('input', () => {
-          orderData.imagesQty = parseInt(imagesQty.value) || 0;
-          calculate();
-        });
-      }
-    }
-
-    // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
-
-    // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
-    try {
-      if (typeof displayReviews === 'function') {
-        displayReviews();
-      }
-    } catch (e) {
-      console.warn('Reviews init skipped:', e);
-    }
-
-    // Verifica iniziale elementi pagamento
-    setTimeout(() => {
-      verifyPaymentElements();
-
-      // Controlla URL iniziale per mostrare la sezione corretta
-      checkInitialURL();
-    }, 500);
-
-    // Gestione navigazione browser (pulsante Indietro)
-    window.addEventListener('popstate', function (event) {
-      if (event.state && event.state.page === 'order') {
-        showOrderPage(false);
-      } else if (event.state && event.state.page === 'blog') {
-        showBlogPage();
-      } else {
-        showHomePage(false);
-      }
-    });
-
-    // Video Reels Functionality
-    initializeVideoReels();
-
-    function setupEventListeners() {
-      // Calculator options
-      // console.log('Setting up calculator options event listeners...');
-      options.forEach(opt => {
-        // console.log('Adding click listener to option:', opt.dataset);
-        opt.addEventListener('click', (e) => {
-          // console.log('Option clicked:', opt.dataset, e);
-          const group = opt.dataset.type || opt.dataset.color || opt.dataset.sides;
-          if (group) {
-            // console.log('Processing option group:', group);
-            // Remove active from same group
-            const groupKey = Object.keys(opt.dataset)[0];
-            document.querySelectorAll(`[data-${groupKey}]`).forEach(el => {
-              el.classList.remove('active');
-              // console.log('Removed active from:', el);
-            });
-            opt.classList.add('active');
-            // console.log('Added active to:', opt);
-
-            // Update order data
-            if (opt.dataset.type) orderData.type = opt.dataset.type;
-            if (opt.dataset.color) orderData.color = opt.dataset.color;
-            if (opt.dataset.sides) {
-              orderData.sides = opt.dataset.sides;
-              // console.log('🔄 Sides cambiato a:', opt.dataset.sides);
-            }
-
-            // console.log('Updated orderData:', orderData);
+            // Aggiorna orderData
+            orderData.colorType = option.dataset.colorType;
             calculate();
+          });
+        });
 
-            // Gestisci la visualizzazione delle opzioni dettagliate per colore
-            if (opt.dataset.color === 'color') {
-              document.getElementById('color-details').style.display = 'block';
+        // Event listener per il checkbox calcolo misto
+        const mixedCheckbox = document.getElementById('mixed-calculation');
+        const mixedInputs = document.getElementById('mixed-inputs');
+
+        if (mixedCheckbox) {
+          mixedCheckbox.addEventListener('change', () => {
+            if (mixedCheckbox.checked) {
+              mixedInputs.style.display = 'grid';
+              orderData.mixedCalculation = true;
             } else {
-              document.getElementById('color-details').style.display = 'none';
+              mixedInputs.style.display = 'none';
+              orderData.mixedCalculation = false;
             }
-          }
-        });
-      });
+            calculate();
+          });
+        }
 
-      // Event listeners per le nuove opzioni di colore
-      setupColorDetailsListeners();
+        // Event listeners per gli input del calcolo misto
+        const textLogoQty = document.getElementById('text-logo-qty');
+        const imagesQty = document.getElementById('images-qty');
 
-      // Quantity input
-      quantityInput.addEventListener('input', () => {
-        const value = Math.max(1, parseInt(quantityInput.value || '1'));
-        orderData.quantity = value;
-        calculate();
-      });
+        if (textLogoQty) {
+          textLogoQty.addEventListener('input', () => {
+            orderData.textLogoQty = parseInt(textLogoQty.value) || 0;
+            calculate();
+          });
+        }
 
-      // PDF pages input
-      const pdfPagesInput = document.getElementById('pdf-pages-input');
-      if (pdfPagesInput) {
-        pdfPagesInput.addEventListener('input', () => {
-          const value = Math.max(1, parseInt(pdfPagesInput.value || '1'));
-          // Aggiorna orderData.pdfPages quando l'utente modifica l'input
-          orderData.pdfPages = value;
-          // console.log('📄 PDF pages input modificato a:', value);
-          updateEngargoladoPrice();
-          calculate();
-          updatePdfInfo();
-        });
+        if (imagesQty) {
+          imagesQty.addEventListener('input', () => {
+            orderData.imagesQty = parseInt(imagesQty.value) || 0;
+            calculate();
+          });
+        }
       }
 
+      // Test rapido della calcolatrice dopo 2 secondi - RIMOSSO per evitare selezione automatica opzione color
 
+      // Inizializza recensioni (semplificato). Evita errori se le funzioni non esistono
+      try {
+        if (typeof displayReviews === 'function') {
+          displayReviews();
+        }
+      } catch (e) {
+        console.warn('Reviews init skipped:', e);
+      }
 
+      // Verifica iniziale elementi pagamento
+      setTimeout(() => {
+        verifyPaymentElements();
 
+        // Controlla URL iniziale per mostrare la sezione corretta
+        checkInitialURL();
+      }, 500);
 
-      // Upsells
-      upsellCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-          const price = parseInt(checkbox.dataset.price);
-          const id = checkbox.id;
-
-          if (checkbox.checked) {
-            orderData.upsells[id] = { name: checkbox.parentElement.querySelector('.upsell-title').textContent, price };
-
-            // Show engargolado options if it's the engargolado checkbox
-            if (id === 'engargolado') {
-              const options = checkbox.parentElement.querySelector('.engargolado-options');
-              if (options) {
-                options.style.display = 'block';
-                updateEngargoladoPrice();
-              }
-            }
-
-            // Show folders options if it's the folders checkbox
-            if (id === 'folders') {
-              const options = checkbox.parentElement.querySelector('.folders-options');
-              if (options) {
-                options.style.display = 'block';
-                updateFoldersPrice();
-              }
-            }
-
-            // Show laminated options if it's the laminated checkbox
-            if (id === 'laminated') {
-              const options = checkbox.parentElement.querySelector('.laminated-options');
-              if (options) {
-                options.style.display = 'block';
-                updateLaminatedPrice();
-              }
-            }
-          } else {
-            delete orderData.upsells[id];
-
-            // Hide engargolado options if unchecked
-            if (id === 'engargolado') {
-              const options = checkbox.parentElement.querySelector('.engargolado-options');
-              if (options) {
-                options.style.display = 'none';
-              }
-            }
-
-            // Hide folders options if unchecked
-            if (id === 'folders') {
-              const options = checkbox.parentElement.querySelector('.folders-options');
-              if (options) {
-                options.style.display = 'none';
-              }
-            }
-
-            // Hide laminated options if unchecked
-            if (id === 'laminated') {
-              const options = checkbox.parentElement.querySelector('.laminated-options');
-              if (options) {
-                options.style.display = 'none';
-              }
-            }
-          }
-          calculate();
-        });
+      // Gestione navigazione browser (pulsante Indietro)
+      window.addEventListener('popstate', function (event) {
+        if (event.state && event.state.page === 'order') {
+          showOrderPage(false);
+        } else if (event.state && event.state.page === 'blog') {
+          showBlogPage();
+        } else {
+          showHomePage(false);
+        }
       });
+
+      // Video Reels Functionality
+      initializeVideoReels();
+
+      function setupEventListeners() {
+        console.log('🔧 Configurazione Event Listeners...');
+
+        // 1. Gestione Bottoni Opzioni (.calc-option)
+        const options = document.querySelectorAll('.calc-option');
+        options.forEach(opt => {
+          opt.addEventListener('click', (e) => {
+            // Identifica il gruppo (type, color, sides)
+            const group = opt.dataset.type ? 'type' : (opt.dataset.color ? 'color' : 'sides');
+
+            // Rimuovi active dagli altri elementi dello stesso gruppo
+            document.querySelectorAll(`.calc-option[data-${group}]`).forEach(el => {
+              el.classList.remove('active');
+            });
+
+            // Attiva questo elemento
+            opt.classList.add('active');
+
+            // Aggiorna orderData
+            if (group === 'type') orderData.type = opt.dataset.type;
+            if (group === 'color') {
+              orderData.color = opt.dataset.color;
+              // Mostra/Nascondi dettagli colore
+              const colorDetails = document.getElementById('color-details');
+              if (colorDetails) {
+                colorDetails.style.display = (orderData.color === 'color') ? 'block' : 'none';
+              }
+              // Default colorType se non settato
+              if (orderData.color === 'color' && !orderData.colorType) {
+                orderData.colorType = 'text-logo';
+              }
+            }
+            if (group === 'sides') orderData.sides = opt.dataset.sides;
+
+            console.log(`👉 Opzione cambiata: ${group} -> ${opt.dataset[group]}`);
+            calculate();
+          });
+        });
+
+        // 2. Gestione Input Principali (Quantità, Pagine)
+        const qInput = document.getElementById('quantity');
+        if (qInput) {
+          qInput.addEventListener('input', calculate);
+          qInput.addEventListener('change', calculate);
+        }
+
+        const pInput = document.getElementById('pdf-pages-input');
+        if (pInput) {
+          pInput.addEventListener('input', () => {
+            // Aggiorna orderData.pdfPages
+            orderData.pdfPages = parseInt(pInput.value) || 1;
+            calculate();
+            if (typeof updatePdfInfo === 'function') updatePdfInfo();
+          });
+        }
+
+        // 3. Gestione Upsells (Checkbox e Input)
+        const upsells = [
+          { check: 'check-engargolado', inputs: 'inputs-engargolado', qty: 'qty-engargolado' },
+          { check: 'check-enmicado', inputs: 'inputs-enmicado', qty: 'qty-enmicado' },
+          { check: 'check-folder', inputs: 'inputs-folder', qty: 'qty-folder' }
+        ];
+
+        upsells.forEach(u => {
+          const checkEl = document.getElementById(u.check);
+          const inputsEl = document.getElementById(u.inputs);
+          const qtyEl = document.getElementById(u.qty);
+
+          if (checkEl) {
+            checkEl.addEventListener('change', () => {
+              // Mostra/Nascondi input quantità
+              if (inputsEl) inputsEl.style.display = checkEl.checked ? 'block' : 'none';
+              calculate();
+            });
+          }
+
+          if (qtyEl) {
+            qtyEl.addEventListener('input', calculate);
+          }
+        });
+
+        // 4. Gestione Dettagli Colore (Text/Logo vs Images)
+        document.querySelectorAll('.color-type-option').forEach(opt => {
+          opt.addEventListener('click', () => {
+            // Rimuovi active dagli altri
+            document.querySelectorAll('.color-type-option').forEach(el => el.classList.remove('active'));
+            // Aggiungi active (opzionale per stile)
+            opt.classList.add('active');
+
+            orderData.colorType = opt.dataset.colorType;
+            console.log(`🎨 Tipo Colore: ${orderData.colorType}`);
+            calculate();
+          });
+        });
+
+        console.log('✅ Event Listeners configurati!');
+      }
+
+      // Inizializzazione ritardata per sicurezza
+      setTimeout(() => {
+        console.log('🚀 Avvio Calcolatrice...');
+        setupEventListeners();
+        calculate();
+      }, 500);
+
 
       // Calculator PDF upload
       const calcFileUpload = document.getElementById('calc-file-upload');
@@ -8210,132 +8123,34 @@
         calcRemoveFile.addEventListener('click', removeCalcFile);
       }
 
-      // Engargolado options event listeners
-      const engargoladoQty = document.getElementById('engargolado-qty');
 
-      if (engargoladoQty) {
-        engargoladoQty.addEventListener('input', updateEngargoladoPrice);
-      }
-
-      // Folders options event listeners
-      const foldersQty = document.getElementById('folders-qty');
-      if (foldersQty) {
-        foldersQty.addEventListener('input', updateFoldersPrice);
-      }
-
-      // Laminated options event listeners
-      const laminatedPages = document.getElementById('laminated-pages');
-      if (laminatedPages) {
-        laminatedPages.addEventListener('input', updateLaminatedPrice);
-      }
-
-      function updateEngargoladoPrice() {
-        const qty = parseInt(engargoladoQty.value) || 1;
-        const pages = orderData.pdfPages || 1;
-
-        // Calculate price based on pages
-        // 0-100: $20, 101-200: $40, 201-300: $50, 300+: $60
-        let pricePerUnit = 20;
-        if (pages > 100) pricePerUnit = 40;
-        if (pages > 200) pricePerUnit = 50;
-        if (pages > 300) pricePerUnit = 60;
-
-        const totalPrice = qty * pricePerUnit;
-
-        // Update display
-        const priceDisplay = document.getElementById('engargolado-price');
-        if (priceDisplay) {
-          priceDisplay.textContent = `$${pricePerUnit}`;
-        }
-
-        // Update checkbox data price
-        const engargoladoCheckbox = document.getElementById('engargolado');
-        if (engargoladoCheckbox) {
-          engargoladoCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = engargoladoCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.engargolado) {
-          orderData.upsells.engargolado.price = totalPrice;
-          orderData.upsells.engargolado.details = `${qty} engargolados de ${pages} páginas`;
-          calculate();
-        }
-      }
-
-      function updateFoldersPrice() {
-        const qty = parseInt(foldersQty.value) || 1;
-        const pricePerFolder = 15; // $15 por folder individual
-        const totalPrice = qty * pricePerFolder;
-
-        // Update checkbox data price
-        const foldersCheckbox = document.getElementById('folders');
-        if (foldersCheckbox) {
-          foldersCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = foldersCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.folders) {
-          orderData.upsells.folders.price = totalPrice;
-          orderData.upsells.folders.details = `${qty} packs de 5 folders`;
-          calculate();
-        }
-      }
-
-      function updateLaminatedPrice() {
-        const pages = parseInt(laminatedPages.value) || 1;
-        const pricePerPage = 25; // $25 por hoja
-        const totalPrice = pages * pricePerPage;
-
-        // Update display
-        const priceDisplay = document.getElementById('laminated-price');
-        if (priceDisplay) {
-          priceDisplay.textContent = `$${pricePerPage} por hoja`;
-        }
-
-        // Update checkbox data price
-        const laminatedCheckbox = document.getElementById('laminated');
-        if (laminatedCheckbox) {
-          laminatedCheckbox.dataset.price = totalPrice;
-        }
-
-        // Update the right side price display
-        const upsellPriceElement = laminatedCheckbox?.parentElement?.querySelector('.upsell-price');
-        if (upsellPriceElement) {
-          upsellPriceElement.textContent = `+$${totalPrice}`;
-        }
-
-        // Update order data if checked
-        if (orderData.upsells.laminated) {
-          orderData.upsells.laminated.price = totalPrice;
-          orderData.upsells.laminated.details = `${pages} hojas enmicadas`;
-          calculate();
-        }
-      }
 
       // Order buttons
-      // console.log('Setting up order button event listeners...');
-
+      console.log('Setting up order button event listeners...');
+      if (btnOrder) {
+        console.log('Adding click listener to order button');
+        btnOrder.addEventListener('click', (e) => {
+          console.log('Order button clicked:', e);
+          // Track order start
+          if (typeof trackOrderStart === 'function') {
+            const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+            trackOrderStart(service, orderData.total);
+          }
+          // Open in-page order flow
+          showOrderPage();
+        });
+      } else {
+        console.error('Order button not found!');
+      }
 
       if (btnWA) {
-        // console.log('Adding click listener to WhatsApp button');
+        console.log('Adding click listener to WhatsApp button');
         btnWA.addEventListener('click', (e) => {
-          // console.log('WhatsApp button clicked:', e);
+          console.log('WhatsApp button clicked:', e);
           sendWhatsAppOrder();
         });
       } else {
-        // console.error('WhatsApp button not found!');
+        console.error('WhatsApp button not found!');
       }
 
       // Deal CTAs
@@ -8409,616 +8224,593 @@
     }
 
     function setupValidationListeners() {
-      // Real-time validation with debouncing
-      const nameInput = document.getElementById('customer-name');
-      const emailInput = document.getElementById('customer-email');
-      const phoneInput = document.getElementById('customer-phone');
+        // Real-time validation with debouncing
+        const nameInput = document.getElementById('customer-name');
+        const emailInput = document.getElementById('customer-email');
+        const phoneInput = document.getElementById('customer-phone');
 
-      if (nameInput) {
-        nameInput.addEventListener('input', debounce(() => validateName(nameInput.value), 500));
-      }
+        if (nameInput) {
+          nameInput.addEventListener('input', debounce(() => validateName(nameInput.value), 500));
+        }
 
-      if (emailInput) {
-        emailInput.addEventListener('input', debounce(() => validateEmail(emailInput.value), 500));
-      }
+        if (emailInput) {
+          emailInput.addEventListener('input', debounce(() => validateEmail(emailInput.value), 500));
+        }
 
-      if (phoneInput) {
-        phoneInput.addEventListener('input', debounce(() => validatePhone(phoneInput.value), 500));
+        if (phoneInput) {
+          phoneInput.addEventListener('input', debounce(() => validatePhone(phoneInput.value), 500));
+        }
       }
-    }
 
     // Debouncing utility
     function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
           clearTimeout(timeout);
-          func(...args);
+          timeout = setTimeout(later, wait);
         };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
+      }
 
     // Validation functions
     function validateName(name) {
-      const validation = document.getElementById('name-validation');
-      const input = document.getElementById('customer-name');
+        const validation = document.getElementById('name-validation');
+        const input = document.getElementById('customer-name');
 
-      if (!name.trim()) {
-        showFieldValidation(input, validation, 'El nombre es requerido', 'error');
-        return false;
+        if (!name.trim()) {
+          showFieldValidation(input, validation, 'El nombre es requerido', 'error');
+          return false;
+        }
+
+        if (name.length < 2) {
+          showFieldValidation(input, validation, 'El nombre debe tener al menos 2 caracteres', 'warning');
+          return false;
+        }
+
+        showFieldValidation(input, validation, '✓ Nombre válido', 'success');
+        return true;
       }
-
-      if (name.length < 2) {
-        showFieldValidation(input, validation, 'El nombre debe tener al menos 2 caracteres', 'warning');
-        return false;
-      }
-
-      showFieldValidation(input, validation, '✓ Nombre válido', 'success');
-      return true;
-    }
 
     function validateEmail(email) {
-      const validation = document.getElementById('email-validation');
-      const input = document.getElementById('customer-email');
+        const validation = document.getElementById('email-validation');
+        const input = document.getElementById('customer-email');
 
-      if (!email.trim()) {
-        showFieldValidation(input, validation, 'El email es requerido', 'error');
-        return false;
+        if (!email.trim()) {
+          showFieldValidation(input, validation, 'El email es requerido', 'error');
+          return false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showFieldValidation(input, validation, 'Formato de email inválido', 'error');
+          return false;
+        }
+
+        showFieldValidation(input, validation, '✓ Email válido', 'success');
+        return true;
       }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        showFieldValidation(input, validation, 'Formato de email inválido', 'error');
-        return false;
-      }
-
-      showFieldValidation(input, validation, '✓ Email válido', 'success');
-      return true;
-    }
 
     function validatePhone(phone) {
-      const validation = document.getElementById('phone-validation');
-      const input = document.getElementById('customer-phone');
+        const validation = document.getElementById('phone-validation');
+        const input = document.getElementById('customer-phone');
 
-      if (!phone.trim()) {
-        showFieldValidation(input, validation, 'El teléfono es requerido', 'error');
-        return false;
+        if (!phone.trim()) {
+          showFieldValidation(input, validation, 'El teléfono es requerido', 'error');
+          return false;
+        }
+
+        const phoneRegex = /^[0-9\-\+\(\)\s]{10,15}$/;
+        if (!phoneRegex.test(phone)) {
+          showFieldValidation(input, validation, 'Formato de teléfono inválido', 'warning');
+          return false;
+        }
+
+        showFieldValidation(input, validation, '✓ Teléfono válido', 'success');
+        return true;
       }
-
-      const phoneRegex = /^[0-9\-\+\(\)\s]{10,15}$/;
-      if (!phoneRegex.test(phone)) {
-        showFieldValidation(input, validation, 'Formato de teléfono inválido', 'warning');
-        return false;
-      }
-
-      showFieldValidation(input, validation, '✓ Teléfono válido', 'success');
-      return true;
-    }
 
     function showFieldValidation(input, validation, message, type) {
-      if (input && validation) {
-        validation.textContent = message;
-        validation.className = `validation-message ${type}`;
+        if (input && validation) {
+          validation.textContent = message;
+          validation.className = `validation-message ${type}`;
 
-        input.className = `calc-field ${type}`;
+          input.className = `calc-field ${type}`;
 
-        // Remove validation classes after 3 seconds
-        setTimeout(() => {
-          input.className = 'calc-field';
-        }, 3000);
+          // Remove validation classes after 3 seconds
+          setTimeout(() => {
+            input.className = 'calc-field';
+          }, 3000);
+        }
       }
-    }
 
     // Video Reels Functionality
     function initializeVideoReels() {
-      const videoCards = document.querySelectorAll('.video-reel-card');
+        const videoCards = document.querySelectorAll('.video-reel-card');
 
-      if (videoCards.length === 0) return;
+        if (videoCards.length === 0) return;
 
-      videoCards.forEach((card, index) => {
-        const iframe = card.querySelector('.reel-video');
+        videoCards.forEach((card, index) => {
+          const iframe = card.querySelector('.reel-video');
 
-        if (!iframe) return;
+          if (!iframe) return;
 
-        // No overlay needed - Vimeo controls are always visible and functional
-        // Users can click directly on Vimeo player controls
-      });
+          // No overlay needed - Vimeo controls are always visible and functional
+          // Users can click directly on Vimeo player controls
+        });
 
-      // Mobile horizontal scroll enhancement
-      if (window.innerWidth <= 768) {
-        const reelsGrid = document.querySelector('.reels-grid');
-        if (reelsGrid) {
-          let isScrolling = false;
+        // Mobile horizontal scroll enhancement
+        if (window.innerWidth <= 768) {
+          const reelsGrid = document.querySelector('.reels-grid');
+          if (reelsGrid) {
+            let isScrolling = false;
 
-          reelsGrid.addEventListener('scroll', () => {
-            if (!isScrolling) {
-              isScrolling = true;
-              setTimeout(() => {
-                isScrolling = false;
-              }, 150);
+            reelsGrid.addEventListener('scroll', () => {
+              if (!isScrolling) {
+                isScrolling = true;
+                setTimeout(() => {
+                  isScrolling = false;
+                }, 150);
+              }
+            });
+          }
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          // Reinitialize video behavior on resize
+          setTimeout(() => {
+            initializeVideoReels();
+          }, 100);
+        });
+      }
+
+    function calculate() {
+        console.log('🔄 Calcolo avviato...');
+
+        // 1. Recupera Valori Input
+        const quantity = parseInt(document.getElementById('quantity')?.value) || 1;
+        // FIX: Usa l'ID corretto 'pdf-pages-input' invece di 'pages'
+        const pagesInput = parseInt(document.getElementById('pdf-pages-input')?.value) || 1;
+
+        // Recupera opzioni selezionate dai data-attributes
+        // Nota: orderData viene aggiornato dagli event listeners
+        const type = orderData.type || 'copies'; // 'copies' o 'prints'
+        const color = orderData.color || 'bw';   // 'bw' o 'color'
+        const sides = orderData.sides || 'single'; // 'single' o 'double'
+        const colorType = orderData.colorType || 'text-logo'; // 'text-logo' o 'images' (default text-logo)
+
+        // 2. Calcolo Impressioni Totali
+        // Formula: Quantità * Pagine * Moltiplicatore Lati
+        const sideMultiplier = sides === 'double' ? 2 : 1;
+        const totalImpressions = quantity * pagesInput * sideMultiplier;
+
+        console.log(`📊 Dati: Qty=${quantity}, Pages=${pagesInput}, Sides=${sides} (x${sideMultiplier})`);
+        console.log(`📊 Totale Impressioni: ${totalImpressions}`);
+
+        let unitPrice = 0;
+
+        // 3. Determinazione Prezzo Unitario
+        if (color === 'bw') {
+          // --- BLANCO Y NEGRO ---
+          if (totalImpressions < 100) {
+            unitPrice = 1.00;
+          } else {
+            // Più di 100 impressioni
+            if (sides === 'double') {
+              unitPrice = 0.35;
+            } else {
+              unitPrice = 0.40;
             }
+          }
+        } else {
+          // --- COLOR ---
+          // Prezzi per volume colore
+          // 1-100: $5 (Text) / $10 (Img)
+          // 101-300: $4 (Text) / $4 (Img)
+          // 300+: $3 (Text) / $3 (Img)
+
+          if (totalImpressions <= 100) {
+            unitPrice = (colorType === 'images') ? 10.00 : 5.00;
+          } else if (totalImpressions <= 300) {
+            unitPrice = 4.00;
+          } else {
+            unitPrice = 3.00;
+          }
+        }
+
+        let subtotal = totalImpressions * unitPrice;
+        console.log(`💰 Prezzo Unitario: $${unitPrice}, Subtotale Stampa: $${subtotal}`);
+
+        // 4. Extra per Impresiones (Descarga archivo)
+        if (type === 'prints') {
+          subtotal += 5.00;
+          console.log('📂 Extra descarga archivo: +$5.00');
+        }
+
+        // 5. Calcolo Upsells
+        let upsellTotal = 0;
+
+        // Engargolado
+        const engargoladoCheck = document.getElementById('check-engargolado');
+        const engargoladoQty = parseInt(document.getElementById('qty-engargolado')?.value) || 0;
+        if (engargoladoCheck && engargoladoCheck.checked && engargoladoQty > 0) {
+          let engPrice = 15; // Default 1-50
+          if (pagesInput > 300) engPrice = 50;
+          else if (pagesInput > 200) engPrice = 30;
+          else if (pagesInput > 100) engPrice = 25;
+          else if (pagesInput > 50) engPrice = 20;
+
+          upsellTotal += engPrice * engargoladoQty;
+          console.log(`📚 Engargolado: ${engargoladoQty} x $${engPrice} = $${engPrice * engargoladoQty}`);
+        }
+
+        // Enmicado
+        const enmicadoCheck = document.getElementById('check-enmicado');
+        const enmicadoQty = parseInt(document.getElementById('qty-enmicado')?.value) || 0;
+        if (enmicadoCheck && enmicadoCheck.checked && enmicadoQty > 0) {
+          upsellTotal += 10.00 * enmicadoQty;
+          console.log(`🛡️ Enmicado: ${enmicadoQty} x $10 = $${10 * enmicadoQty}`);
+        }
+
+        // Folder
+        const folderCheck = document.getElementById('check-folder');
+        const folderQty = parseInt(document.getElementById('qty-folder')?.value) || 0;
+        if (folderCheck && folderCheck.checked && folderQty > 0) {
+          upsellTotal += 5.00 * folderQty;
+          console.log(`📁 Folder: ${folderQty} x $5 = $${5 * folderQty}`);
+        }
+
+        // 6. Totale Finale
+        const total = subtotal + upsellTotal;
+
+        // Aggiorna UI
+        if (totalElement) {
+          animateNumber(totalElement, total);
+        }
+
+        // Aggiorna anteprima dettagliata
+        const summary = document.getElementById('order-summary-text'); // Assicurati che esista questo ID o adattalo
+        if (summary) {
+          summary.innerHTML = `
+                ${quantity} ${type === 'copies' ? 'Copias' : 'Impresiones'} (${color === 'bw' ? 'B/N' : 'Color'})<br>
+                ${pagesInput} Páginas x ${sides === 'double' ? '2 Lados' : '1 Lado'}<br>
+                Total Impresiones: ${totalImpressions}
+             `;
+        }
+
+        orderData.total = total;
+      }
+
+    // Animate number with count-up effect
+    function animateNumber(element, targetValue) {
+        // Pulisce completamente il contenuto dell'elemento prima di iniziare l'animazione
+        element.textContent = '';
+        const currentValue = 0;
+        const startValue = currentValue;
+        const duration = 800; // milliseconds
+        const startTime = performance.now();
+
+        function updateNumber(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Easing function for smooth animation
+          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+          const currentNumber = startValue + (targetValue - startValue) * easeOutQuart;
+
+          // Sostituisce completamente il contenuto con il nuovo prezzo
+          element.textContent = `$${currentNumber.toFixed(2)} MXN`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+          }
+        }
+
+        requestAnimationFrame(updateNumber);
+      }
+
+    function updateOrderSummary() {
+        // Update step 1 summary
+        const summaryService = document.getElementById('summary-service');
+        const summaryQuantity = document.getElementById('summary-quantity');
+        const summaryDetails = document.getElementById('summary-details');
+        const summaryTotal = document.getElementById('summary-total');
+
+        if (summaryService) {
+          summaryService.textContent =
+            `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`;
+        }
+
+        if (summaryQuantity) {
+          // Usa direttamente orderData.pdfPages invece dell'input HTML
+          const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
+          const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
+          const pageEndInput = document.getElementById('page-end')?.value || '';
+          const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
+          const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
+          const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
+          const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
+          const totalPages = orderData.quantity * pagesToPrint * sidesMultiplier;
+
+          console.log('📊 updateOrderSummary - Dettagli calcolo:');
+          console.log('📊 orderData.pdfPages:', orderData.pdfPages);
+          console.log('📊 basePages:', basePages);
+          console.log('📊 pageStart:', pageStart);
+          console.log('📊 pageEnd:', pageEnd);
+          console.log('📊 hasRange:', hasRange);
+          console.log('📊 pagesToPrint:', pagesToPrint);
+          console.log('📊 orderData.quantity:', orderData.quantity);
+          console.log('📊 totalPages:', totalPages);
+
+          summaryQuantity.textContent = `${orderData.quantity} copias × ${pagesToPrint} páginas = ${totalPages} páginas totales`;
+        }
+        if (summaryDetails) summaryDetails.textContent = orderData.sides === 'double' ? 'Doble cara' : 'Una cara';
+        if (summaryTotal) summaryTotal.textContent = `${orderData.total.toFixed(2)} MXN`;
+
+        // Update upsells summary
+        const upsellsContainer = document.getElementById('summary-upsells');
+        if (upsellsContainer) {
+          upsellsContainer.innerHTML = '';
+          Object.values(orderData.upsells).forEach(upsell => {
+            const row = document.createElement('div');
+            row.className = 'summary-row';
+            const displayText = upsell.details ? `${upsell.name}: ${upsell.name}` : upsell.name;
+            row.innerHTML = `<span>${displayText}:</span><span>+$${upsell.price}</span>`;
+            upsellsContainer.appendChild(row);
           });
         }
       }
 
-      // Handle window resize
-      window.addEventListener('resize', () => {
-        // Reinitialize video behavior on resize
-        setTimeout(() => {
-          initializeVideoReels();
-        }, 100);
-      });
-    }
-
-    function calculate() {
-      // console.log('🔄 calculate() chiamata con orderData:', orderData);
-      const q = orderData.quantity; // Numero di copie richieste
-
-      // Usa SOLO orderData.pdfPages, non l'input HTML
-      const pdfPages = orderData.pdfPages && orderData.pdfPages > 0 ? orderData.pdfPages : 1;
-
-      // Calculate Total Impressions for Tier Logic
-      const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
-      const totalImpressions = q * pdfPages * sidesMultiplier;
-
-      // console.log('📊 calculate() - Dettagli calcolo:');
-      // console.log('📊 orderData.pdfPages:', orderData.pdfPages);
-      // console.log('📊 totalImpressions:', totalImpressions);
-      // console.log('📊 quantity:', q);
-      // console.log('📊 orderData.sides:', orderData.sides);
-      // console.log('📊 orderData.color:', orderData.color);
-
-      let unitPrice = 0;
-
-      // Base price calculation
-      if (orderData.color === 'bw') {
-        // B&W Pricing
-        // < 100 impressions: $1.00
-        // >= 100 impressions: Double $0.35, Single $0.40
-        if (totalImpressions < 100) {
-          unitPrice = 1.00;
-        } else {
-          unitPrice = orderData.sides === 'double' ? 0.35 : 0.40;
-        }
-      } else if (orderData.color === 'color') {
-        // Color Pricing
-        // 1-100 impressions: Text/Logo $5.00, Images $10.00
-        // 101-300 impressions: $4.00 (Flat)
-        // > 300 impressions: $3.00 (Flat)
-
-        if (totalImpressions <= 100) {
-          if (orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
-            // Mixed calculation for small quantities
-            const textLogoTotal = orderData.textLogoQty * 5;
-            const imagesTotal = orderData.imagesQty * 10;
-            const totalMixed = textLogoTotal + imagesTotal;
-            const totalQty = orderData.textLogoQty + orderData.imagesQty;
-            unitPrice = totalMixed / totalQty;
-          } else if (orderData.colorType === 'text-logo') {
-            unitPrice = 5.00;
-          } else {
-            unitPrice = 10.00; // Images standard
-          }
-        } else if (totalImpressions <= 300) {
-          unitPrice = 4.00;
-        } else {
-          unitPrice = 3.00;
-        }
-      }
-
-      // console.log('📊 calculate() - Prezzo unitario calcolato:', unitPrice);
-
-      // Calcolo corretto: (Numero copie) × (Pagine da stampare) × (Prezzo per pagina)
-      const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-      const pageEndInput = document.getElementById('page-end')?.value || '';
-      const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
-      const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
-      const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : pdfPages;
-
-      // Calcolo del subtotal in base al tipo di calcolo
-      let subtotal;
-
-      // Special case for mixed calculation in color < 100 impressions
-      if (orderData.color === 'color' && totalImpressions <= 100 && orderData.mixedCalculation && orderData.textLogoQty > 0 && orderData.imagesQty > 0) {
-        // Calcolo misto: usa le quantità specifiche per testo/logo e immagini
-        const textLogoTotal = orderData.textLogoQty * pagesToPrint * sidesMultiplier * 5;
-        const imagesTotal = orderData.imagesQty * pagesToPrint * sidesMultiplier * 10;
-        subtotal = textLogoTotal + imagesTotal;
-      } else {
-        // Normal calculation
-        subtotal = q * pagesToPrint * sidesMultiplier * unitPrice;
-      }
-
-      // console.log('📊 calculate() - Calcolo prezzo:');
-      // console.log('📊 unitPrice:', unitPrice);
-      // console.log('📊 pagesToPrint:', pagesToPrint);
-      // console.log('📊 subtotal:', subtotal);
-
-      // Add upsells
-      let upsellTotal = 0;
-
-      // Automatic File Fee for Prints
-      if (orderData.type === 'prints') {
-        // Add to orderData upsells for summary
-        orderData.upsells['file_fee'] = { name: 'Bajada de archivo', price: 5 };
-      } else {
-        // Remove if not prints
-        if (orderData.upsells['file_fee']) {
-          delete orderData.upsells['file_fee'];
-        }
-      }
-
-      // Recalculate upsellTotal from scratch based on orderData.upsells
-      upsellTotal = 0;
-      Object.values(orderData.upsells).forEach(upsell => {
-        upsellTotal += upsell.price;
-      });
-
-      const total = Math.ceil(subtotal + upsellTotal);
-      orderData.total = total;
-
-      // console.log('📊 calculate() - Totale finale:');
-      // console.log('📊 subtotal:', subtotal);
-      // console.log('📊 upsellTotal:', upsellTotal);
-      // console.log('📊 total finale:', total);
-      // console.log('📊 orderData.total impostato a:', orderData.total);
-
-      // Aggiorna le informazioni del PDF nel calcolatore
-      updatePdfInfo();
-
-      if (totalElement) {
-        animateNumber(totalElement, total);
-        // Aggiorna anche la visualizzazione delle impressioni totali sotto il prezzo
-        const impressionsDisplay = document.getElementById('impressions-display');
-        const fileFeeDisplay = document.getElementById('file-fee-display');
-
-        if (fileFeeDisplay) {
-          if (orderData.type === 'prints') {
-            fileFeeDisplay.style.display = 'block';
-          } else {
-            fileFeeDisplay.style.display = 'none';
-          }
-        }
-
-        if (impressionsDisplay) {
-          const pagesInfo = `${q} copias × ${pagesToPrint} páginas${sidesMultiplier === 2 ? ' × 2 caras' : ''}`;
-          const currentTotalImpressions = q * pagesToPrint * sidesMultiplier;
-          impressionsDisplay.textContent = `${pagesInfo} = ${currentTotalImpressions} impresiones ($${unitPrice.toFixed(2)}/u)`;
-        }
-      }
-      updateOrderSummary();
-      // console.log('✅ calculate() completata, totale:', total);
-    }
-
-    // Animate number with count-up effect
-    function animateNumber(element, targetValue) {
-      // Pulisce completamente il contenuto dell'elemento prima di iniziare l'animazione
-      element.textContent = '';
-      const currentValue = 0;
-      const startValue = currentValue;
-      const duration = 800; // milliseconds
-      const startTime = performance.now();
-
-      function updateNumber(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Easing function for smooth animation
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const currentNumber = startValue + (targetValue - startValue) * easeOutQuart;
-
-        // Sostituisce completamente il contenuto con il nuovo prezzo
-        element.textContent = `$${currentNumber.toFixed(2)} MXN`;
-
-        if (progress < 1) {
-          requestAnimationFrame(updateNumber);
-        }
-      }
-
-      requestAnimationFrame(updateNumber);
-    }
-
-    function updateOrderSummary() {
-      // Update step 1 summary
-      const summaryService = document.getElementById('summary-service');
-      const summaryQuantity = document.getElementById('summary-quantity');
-      const summaryDetails = document.getElementById('summary-details');
-      const summaryTotal = document.getElementById('summary-total');
-
-      if (summaryService) {
-        summaryService.textContent =
-          `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`;
-      }
-
-      if (summaryQuantity) {
-        // Usa direttamente orderData.pdfPages invece dell'input HTML
-        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
-        const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-        const pageEndInput = document.getElementById('page-end')?.value || '';
-        const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
-        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
-        const pagesToPrint = hasRange ? (pageEnd - pageStart + 1) : basePages;
-        const sidesMultiplier = orderData.sides === 'double' ? 2 : 1;
-        const totalPages = orderData.quantity * pagesToPrint * sidesMultiplier;
-
-        // console.log('📊 updateOrderSummary - Dettagli calcolo:');
-        // console.log('📊 orderData.pdfPages:', orderData.pdfPages);
-        // console.log('📊 basePages:', basePages);
-        // console.log('📊 pageStart:', pageStart);
-        // console.log('📊 pageEnd:', pageEnd);
-        // console.log('📊 hasRange:', hasRange);
-        // console.log('📊 pagesToPrint:', pagesToPrint);
-        // console.log('📊 orderData.quantity:', orderData.quantity);
-        // console.log('📊 totalPages:', totalPages);
-
-        summaryQuantity.textContent = `${orderData.quantity} copias × ${pagesToPrint} páginas = ${totalPages} páginas totales`;
-      }
-      if (summaryDetails) summaryDetails.textContent = orderData.sides === 'double' ? 'Doble cara' : 'Una cara';
-      if (summaryTotal) summaryTotal.textContent = `${orderData.total.toFixed(2)} MXN`;
-
-      // Update upsells summary
-      const upsellsContainer = document.getElementById('summary-upsells');
-      if (upsellsContainer) {
-        upsellsContainer.innerHTML = '';
-        Object.values(orderData.upsells).forEach(upsell => {
-          const row = document.createElement('div');
-          row.className = 'summary-row';
-          const displayText = upsell.details ? `${upsell.name}: ${upsell.name}` : upsell.name;
-          row.innerHTML = `<span>${displayText}:</span><span>+$${upsell.price}</span>`;
-          upsellsContainer.appendChild(row);
-        });
-      }
-    }
-
     // Funzione per aggiornare le informazioni del PDF nel calcolatore
     function updatePdfInfo() {
-      const pdfInfo = document.getElementById('pdf-info');
-      const pdfPages = document.getElementById('pdf-pages');
-      const totalPages = document.getElementById('total-pages');
+        const pdfInfo = document.getElementById('pdf-info');
+        const pdfPages = document.getElementById('pdf-pages');
+        const totalPages = document.getElementById('total-pages');
 
-      if (pdfInfo && pdfPages && totalPages) {
-        // Usa direttamente orderData.pdfPages invece dell'input HTML
-        const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
-        const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
-        const pageEndInput = document.getElementById('page-end')?.value || '';
-        const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
-        const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
-        const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
-        const copies = orderData.quantity || 1;
-        const total = pages * copies;
+        if (pdfInfo && pdfPages && totalPages) {
+          // Usa direttamente orderData.pdfPages invece dell'input HTML
+          const basePages = (orderData.pdfPages && orderData.pdfPages > 0) ? orderData.pdfPages : 1;
+          const pageStart = parseInt(document.getElementById('page-start')?.value || '1');
+          const pageEndInput = document.getElementById('page-end')?.value || '';
+          const pageEnd = pageEndInput === '' ? 0 : parseInt(pageEndInput);
+          const hasRange = !isNaN(pageStart) && !isNaN(pageEnd) && pageEnd >= pageStart && pageEnd > 0;
+          const pages = hasRange ? (pageEnd - pageStart + 1) : basePages;
+          const copies = orderData.quantity || 1;
+          const total = pages * copies;
 
-        pdfPages.textContent = pages;
-        totalPages.textContent = total;
+          pdfPages.textContent = pages;
+          totalPages.textContent = total;
 
-        // Mostra sempre le informazioni del PDF
-        pdfInfo.style.display = 'block';
+          // Mostra sempre le informazioni del PDF
+          pdfInfo.style.display = 'block';
+        }
       }
-    }
 
     // Gestione del caricamento del PDF nel calcolatore con LETTURA REALE
     function handleCalcFileUpload(e, isInput = false) {
-      e.preventDefault();
-      const files = isInput ? e.target.files : e.dataTransfer.files;
+        e.preventDefault();
+        const files = isInput ? e.target.files : e.dataTransfer.files;
 
-      if (files.length === 0) return;
+        if (files.length === 0) return;
 
-      const file = files[0]; // Prendi solo il primo file
+        const file = files[0]; // Prendi solo il primo file
 
-      if (file.type !== 'application/pdf') {
-        alert('Por favor sube solo archivos PDF.');
-        return;
-      }
-
-      if (file.size > 10 * 1024 * 1024) {
-        alert('El archivo es muy grande. Máximo 10MB.');
-        return;
-      }
-
-      // LETTURA PDF REALE con PDF.js
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const typedarray = new Uint8Array(e.target.result);
-
-        // Carica PDF.js se non è già caricato
-        if (typeof pdfjsLib === 'undefined') {
-          const script = document.createElement('script');
-          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
-          script.onload = function () {
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-            countPdfPages(typedarray, file);
-          };
-          document.head.appendChild(script);
-        } else {
-          countPdfPages(typedarray, file);
+        if (file.type !== 'application/pdf') {
+          alert('Por favor sube solo archivos PDF.');
+          return;
         }
-      };
-      reader.readAsArrayBuffer(file);
 
-      // Rimuovi la classe dragover
-      const calcFileUpload = document.getElementById('calc-file-upload');
-      if (calcFileUpload) calcFileUpload.classList.remove('dragover');
-    }
+        if (file.size > 10 * 1024 * 1024) {
+          alert('El archivo es muy grande. Máximo 10MB.');
+          return;
+        }
+
+        // LETTURA PDF REALE con PDF.js
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const typedarray = new Uint8Array(e.target.result);
+
+          // Carica PDF.js se non è già caricato
+          if (typeof pdfjsLib === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+            script.onload = function () {
+              pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+              countPdfPages(typedarray, file);
+            };
+            document.head.appendChild(script);
+          } else {
+            countPdfPages(typedarray, file);
+          }
+        };
+        reader.readAsArrayBuffer(file);
+
+        // Rimuovi la classe dragover
+        const calcFileUpload = document.getElementById('calc-file-upload');
+        if (calcFileUpload) calcFileUpload.classList.remove('dragover');
+      }
 
     function countPdfPages(typedarray, file) {
-      pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
-        const realPages = pdf.numPages;
-        // console.log('📄 PDF processato:', file.name, 'pagine reali:', realPages);
+        pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+          const realPages = pdf.numPages;
+          console.log('📄 PDF processato:', file.name, 'pagine reali:', realPages);
 
-        orderData.pdfFile = file;
-        orderData.pdfPages = realPages;
+          orderData.pdfFile = file;
+          orderData.pdfPages = realPages;
 
-        // console.log('📄 orderData.pdfPages impostato a:', orderData.pdfPages);
-        // console.log('📄 orderData completo dopo impostazione PDF:', orderData);
+          console.log('📄 orderData.pdfPages impostato a:', orderData.pdfPages);
+          console.log('📄 orderData completo dopo impostazione PDF:', orderData);
 
-        // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
-        if (!orderData.files) {
-          orderData.files = [];
-        }
-        // Controlla se il file è già presente per evitare duplicati
-        const existingFile = orderData.files.find(f => f.name === file.name);
-        if (!existingFile) {
-          orderData.files.push(file);
-          // console.log('📁 File aggiunto a orderData.files:', file.name);
-          // console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+          // AGGIUNGI ANCHE AL SISTEMA FILE PER ORDINI
+          if (!orderData.files) {
+            orderData.files = [];
+          }
+          // Controlla se il file è già presente per evitare duplicati
+          const existingFile = orderData.files.find(f => f.name === file.name);
+          if (!existingFile) {
+            orderData.files.push(file);
+            console.log('📁 File aggiunto a orderData.files:', file.name);
+            console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
 
-          // Aggiorna anche la visualizzazione dei file
-          displayUploadedFile(file);
-          updateUploadStats();
-        }
+            // Aggiorna anche la visualizzazione dei file
+            displayUploadedFile(file);
+            updateUploadStats();
+          }
 
-        // Mostra preview e informazioni reali
-        showCalcFilePreview(file.name, realPages);
-        // Aggiorna input visivo pagine per trasparenza
-        const inputEl = document.getElementById('pdf-pages-input');
-        if (inputEl) {
-          inputEl.value = String(realPages);
-          // console.log('📄 Input pdf-pages-input aggiornato a:', inputEl.value);
-        }
-        updatePdfInfo();
+          // Mostra preview e informazioni reali
+          showCalcFilePreview(file.name, realPages);
+          // Aggiorna input visivo pagine per trasparenza
+          const inputEl = document.getElementById('pdf-pages-input');
+          if (inputEl) {
+            inputEl.value = String(realPages);
+            console.log('📄 Input pdf-pages-input aggiornato a:', inputEl.value);
+          }
+          updatePdfInfo();
 
-        // Ricalcola prezzo con pagine reali
-        calculate();
+          // Ricalcola prezzo con pagine reali
+          calculate();
 
-        // console.log(`✅ PDF caricato: ${realPages} pagine reali`);
-      }).catch(function (error) {
-        // console.error('❌ Errore lettura PDF:', error);
-        alert('❌ Errore nella lettura del PDF. Riprova con un file diverso.');
-      });
-    }
+          console.log(`✅ PDF caricato: ${realPages} pagine reali`);
+        }).catch(function (error) {
+          console.error('❌ Errore lettura PDF:', error);
+          alert('❌ Errore nella lettura del PDF. Riprova con un file diverso.');
+        });
+      }
 
     function showCalcFilePreview(fileName, pages) {
-      const calcFilePreview = document.getElementById('calc-file-preview');
-      const calcFileName = document.getElementById('calc-file-name');
-      const calcFilePages = document.getElementById('calc-file-pages');
+        const calcFilePreview = document.getElementById('calc-file-preview');
+        const calcFileName = document.getElementById('calc-file-name');
+        const calcFilePages = document.getElementById('calc-file-pages');
 
-      if (calcFilePreview && calcFileName && calcFilePages) {
-        calcFileName.textContent = fileName;
-        calcFilePages.textContent = pages;
-        calcFilePreview.style.display = 'block';
+        if (calcFilePreview && calcFileName && calcFilePages) {
+          calcFileName.textContent = fileName;
+          calcFilePages.textContent = pages;
+          calcFilePreview.style.display = 'block';
+        }
       }
-    }
 
     function removeCalcFile() {
-      // Rimuovi i dati del PDF
-      delete orderData.pdfFile;
-      delete orderData.pdfPages;
+        // Rimuovi i dati del PDF
+        delete orderData.pdfFile;
+        delete orderData.pdfPages;
 
-      // Nascondi il preview
-      const calcFilePreview = document.getElementById('calc-file-preview');
-      if (calcFilePreview) calcFilePreview.style.display = 'none';
+        // Nascondi il preview
+        const calcFilePreview = document.getElementById('calc-file-preview');
+        if (calcFilePreview) calcFilePreview.style.display = 'none';
 
-      // Nascondi le informazioni del PDF
-      const pdfInfo = document.getElementById('pdf-info');
-      if (pdfInfo) pdfInfo.style.display = 'none';
+        // Nascondi le informazioni del PDF
+        const pdfInfo = document.getElementById('pdf-info');
+        if (pdfInfo) pdfInfo.style.display = 'none';
 
-      // Ripristina input pagine a 1
-      const inputEl = document.getElementById('pdf-pages-input');
-      if (inputEl) inputEl.value = '1';
+        // Ripristina input pagine a 1
+        const inputEl = document.getElementById('pdf-pages-input');
+        if (inputEl) inputEl.value = '1';
 
-      // Ricalcola il prezzo
-      calculate();
-    }
+        // Ricalcola il prezzo
+        calculate();
+      }
 
     // SISTEMA IBRIDO GRATUITO: EmailJS + WhatsApp
     function inviaEmailOrdine(orderNumber, name, email, phone, finalTotal) {
-      // Prepara i dati per l'email
-      const pdfPages = orderData.pdfPages || 1;
-      const copies = orderData.quantity || 1;
-      const sidesMultiplierEmail = orderData.sides === 'double' ? 2 : 1;
-      const totalPages = pdfPages * copies * sidesMultiplierEmail;
+        // Prepara i dati per l'email
+        const pdfPages = orderData.pdfPages || 1;
+        const copies = orderData.quantity || 1;
+        const sidesMultiplierEmail = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = pdfPages * copies * sidesMultiplierEmail;
 
-      // Calcola se richiede anticipo
-      const requiresAnticipo = totalPages >= 1000;
-      const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
+        // Calcola se richiede anticipo
+        const requiresAnticipo = totalPages >= 1000;
+        const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
 
-      // Prepara i servizi aggiuntivi
-      let upsellsText = '';
-      Object.values(orderData.upsells).forEach(upsell => {
-        upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
-      });
-
-      // Prepara i dettagli di consegna
-      const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
-        orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
-
-      const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
-        orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
-
-      // Prepara le note speciali
-      const specialNotes = document.getElementById('special-notes')?.value || '';
-
-      // Prepara la lista dei file caricati
-      let filesList = '';
-      if (orderData.files && orderData.files.length > 0) {
-        filesList = orderData.files.map(file => `- ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
-      }
-
-      // Template parameters per EmailJS
-      const templateParams = {
-        orderNumber: orderNumber,
-        customerName: name,
-        customerEmail: email,
-        customerPhone: phone,
-        serviceType: `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`,
-        orderDetails: `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`,
-        upsells: upsellsText || 'Ninguno',
-        deliveryMethod: deliveryText,
-        deliveryTiming: timingText,
-        totalAmount: finalTotal.toFixed(2),
-        paymentMethod: orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia',
-        fileCount: orderData.files.length,
-        filesList: filesList || 'Ningún archivo',
-        specialNotes: specialNotes || 'Ninguna',
-        anticipoAmount: anticipoAmount,
-        requiresAnticipo: requiresAnticipo ? 'SÍ' : 'NO'
-      };
-
-      // Invia email usando EmailJS
-      emailjs.send('service_vcncpul', 'template_gj4wo8s', templateParams)
-        .then(function (response) {
-          // console.log('✅ Email inviata con successo:', response);
-        }, function (error) {
-          // console.error('❌ Errore invio email:', error);
+        // Prepara i servizi aggiuntivi
+        let upsellsText = '';
+        Object.values(orderData.upsells).forEach(upsell => {
+          upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
         });
-    }
+
+        // Prepara i dettagli di consegna
+        const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
+          orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+
+        const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
+          orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+
+        // Prepara le note speciali
+        const specialNotes = document.getElementById('special-notes')?.value || '';
+
+        // Prepara la lista dei file caricati
+        let filesList = '';
+        if (orderData.files && orderData.files.length > 0) {
+          filesList = orderData.files.map(file => `- ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
+        }
+
+        // Template parameters per EmailJS
+        const templateParams = {
+          orderNumber: orderNumber,
+          customerName: name,
+          customerEmail: email,
+          customerPhone: phone,
+          serviceType: `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'Blanco y Negro' : 'a Color'}`,
+          orderDetails: `${copies} copias × ${pdfPages} páginas = ${totalPages} páginas totales (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`,
+          upsells: upsellsText || 'Ninguno',
+          deliveryMethod: deliveryText,
+          deliveryTiming: timingText,
+          totalAmount: finalTotal.toFixed(2),
+          paymentMethod: orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia',
+          fileCount: orderData.files.length,
+          filesList: filesList || 'Ningún archivo',
+          specialNotes: specialNotes || 'Ninguna',
+          anticipoAmount: anticipoAmount,
+          requiresAnticipo: requiresAnticipo ? 'SÍ' : 'NO'
+        };
+
+        // Invia email usando EmailJS
+        emailjs.send('service_vcncpul', 'template_gj4wo8s', templateParams)
+          .then(function (response) {
+            console.log('✅ Email inviata con successo:', response);
+          }, function (error) {
+            console.error('❌ Errore invio email:', error);
+          });
+      }
 
     function inviaOrdineWhatsApp(orderNumber, name, finalTotal) {
-      // Prepara il messaggio WhatsApp
-      const pdfPages = orderData.pdfPages || 1;
-      const copies = orderData.quantity || 1;
-      const sidesMultiplierWa = orderData.sides === 'double' ? 2 : 1;
-      const totalPages = pdfPages * copies * sidesMultiplierWa;
+        // Prepara il messaggio WhatsApp
+        const pdfPages = orderData.pdfPages || 1;
+        const copies = orderData.quantity || 1;
+        const sidesMultiplierWa = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = pdfPages * copies * sidesMultiplierWa;
 
-      // Calcola se richiede anticipo
-      const requiresAnticipo = totalPages >= 1000;
-      const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
+        // Calcola se richiede anticipo
+        const requiresAnticipo = totalPages >= 1000;
+        const anticipoAmount = requiresAnticipo ? (finalTotal * 0.5).toFixed(2) : '0.00';
 
-      // Prepara i servizi aggiuntivi
-      let upsellsText = '';
-      Object.values(orderData.upsells).forEach(upsell => {
-        upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
-      });
+        // Prepara i servizi aggiuntivi
+        let upsellsText = '';
+        Object.values(orderData.upsells).forEach(upsell => {
+          upsellsText += `\n- ${upsell.name}: +$${upsell.price}`;
+        });
 
-      // Prepara i dettagli di consegna
-      const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
-        orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+        // Prepara i dettagli di consegna
+        const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
+          orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
 
-      const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
-        orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+        const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
+          orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
 
-      // Prepara le note speciali
-      const specialNotes = document.getElementById('special-notes')?.value || '';
+        // Prepara le note speciali
+        const specialNotes = document.getElementById('special-notes')?.value || '';
 
-      // Prepara la lista dei file caricati
-      let filesList = '';
-      if (orderData.files && orderData.files.length > 0) {
-        filesList = orderData.files.map(file => `• ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
-      }
+        // Prepara la lista dei file caricati
+        let filesList = '';
+        if (orderData.files && orderData.files.length > 0) {
+          filesList = orderData.files.map(file => `• ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`).join('\n');
+        }
 
-      // Crea il messaggio WhatsApp
-      const message = `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
+        // Crea il messaggio WhatsApp
+        const message = `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
 
 👤 Cliente: ${name}
 📱 Tel: ${orderData.customer?.phone || 'No proporcionado'}
@@ -9047,52 +8839,53 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
 ¡Pedido listo para procesar!`;
 
-      // Codifica il messaggio per WhatsApp
-      const encodedMessage = encodeURIComponent(message);
+        // Codifica il messaggio per WhatsApp
+        const encodedMessage = encodeURIComponent(message);
 
-      // Apri WhatsApp con il messaggio pre-compilato
-      window.open(`https://wa.me/525540219892?text=${encodedMessage}`, '_blank');
-    }
+        // Apri WhatsApp con il messaggio pre-compilato
+        window.open(`https://wa.me/525540219892?text=${encodedMessage}`, '_blank');
+      }
 
     function confermaOrdineCompleto(orderNumber, name, email, phone, finalTotal) {
-      // 1. Email automatica al proprietario (GRATIS)
-      inviaEmailOrdine(orderNumber, name, email, phone, finalTotal);
+        // 1. Email automatica al proprietario (GRATIS)
+        inviaEmailOrdine(orderNumber, name, email, phone, finalTotal);
 
-      // 2. WhatsApp si apre automaticamente per il cliente (GRATIS)
-      inviaOrdineWhatsApp(orderNumber, name, finalTotal);
+        // 2. WhatsApp si apre automaticamente per il cliente (GRATIS)
+        inviaOrdineWhatsApp(orderNumber, name, finalTotal);
 
-      // 3. Conferma al cliente
-      setTimeout(() => {
-        alert('✅ ¡Pedido confirmado exitosamente!\n\n📧 Email enviado al negocio\n📱 WhatsApp abierto para enviar mensaje\n\nEl negocio se pondrá en contacto contigo pronto.');
-      }, 1000);
-    }
+        // 3. Conferma al cliente
+        setTimeout(() => {
+          alert('✅ ¡Pedido confirmado exitosamente!\n\n📧 Email enviado al negocio\n📱 WhatsApp abierto para enviar mensaje\n\nEl negocio se pondrá en contacto contigo pronto.');
+        }, 1000);
+      }
 
     function showOrderPage(shouldPush = true) {
-      if (homepage) homepage.style.display = 'none';
-      if (homepageContent) homepageContent.style.display = 'none';
-      if (orderPage) orderPage.classList.add('active');
-      updateOrderSummary();
-      window.scrollTo(0, 0);
+        if (homepage) homepage.style.display = 'none';
+        if (homepageContent) homepageContent.style.display = 'none';
+        if (orderPage) orderPage.classList.add('active');
+        updateOrderSummary();
+        window.scrollTo(0, 0);
 
-      // Assicurati che le opzioni di pagamento siano configurate
-      setTimeout(() => {
-        setupDeliveryOptions();
-        // console.log('✅ Opzioni di pagamento configurate');
-      }, 100);
+        // Assicurati che le opzioni di pagamento siano configurate
+        setTimeout(() => {
+          setupDeliveryOptions();
+          console.log('✅ Opzioni di pagamento configurate');
+        }, 100);
 
-      // Aggiungi alla cronologia del browser per gestire il pulsante "Indietro"
-      if (shouldPush && window.history && window.history.pushState) {
-        window.history.pushState({ page: 'order' }, '', window.location.origin + '/#order');
+        // Aggiungi alla cronologia del browser per gestire il pulsante "Indietro"
+        if (shouldPush && window.history && window.history.pushState) {
+          window.history.pushState({ page: 'order' }, '', window.location.origin + '/#order');
+        }
       }
-    }
 
     // GRIGLIA LIBRI - VERSIONE SEMPLICE E FUNZIONALE
-    // console.log('📚 Griglia libri - versione semplice...');
+    console.log('📚 Griglia libri - versione semplice...');
+    }); // Chiusura primo DOMContentLoaded
 
     // Inizializzazione quando il DOM è pronto
     document.addEventListener('DOMContentLoaded', function () {
-      // console.log('🚀 Setup griglia libri...');
-      // console.log('✅ Griglia libri inizializzata!');
+      console.log('🚀 Setup griglia libri...');
+      console.log('✅ Griglia libri inizializzata!');
     });
 
     // Sistema di recensioni VERE di Google di COPIMAX - Solo 3 che cambiano a ogni refresh
@@ -9169,17 +8962,17 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
       const reviewsGrid = document.getElementById('reviewsGrid');
 
       if (!reviewsGrid) {
-        // console.error('❌ ReviewsGrid non trovato!');
+        console.error('❌ ReviewsGrid non trovato!');
         return;
       }
 
-      // console.log('✅ ReviewsGrid trovato, caricando recensioni...');
+      console.log('✅ ReviewsGrid trovato, caricando recensioni...');
 
       // Seleziona 3 recensioni casuali diverse
       const shuffledReviews = [...realGoogleReviews].sort(() => Math.random() - 0.5);
       const selectedReviews = shuffledReviews.slice(0, 3);
 
-      // console.log('📝 Recensioni selezionate:', selectedReviews.length);
+      console.log('📝 Recensioni selezionate:', selectedReviews.length);
 
       let reviewsHTML = '';
       selectedReviews.forEach(review => {
@@ -9208,9 +9001,9 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
     // Test immediato delle recensioni
     function testReviews() {
-      // console.log('🧪 Test recensioni:');
-      // console.log('- Dati disponibili:', realGoogleReviews.length);
-      // console.log('- Elemento DOM:', document.getElementById('reviewsGrid'));
+      console.log('🧪 Test recensioni:');
+      console.log('- Dati disponibili:', realGoogleReviews.length);
+      console.log('- Elemento DOM:', document.getElementById('reviewsGrid'));
       displayReviews();
     }
 
@@ -9243,31 +9036,31 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function nextStep(stepNum) {
-      // console.log('🔄 nextStep chiamato con stepNum:', stepNum);
+      console.log('🔄 nextStep chiamato con stepNum:', stepNum);
 
       // Assicurati che orderData.files sia un array SOLO se è undefined/null
       if (!orderData.files) {
-        // console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
+        console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
         orderData.files = [];
       } else if (!Array.isArray(orderData.files)) {
-        // console.log('⚠️ orderData.files non è un array, lo converto');
+        console.log('⚠️ orderData.files non è un array, lo converto');
         orderData.files = [orderData.files];
       }
 
-      // console.log('📁 orderData.files.length:', orderData.files.length);
-      // console.log('📁 orderData.files:', orderData.files);
+      console.log('📁 orderData.files.length:', orderData.files.length);
+      console.log('📁 orderData.files:', orderData.files);
       // Validazione: per andare dal Passo 1 → 2 o 2 → 3 serve almeno un file
       // Controllo semplice: verifica se ci sono file caricati
       const hasFiles = orderData.files.length > 0;
-      // console.log('🔍 Controllo file per step', stepNum, ':', hasFiles, 'orderData.files:', orderData.files);
+      console.log('🔍 Controllo file per step', stepNum, ':', hasFiles, 'orderData.files:', orderData.files);
 
       if ((stepNum === 2 || stepNum === 3) && !hasFiles) {
-        // console.error('❌ Nessun file caricato, impossibile continuare');
+        console.error('❌ Nessun file caricato, impossibile continuare');
         alert('Por favor sube al menos un archivo antes de continuar.');
         showStep(1); // porta l'utente allo step de subida archivos
         return;
       }
-      // console.log('✅ File validati, procedendo al step:', stepNum);
+      console.log('✅ File validati, procedendo al step:', stepNum);
       showStep(stepNum);
     }
 
@@ -9276,18 +9069,18 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function showStep(stepNum) {
-      // console.log('🔄 showStep chiamato con stepNum:', stepNum);
+      console.log('🔄 showStep chiamato con stepNum:', stepNum);
 
       // Assicurati che orderData.files sia un array SOLO se è undefined/null
       if (!orderData.files) {
-        // console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
+        console.log('⚠️ orderData.files è undefined/null, lo inizializzo');
         orderData.files = [];
       } else if (!Array.isArray(orderData.files)) {
-        // console.log('⚠️ orderData.files non è un array, lo converto');
+        console.log('⚠️ orderData.files non è un array, lo converto');
         orderData.files = [orderData.files];
       }
 
-      // console.log('📁 orderData.files.length in showStep:', orderData.files.length);
+      console.log('📁 orderData.files.length in showStep:', orderData.files.length);
 
       // Update step indicators
       steps.forEach((step, index) => {
@@ -9315,11 +9108,11 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function handleFileUpload(e, isInput = false) {
-      // console.log('📁 handleFileUpload chiamato con:', e.type);
+      console.log('📁 handleFileUpload chiamato con:', e.type);
       e.preventDefault();
       const files = isInput ? e.target.files : e.dataTransfer.files;
 
-      // console.log('📁 File ricevuti:', files.length, 'file');
+      console.log('📁 File ricevuti:', files.length, 'file');
 
       if (files.length === 0) return;
 
@@ -9341,23 +9134,23 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
         }
 
         // Process file immediately (no more setTimeout)
-        // console.log('📁 Processando file:', file.name, 'dimensione:', file.size);
+        console.log('📁 Processando file:', file.name, 'dimensione:', file.size);
 
         // Assicurati che orderData.files sia un array
         if (!orderData.files) {
-          // console.log('⚠️ orderData.files era undefined/null, lo inizializzo');
+          console.log('⚠️ orderData.files era undefined/null, lo inizializzo');
           orderData.files = [];
         } else if (!Array.isArray(orderData.files)) {
-          // console.log('⚠️ orderData.files non era un array, lo converto');
+          console.log('⚠️ orderData.files non era un array, lo converto');
           orderData.files = [orderData.files];
         }
 
-        // console.log('📁 orderData.files prima dell\'aggiunta:', orderData.files);
-        // console.log('📁 orderData.files.length prima dell\'aggiunta:', orderData.files.length);
+        console.log('📁 orderData.files prima dell\'aggiunta:', orderData.files);
+        console.log('📁 orderData.files.length prima dell\'aggiunta:', orderData.files.length);
 
         orderData.files.push(file);
-        // console.log('📁 orderData.files dopo aggiunta:', orderData.files);
-        // console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
+        console.log('📁 orderData.files dopo aggiunta:', orderData.files);
+        console.log('📁 orderData.files.length dopo aggiunta:', orderData.files.length);
 
         displayUploadedFile(file);
         updateUploadStats();
@@ -9375,11 +9168,11 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     function displayUploadedFile(file) {
-      // console.log('📄 displayUploadedFile chiamato per:', file.name);
-      // console.log('📄 File details:', { name: file.name, size: file.size, type: file.type });
+      console.log('📄 displayUploadedFile chiamato per:', file.name);
+      console.log('📄 File details:', { name: file.name, size: file.size, type: file.type });
 
       const container = document.getElementById('file-preview-grid');
-      // console.log('🔍 Container trovato:', !!container);
+      console.log('🔍 Container trovato:', !!container);
 
       if (container) {
         const fileItem = document.createElement('div');
@@ -9398,14 +9191,14 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
           </div>
         `;
         container.appendChild(fileItem);
-        // console.log('✅ File item aggiunto al container');
+        console.log('✅ File item aggiunto al container');
       } else {
-        // console.error('❌ Container file-preview-grid non trovato!');
+        console.error('❌ Container file-preview-grid non trovato!');
       }
     }
 
     function updateUploadStats() {
-      // console.log('📊 updateUploadStats chiamato, orderData.files.length:', orderData.files ? orderData.files.length : 'undefined');
+      console.log('📊 updateUploadStats chiamato, orderData.files.length:', orderData.files ? orderData.files.length : 'undefined');
 
       // Assicurati che orderData.files sia un array
       if (!orderData.files) {
@@ -9417,23 +9210,23 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
       const fileCount = document.getElementById('file-count');
       const totalSize = document.getElementById('total-size');
 
-      // console.log('🔍 Elementi trovati:', { fileCount: !!fileCount, totalSize: !!totalSize });
-      // console.log('🔍 orderData.files:', orderData.files);
-      // console.log('🔍 orderData.files.length:', orderData.files.length);
+      console.log('🔍 Elementi trovati:', { fileCount: !!fileCount, totalSize: !!totalSize });
+      console.log('🔍 orderData.files:', orderData.files);
+      console.log('🔍 orderData.files.length:', orderData.files.length);
 
       if (fileCount) {
         fileCount.textContent = orderData.files.length;
-        // console.log('📊 File count aggiornato a:', orderData.files.length);
+        console.log('📊 File count aggiornato a:', orderData.files.length);
       } else {
-        // console.error('❌ Elemento file-count non trovato!');
+        console.error('❌ Elemento file-count non trovato!');
       }
 
       if (totalSize) {
         const totalBytes = orderData.files.reduce((sum, file) => sum + file.size, 0);
         totalSize.textContent = (totalBytes / 1024 / 1024).toFixed(2) + ' MB';
-        // console.log('📊 Total size aggiornato a:', (totalBytes / 1024 / 1024).toFixed(2), 'MB');
+        console.log('📊 Total size aggiornato a:', (totalBytes / 1024 / 1024).toFixed(2), 'MB');
       } else {
-        // console.error('❌ Elemento total-size non trovato!');
+        console.error('❌ Elemento total-size non trovato!');
       }
     }
 
@@ -9460,7 +9253,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
     }
 
     window.removeFile = function (fileName) {
-      // console.log('🗑️ removeFile chiamato per:', fileName);
+      console.log('🗑️ removeFile chiamato per:', fileName);
 
       // Assicurati che orderData.files sia un array
       if (!orderData.files) {
@@ -9469,12 +9262,12 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
         orderData.files = [orderData.files];
       }
 
-      // console.log('📁 orderData.files prima della rimozione:', orderData.files.length);
+      console.log('📁 orderData.files prima della rimozione:', orderData.files.length);
 
       // Rimuovi il file dall'array
       orderData.files = orderData.files.filter(f => f.name !== fileName);
 
-      // console.log('📁 orderData.files dopo la rimozione:', orderData.files.length);
+      console.log('📁 orderData.files dopo la rimozione:', orderData.files.length);
 
       // Rimuovi solo l'elemento specifico dal DOM invece di svuotare tutto
       const container = document.getElementById('file-preview-grid');
@@ -9611,12 +9404,12 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
           }
 
           if (option.dataset.payment) {
-            // console.log('🔍 Metodo di pagamento selezionato:', option.dataset.payment);
+            console.log('🔍 Metodo di pagamento selezionato:', option.dataset.payment);
 
             // Reset stato conferma pagamento quando si cambia metodo
             if (orderData.payment !== option.dataset.payment) {
               orderData.paymentConfirmed = false;
-              // console.log('🔄 Reset stato conferma pagamento');
+              console.log('🔄 Reset stato conferma pagamento');
 
               // Assicurati che il pulsante di conferma ordine sia disabilitato
               const submitOrderBtn = document.getElementById('submit-order');
@@ -9626,7 +9419,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
                 submitOrderBtn.textContent = '⏳ Confirma el método de pago primero';
                 submitOrderBtn.classList.add('disabled');
                 submitOrderBtn.classList.remove('active');
-                // console.log('✅ Pulsante conferma ordine disabilitato dopo cambio metodo');
+                console.log('✅ Pulsante conferma ordine disabilitato dopo cambio metodo');
               }
             }
 
@@ -9643,7 +9436,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
       if (changePaymentBtn) {
         changePaymentBtn.addEventListener('click', function () {
-          // console.log('🔍 Pulsante cambio pagamento cliccato');
+          console.log('🔍 Pulsante cambio pagamento cliccato');
           hidePaymentConfirmation();
         });
       } else {
@@ -9652,7 +9445,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
       if (confirmPaymentBtn) {
         confirmPaymentBtn.addEventListener('click', function () {
-          // console.log('🔍 Pulsante conferma pagamento cliccato');
+          console.log('🔍 Pulsante conferma pagamento cliccato');
           confirmPaymentMethod();
         });
       } else {
@@ -9662,19 +9455,19 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
 
     // SISTEMA CONFERMA PAGAMENTO
     function showPaymentConfirmation(paymentMethod) {
-      // console.log('🔍 showPaymentConfirmation chiamata con:', paymentMethod);
+      console.log('🔍 showPaymentConfirmation chiamata con:', paymentMethod);
 
       const paymentConfirmation = document.getElementById('payment-confirmation');
       const paymentMethodInfo = document.getElementById('payment-method-info');
 
       if (!paymentConfirmation || !paymentMethodInfo) {
-        // console.error('❌ Elementi di conferma pagamento non trovati');
+        console.error('❌ Elementi di conferma pagamento non trovati');
         return;
       }
 
       // Reset stato conferma pagamento
       orderData.paymentConfirmed = false;
-      // console.log('🔄 Stato conferma pagamento resettato');
+      console.log('🔄 Stato conferma pagamento resettato');
 
       // Prepara informazioni metodo pagamento
       let methodInfo = '';
@@ -9714,22 +9507,22 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
         submitOrderBtn.classList.add('disabled');
         submitOrderBtn.classList.remove('active');
 
-        // console.log('✅ Pulsante conferma ordine disabilitato');
+        console.log('✅ Pulsante conferma ordine disabilitato');
 
         // Aggiungi tooltip per spiegare cosa fare
         submitOrderBtn.title = 'Debes confirmar tu método de pago antes de continuar. Haz clic en "✅ Confirmar Pago" primero.';
       } else {
-        // console.error('❌ Pulsante conferma ordine non trovato in showPaymentConfirmation');
+        console.error('❌ Pulsante conferma ordine non trovato in showPaymentConfirmation');
       }
     }
 
     function hidePaymentConfirmation() {
-      // console.log('🔍 hidePaymentConfirmation chiamata');
+      console.log('🔍 hidePaymentConfirmation chiamata');
 
       const paymentConfirmation = document.getElementById('payment-confirmation');
       if (paymentConfirmation) {
         paymentConfirmation.style.display = 'none';
-        // console.log('✅ Conferma pagamento nascosta');
+        console.log('✅ Conferma pagamento nascosta');
       }
 
       // Riabilita pulsante conferma ordine
@@ -9746,18 +9539,18 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? `
         // Rimuovi tooltip
         submitOrderBtn.title = '';
 
-        // console.log('✅ Pulsante conferma ordine riabilitato');
+        console.log('✅ Pulsante conferma ordine riabilitato');
       } else {
-        // console.error('❌ Pulsante conferma ordine non trovato in hidePaymentConfirmation');
+        console.error('❌ Pulsante conferma ordine non trovato in hidePaymentConfirmation');
       }
     }
 
     function confirmPaymentMethod() {
-      // console.log('🔍 confirmPaymentMethod chiamata');
+      console.log('🔍 confirmPaymentMethod chiamata');
 
       // Marca pagamento come confermato
       orderData.paymentConfirmed = true;
-      // console.log('✅ orderData.paymentConfirmed impostato a:', orderData.paymentConfirmed);
+      console.log('✅ orderData.paymentConfirmed impostato a:', orderData.paymentConfirmed);
 
       // Nascondi conferma pagamento
       hidePaymentConfirmation();
@@ -9788,12 +9581,12 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
         // Aggiungi tooltip per spiegare cosa fare
         submitOrderBtn.title = '¡Perfecto! Ahora puedes confirmar tu pedido. Haz clic aquí para finalizar.';
 
-        // console.log('✅ Pulsante conferma ordine riabilitato');
+        console.log('✅ Pulsante conferma ordine riabilitato');
       } else {
-        // console.error('❌ Pulsante conferma ordine non trovato');
+        console.error('❌ Pulsante conferma ordine non trovato');
       }
 
-      // console.log('✅ Payment method confirmed:', orderData.payment);
+      console.log('✅ Payment method confirmed:', orderData.payment);
     }
 
     function updateFinalSummary() {
@@ -9802,14 +9595,14 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
       const timingPrice = orderData.timing.price;
       const finalTotal = subtotal + deliveryPrice + timingPrice;
 
-      // console.log('📊 updateFinalSummary - Dettagli:');
-      // console.log('📊 orderData.total:', orderData.total);
-      // console.log('📊 orderData.pdfPages:', orderData.pdfPages);
-      // console.log('📊 orderData.quantity:', orderData.quantity);
-      // console.log('📊 subtotal:', subtotal);
-      // console.log('📊 deliveryPrice:', deliveryPrice);
-      // console.log('📊 timingPrice:', timingPrice);
-      // console.log('📊 finalTotal:', finalTotal);
+      console.log('📊 updateFinalSummary - Dettagli:');
+      console.log('📊 orderData.total:', orderData.total);
+      console.log('📊 orderData.pdfPages:', orderData.pdfPages);
+      console.log('📊 orderData.quantity:', orderData.quantity);
+      console.log('📊 subtotal:', subtotal);
+      console.log('📊 deliveryPrice:', deliveryPrice);
+      console.log('📊 timingPrice:', timingPrice);
+      console.log('📊 finalTotal:', finalTotal);
 
       const finalSubtotal = document.getElementById('final-subtotal');
       const finalDelivery = document.getElementById('final-delivery');
@@ -9842,154 +9635,154 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
     }
 
     function submitOrder() {
-      // console.log('🔍 submitOrder chiamata');
-      // console.log('📊 Stato ordine:', {
-      paymentConfirmed: orderData.paymentConfirmed,
+      console.log('🔍 submitOrder chiamata');
+      console.log('📊 Stato ordine:', {
+        paymentConfirmed: orderData.paymentConfirmed,
         payment: orderData.payment,
-          files: orderData.files.length
-    });
+        files: orderData.files.length
+      });
 
-    // VALIDAZIONE PAGAMENTO - NUOVO SISTEMA
-    if (!orderData.paymentConfirmed) {
-      // console.error('❌ Pagamento non confermato');
+      // VALIDAZIONE PAGAMENTO - NUOVO SISTEMA
+      if (!orderData.paymentConfirmed) {
+        console.error('❌ Pagamento non confermato');
 
-      // Mostra messaggio più dettagliato
-      let errorMessage = '❌ Debes confirmar el método de pago antes de continuar\n\n';
+        // Mostra messaggio più dettagliato
+        let errorMessage = '❌ Debes confirmar el método de pago antes de continuar\n\n';
 
-      if (!orderData.payment) {
-        errorMessage += '⚠️ No has seleccionado ningún método de pago\n';
+        if (!orderData.payment) {
+          errorMessage += '⚠️ No has seleccionado ningún método de pago\n';
+        } else {
+          errorMessage += `✅ Método seleccionado: ${orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia'}\n`;
+          errorMessage += '⚠️ Pero no has confirmado el método\n';
+        }
+
+        errorMessage += '\n\n📋 Pasos para completar el pago:\n';
+        errorMessage += '1. ✅ Selecciona tu método de pago (Efectivo o Transferencia)\n';
+        errorMessage += '2. 🔍 Revisa los detalles del método seleccionado\n';
+        errorMessage += '3. ✅ Haz clic en "✅ Confirmar Pago"\n';
+        errorMessage += '4. 🚀 Luego podrás hacer clic en "CONFIRMAR PEDIDO"';
+
+        alert(errorMessage);
+        return;
+      }
+
+      // Validate required fields with detailed feedback
+      const name = document.getElementById('customer-name')?.value.trim();
+      const email = document.getElementById('customer-email')?.value.trim();
+      const phone = document.getElementById('customer-phone')?.value.trim();
+
+      let hasErrors = false;
+
+      if (!name) {
+        showValidationMessage('name-validation', 'El nombre es requerido', 'error');
+        hasErrors = true;
+      }
+
+      if (!email) {
+        showValidationMessage('email-validation', 'El email es requerido', 'error');
+        hasErrors = true;
+      }
+
+      if (!phone) {
+        showValidationMessage('phone-validation', 'El teléfono es requerido', 'error');
+        hasErrors = true;
+      }
+
+      // Validate file uploads
+      if (orderData.files.length === 0) {
+        alert('Por favor sube al menos un archivo para procesar.');
+        hasErrors = true;
+      }
+
+      // Check total file size (max 50MB)
+      const totalSize = orderData.files.reduce((sum, file) => sum + file.size, 0);
+      if (totalSize > 50 * 1024 * 1024) {
+        alert('El tamaño total de los archivos excede 50MB. Por favor reduce el tamaño o divide en múltiples pedidos.');
+        hasErrors = true;
+      }
+
+      if (hasErrors) {
+        return;
+      }
+
+      // Generate order number and reference
+      const orderNumber = 'COPI' + Date.now().toString().slice(-6);
+      orderData.reference = `REF-${Date.now().toString().slice(-8)}`;
+
+      // Save customer data to orderData
+      orderData.customer = { name, email, phone };
+
+      // Calculate final total
+      const finalTotal = orderData.total + orderData.delivery.price + orderData.timing.price;
+
+      // Update confirmation details
+      const orderNumberEl = document.getElementById('order-number');
+      const confirmedTotal = document.getElementById('confirmed-total');
+
+      if (orderNumberEl) orderNumberEl.textContent = orderNumber;
+      if (confirmedTotal) confirmedTotal.textContent = `${finalTotal.toFixed(2)} MXN`;
+
+      // Calculate delivery date
+      let deliveryDate = new Date();
+      if (orderData.timing.method === 'express-same') {
+        deliveryDate = new Date(); // Today
+      } else if (orderData.timing.method === 'express1') {
+        deliveryDate.setDate(deliveryDate.getDate() + 1);
       } else {
-        errorMessage += `✅ Método seleccionado: ${orderData.payment === 'cash' ? 'Efectivo' : 'Transferencia'}\n`;
-        errorMessage += '⚠️ Pero no has confirmado el método\n';
+        deliveryDate.setDate(deliveryDate.getDate() + 2);
       }
 
-      errorMessage += '\n\n📋 Pasos para completar el pago:\n';
-      errorMessage += '1. ✅ Selecciona tu método de pago (Efectivo o Transferencia)\n';
-      errorMessage += '2. 🔍 Revisa los detalles del método seleccionado\n';
-      errorMessage += '3. ✅ Haz clic en "✅ Confirmar Pago"\n';
-      errorMessage += '4. 🚀 Luego podrás hacer clic en "CONFIRMAR PEDIDO"';
-
-      alert(errorMessage);
-      return;
-    }
-
-    // Validate required fields with detailed feedback
-    const name = document.getElementById('customer-name')?.value.trim();
-    const email = document.getElementById('customer-email')?.value.trim();
-    const phone = document.getElementById('customer-phone')?.value.trim();
-
-    let hasErrors = false;
-
-    if (!name) {
-      showValidationMessage('name-validation', 'El nombre es requerido', 'error');
-      hasErrors = true;
-    }
-
-    if (!email) {
-      showValidationMessage('email-validation', 'El email es requerido', 'error');
-      hasErrors = true;
-    }
-
-    if (!phone) {
-      showValidationMessage('phone-validation', 'El teléfono es requerido', 'error');
-      hasErrors = true;
-    }
-
-    // Validate file uploads
-    if (orderData.files.length === 0) {
-      alert('Por favor sube al menos un archivo para procesar.');
-      hasErrors = true;
-    }
-
-    // Check total file size (max 50MB)
-    const totalSize = orderData.files.reduce((sum, file) => sum + file.size, 0);
-    if (totalSize > 50 * 1024 * 1024) {
-      alert('El tamaño total de los archivos excede 50MB. Por favor reduce el tamaño o divide en múltiples pedidos.');
-      hasErrors = true;
-    }
-
-    if (hasErrors) {
-      return;
-    }
-
-    // Generate order number and reference
-    const orderNumber = 'COPI' + Date.now().toString().slice(-6);
-    orderData.reference = `REF-${Date.now().toString().slice(-8)}`;
-
-    // Save customer data to orderData
-    orderData.customer = { name, email, phone };
-
-    // Calculate final total
-    const finalTotal = orderData.total + orderData.delivery.price + orderData.timing.price;
-
-    // Update confirmation details
-    const orderNumberEl = document.getElementById('order-number');
-    const confirmedTotal = document.getElementById('confirmed-total');
-
-    if (orderNumberEl) orderNumberEl.textContent = orderNumber;
-    if (confirmedTotal) confirmedTotal.textContent = `${finalTotal.toFixed(2)} MXN`;
-
-    // Calculate delivery date
-    let deliveryDate = new Date();
-    if (orderData.timing.method === 'express-same') {
-      deliveryDate = new Date(); // Today
-    } else if (orderData.timing.method === 'express1') {
-      deliveryDate.setDate(deliveryDate.getDate() + 1);
-    } else {
-      deliveryDate.setDate(deliveryDate.getDate() + 2);
-    }
-
-    const estimatedDelivery = document.getElementById('estimated-delivery');
-    if (estimatedDelivery) {
-      estimatedDelivery.textContent = deliveryDate.toLocaleDateString('es-MX');
-    }
-
-    // Create WhatsApp message
-    const msg = createOrderWhatsAppMessage(orderNumber, name, email, phone, finalTotal);
-    const waOrderLink = document.getElementById('wa-order-link');
-    if (waOrderLink) {
-      waOrderLink.href = 'https://wa.me/525540219892?text=' + encodeURIComponent(msg);
-    }
-
-    // SISTEMA IBRIDO GRATUITO: EmailJS + WhatsApp
-    confermaOrdineCompleto(orderNumber, name, email, phone, finalTotal);
-
-    // AGGIORNA STATO ORDINE
-    orderData.orderStatus = 'confirmed';
-    orderData.orderNumber = orderNumber;
-    orderData.orderDate = new Date().toISOString();
-    orderData.paymentStatus = 'pending';
-
-    // Show confirmation
-    const step4 = document.getElementById('step4');
-    const orderConfirmation = document.getElementById('order-confirmation');
-    if (step4) step4.classList.add('hidden');
-    if (orderConfirmation) orderConfirmation.classList.remove('hidden');
-
-    // Mostra dati bancari se il metodo di pagamento è trasferimento
-    const bankDetails = document.getElementById('bank-details');
-    const bankReference = document.getElementById('bank-reference');
-    if (orderData.payment === 'transfer' && bankDetails && bankReference) {
-      bankDetails.style.display = 'block';
-      bankReference.textContent = orderData.reference || 'PENDIENTE';
-    }
-
-    // Track order completion
-    if (typeof trackOrderComplete === 'function') {
-      trackOrderComplete(orderData);
-    }
-
-    // Log confirmation con stato ordine
-    // console.log('✅ Order submitted successfully:', {
-    orderNumber,
-      orderData,
-      customer: { name, email, phone },
-    status: orderData.orderStatus,
-      paymentStatus: orderData.paymentStatus
-        });
-
-        // Sistema ibrido già implementato sopra - EmailJS + WhatsApp automatici
+      const estimatedDelivery = document.getElementById('estimated-delivery');
+      if (estimatedDelivery) {
+        estimatedDelivery.textContent = deliveryDate.toLocaleDateString('es-MX');
       }
+
+      // Create WhatsApp message
+      const msg = createOrderWhatsAppMessage(orderNumber, name, email, phone, finalTotal);
+      const waOrderLink = document.getElementById('wa-order-link');
+      if (waOrderLink) {
+        waOrderLink.href = 'https://wa.me/525540219892?text=' + encodeURIComponent(msg);
+      }
+
+      // SISTEMA IBRIDO GRATUITO: EmailJS + WhatsApp
+      confermaOrdineCompleto(orderNumber, name, email, phone, finalTotal);
+
+      // AGGIORNA STATO ORDINE
+      orderData.orderStatus = 'confirmed';
+      orderData.orderNumber = orderNumber;
+      orderData.orderDate = new Date().toISOString();
+      orderData.paymentStatus = 'pending';
+
+      // Show confirmation
+      const step4 = document.getElementById('step4');
+      const orderConfirmation = document.getElementById('order-confirmation');
+      if (step4) step4.classList.add('hidden');
+      if (orderConfirmation) orderConfirmation.classList.remove('hidden');
+
+      // Mostra dati bancari se il metodo di pagamento è trasferimento
+      const bankDetails = document.getElementById('bank-details');
+      const bankReference = document.getElementById('bank-reference');
+      if (orderData.payment === 'transfer' && bankDetails && bankReference) {
+        bankDetails.style.display = 'block';
+        bankReference.textContent = orderData.reference || 'PENDIENTE';
+      }
+
+      // Track order completion
+      if (typeof trackOrderComplete === 'function') {
+        trackOrderComplete(orderData);
+      }
+
+      // Log confirmation con stato ordine
+      console.log('✅ Order submitted successfully:', {
+        orderNumber,
+        orderData,
+        customer: { name, email, phone },
+        status: orderData.orderStatus,
+        paymentStatus: orderData.paymentStatus
+      });
+
+      // Sistema ibrido già implementato sopra - EmailJS + WhatsApp automatici
+    }
 
     function buildOrderPayload(orderNumber, name, email, phone, finalTotal) {
       return {
@@ -10048,10 +9841,10 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
         if (paymentRequirements) paymentRequirements.classList.remove('hidden');
 
         // Mostra avviso importante
-        // console.log('⚠️ ORDINE RICHIEDE ANTICIPO: 50% = $' + anticipo.toFixed(2) + ' MXN');
+        console.log('⚠️ ORDINE RICHIEDE ANTICIPO: 50% = $' + anticipo.toFixed(2) + ' MXN');
       } else {
         if (paymentRequirements) paymentRequirements.classList.add('hidden');
-        // console.log('✅ Ordine senza anticipo richiesto');
+        console.log('✅ Ordine senza anticipo richiesto');
       }
     }
 
@@ -10156,73 +9949,73 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
         (isAfterOpening && currentHour < 14);
 
       // DEBUG: Log per verificare gli orari
-      // console.log('🕐 Orari debug:', {
-      currentHour,
+      console.log('🕐 Orari debug:', {
+        currentHour,
         currentMinute,
         currentDay,
         isWeekday,
         isAfterOpening,
         isOpen,
         weekdayHours: '8:30-18:00',
-          weekendHours: '8:30-14:00'
-    });
+        weekendHours: '8:30-14:00'
+      });
 
-    if (!isOpen) {
-      // Se chiuso, mostra gli ultimi 3 slot per oggi
-      // Determina se mostrare 4 o 2 slot basato sull'orario CDMX
-      const currentHourCDMX = new Date().getHours();
-      const lastSlots = (currentHourCDMX >= 18 || currentHourCDMX < 8) ? 2 : 4;
+      if (!isOpen) {
+        // Se chiuso, mostra gli ultimi 3 slot per oggi
+        // Determina se mostrare 4 o 2 slot basato sull'orario CDMX
+        const currentHourCDMX = new Date().getHours();
+        const lastSlots = (currentHourCDMX >= 18 || currentHourCDMX < 8) ? 2 : 4;
+
+        return {
+          copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
+          availableSlots: lastSlots,
+          isOpen: false
+        };
+      }
+
+      // Calcola minuti dall'apertura
+      const openingHour = 8;
+      const openingMinute = 30;
+      let minutesSinceOpening;
+
+      if (isWeekday) {
+        // Lunedì-Venerdì: 8:30-18:00 (9.5 ore = 570 minuti)
+        minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
+        if (minutesSinceOpening < 0) minutesSinceOpening = 0;
+      } else {
+        // Weekend: 8:30-14:00 (5.5 ore = 330 minuti)
+        minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
+        if (minutesSinceOpening < 0) minutesSinceOpening = 0;
+      }
+
+      // Genera seed basato su data per variabilità giornaliera
+      const dateSeed = currentDate.split('-').join('');
+      const dailyVariation = (parseInt(dateSeed) % 100) / 100; // 0-1
+
+      // NON calcoliamo più le copie fatte oggi - ora mostriamo il totale storico
+      // Il contatore mostra "12.2M +" come copie totali realizzate
+      const copies = 0; // Non più utilizzato
+
+      // Calcola posti disponibili per consegna oggi
+      const maxSlotsPerDay = isWeekday ? 15 : 8; // Più slot nei giorni feriali
+      const slotsPerHour = maxSlotsPerDay / (isWeekday ? 9.5 : 5.5); // Slot per ora
+      const usedSlots = Math.floor((minutesSinceOpening / 60) * slotsPerHour);
+      const availableSlots = Math.max(0, maxSlotsPerDay - usedSlots);
+
+      console.log('📊 Posti disponibili:', {
+        maxSlotsPerDay,
+        slotsPerHour,
+        minutesSinceOpening,
+        usedSlots,
+        availableSlots
+      });
 
       return {
         copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
-        availableSlots: lastSlots,
-        isOpen: false
+        availableSlots: availableSlots,
+        isOpen: true
       };
     }
-
-    // Calcola minuti dall'apertura
-    const openingHour = 8;
-    const openingMinute = 30;
-    let minutesSinceOpening;
-
-    if (isWeekday) {
-      // Lunedì-Venerdì: 8:30-18:00 (9.5 ore = 570 minuti)
-      minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
-      if (minutesSinceOpening < 0) minutesSinceOpening = 0;
-    } else {
-      // Weekend: 8:30-14:00 (5.5 ore = 330 minuti)
-      minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
-      if (minutesSinceOpening < 0) minutesSinceOpening = 0;
-    }
-
-    // Genera seed basato su data per variabilità giornaliera
-    const dateSeed = currentDate.split('-').join('');
-    const dailyVariation = (parseInt(dateSeed) % 100) / 100; // 0-1
-
-    // NON calcoliamo più le copie fatte oggi - ora mostriamo il totale storico
-    // Il contatore mostra "12.2M +" come copie totali realizzate
-    const copies = 0; // Non più utilizzato
-
-    // Calcola posti disponibili per consegna oggi
-    const maxSlotsPerDay = isWeekday ? 15 : 8; // Più slot nei giorni feriali
-    const slotsPerHour = maxSlotsPerDay / (isWeekday ? 9.5 : 5.5); // Slot per ora
-    const usedSlots = Math.floor((minutesSinceOpening / 60) * slotsPerHour);
-    const availableSlots = Math.max(0, maxSlotsPerDay - usedSlots);
-
-    // console.log('📊 Posti disponibili:', {
-    maxSlotsPerDay,
-      slotsPerHour,
-      minutesSinceOpening,
-      usedSlots,
-      availableSlots
-        });
-
-    return {
-      copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
-      availableSlots: availableSlots,
-      isOpen: true
-    };
-      }
 
     // Aggiorna contatori dinamici (solo posti disponibili)
     function updateDynamicCounters() {
@@ -10290,14 +10083,14 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
     // Sistema di galleria rimosso per evitare conflitti con il carosello di libri
 
     // Initialize reviews - Forza il caricamento
-    // console.log('🚀 Inizializzando recensioni...');
+    console.log('🚀 Inizializzando recensioni...');
 
     // Test immediato
     testReviews();
 
     // Backup con timeout
     setTimeout(() => {
-      // console.log('⏰ Timeout backup - caricamento recensioni...');
+      console.log('⏰ Timeout backup - caricamento recensioni...');
       displayReviews();
     }, 1000);
 
@@ -10323,10 +10116,10 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
           .then((registration) => {
-// console.log('SW registered: ', registration);
+            console.log('SW registered: ', registration);
           })
           .catch((registrationError) => {
-// console.log('SW registration failed: ', registrationError);
+            console.log('SW registration failed: ', registrationError);
           });
       });
     }
@@ -10343,23 +10136,23 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
         'submit-order': 'Pulsante conferma ordine'
       };
 
-      // console.log('🔍 Verifica elementi pagamento...');
+      console.log('🔍 Verifica elementi pagamento...');
 
       for (const [id, description] of Object.entries(elements)) {
         const element = document.getElementById(id);
         if (element) {
-          // console.log(`✅ ${description} trovato (${id})`);
+          console.log(`✅ ${description} trovato (${id})`);
         } else {
-          // console.error(`❌ ${description} NON trovato (${id})`);
+          console.error(`❌ ${description} NON trovato (${id})`);
         }
       }
 
       // Verifica stato iniziale
-      // console.log('📊 Stato iniziale ordine:', {
-      payment: orderData.payment,
+      console.log('📊 Stato iniziale ordine:', {
+        payment: orderData.payment,
         paymentConfirmed: orderData.paymentConfirmed
-    });
-      }
+      });
+    }
 
     // RIMOSSO: Pulsante di debug pagamento
 
@@ -10368,16 +10161,16 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
       const hash = window.location.hash;
       const url = window.location.href;
 
-      // console.log('🔍 Controllo URL iniziale:', { hash, url });
+      console.log('🔍 Controllo URL iniziale:', { hash, url });
 
       if (hash === '#blog') {
-        // console.log('🔍 URL iniziale contiene #blog, mostrando sezione blog');
+        console.log('🔍 URL iniziale contiene #blog, mostrando sezione blog');
         showBlogPage();
       } else if (hash === '#order') {
-        // console.log('🔍 URL iniziale contiene #order, mostrando flusso ordine inline');
+        console.log('🔍 URL iniziale contiene #order, mostrando flusso ordine inline');
         showOrderPage(false);
       } else if (hash === '#calculator') {
-        // console.log('🔍 URL iniziale contiene #calculator, mostrando homepage e scrollando alla calcolatrice');
+        console.log('🔍 URL iniziale contiene #calculator, mostrando homepage e scrollando alla calcolatrice');
         showHomePage(false);
         // Scroll dolce alla calcolatrice con offset per header fisso
         setTimeout(() => {
@@ -10389,10 +10182,10 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
           }
         }, 100);
       } else if (url.includes('/blog') || url.includes('blogpage')) {
-        // console.log('🔍 URL contiene /blog, mostrando sezione blog');
+        console.log('🔍 URL contiene /blog, mostrando sezione blog');
         showBlogPage();
       } else {
-        // console.log('🔍 URL iniziale pulito, mostrando homepage');
+        console.log('🔍 URL iniziale pulito, mostrando homepage');
         showHomePage();
       }
     }
@@ -10439,7 +10232,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
 
     // Test delle correzioni mobile (solo in modalità debug)
     if (window.location.search.includes('debug=true')) {
-      // console.log('🧪 Modalità debug attivata - Test correzioni mobile');
+      console.log('🧪 Modalità debug attivata - Test correzioni mobile');
 
       // Test 1: Verifica overflow orizzontale
       function testHorizontalOverflow() {
@@ -10447,7 +10240,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
         const windowWidth = window.innerWidth;
         const hasOverflow = bodyWidth > windowWidth;
 
-        // console.log(`📏 Test Overflow: ${hasOverflow ? '❌ FAIL' : '✅ PASS'} (${bodyWidth}px vs ${windowWidth}px)`);
+        console.log(`📏 Test Overflow: ${hasOverflow ? '❌ FAIL' : '✅ PASS'} (${bodyWidth}px vs ${windowWidth}px)`);
         return !hasOverflow;
       }
 
@@ -10455,7 +10248,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
       function testFooterPosition() {
         const footer = document.querySelector('footer');
         if (!footer) {
-          // console.log('🦶 Test Footer: ❌ FAIL - Footer non trovato');
+          console.log('🦶 Test Footer: ❌ FAIL - Footer non trovato');
           return false;
         }
 
@@ -10463,7 +10256,7 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
         const bodyRect = document.body.getBoundingClientRect();
         const isLastElement = footerRect.bottom >= bodyRect.bottom - 10;
 
-        // console.log(`🦶 Test Footer: ${isLastElement ? '✅ PASS' : '❌ FAIL'}`);
+        console.log(`🦶 Test Footer: ${isLastElement ? '✅ PASS' : '❌ FAIL'}`);
         return isLastElement;
       }
 
@@ -10473,9 +10266,9 @@ ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos b
         const footerTest = testFooterPosition();
 
         if (overflowTest && footerTest) {
-          // console.log('🎉 TUTTE LE CORREZIONI FUNZIONANO!');
+          console.log('🎉 TUTTE LE CORREZIONI FUNZIONANO!');
         } else {
-          // console.log('⚠️ Alcune correzioni richiedono attenzione');
+          console.log('⚠️ Alcune correzioni richiedono attenzione');
         }
       }, 1000);
     }

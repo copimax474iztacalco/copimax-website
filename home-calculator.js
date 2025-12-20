@@ -228,7 +228,7 @@ function initializeVideoReels() {
 // 4. INITIALIZATION & EVENTS
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Inizializzazione JS Completo (External)...');
+// console.log('🚀 Inizializzazione JS Completo (External)...');
 
     // 1. Option Buttons (Type, Color, Sides)
     document.querySelectorAll('.calc-option').forEach(opt => {

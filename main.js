@@ -1,10 +1,10 @@
 // Main JavaScript per COPIMAX
 // Funzioni comuni e utilità del sito
 
-console.log('Main JavaScript per COPIMAX caricato');
+// console.log('Main JavaScript per COPIMAX caricato');
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM principale caricato');
+// console.log('DOM principale caricato');
     
     // Funzione per aprire WhatsApp con messaggio predefinito
     window.openWhatsApp = function(message) {
@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('animate-on-scroll');
         });
         
-        console.log('UI inizializzata');
+// console.log('UI inizializzata');
     }
     
     // Inizializza tutto
     initUI();
     
-    console.log('Main JavaScript inizializzato con successo');
+// console.log('Main JavaScript inizializzato con successo');
 });

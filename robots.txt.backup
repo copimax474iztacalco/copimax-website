@@ -9,7 +9,12 @@ Allow: /servicios
 Allow: /nosotros
 Allow: /blog
 Allow: /contacto
+Allow: /centro-copiado-cdmx-guia-2025
+Allow: /fotocopias-economicas-cdmx-precios-2025
+Allow: /papeleria-cdmx-servicios-centro-confianza
 Allow: /tesis-guia-2025
+Allow: /copias-baratas-iztacalco
+Allow: /papeleria-estudiantes-iztacalco
 Allow: /copias-volumen-cdmx
 Allow: /imprenta-cdmx
 

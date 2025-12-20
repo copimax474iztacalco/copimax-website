@@ -8,7 +8,7 @@
   <meta name="description"
     content="Impresiones baratas en CDMX desde $3 color, $0.35 B/N. Impresiones por volumen con entrega 24-48hrs. Iztacalco, Benito Juárez, Coyoacán. ¡Cotiza gratis!">
   <meta name="keywords"
-    content="copias cdmx, impresiones cdmx, copias iztacalco, impresiones iztacalco, copias por volumen cdmx, impresiones color cdmx, papel opalina cdmx, copimax iztacalco">
+    content="copias cdmx, impresiones cdmx, copias iztacalco, impresiones iztacalco, copias por volumen cdmx, impresiones mayoreo, engargolado cdmx, copias baratas cdmx, impresiones color cdmx, papel opalina cdmx, copimax iztacalco">
   <meta name="author" content="COPIMAX">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Copias e Impresiones CDMX Iztacalco | COPIMAX">
@@ -51,10 +51,23 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 19.39732,
-      "longitude": -99.09302
+      "latitude": 19.4094,
+      "longitude": -99.1306
     },
-    "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:30",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "08:30",
+        "closes": "14:00"
+      }
+    ],
     "sameAs": [
       "https://www.facebook.com/copimax",
       "https://instagram.com/copimax",

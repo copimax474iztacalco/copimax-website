@@ -2,14 +2,14 @@
 // Gestisce il calcolo dei prezzi per copias por volumen
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Calcolatrice JavaScript caricata');
+// console.log('Calcolatrice JavaScript caricata');
     
     const qtyEl = document.getElementById('q');
     const pagesEl = document.getElementById('pages');
     const sidesEl = document.getElementById('sides');
     
     if (!qtyEl || !sidesEl) {
-        console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
+// console.log('Elementi calcolatrice non trovati, potrebbe non essere questa pagina');
         return;
     }
     
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Calcolo iniziale
     recalc();
     
-    console.log('Calcolatrice inizializzata con successo');
+// console.log('Calcolatrice inizializzata con successo');
 });
 
 // Funzioni globali per i bottoni
@@ -97,7 +97,7 @@ window.changeType = function(btn, type) {
         window.recalcCalculator();
     }
     
-    console.log('Tipo cambiato a:', type);
+// console.log('Tipo cambiato a:', type);
 };
 
 window.changeColor = function(btn, color) {
@@ -111,5 +111,5 @@ window.changeColor = function(btn, color) {
         window.recalcCalculator();
     }
     
-    console.log('Colore cambiato a:', color);
+// console.log('Colore cambiato a:', color);
 };

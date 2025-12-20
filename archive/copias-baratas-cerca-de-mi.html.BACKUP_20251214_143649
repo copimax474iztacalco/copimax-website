@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGQPKN977H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GGQPKN977H');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1131571462234509');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1131571462234509&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "t4iy5aqh55");
+    </script>
+
+    <title>Copias Baratas Cerca de Mi | CDMX | Desde $0.35 | COPIMAX</title>
+    <meta name="description"
+        content="Copias baratas cerca de ti en CDMX. Desde $0.35/hoja. Ubicados en Vainilla 474, Iztacalco. Servicio a toda CDMX: Benito Juárez, Coyoacán, Iztapalapa. Entrega disponible. ¡Cotiza!">
+    <link rel="canonical" href="https://copimax.store/copias-baratas-cerca-de-mi">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <link rel="apple-touch-icon"
+        href="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "COPIMAX - Copias Baratas CDMX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vainilla 474",
+      "addressLocality": "Iztacalco",
+      "addressRegion": "CDMX",
+      "postalCode": "08400",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.4094,
+      "longitude": -99.1306
+    },
+    "telephone": "+52-55-4021-9892",
+    "priceRange": "$0.35 - $5"
+  }
+  </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary1: #000;
+            --primary2: #474747;
+            --cta1: #b5ff00;
+            --cta2: #ddff88;
+            --text: #1f2937;
+            --muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Premium */
+        header {
+            background: linear-gradient(135deg, var(--primary1), var(--primary2));
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--cta1);
+            box-shadow: 0 0 20px rgba(181, 255, 0, 0.3);
+        }
+
+        .logo-text {
+            color: var(--cta1);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Premium */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, var(--cta2) 100%);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(181, 255, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--primary1), var(--primary2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--cta1), var(--cta2));
+            color: #000;
+            font-weight: 800;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(181, 255, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(181, 255, 0, 0.4);
+        }
+
+        /* Cards Premium */
+        .card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 24px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Location Card Premium */
+        .location-card {
+            background: linear-gradient(135deg, var(--cta1), var(--cta2));
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid var(--cta1);
+            margin-bottom: 32px;
+            box-shadow: 0 15px 50px rgba(181, 255, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '📍';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 200px;
+            opacity: 0.1;
+        }
+
+        .badge {
+            background: #000;
+            color: var(--cta1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Service Grid Premium */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cta1), var(--cta2));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--cta1);
+            box-shadow: 0 15px 40px rgba(181, 255, 0, 0.15);
+        }
+
+        /* Info Box Premium */
+        .info-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid #0ea5e9;
+            margin-top: 32px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--cta1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Stats Counter */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 24px;
+            background: linear-gradient(135deg, #f8fafc, #fff);
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--cta1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--muted);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav wrap">
+            <div class="logo">
+                <img src="https://images.unsplash.com/photo-1756072560912-1812dd261cf1?q=80&w=1160&auto=format&fit=crop"
+                    alt="COPIMAX">
+                <span class="logo-text">COPIMAX</span>
+            </div>
+            <a href="https://wa.me/525540219892" class="whatsapp-btn" target="_blank">
+                <span>💬</span>
+                <span>WhatsApp</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="wrap">
+            <h1 class="animate-in">Copias Baratas <span style="color: var(--primary1);">Cerca de Ti</span> en CDMX</h1>
+            <p class="hero-subtitle animate-in">Desde $0.35/hoja. Ubicados en Iztacalco. Servicio a toda la Ciudad de
+                México.</p>
+            <a href="#ubicacion" class="cta animate-in">📍 Ver Ubicación y Precios</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="padding: 60px 0; background: #fff;">
+        <div class="wrap">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">$0.35</div>
+                    <div class="stat-label">Precio por Copia B/N</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24-48h</div>
+                    <div class="stat-label">Tiempo de Entrega</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ubicacion" style="padding: 60px 0; background: #f8fafc;">
+        <div class="wrap">
+            <div class="card">
+                <h2
+                    style="font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 40px; color: var(--primary1);">
+                    📍 Nuestra Ubicación
+                </h2>
+
+                <div class="location-card">
+                    <div class="badge">🏢 SEDE ÚNICA</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 20px; color: #000;">COPIMAX Iztacalco
+                    </h3>
+                    <p style="font-weight: 600; line-height: 2; color: #000; font-size: 1.2rem;">
+                        📍 <strong>Vainilla 474, Iztacalco, CDMX 08400</strong><br>
+                        🚇 A 5 minutos del Metro Apatlaco (Línea 8)<br>
+                        💰 Copias desde $0.35/hoja<br>
+                        ⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00<br>
+                        📞 +52 55-4021-9892
+                    </p>
+
+                    <div style="margin-top: 32px; text-align: center;">
+                        <a href="https://www.google.com/maps/place/Vainilla+474,+Granjas+M%C3%A9xico,+Iztacalco,+08400+Ciudad+de+M%C3%A9xico,+CDMX/@19.4094,-99.1306,17z"
+                            target="_blank" class="cta">
+                            📍 Abrir en Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); padding: 32px; border-radius: 16px; border: 2px solid #0ea5e9;">
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 800; margin-bottom: 24px; color: #000; text-align: center;">
+                        🚗 ¿Cómo Llegar?
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div
+                            style="background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <div style="font-size: 2.5rem; margin-bottom: 12px; text-align: center;">🚇</div>
+                            <strong style="color: #000; display: block; margin-bottom: 8px; text-align: center;">Metro
+                                Apatlaco</strong>
+                            <p style="color: #666; font-size: 0.95rem; text-align: center;">Salida norte → 5 min
+                                caminando por Vainilla</p>
+                        </div>
+                        <div
+                            style="background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <div style="font-size: 2.5rem; margin-bottom: 12px; text-align: center;">🚗</div>
+                            <strong style="color: #000; display: block; margin-bottom: 8px; text-align: center;">En
+                                Auto</strong>
+                            <p style="color: #666; font-size: 0.95rem; text-align: center;">Viaducto → Salida Eje 3 → 2
+                                cuadras sur</p>
+                        </div>
+                        <div
+                            style="background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <div style="font-size: 2.5rem; margin-bottom: 12px; text-align: center;">🚌</div>
+                            <strong
+                                style="color: #000; display: block; margin-bottom: 8px; text-align: center;">Transporte
+                                Público</strong>
+                            <p style="color: #666; font-size: 0.95rem; text-align: center;">Rutas 8, 13, 34 → Vainilla
+                                esq. Añil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 60px 0; background: #fff;">
+        <div class="wrap">
+            <div class="card">
+                <h2
+                    style="font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 20px; color: var(--primary1);">
+                    🚚 Servicio a Toda CDMX
+                </h2>
+                <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 40px;">
+                    Aunque estamos en Iztacalco, <strong>damos servicio a toda la Ciudad de México</strong>
+                </p>
+
+                <div class="service-grid">
+                    <div class="service-item">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">📍</div>
+                        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: #000;">Zonas que
+                            Servimos</h3>
+                        <ul style="color: #666; line-height: 2; padding-left: 20px;">
+                            <li><strong>Iztacalco</strong> (sede principal)</li>
+                            <li>Benito Juárez</li>
+                            <li>Coyoacán</li>
+                            <li>Iztapalapa</li>
+                            <li>Venustiano Carranza</li>
+                            <li>Cuauhtémoc</li>
+                            <li>Y más zonas de CDMX</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-item">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">🚚</div>
+                        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: #000;">Opciones de
+                            Entrega</h3>
+                        <div style="color: #666; line-height: 2;">
+                            <p style="margin-bottom: 16px;">
+                                <strong style="color: #000; font-size: 1.1rem;">1. Recoges en tienda</strong><br>
+                                <span style="color: #10b981; font-weight: 600;">✓ Sin costo adicional</span>
+                            </p>
+                            <p>
+                                <strong style="color: #000; font-size: 1.1rem;">2. Entrega a domicilio</strong><br>
+                                Disponible vía app de paquetería o taxi<br>
+                                <span style="color: #ef4444; font-weight: 700;">⚠️ Cliente paga la tarifa de
+                                    envío</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">💰</div>
+                        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: #000;">Precios
+                            Transparentes</h3>
+                        <div style="color: #666; line-height: 2;">
+                            <p style="margin-bottom: 12px;">
+                                <strong style="color: #000;">Copias B/N:</strong><br>
+                                <span style="font-size: 1.5rem; color: var(--cta1); font-weight: 900;">$0.35</span>/hoja
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong style="color: #000;">Copias Color:</strong><br>
+                                <span style="font-size: 1.5rem; color: var(--cta1); font-weight: 900;">$3</span>/hoja
+                            </p>
+                            <p>
+                                <strong style="color: #000;">Volúmenes:</strong><br>
+                                Descuentos especiales
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">💬</div>
+                    <p style="font-size: 1.3rem; color: #0369a1; font-weight: 800; margin-bottom: 16px;">
+                        ¿Estás lejos de Iztacalco? ¡No hay problema!
+                    </p>
+                    <p style="color: #666; margin-bottom: 24px; font-size: 1.1rem;">
+                        Cotiza tu pedido por WhatsApp y te decimos cómo te lo hacemos llegar
+                    </p>
+                    <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20copias%20baratas%20y%20estoy%20en%20[TU%20ZONA]"
+                        class="cta" target="_blank">
+                        💬 Cotizar por WhatsApp Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section style="padding: 60px 0; background: #f8fafc;">
+        <div class="wrap">
+            <h2
+                style="font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 40px; color: var(--primary1);">
+                💬 Lo Que Dicen Nuestros Clientes
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <div class="testimonial">
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 16px; font-style: italic;">
+                        "Busqué copias baratas cerca de mi ubicación y encontré COPIMAX. Súper rápidos y económicos.
+                        Pedí 5,000 copias y las tuve en 24 horas."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--cta1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            M</div>
+                        <div>
+                            <p style="font-weight: 700; color: #000;">María G.</p>
+                            <p style="color: #666; font-size: 0.9rem;">Benito Juárez, CDMX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 16px; font-style: italic;">
+                        "Excelente servicio. Aunque estoy en Coyoacán, me llegaron las copias rápido.
+                        Precio inmejorable: $0.35 por hoja."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--cta1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            C</div>
+                        <div>
+                            <p style="font-weight: 700; color: #000;">Carlos R.</p>
+                            <p style="color: #666; font-size: 0.9rem;">Estudiante UNAM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 16px; font-style: italic;">
+                        "Nuestra empresa necesitaba copias por mayoreo. COPIMAX nos da servicio puntual.
+                        Ya llevamos 6 meses trabajando con ellos."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--cta1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            J</div>
+                        <div>
+                            <p style="font-weight: 700; color: #000;">Jorge L.</p>
+                            <p style="color: #666; font-size: 0.9rem;">Director, Iztapalapa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Services -->
+    <section style="padding: 60px 0; background: #fff;">
+        <div class="wrap">
+            <div
+                style="text-align: center; padding: 40px; background: linear-gradient(135deg, #f8fafc, #e5e7eb); border-radius: 20px;">
+                <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 32px; color: var(--primary1);">
+                    🔍 Otros Servicios
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <a href="/copias-volumen-cdmx"
+                        style="background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb; text-decoration: none; display: block; transition: all 0.3s ease;">
+                        <div style="font-size: 3rem; margin-bottom: 12px;">🖨️</div>
+                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Copias por
+                            Volumen</h4>
+                        <p style="color: #666; font-size: 1rem; margin: 0;">Desde $0.35/hoja para grandes cantidades</p>
+                    </a>
+                    <a href="/impresiones-baratas-cdmx"
+                        style="background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb; text-decoration: none; display: block; transition: all 0.3s ease;">
+                        <div style="font-size: 3rem; margin-bottom: 12px;">🎨</div>
+                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Impresiones
+                            Baratas</h4>
+                        <p style="color: #666; font-size: 1rem; margin: 0;">Color desde $3, garantía precio más bajo</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer
+        style="background: linear-gradient(135deg, var(--primary1), var(--primary2)); color: #fff; padding: 60px 0;">
+        <div class="wrap" style="text-align: center;">
+            <h3 style="color: var(--cta1); margin-bottom: 24px; font-size: 2rem; font-weight: 900;">COPIMAX</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 8px;">📍 Vainilla 474, Iztacalco, CDMX 08400</p>
+            <p style="font-size: 1.1rem; margin-bottom: 8px;">📞 +52 55-4021-9892</p>
+            <p style="font-size: 1.1rem; margin-bottom: 24px;">⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00</p>
+            <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="color: #d1d5db; font-size: 0.95rem;">© 2025 COPIMAX - Copias Baratas CDMX | Todos los derechos
+                    reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20busco%20copias%20baratas%20cerca%20de%20mi"
+        style="position: fixed; right: 24px; bottom: 24px; background: linear-gradient(135deg, #25D366, #128C7E); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: all 0.3s ease;"
+        target="_blank" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'"
+        onmouseout="this.style.transform='scale(1) rotate(0deg)'">
+        💬
+    </a>
+</body>
+
+</html>
