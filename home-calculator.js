@@ -55,13 +55,13 @@ function calculate() {
     } else {
         // --- COLOR ---
         if (totalImpressions <= 100) {
-            // 1-100: $5 (Text) / $10 (Img)
+            // 1-100: $5 (Standard/Text) / $10 (Premium/Images)
             unitPrice = (window.orderData.colorType === 'images') ? 10.00 : 5.00;
         } else if (totalImpressions <= 300) {
             // 101-300: $4
             unitPrice = 4.00;
         } else {
-            // 300+: $3
+            // > 300: $3 (Flat)
             unitPrice = 3.00;
         }
     }

@@ -120,8 +120,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "19.4326",
-      "longitude": "-99.1332"
+      "latitude": "19.39732",
+      "longitude": "-99.09302"
     },
     "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
     "priceRange": "$",
@@ -151,7 +151,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Impresión a Color",
-            "description": "Impresión color desde $5"
+            "description": "Impresión color desde $3"
           },
           "price": "5.00",
           "priceCurrency": "MXN"
@@ -186,12 +186,12 @@
   </script>
 
   <!-- Google Analytics & Conversion Tracking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGQPKN977H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID', {
+    gtag('config', 'G-GGQPKN977H', {
       'custom_map': {
         'dimension1': 'service_type',
         'dimension2': 'order_value',
@@ -6832,7 +6832,7 @@
               <div class="service-compact">
                 <div class="service-icon">🎨</div>
                 <div class="service-info">
-                  <h4><a href="/servicios" style="color:#111">Impresión Color $5 - $10</a></h4>
+                  <h4><a href="/servicios" style="color:#111">Impresión Color desde $3 (mayoreo)</a></h4>
                   <div class="service-price-compact">$5 - $10</div>
                   <p>Textos y fotos</p>
                 </div>
@@ -6912,7 +6912,7 @@
           <div class="calc-option" data-color="color">
             <div class="option-icon">🎨</div>
             <div class="option-content">
-              <strong>A Color</strong><br>$3 - $10
+              <strong>A Color</strong><br>$5/$10 (1-100) • $4 (101-300) • $3.00 (>300)
             </div>
             <div class="option-check">✅</div>
           </div>
@@ -7061,10 +7061,6 @@
         </div>
 
         <div class="calc-actions">
-          <button id="btn-order" class="cta-primary">
-            <span class="cta-icon">🚀</span>
-            <span class="cta-text">ORDENAR AHORA</span>
-          </button>
           <button id="btn-wa" class="cta-primary cta-whatsapp">
             <span class="cta-icon">📱</span>
             <span class="cta-text">WHATSAPP</span>
@@ -7944,7 +7940,7 @@
       const options = document.querySelectorAll('.calc-option');
       const upsellCheckboxes = document.querySelectorAll('.upsell-checkbox');
       const btnWA = document.getElementById('btn-wa');
-      const btnOrder = document.getElementById('btn-order');
+
       const dealCTAs = document.querySelectorAll('.deal-cta');
 
       console.log('Calculator elements found:', {
@@ -7953,7 +7949,7 @@
         options: options.length,
         upsellCheckboxes: upsellCheckboxes.length,
         btnWA: !!btnWA,
-        btnOrder: !!btnOrder,
+
         dealCTAs: dealCTAs.length
       });
 
@@ -8329,21 +8325,7 @@
 
         // Order buttons
         console.log('Setting up order button event listeners...');
-        if (btnOrder) {
-          console.log('Adding click listener to order button');
-          btnOrder.addEventListener('click', (e) => {
-            console.log('Order button clicked:', e);
-            // Track order start
-            if (typeof trackOrderStart === 'function') {
-              const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
-              trackOrderStart(service, orderData.total);
-            }
-            // Open in-page order flow
-            showOrderPage();
-          });
-        } else {
-          console.error('Order button not found!');
-        }
+
 
         if (btnWA) {
           console.log('Adding click listener to WhatsApp button');
@@ -8616,7 +8598,7 @@
             } else if (orderData.colorType === 'text-logo') {
               unitPrice = 5.00;
             } else {
-              unitPrice = 10.00; // Images default
+              unitPrice = 10.00; // Images standard
             }
           } else if (totalImpressions <= 300) {
             unitPrice = 4.00;

@@ -61,7 +61,14 @@
               unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40; // +100 impresiones: 0.35 (x2) / 0.40 (x1)
             }
           } else {
-            unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
+            const impressions = q * pages * sidesMultiplier;
+            if (impressions <= 100) {
+              unitPrice = 5.00; // Base tier
+            } else if (impressions <= 300) {
+              unitPrice = 4.00;
+            } else {
+              unitPrice = 3.00;
+            }
           }
 
           // Total impresiones = copias × páginas × lados
@@ -126,7 +133,7 @@
     })(window, document, "clarity", "script", "t4iy5aqh55");
   </script>
 
-  <title>Impresiones a Color por Volumen CDMX | Calidad Láser | Desde $3.50</title>
+  <title>Impresiones a Color por Volumen CDMX | Calidad Láser | Desde $3</title>
   <meta name="description"
     content="Impresión digital a color por volumen. Folletos, catálogos, revistas y volantes. Calidad fotográfica en papel bond, couché y opalina. ¡Mejoramos cualquier cotización!" />
   <script type="application/ld+json">
@@ -138,7 +145,7 @@
     "@id": "https://copimax.store/impresiones-color-volumen-cdmx",
     "url": "https://copimax.store",
     "telephone": "+52-55-4021-9892",
-    "priceRange": "$3.50 - $20",
+    "priceRange": "$3.00 - $20",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Vainilla 474",
@@ -149,8 +156,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 19.4094,
-      "longitude": -99.1306
+      "latitude": 19.39732,
+      "longitude": -99.09302
     },
     "areaServed": [
       {
@@ -197,9 +204,9 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Copias Color por Volumen",
-            "description": "Impresión digital color desde $3.50/hoja"
+            "description": "Impresión digital color desde $3.00/hoja (mayoreo)"
           },
-          "price": "3.50",
+          "price": "3.00",
           "priceCurrency": "MXN",
           "availability": "https://schema.org/InStock",
           "areaServed": "Ciudad de México"
@@ -1241,12 +1248,12 @@
       <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
         Impresiones Color Volumen | <span
           style="background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">Calidad
-          Espectacular</span> | Desde <strong>$3.50</strong>
+          Espectacular</span> | Desde <strong>$3.00</strong>
       </h1>
 
       <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
       <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
-        Flyers, Catálogos y Revistas. Calidad Fotográfica. Tiempo récord.
+        Flyers desde $3, Catálogos y Revistas. Calidad Fotográfica. Tiempo récord.
       </p>
 
       <!-- CTA GIGANTE E URGENTE -->
@@ -1308,7 +1315,8 @@
           style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f0f9ff">
           <div style="font-weight:700;margin-bottom:6px; color:var(--cta2);">Total estimado (Color)</div>
           <div id="total-preview" style="font-size:1.5rem;color:#000; font-weight:800;">$0.00 MXN</div>
-          <div style="font-size:0.8rem;color:#6b7280;margin-top:4px">Precios Volumen: Color desde $3.50</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:4px">Precios: 1-100 $5/$10 • 101-300 $4.00 • +300 $3.00
+          </div>
         </div>
         <!-- BENEFIT BOX AFFIANCATO -->
         <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px;">
@@ -1365,7 +1373,7 @@
               </td>
               <td
                 style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000; font-size: 0.9rem;">
-                $3.50</td>
+                $3.00</td>
               <td
                 style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700; font-size: 0.9rem;">
                 $2,000</td>
@@ -1393,7 +1401,7 @@
               </td>
               <td
                 style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; background: #f0f9ff; font-weight: 700; color: #000; font-size: 0.9rem;">
-                $3.20</td>
+                $3.00</td>
               <td
                 style="padding: 12px 8px; border: 1px solid #e5e7eb; text-align: center; color: #10b981; font-weight: 700; font-size: 0.9rem;">
                 $9,000</td>
@@ -1441,14 +1449,13 @@
         <p style="color: #000; font-weight: 600; margin-bottom: 16px; line-height: 1.8; font-size: 1.1rem;">
           📍 <strong>Vainilla 474, Iztacalco, CDMX 08400</strong><br>
           🚇 A 5 minutos del Metro Apatlaco (Línea 8)<br>
-          💰 Color desde $3.50/hoja<br>
+          💰 Color desde $3.00/hoja (más de 300)<br>
           ⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00<br>
           📞 +52 55-4021-9892
         </p>
 
         <div style="text-align: center; margin-top: 24px;">
-          <a href="https://www.google.com/maps/place/Vainilla+474,+Granjas+M%C3%A9xico,+Iztacalco,+08400+Ciudad+de+M%C3%A9xico,+CDMX/@19.4094,-99.1306,17z"
-            target="_blank" class="cta"
+          <a href="https://www.google.com/maps/place/COPIMAX/@19.39732,-99.09302,17z" target="_blank" class="cta"
             style="display: inline-block; font-size: 1.1rem; padding: 16px 32px; text-decoration: none;">
             📍 Ver en Google Maps
           </a>
@@ -1696,9 +1703,10 @@
                 ❓ ¿Cuál es el precio real de copias por volumen cerca de mi ubicación?
               </summary>
               <div class="ans">
-                Nuestros precios para <strong>copias color por volumen</strong> van desde <strong>$3.50/hoja</strong>
+                Nuestros precios para <strong>copias color por volumen</strong> van desde <strong>$3.00/hoja</strong>
                 para
-                pedidos de 10,000+ copias. El precio incluye <strong>entrega en tu ubicación</strong> si estás en CDMX.
+                pedidos de 300+ impresiones. El precio incluye <strong>entrega en tu ubicación</strong> si estás en
+                CDMX.
                 Sin costos ocultos ni cargos adicionales. Cotiza gratis por WhatsApp.
               </div>
             </details>

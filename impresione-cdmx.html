@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impresiones a Color y B/N por Volumen en CDMX | COPIMAX Iztacalco</title>
-  <meta name="description" content="Impresiones a color y blanco y negro por volumen en CDMX. Copias B/N desde $0.35 y color desde $3. Servicio rápido en Iztacalco. WhatsApp 55-4021-9892.">
+  <meta name="description"
+    content="Impresiones a color y blanco y negro por volumen en CDMX. Copias B/N desde $0.35 y color desde $3. Servicio rápido en Iztacalco. WhatsApp 55-4021-9892.">
   <link rel="canonical" href="https://copimax.store/impresiones-cdmx">
 
   <script type="application/ld+json">
@@ -26,8 +28,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "19.4326",
-      "longitude": "-99.1332"
+      "latitude": "19.39732",
+      "longitude": "-99.09302"
     },
     "openingHours": [
       "Mo-Fr 08:30-18:00",
@@ -41,96 +43,506 @@
   </script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #1a1a1a; color: #fff; line-height: 1.6; }
-    .container { max-width: 500px; margin: 0 auto; padding: 20px; }
-    .header { text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%); }
-    .logo { font-size: 42px; font-weight: 900; color: #CDFF00; margin-bottom: 10px; }
-    .subtitle { color: #999; font-size: 18px; margin-bottom: 8px; }
-    .location { color: #CDFF00; font-weight: 600; font-size: 16px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    .calc-card { background: #2a2a2a; border-radius: 20px; padding: 25px; margin: 20px 0; box-shadow: 0 0 30px rgba(205, 255, 0, 0.2); }
-    .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .calc-title { font-size: 20px; font-weight: 700; color: #CDFF00; }
-    .section-label { color: #999; font-size: 13px; font-weight: 600; margin-bottom: 12px; display: block; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      line-height: 1.6;
+    }
 
-    .toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-    .toggle-option { background: #333; border: 2px solid #444; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all .25s; font-weight: 700; }
-    .toggle-option:hover { border-color: #CDFF00; }
-    .toggle-option.selected { background: #CDFF00; color: #1a1a1a; border-color: #CDFF00; }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-    .subsection { display: none; margin-bottom: 25px; }
-    .subsection.active { display: block; }
+    .header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
 
-    .option-card { background: #333; border: 2px solid #444; border-radius: 12px; padding: 16px; margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all .25s; }
-    .option-card:hover { border-color: #CDFF00; }
-    .option-card.selected { border-color: #CDFF00; background: #2a2a2a; }
-    .option-info h4 { font-size: 16px; margin-bottom: 3px; }
-    .option-info p { font-size: 12px; color: #999; }
-    .option-price { font-size: 24px; font-weight: 700; color: #CDFF00; }
-    .option-price span { font-size: 14px; }
+    .logo {
+      font-size: 42px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 10px;
+    }
 
-    .quantity-input { width: 100%; background: #333; border: 2px solid #444; color: #fff; font-size: 32px; font-weight: 700; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 10px; }
-    .quantity-input:focus { outline: none; border-color: #CDFF00; }
-    .quantity-note { font-size: 11px; color: #666; text-align: center; margin-bottom: 25px; }
+    .subtitle {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
 
-    .addon-item { background: #333; border-radius: 8px; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .addon-item:hover { background: #3a3a3a; }
-    .addon-label { display: flex; align-items: center; font-size: 14px; }
-    .addon-checkbox { width: 20px; height: 20px; margin-right: 12px; cursor: pointer; }
-    .addon-price { font-weight: 700; color: #CDFF00; }
+    .location {
+      color: #CDFF00;
+      font-weight: 600;
+      font-size: 16px;
+    }
 
-    .result-box { background: #CDFF00; color: #1a1a1a; border-radius: 12px; padding: 25px; margin: 25px 0; }
-    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .result-label { font-size: 13px; font-weight: 600; }
-    .result-badge { background: #1a1a1a; color: #CDFF00; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; }
-    .result-price { font-size: 48px; font-weight: 900; margin-bottom: 5px; }
-    .result-currency { font-size: 24px; }
-    .result-breakdown { font-size: 11px; opacity: .7; }
+    .calc-card {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 0 30px rgba(205, 255, 0, 0.2);
+    }
 
-    .btn { width: 100%; padding: 18px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all .25s; }
-    .btn-whatsapp { background: #25D366; color: #fff; }
-    .btn-whatsapp:hover { background: #22c55e; transform: translateY(-2px); }
-    .btn-call { background: #333; color: #fff; border: 2px solid #CDFF00; }
-    .btn-call:hover { background: #3a3a3a; }
-    .btn-icon { margin-right: 10px; font-size: 20px; }
+    .calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
 
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0; text-align: center; }
-    .stat-value { font-size: 32px; font-weight: 900; color: #CDFF00; }
-    .stat-label { font-size: 11px; color: #999; }
+    .calc-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #CDFF00;
+    }
 
-    .section { background: #2a2a2a; border-radius: 20px; padding: 30px 20px; margin: 20px 0; }
-    .section-title { font-size: 28px; font-weight: 900; text-align: center; margin-bottom: 10px; }
-    .section-subtitle { text-align: center; color: #999; margin-bottom: 30px; font-size: 14px; }
-    .highlight { color: #CDFF00; }
-    .price-card { background: #333; border: 2px solid #444; border-radius: 16px; padding: 25px; margin-bottom: 20px; position: relative; }
-    .price-card.featured { border-color: #CDFF00; transform: scale(1.02); }
-    .badge { display: inline-block; background: #CDFF00; color: #1a1a1a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; }
-    .badge-red { background: #ef4444; color: #fff; }
-    .price-card h3 { font-size: 22px; margin-bottom: 15px; }
-    .big-price { font-size: 48px; font-weight: 900; color: #CDFF00; margin-bottom: 10px; }
-    .big-price span { font-size: 24px; }
-    .savings { color: #ef4444; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
-    .feature-list { list-style: none; margin-bottom: 20px; }
-    .feature-list li { padding: 8px 0; font-size: 13px; color: #ccc; }
-    .feature-list li:before { content: "✓"; color: #CDFF00; font-weight: 700; margin-right: 10px; }
+    .section-label {
+      color: #999;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
 
-    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); cursor: pointer; z-index: 1000; text-decoration: none; font-size: 32px; color: #fff; }
-    .whatsapp-float:hover { transform: scale(1.1); }
+    .toggle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
 
-    .faq-item { background: #333; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
-    .faq-question { padding: 18px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-    .faq-question:hover { background: #3a3a3a; }
-    .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: all .25s; color: #999; }
-    .faq-answer.open { padding: 0 18px 18px; max-height: 500px; }
+    .toggle-option {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .25s;
+      font-weight: 700;
+    }
 
-    .footer { background: #1a1a1a; padding: 40px 20px; text-align: center; border-top: 1px solid #333; }
-    .footer-logo { font-size: 28px; font-weight: 900; color: #CDFF00; margin-bottom: 15px; }
-    .footer-text { color: #666; font-size: 12px; margin-bottom: 20px; }
-    .footer-links { color: #999; font-size: 11px; margin-top: 20px; }
-    @media (max-width: 600px) { .result-price { font-size: 42px; } }
+    .toggle-option:hover {
+      border-color: #CDFF00;
+    }
+
+    .toggle-option.selected {
+      background: #CDFF00;
+      color: #1a1a1a;
+      border-color: #CDFF00;
+    }
+
+    .subsection {
+      display: none;
+      margin-bottom: 25px;
+    }
+
+    .subsection.active {
+      display: block;
+    }
+
+    .option-card {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all .25s;
+    }
+
+    .option-card:hover {
+      border-color: #CDFF00;
+    }
+
+    .option-card.selected {
+      border-color: #CDFF00;
+      background: #2a2a2a;
+    }
+
+    .option-info h4 {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .option-info p {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .option-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #CDFF00;
+    }
+
+    .option-price span {
+      font-size: 14px;
+    }
+
+    .quantity-input {
+      width: 100%;
+      background: #333;
+      border: 2px solid #444;
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .quantity-input:focus {
+      outline: none;
+      border-color: #CDFF00;
+    }
+
+    .quantity-note {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .addon-item {
+      background: #333;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .addon-item:hover {
+      background: #3a3a3a;
+    }
+
+    .addon-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .addon-checkbox {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .addon-price {
+      font-weight: 700;
+      color: #CDFF00;
+    }
+
+    .result-box {
+      background: #CDFF00;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .result-badge {
+      background: #1a1a1a;
+      color: #CDFF00;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .result-price {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .result-currency {
+      font-size: 24px;
+    }
+
+    .result-breakdown {
+      font-size: 11px;
+      opacity: .7;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all .25s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      background: #22c55e;
+      transform: translateY(-2px);
+    }
+
+    .btn-call {
+      background: #333;
+      color: #fff;
+      border: 2px solid #CDFF00;
+    }
+
+    .btn-call:hover {
+      background: #3a3a3a;
+    }
+
+    .btn-icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 900;
+      color: #CDFF00;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .section {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin: 20px 0;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      color: #CDFF00;
+    }
+
+    .price-card {
+      background: #333;
+      border: 2px solid #444;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: #CDFF00;
+      transform: scale(1.02);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #CDFF00;
+      color: #1a1a1a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .badge-red {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .price-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .big-price {
+      font-size: 48px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 10px;
+    }
+
+    .big-price span {
+      font-size: 24px;
+    }
+
+    .savings {
+      color: #ef4444;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .feature-list li {
+      padding: 8px 0;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .feature-list li:before {
+      content: "✓";
+      color: #CDFF00;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      text-decoration: none;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .faq-item {
+      background: #333;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 18px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background: #3a3a3a;
+    }
+
+    .faq-answer {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all .25s;
+      color: #999;
+    }
+
+    .faq-answer.open {
+      padding: 0 18px 18px;
+      max-height: 500px;
+    }
+
+    .footer {
+      background: #1a1a1a;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #CDFF00;
+      margin-bottom: 15px;
+    }
+
+    .footer-text {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      color: #999;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .result-price {
+        font-size: 42px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <a href="https://wa.me/525540219892?text=Hola%2C%20quiero%20cotizar%20impresiones" class="whatsapp-float">📱</a>
@@ -284,7 +696,8 @@
           <li>Doble cara: $0.35 por lado</li>
           <li>Una cara: $0.40 por hoja</li>
         </ul>
-        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro" class="btn btn-whatsapp">
+        <a href="https://wa.me/525540219892?text=Quiero%20cotizar%20copias%20blanco%20y%20negro"
+          class="btn btn-whatsapp">
           <span class="btn-icon">📱</span> Pedir Ahora
         </a>
       </div>
@@ -315,7 +728,8 @@
           <span>¿Cuál es la diferencia de precio entre B/N y color?</span>
           <span id="icon-1">▼</span>
         </div>
-        <div class="faq-answer" id="faq-1">Las copias blanco y negro son más económicas (desde $0.35). Las impresiones a color van desde $3 hasta $10 dependiendo del contenido y volumen.</div>
+        <div class="faq-answer" id="faq-1">Las copias blanco y negro son más económicas (desde $0.35). Las impresiones a
+          color van desde $3 hasta $10 dependiendo del contenido y volumen.</div>
       </div>
 
       <div class="faq-item">
@@ -323,7 +737,8 @@
           <span>¿Cuánto cuesta imprimir a doble cara en B/N?</span>
           <span id="icon-2">▼</span>
         </div>
-        <div class="faq-answer" id="faq-2">Para B/N, imprimir a doble cara cuesta $0.35 por cada lado. Una sola cara cuesta $0.40 por hoja.</div>
+        <div class="faq-answer" id="faq-2">Para B/N, imprimir a doble cara cuesta $0.35 por cada lado. Una sola cara
+          cuesta $0.40 por hoja.</div>
       </div>
 
       <div class="faq-item">
@@ -331,7 +746,8 @@
           <span>¿Dónde están ubicados?</span>
           <span id="icon-3">▼</span>
         </div>
-        <div class="faq-answer" id="faq-3">Estamos en Vainilla 474, Granjas México, Iztacalco, CDMX 08400. A minutos de UPIICSA y Metro Iztacalco.</div>
+        <div class="faq-answer" id="faq-3">Estamos en Vainilla 474, Granjas México, Iztacalco, CDMX 08400. A minutos de
+          UPIICSA y Metro Iztacalco.</div>
       </div>
 
       <div class="faq-item">
@@ -339,7 +755,8 @@
           <span>¿Cuánto tardan en entregar?</span>
           <span id="icon-4">▼</span>
         </div>
-        <div class="faq-answer" id="faq-4">Tiempo estándar de 24 a 48 horas. Servicio express el mismo día con cargo adicional.</div>
+        <div class="faq-answer" id="faq-4">Tiempo estándar de 24 a 48 horas. Servicio express el mismo día con cargo
+          adicional.</div>
       </div>
 
       <div class="faq-item">
@@ -347,7 +764,8 @@
           <span>¿Tienen precios para estudiantes?</span>
           <span id="icon-5">▼</span>
         </div>
-        <div class="faq-answer" id="faq-5">Sí, contamos con precios especiales y engargolados desde $20 para tesis y trabajos.</div>
+        <div class="faq-answer" id="faq-5">Sí, contamos con precios especiales y engargolados desde $20 para tesis y
+          trabajos.</div>
       </div>
     </div>
 
@@ -398,7 +816,7 @@
 
     function selectColor(op) {
       colorTipo = op;
-      ['texto','imagen','100plus','300plus'].forEach(id => {
+      ['texto', 'imagen', '100plus', '300plus'].forEach(id => {
         const el = document.getElementById('c-' + id);
         if (el) el.classList.toggle('selected', id === op);
       });
@@ -471,6 +889,5 @@
     calcularPrecio();
   </script>
 </body>
+
 </html>
-
-

@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://copimax.store/copimax-centro-de-copiado-cdmx-por-mayoreo" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon -->
@@ -61,7 +63,14 @@
               unitPrice = sidesMultiplier === 2 ? 0.35 : 0.40; // +100 impresiones: 0.35 (x2) / 0.40 (x1)
             }
           } else {
-            unitPrice = sidesMultiplier === 2 ? 4.35 : 5.00;
+            const impressions = q * pages * sidesMultiplier;
+            if (impressions <= 100) {
+              unitPrice = 5.00; // Base tier
+            } else if (impressions <= 300) {
+              unitPrice = 4.00;
+            } else {
+              unitPrice = 3.00;
+            }
           }
 
           // Total impresiones = copias × páginas × lados
@@ -149,8 +158,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 19.4094,
-      "longitude": -99.1306
+      "latitude": 19.39732,
+      "longitude": -99.09302
     },
     "areaServed": [
       {
@@ -1356,8 +1365,7 @@
 
       <!-- CTA MAPA -->
       <div style="text-align: center; margin-top: 32px;">
-        <a href="https://www.google.com/maps/place/Vainilla+474,+Granjas+M%C3%A9xico,+Iztacalco,+08400+Ciudad+de+M%C3%A9xico,+CDMX/@19.4094,-99.1306,17z"
-          target="_blank" class="cta"
+        <a href="https://www.google.com/maps/place/COPIMAX/@19.39732,-99.09302,17z" target="_blank" class="cta"
           style="display: inline-block; font-size: 1.2rem; padding: 18px 36px; text-decoration: none;">
           📍 Ver Mapa y Calcular Distancia desde Tu Ubicación
         </a>
@@ -1780,7 +1788,7 @@
             <div style="font-weight:700;margin-bottom:6px">Total estimado</div>
             <div id="total-preview" style="font-size:1.2rem;color:#111827">$0.00 MXN</div>
             <div style="font-size:0.9rem;color:#6b7280;margin-top:4px">Tarifa por página: BN $1.00 (<100) • $0.40 (>100
-                x1) • $0.35 (>100 x2) • Color $5.00</div>
+                x1) • $0.35 (>100 x2) • Color desde $3.00 (más de 300)</div>
           </div>
           <!-- BENEFIT BOX AFFIANCATO -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
