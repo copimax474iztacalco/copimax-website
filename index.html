@@ -9968,105 +9968,99 @@ El sistema te enviará un email y abrirá WhatsApp automáticamente.`;
         }
 
         // Log confirmation con stato ordine
-        // console.log('✅ Order submitted successfully:', {
-        orderNumber,
-          orderData,
-          customer: { name, email, phone },
-        status: orderData.orderStatus,
-          paymentStatus: orderData.paymentStatus
-      });
+        // console.log('✅ Order submitted successfully log removed');
 
         // Sistema ibrido già implementato sopra - EmailJS + WhatsApp automatici
       }
 
-    function buildOrderPayload(orderNumber, name, email, phone, finalTotal) {
-      return {
-        orderNumber,
-        reference: orderData.reference,
-        createdAt: new Date().toISOString(),
-        customer: { name, email, phone },
-        items: {
-          type: orderData.type,
-          color: orderData.color,
-          sides: orderData.sides,
-          quantity: orderData.quantity,
-          pdfPages: orderData.pdfPages || 1,
-          totalPages: (orderData.quantity || 1) * (orderData.pdfPages || 1)
-        },
-        upsells: orderData.upsells,
-        delivery: orderData.delivery,
-        timing: orderData.timing,
-        totals: {
-          subtotal: orderData.total,
-          delivery: orderData.delivery.price,
-          express: orderData.timing.price,
-          grandTotal: finalTotal
-        },
-        payment: orderData.payment,
-        files: orderData.files.map(f => ({ name: f.name, size: f.size, type: f.type })),
-        adminEmail: (typeof ADMIN_EMAIL !== 'undefined' ? ADMIN_EMAIL : '')
-      };
-    }
-
-    // Check payment requirements for large orders
-    function checkPaymentRequirements() {
-      const paymentRequirements = document.getElementById('payment-requirements');
-      const anticipoAmount = document.getElementById('anticipo-amount');
-      const restoAmount = document.getElementById('resto-amount');
-      const anticipoReference = document.getElementById('anticipo-reference');
-
-      // Calcola le pagine totali per determinare i requisiti di pagamento
-      const pdfPages = orderData.pdfPages || 1;
-      const sidesMultiplierPayment = orderData.sides === 'double' ? 2 : 1;
-      const totalPages = orderData.quantity * pdfPages * sidesMultiplierPayment;
-
-      if (totalPages >= 1000) {
-        const total = orderData.total + orderData.delivery.price + orderData.timing.price;
-        const anticipo = total * 0.5;
-        const resto = total - anticipo;
-
-        if (anticipoAmount) anticipoAmount.textContent = `$${anticipo.toFixed(2)} MXN`;
-        if (restoAmount) restoAmount.textContent = `$${resto.toFixed(2)} MXN`;
-
-        // Aggiorna referenza per anticipo
-        if (anticipoReference) {
-          anticipoReference.textContent = orderData.reference || 'PENDIENTE';
-        }
-
-        if (paymentRequirements) paymentRequirements.classList.remove('hidden');
-
-        // Mostra avviso importante
-        // console.log('⚠️ ORDINE RICHIEDE ANTICIPO: 50% = $' + anticipo.toFixed(2) + ' MXN');
-      } else {
-        if (paymentRequirements) paymentRequirements.classList.add('hidden');
-        // console.log('✅ Ordine senza anticipo richiesto');
+      function buildOrderPayload(orderNumber, name, email, phone, finalTotal) {
+        return {
+          orderNumber,
+          reference: orderData.reference,
+          createdAt: new Date().toISOString(),
+          customer: { name, email, phone },
+          items: {
+            type: orderData.type,
+            color: orderData.color,
+            sides: orderData.sides,
+            quantity: orderData.quantity,
+            pdfPages: orderData.pdfPages || 1,
+            totalPages: (orderData.quantity || 1) * (orderData.pdfPages || 1)
+          },
+          upsells: orderData.upsells,
+          delivery: orderData.delivery,
+          timing: orderData.timing,
+          totals: {
+            subtotal: orderData.total,
+            delivery: orderData.delivery.price,
+            express: orderData.timing.price,
+            grandTotal: finalTotal
+          },
+          payment: orderData.payment,
+          files: orderData.files.map(f => ({ name: f.name, size: f.size, type: f.type })),
+          adminEmail: (typeof ADMIN_EMAIL !== 'undefined' ? ADMIN_EMAIL : '')
+        };
       }
-    }
 
-    function createOrderWhatsAppMessage(orderNumber, name, email, phone, total) {
-      const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+      // Check payment requirements for large orders
+      function checkPaymentRequirements() {
+        const paymentRequirements = document.getElementById('payment-requirements');
+        const anticipoAmount = document.getElementById('anticipo-amount');
+        const restoAmount = document.getElementById('resto-amount');
+        const anticipoReference = document.getElementById('anticipo-reference');
 
-      // Calcola le informazioni corrette del PDF
-      const pdfPages = orderData.pdfPages || 1;
-      const copies = orderData.quantity || 1;
-      const sidesMultiplierInfo = orderData.sides === 'double' ? 2 : 1;
-      const totalPages = pdfPages * copies * sidesMultiplierInfo;
-      const details = `${copies} copias × ${pdfPages} páginas${sidesMultiplierInfo === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`;
+        // Calcola le pagine totali per determinare i requisiti di pagamento
+        const pdfPages = orderData.pdfPages || 1;
+        const sidesMultiplierPayment = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = orderData.quantity * pdfPages * sidesMultiplierPayment;
 
-      let upsellsText = '';
-      Object.values(orderData.upsells).forEach(upsell => {
-        upsellsText += `\n- ${upsell.name} (+${upsell.price})`;
-      });
+        if (totalPages >= 1000) {
+          const total = orderData.total + orderData.delivery.price + orderData.timing.price;
+          const anticipo = total * 0.5;
+          const resto = total - anticipo;
 
-      const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
-        orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+          if (anticipoAmount) anticipoAmount.textContent = `$${anticipo.toFixed(2)} MXN`;
+          if (restoAmount) restoAmount.textContent = `$${resto.toFixed(2)} MXN`;
 
-      const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
-        orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+          // Aggiorna referenza per anticipo
+          if (anticipoReference) {
+            anticipoReference.textContent = orderData.reference || 'PENDIENTE';
+          }
 
-      const specialNotes = document.getElementById('special-notes')?.value || '';
+          if (paymentRequirements) paymentRequirements.classList.remove('hidden');
 
-      return `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
+          // Mostra avviso importante
+          // console.log('⚠️ ORDINE RICHIEDE ANTICIPO: 50% = $' + anticipo.toFixed(2) + ' MXN');
+        } else {
+          if (paymentRequirements) paymentRequirements.classList.add('hidden');
+          // console.log('✅ Ordine senza anticipo richiesto');
+        }
+      }
+
+      function createOrderWhatsAppMessage(orderNumber, name, email, phone, total) {
+        const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+
+        // Calcola le informazioni corrette del PDF
+        const pdfPages = orderData.pdfPages || 1;
+        const copies = orderData.quantity || 1;
+        const sidesMultiplierInfo = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = pdfPages * copies * sidesMultiplierInfo;
+        const details = `${copies} copias × ${pdfPages} páginas${sidesMultiplierInfo === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})`;
+
+        let upsellsText = '';
+        Object.values(orderData.upsells).forEach(upsell => {
+          upsellsText += `\n- ${upsell.name} (+${upsell.price})`;
+        });
+
+        const deliveryText = orderData.delivery.method === 'pickup' ? 'Recoger en tienda' :
+          orderData.delivery.method === 'local' ? 'Entrega local' : 'Entrega CDMX';
+
+        const timingText = orderData.timing.method === 'standard' ? 'Estándar' :
+          orderData.timing.method === 'express1' ? 'Express 1 día' : 'Mismo día';
+
+        const specialNotes = document.getElementById('special-notes')?.value || '';
+
+        return `🚀 NUEVO PEDIDO ONLINE - #${orderNumber}
 
 👤 Cliente: ${name}
 📧 Email: ${email}
@@ -10090,25 +10084,25 @@ ${specialNotes ? '📝 Notas: ' + specialNotes : ''}
 • Referencia: ${orderData.reference || 'PENDIENTE'}
 
 ¡Pedido confirmado! Procesando...`;
-    }
+      }
 
-    function sendWhatsAppOrder() {
-      const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
+      function sendWhatsAppOrder() {
+        const service = `${orderData.type === 'copies' ? 'Copias' : 'Impresiones'} ${orderData.color === 'bw' ? 'BN' : 'Color'}`;
 
-      let upsellsText = '';
-      Object.values(orderData.upsells).forEach(upsell => {
-        upsellsText += ` + ${upsell.name}`;
-      });
+        let upsellsText = '';
+        Object.values(orderData.upsells).forEach(upsell => {
+          upsellsText += ` + ${upsell.name}`;
+        });
 
-      // Calcola le informazioni corrette del PDF
-      const pdfPages = orderData.pdfPages || 1;
-      const copies = orderData.quantity || 1;
-      const sidesMultiplierMsg = orderData.sides === 'double' ? 2 : 1;
-      const totalPages = pdfPages * copies * sidesMultiplierMsg;
-      const pageInfo = pdfPages > 1 ? `${copies} copias × ${pdfPages} páginas${sidesMultiplierMsg === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones` : `${orderData.quantity * (sidesMultiplierMsg === 2 ? 2 : 1)} impresiones`;
+        // Calcola le informazioni corrette del PDF
+        const pdfPages = orderData.pdfPages || 1;
+        const copies = orderData.quantity || 1;
+        const sidesMultiplierMsg = orderData.sides === 'double' ? 2 : 1;
+        const totalPages = pdfPages * copies * sidesMultiplierMsg;
+        const pageInfo = pdfPages > 1 ? `${copies} copias × ${pdfPages} páginas${sidesMultiplierMsg === 2 ? ' × 2 caras' : ''} = ${totalPages} impresiones` : `${orderData.quantity * (sidesMultiplierMsg === 2 ? 2 : 1)} impresiones`;
 
-      const requiresAnticipo = (orderData.quantity * (orderData.pdfPages || 1)) >= 1000;
-      const msg = `Hola COPIMAX 👋
+        const requiresAnticipo = (orderData.quantity * (orderData.pdfPages || 1)) >= 1000;
+        const msg = `Hola COPIMAX 👋
 Quiero cotizar:
 - ${service}
 - ${pageInfo} (${orderData.sides === 'double' ? 'doble cara' : 'una cara'})${upsellsText}
@@ -10118,295 +10112,280 @@ Quiero cotizar:
 ${orderData.payment === 'transfer' || requiresAnticipo ? '¿Me pasan los datos bancarios y referencia?' : '¿Les envío el archivo por aquí?'}
 `;
 
-      // Track WhatsApp conversion
-      if (typeof trackWhatsAppClick === 'function') {
-        trackWhatsAppClick(service, orderData.total);
+        // Track WhatsApp conversion
+        if (typeof trackWhatsAppClick === 'function') {
+          trackWhatsAppClick(service, orderData.total);
+        }
+
+        window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
       }
 
-      window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
-    }
+      // SISTEMA DINAMICO PER POSTI DISPONIBILI (le copie sono ora fisse)
+      function calculateDynamicStats() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const currentDay = now.getDay(); // 0 = Domenica, 1 = Lunedì, etc.
+        const currentDate = now.toISOString().slice(0, 10); // YYYY-MM-DD
 
-    // SISTEMA DINAMICO PER POSTI DISPONIBILI (le copie sono ora fisse)
-    function calculateDynamicStats() {
-      const now = new Date();
-      const currentHour = now.getHours();
-      const currentMinute = now.getMinutes();
-      const currentDay = now.getDay(); // 0 = Domenica, 1 = Lunedì, etc.
-      const currentDate = now.toISOString().slice(0, 10); // YYYY-MM-DD
+        // Orari di apertura: Lunedì-Venerdì 8:30-18:00, Sabato-Domenica 8:30-14:00
+        const isWeekday = currentDay >= 1 && currentDay <= 5; // Lunedì-Venerdì
 
-      // Orari di apertura: Lunedì-Venerdì 8:30-18:00, Sabato-Domenica 8:30-14:00
-      const isWeekday = currentDay >= 1 && currentDay <= 5; // Lunedì-Venerdì
+        // Controlla se è aperto (dopo le 8:30 e prima della chiusura)
+        const isAfterOpening = (currentHour > 8) || (currentHour === 8 && currentMinute >= 30);
+        const isOpen = isWeekday ?
+          (isAfterOpening && currentHour < 18) :
+          (isAfterOpening && currentHour < 14);
 
-      // Controlla se è aperto (dopo le 8:30 e prima della chiusura)
-      const isAfterOpening = (currentHour > 8) || (currentHour === 8 && currentMinute >= 30);
-      const isOpen = isWeekday ?
-        (isAfterOpening && currentHour < 18) :
-        (isAfterOpening && currentHour < 14);
+        // DEBUG: Log per verificare gli orari
+        // console.log('🕐 Orari debug log removed');
 
-      // DEBUG: Log per verificare gli orari
-      // console.log('🕐 Orari debug:', {
-      currentHour,
-        currentMinute,
-        currentDay,
-        isWeekday,
-        isAfterOpening,
-        isOpen,
-        weekdayHours: '8:30-18:00',
-          weekendHours: '8:30-14:00'
-    });
+        if (!isOpen) {
+          // Se chiuso, mostra gli ultimi 3 slot per oggi
+          // Determina se mostrare 4 o 2 slot basato sull'orario CDMX
+          const currentHourCDMX = new Date().getHours();
+          const lastSlots = (currentHourCDMX >= 18 || currentHourCDMX < 8) ? 2 : 4;
 
-    if (!isOpen) {
-      // Se chiuso, mostra gli ultimi 3 slot per oggi
-      // Determina se mostrare 4 o 2 slot basato sull'orario CDMX
-      const currentHourCDMX = new Date().getHours();
-      const lastSlots = (currentHourCDMX >= 18 || currentHourCDMX < 8) ? 2 : 4;
+          return {
+            copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
+            availableSlots: lastSlots,
+            isOpen: false
+          };
+        }
 
-      return {
-        copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
-        availableSlots: lastSlots,
-        isOpen: false
-      };
-    }
+        // Calcola minuti dall'apertura
+        const openingHour = 8;
+        const openingMinute = 30;
+        let minutesSinceOpening;
 
-    // Calcola minuti dall'apertura
-    const openingHour = 8;
-    const openingMinute = 30;
-    let minutesSinceOpening;
+        if (isWeekday) {
+          // Lunedì-Venerdì: 8:30-18:00 (9.5 ore = 570 minuti)
+          minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
+          if (minutesSinceOpening < 0) minutesSinceOpening = 0;
+        } else {
+          // Weekend: 8:30-14:00 (5.5 ore = 330 minuti)
+          minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
+          if (minutesSinceOpening < 0) minutesSinceOpening = 0;
+        }
 
-    if (isWeekday) {
-      // Lunedì-Venerdì: 8:30-18:00 (9.5 ore = 570 minuti)
-      minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
-      if (minutesSinceOpening < 0) minutesSinceOpening = 0;
-    } else {
-      // Weekend: 8:30-14:00 (5.5 ore = 330 minuti)
-      minutesSinceOpening = (currentHour - openingHour) * 60 + (currentMinute - openingMinute);
-      if (minutesSinceOpening < 0) minutesSinceOpening = 0;
-    }
+        // Genera seed basato su data per variabilità giornaliera
+        const dateSeed = currentDate.split('-').join('');
+        const dailyVariation = (parseInt(dateSeed) % 100) / 100; // 0-1
 
-    // Genera seed basato su data per variabilità giornaliera
-    const dateSeed = currentDate.split('-').join('');
-    const dailyVariation = (parseInt(dateSeed) % 100) / 100; // 0-1
+        // NON calcoliamo più le copie fatte oggi - ora mostriamo il totale storico
+        // Il contatore mostra "12.2M +" come copie totali realizzate
+        const copies = 0; // Non più utilizzato
 
-    // NON calcoliamo più le copie fatte oggi - ora mostriamo il totale storico
-    // Il contatore mostra "12.2M +" come copie totali realizzate
-    const copies = 0; // Non più utilizzato
+        // Calcola posti disponibili per consegna oggi
+        const maxSlotsPerDay = isWeekday ? 15 : 8; // Più slot nei giorni feriali
+        const slotsPerHour = maxSlotsPerDay / (isWeekday ? 9.5 : 5.5); // Slot per ora
+        const usedSlots = Math.floor((minutesSinceOpening / 60) * slotsPerHour);
+        const availableSlots = Math.max(0, maxSlotsPerDay - usedSlots);
 
-    // Calcola posti disponibili per consegna oggi
-    const maxSlotsPerDay = isWeekday ? 15 : 8; // Più slot nei giorni feriali
-    const slotsPerHour = maxSlotsPerDay / (isWeekday ? 9.5 : 5.5); // Slot per ora
-    const usedSlots = Math.floor((minutesSinceOpening / 60) * slotsPerHour);
-    const availableSlots = Math.max(0, maxSlotsPerDay - usedSlots);
+        // console.log('📊 Posti disponibili log removed');
 
-    // console.log('📊 Posti disponibili:', {
-    maxSlotsPerDay,
-      slotsPerHour,
-      minutesSinceOpening,
-      usedSlots,
-      availableSlots
-        });
-
-    return {
-      copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
-      availableSlots: availableSlots,
-      isOpen: true
-    };
+        return {
+          copies: 0, // Non più utilizzato - le copie sono fisse "12.2M +"
+          availableSlots: availableSlots,
+          isOpen: true
+        };
       }
 
-    // Aggiorna contatori dinamici (solo posti disponibili)
-    function updateDynamicCounters() {
-      const stats = calculateDynamicStats();
+      // Aggiorna contatori dinamici (solo posti disponibili)
+      function updateDynamicCounters() {
+        const stats = calculateDynamicStats();
 
-      // NON aggiorniamo più il contatore copie - ora è fisso "12.2M +"
-      // Il contatore mostra le copie totali realizzate, non quelle di oggi
+        // NON aggiorniamo più il contatore copie - ora è fisso "12.2M +"
+        // Il contatore mostra le copie totali realizzate, non quelle di oggi
 
-      // Aggiorna posti disponibili
-      const scarcityBadges = document.querySelectorAll('.scarcity-badge');
-      scarcityBadges.forEach(badge => {
-        if (stats.isOpen) {
-          if (stats.availableSlots > 0) {
-            badge.textContent = `⏰ Últimos ${stats.availableSlots} lugares para entrega hoy`;
+        // Aggiorna posti disponibili
+        const scarcityBadges = document.querySelectorAll('.scarcity-badge');
+        scarcityBadges.forEach(badge => {
+          if (stats.isOpen) {
+            if (stats.availableSlots > 0) {
+              badge.textContent = `⏰ Últimos ${stats.availableSlots} lugares para entrega hoy`;
+            } else {
+              badge.textContent = `⏰ Sin lugares disponibles para hoy`;
+            }
           } else {
-            badge.textContent = `⏰ Sin lugares disponibles para hoy`;
+            badge.textContent = `⏰ Últimos ${stats.availableSlots} lugares para entrega hoy`;
           }
-        } else {
-          badge.textContent = `⏰ Últimos ${stats.availableSlots} lugares para entrega hoy`;
-        }
-      });
-    }
+        });
+      }
 
-    // Inizializza contatori dinamici (solo posti disponibili)
-    updateDynamicCounters();
-
-    // Aggiorna ogni minuto (solo posti disponibili)
-    setInterval(updateDynamicCounters, 60000);
-
-    // Aggiorna contatori quando si torna alla homepage (solo posti disponibili)
-    const originalShowHomePage = showHomePage;
-    showHomePage = function () {
-      originalShowHomePage();
+      // Inizializza contatori dinamici (solo posti disponibili)
       updateDynamicCounters();
-    };
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const id = anchor.getAttribute('href');
-        const target = document.querySelector(id);
-        if (target && homepage && homepage.style.display !== 'none') {
-          e.preventDefault();
+      // Aggiorna ogni minuto (solo posti disponibili)
+      setInterval(updateDynamicCounters, 60000);
 
-          // Calcola offset per header fisso
-          const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-          const targetPosition = target.offsetTop - headerHeight - 20; // 20px di margine extra
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-
-          // Evidenzia la sezione target con un effetto visivo
-          if (target.id === 'services-packages') {
-            target.style.animation = 'highlightSection 2s ease-out';
-            setTimeout(() => {
-              target.style.animation = '';
-            }, 2000);
-          }
-        }
-      });
-    });
-
-    // Sistema di galleria rimosso per evitare conflitti con il carosello di libri
-
-    // Initialize reviews - Forza il caricamento
-    // console.log('🚀 Inizializzando recensioni...');
-
-    // Test immediato
-    testReviews();
-
-    // Backup con timeout
-    setTimeout(() => {
-      // console.log('⏰ Timeout backup - caricamento recensioni...');
-      displayReviews();
-    }, 1000);
-
-
-
-    // Global functions
-    window.showHomePage = showHomePage;
-    window.showBlogPage = showBlogPage;
-    window.nextStep = nextStep;
-    window.prevStep = prevStep;
-    window.submitOrder = submitOrder;
-    // Funzioni galleria rimosse per evitare conflitti
-
-
-
-    // Make review functions available globally
-    // window.refreshReviews = refreshReviews; // Funzione non definita
-    window.testReviews = testReviews;
-
-    // Service Worker for caching (commented out to avoid 404 errors)
-    /*
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then((registration) => {
-// console.log('SW registered: ', registration);
-          })
-          .catch((registrationError) => {
-// console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-    */
-
-    // Funzione di verifica elementi pagamento
-    function verifyPaymentElements() {
-      // Verifica che tutti gli elementi necessari per il pagamento esistano
-      const elements = {
-        'payment-confirmation': 'Conferma pagamento',
-        'payment-method-info': 'Info metodo pagamento',
-        'change-payment-btn': 'Pulsante cambio pagamento',
-        'confirm-payment-btn': 'Pulsante conferma pagamento',
-        'submit-order': 'Pulsante conferma ordine'
+      // Aggiorna contatori quando si torna alla homepage (solo posti disponibili)
+      const originalShowHomePage = showHomePage;
+      showHomePage = function () {
+        originalShowHomePage();
+        updateDynamicCounters();
       };
 
-      // console.log('🔍 Verifica elementi pagamento...');
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          const id = anchor.getAttribute('href');
+          const target = document.querySelector(id);
+          if (target && homepage && homepage.style.display !== 'none') {
+            e.preventDefault();
 
-      for (const [id, description] of Object.entries(elements)) {
-        const element = document.getElementById(id);
-        if (element) {
-          // console.log(`✅ ${description} trovato (${id})`);
-        } else {
-          // console.error(`❌ ${description} NON trovato (${id})`);
-        }
-      }
-
-      // Verifica stato iniziale
-      // console.log('📊 Stato iniziale ordine log removed');
-    }
-
-    // RIMOSSO: Pulsante di debug pagamento
-
-    // Funzione per controllare l'URL iniziale
-    function checkInitialURL() {
-      const hash = window.location.hash;
-      const url = window.location.href;
-
-      // console.log('🔍 Controllo URL iniziale:', { hash, url });
-
-      if (hash === '#blog') {
-        // console.log('🔍 URL iniziale contiene #blog, mostrando sezione blog');
-        showBlogPage();
-      } else if (hash === '#order') {
-        // console.log('🔍 URL iniziale contiene #order, mostrando flusso ordine inline');
-        showOrderPage(false);
-      } else if (hash === '#calculator') {
-        // console.log('🔍 URL iniziale contiene #calculator, mostrando homepage e scrollando alla calcolatrice');
-        showHomePage(false);
-        // Scroll dolce alla calcolatrice con offset per header fisso
-        setTimeout(() => {
-          const target = document.getElementById('calculator');
-          if (target) {
+            // Calcola offset per header fisso
             const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-            const targetPosition = target.offsetTop - headerHeight - 20;
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-          }
-        }, 100);
-      } else if (url.includes('/blog') || url.includes('blogpage')) {
-        // console.log('🔍 URL contiene /blog, mostrando sezione blog');
-        showBlogPage();
-      } else {
-        // console.log('🔍 URL iniziale pulito, mostrando homepage');
-        showHomePage();
-      }
-    }
+            const targetPosition = target.offsetTop - headerHeight - 20; // 20px di margine extra
 
-    // Performance monitoring
-    window.addEventListener('load', () => {
-      // Track Core Web Vitals
-      if ('PerformanceObserver' in window) {
-        const observer = new PerformanceObserver((list) => {
-          for (const entry of list.getEntries()) {
-            if (entry.entryType === 'largest-contentful-paint') {
-              gtag('event', 'largest_contentful_paint', {
-                'event_category': 'web_vitals',
-                'value': Math.round(entry.startTime),
-                'event_label': 'LCP'
-              });
-            }
-            if (entry.entryType === 'first-input') {
-              gtag('event', 'first_input_delay', {
-                'event_category': 'web_vitals',
-                'value': Math.round(entry.processingStart - entry.startTime),
-                'event_label': 'FID'
-              });
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+
+            // Evidenzia la sezione target con un effetto visivo
+            if (target.id === 'services-packages') {
+              target.style.animation = 'highlightSection 2s ease-out';
+              setTimeout(() => {
+                target.style.animation = '';
+              }, 2000);
             }
           }
         });
-        observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input'] });
+      });
+
+      // Sistema di galleria rimosso per evitare conflitti con il carosello di libri
+
+      // Initialize reviews - Forza il caricamento
+      // console.log('🚀 Inizializzando recensioni...');
+
+      // Test immediato
+      testReviews();
+
+      // Backup con timeout
+      setTimeout(() => {
+        // console.log('⏰ Timeout backup - caricamento recensioni...');
+        displayReviews();
+      }, 1000);
+
+
+
+      // Global functions
+      window.showHomePage = showHomePage;
+      window.showBlogPage = showBlogPage;
+      window.nextStep = nextStep;
+      window.prevStep = prevStep;
+      window.submitOrder = submitOrder;
+      // Funzioni galleria rimosse per evitare conflitti
+
+
+
+      // Make review functions available globally
+      // window.refreshReviews = refreshReviews; // Funzione non definita
+      window.testReviews = testReviews;
+
+      // Service Worker for caching (commented out to avoid 404 errors)
+      /*
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+  // console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+  // console.log('SW registration failed: ', registrationError);
+            });
+        });
       }
-    });
+      */
+
+      // Funzione di verifica elementi pagamento
+      function verifyPaymentElements() {
+        // Verifica che tutti gli elementi necessari per il pagamento esistano
+        const elements = {
+          'payment-confirmation': 'Conferma pagamento',
+          'payment-method-info': 'Info metodo pagamento',
+          'change-payment-btn': 'Pulsante cambio pagamento',
+          'confirm-payment-btn': 'Pulsante conferma pagamento',
+          'submit-order': 'Pulsante conferma ordine'
+        };
+
+        // console.log('🔍 Verifica elementi pagamento...');
+
+        for (const [id, description] of Object.entries(elements)) {
+          const element = document.getElementById(id);
+          if (element) {
+            // console.log(`✅ ${description} trovato (${id})`);
+          } else {
+            // console.error(`❌ ${description} NON trovato (${id})`);
+          }
+        }
+
+        // Verifica stato iniziale
+        // console.log('📊 Stato iniziale ordine log removed');
+      }
+
+      // RIMOSSO: Pulsante di debug pagamento
+
+      // Funzione per controllare l'URL iniziale
+      function checkInitialURL() {
+        const hash = window.location.hash;
+        const url = window.location.href;
+
+        // console.log('🔍 Controllo URL iniziale:', { hash, url });
+
+        if (hash === '#blog') {
+          // console.log('🔍 URL iniziale contiene #blog, mostrando sezione blog');
+          showBlogPage();
+        } else if (hash === '#order') {
+          // console.log('🔍 URL iniziale contiene #order, mostrando flusso ordine inline');
+          showOrderPage(false);
+        } else if (hash === '#calculator') {
+          // console.log('🔍 URL iniziale contiene #calculator, mostrando homepage e scrollando alla calcolatrice');
+          showHomePage(false);
+          // Scroll dolce alla calcolatrice con offset per header fisso
+          setTimeout(() => {
+            const target = document.getElementById('calculator');
+            if (target) {
+              const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+              const targetPosition = target.offsetTop - headerHeight - 20;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }, 100);
+        } else if (url.includes('/blog') || url.includes('blogpage')) {
+          // console.log('🔍 URL contiene /blog, mostrando sezione blog');
+          showBlogPage();
+        } else {
+          // console.log('🔍 URL iniziale pulito, mostrando homepage');
+          showHomePage();
+        }
+      }
+
+      // Performance monitoring
+      window.addEventListener('load', () => {
+        // Track Core Web Vitals
+        if ('PerformanceObserver' in window) {
+          const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (entry.entryType === 'largest-contentful-paint') {
+                gtag('event', 'largest_contentful_paint', {
+                  'event_category': 'web_vitals',
+                  'value': Math.round(entry.startTime),
+                  'event_label': 'LCP'
+                });
+              }
+              if (entry.entryType === 'first-input') {
+                gtag('event', 'first_input_delay', {
+                  'event_category': 'web_vitals',
+                  'value': Math.round(entry.processingStart - entry.startTime),
+                  'event_label': 'FID'
+                });
+              }
+            }
+          });
+          observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input'] });
+        }
+      });
 
 
     });
