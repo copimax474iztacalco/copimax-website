@@ -76,61 +76,184 @@
     </script>
 
     <!-- Facebook Pixel -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document,
-            'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1131571462234509');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1131571462234509&ev=PageView&noscript=1" /></noscript>
+  <script>
+    function loadFB() {
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document,
+        'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1131571462234509');
+      fbq('track', 'PageView');
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function() { setTimeout(loadFB, 1000); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadFB, 1000); });
+    }
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1131571462234509&ev=PageView&noscript=1" /></noscript>
 
     <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "t4iy5aqh55");
-    </script>
+  <script type="text/javascript">
+    function loadClarity() {
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "t4iy5aqh55");
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function() { setTimeout(loadClarity, 1500); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadClarity, 1500); });
+    }
+  </script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "COPIMAX",
-        "description": "Imprenta en CDMX con 25+ años de experiencia en copias e impresiones",
-        "url": "https://copimax.store/imprenta-cdmx",
-        "telephone": "+525540219892",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Vainilla 474",
-            "addressLocality": "Iztacalco",
-            "addressRegion": "CDMX",
-            "postalCode": "08400",
-            "addressCountry": "MX"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://copimax.store/#business",
+            "name": "COPIMAX - Imprenta Digital CDMX",
+            "description": "Imprenta digital en Ciudad de México con más de 25 años de experiencia. Copias, impresiones a color y blanco y negro, engargolados, empastados y más. Entrega el mismo día, precios económicos cerca de UPIICSA.",
+            "url": "https://copimax.store/imprenta-cdmx",
+            "telephone": "+52-55-4021-9892",
+            "email": "copimax474@hotmail.com",
+            "image": "https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Vainilla 474",
+                "addressLocality": "Iztacalco",
+                "addressRegion": "CDMX",
+                "postalCode": "08400",
+                "addressCountry": "MX"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 19.39732,
+                "longitude": -99.09302
+            },
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "08:30",
+                    "closes": "18:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Saturday", "Sunday"],
+                    "opens": "08:30",
+                    "closes": "14:00"
+                }
+            ],
+            "priceRange": "$",
+            "currenciesAccepted": "MXN",
+            "paymentAccepted": "Cash, Credit Card, Debit Card, Bank Transfer",
+            "areaServed": [
+                { "@type": "City", "name": "Ciudad de México" },
+                { "@type": "City", "name": "Iztacalco" },
+                { "@type": "City", "name": "Iztapalapa" },
+                { "@type": "City", "name": "Benito Juárez" },
+                { "@type": "City", "name": "Cuauhtémoc" },
+                { "@type": "City", "name": "Venustiano Carranza" },
+                { "@type": "City", "name": "Coyoacán" }
+            ],
+            "sameAs": [
+                "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+                "https://www.instagram.com/copimax_upiicsa/",
+                "https://www.tiktok.com/@copimax_upiicsa",
+                "https://wa.me/525540219892"
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "bestRating": "5",
+                "worstRating": "1",
+                "ratingCount": "150"
+            }
         },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 19.39732,
-            "longitude": -99.09302
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Servicios de Imprenta Digital",
+            "description": "Servicios profesionales de impresión digital en CDMX: copias, impresiones a color, engargolados y empastados con entrega el mismo día.",
+            "provider": {
+                "@type": "LocalBusiness",
+                "@id": "https://copimax.store/#business"
+            },
+            "areaServed": {
+                "@type": "City",
+                "name": "Ciudad de México"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Catálogo de Servicios de Imprenta",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "name": "Impresión B/N carta",
+                        "description": "Impresión en blanco y negro tamaño carta con equipos láser industriales",
+                        "price": "0.40",
+                        "priceCurrency": "MXN",
+                        "availability": "https://schema.org/InStock"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Impresión Color carta",
+                        "description": "Impresión a color tamaño carta en alta resolución",
+                        "price": "3.00",
+                        "priceCurrency": "MXN",
+                        "availability": "https://schema.org/InStock"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Engargolado",
+                        "description": "Servicio de engargolado profesional para documentos y trabajos académicos",
+                        "price": "20.00",
+                        "priceCurrency": "MXN",
+                        "availability": "https://schema.org/InStock"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Empastado",
+                        "description": "Servicio de empastado profesional para tesis, trabajos finales y documentos formales",
+                        "price": "350.00",
+                        "priceCurrency": "MXN",
+                        "availability": "https://schema.org/InStock"
+                    }
+                ]
+            }
         },
-        "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
-        "priceRange": "$$",
-        "sameAs": [
-            "https://wa.me/525540219892"
-        ]
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Inicio",
+                    "item": "https://copimax.store"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Imprenta CDMX",
+                    "item": "https://copimax.store/imprenta-cdmx"
+                }
+            ]
+        }
+    ]
     </script>
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" as="style" onload="this.rel='stylesheet'">
@@ -1101,7 +1224,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 COPIMAX Iztacalco. Todos los derechos reservados. | <strong>Imprenta en CDMX</strong> |
+                <p>&copy; 2026 COPIMAX Iztacalco. Todos los derechos reservados. | <strong>Imprenta en CDMX</strong> |
                     Impresiones urgentes y rápidas | Imprenta express profesional</p>
             </div>
         </div>

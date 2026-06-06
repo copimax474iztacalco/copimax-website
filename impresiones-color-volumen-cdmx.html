@@ -126,11 +126,18 @@
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "t4iy5aqh55");
+    function loadClarity() {
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "t4iy5aqh55");
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function() { setTimeout(loadClarity, 1500); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadClarity, 1500); });
+    }
   </script>
 
   <!-- SEO Meta Tags -->
@@ -138,70 +145,119 @@
   <meta name="description"
     content="Impresiones a color en volumen a los mejores precios de CDMX. Entrega rápida, papel de calidad. Pedidos desde 100 copias.">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "COPIMAX - Impresiones Color Volumen",
-    "image": "https://copimax.store/logo.jpg",
-    "@id": "https://copimax.store/impresiones-color-volumen-cdmx",
-    "url": "https://copimax.store",
-    "telephone": "+52-55-4021-9892",
-    "priceRange": "$3.00 - $20",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vainilla 474",
-      "addressLocality": "Iztacalco",
-      "addressRegion": "CDMX",
-      "postalCode": "08400",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 19.39732,
-      "longitude": -99.09302
-    },
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Iztacalco, CDMX"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://copimax.store/impresiones-color-volumen-cdmx",
+      "name": "COPIMAX - Impresiones Color Volumen CDMX",
+      "image": "https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop",
+      "url": "https://copimax.store",
+      "telephone": "+52-55-4021-9892",
+      "email": "copimax474@hotmail.com",
+      "priceRange": "$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vainilla 474",
+        "addressLocality": "Iztacalco",
+        "addressRegion": "CDMX",
+        "postalCode": "08400",
+        "addressCountry": "MX"
       },
-      {
-        "@type": "City",
-        "name": "Benito Juárez, CDMX"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.39732,
+        "longitude": -99.09302
       },
-      {
-        "@type": "City",
-        "name": "Coyoacán, CDMX"
+      "areaServed": [
+        {"@type": "City", "name": "Iztacalco, CDMX"},
+        {"@type": "City", "name": "Iztapalapa, CDMX"},
+        {"@type": "City", "name": "Benito Juárez, CDMX"},
+        {"@type": "City", "name": "Coyoacán, CDMX"}
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:30",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "08:30",
+          "closes": "14:00"
+        }
+      ],
+      "sameAs": [
+        "https://wa.me/525540219892",
+        "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+        "https://www.instagram.com/copimax_upiicsa/",
+        "https://www.tiktok.com/@copimax_upiicsa"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Impresiones Color por Volumen",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Impresión Color (1-99 hojas)",
+              "description": "Impresión a color carta bond"
+            },
+            "price": "5.00",
+            "priceCurrency": "MXN"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Impresión Color (100-299 hojas)",
+              "description": "Impresión a color carta por volumen medio"
+            },
+            "price": "4.00",
+            "priceCurrency": "MXN"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Impresión Color (300+ hojas)",
+              "description": "Impresión a color carta mayoreo"
+            },
+            "price": "3.00",
+            "priceCurrency": "MXN"
+          }
+        ]
       },
-      {
-        "@type": "City",
-        "name": "Iztapalapa, CDMX"
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "150"
       }
-    ],
-    "openingHours": "Mo-Fr 08:30-18:00, Sa-Su 08:30-14:00",
-    "sameAs": [
-      "https://www.facebook.com/copimax",
-      "https://instagram.com/copimax"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Copias por Volumen",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Copias Color por Volumen",
-            "description": "Impresión digital color desde $3.00/hoja (mayoreo)"
-          },
-          "price": "3.00",
-          "priceCurrency": "MXN",
-          "availability": "https://schema.org/InStock",
-          "areaServed": "Ciudad de México"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://copimax.store"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Impresiones Color Volumen CDMX",
+          "item": "https://copimax.store/impresiones-color-volumen-cdmx"
         }
       ]
     }
-  }
+  ]
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1779,6 +1835,10 @@
         <p style="font-size: 0.9rem; color: #e5e7eb; margin-bottom: 12px;">
           <a href="/impresiones-cdmx"
             style="color: var(--cta1); text-decoration: underline; font-weight: 600;">Impresiones CDMX</a> •
+          <a href="/impresiones-cerca-de-mi"
+            style="color: var(--cta1); text-decoration: underline; font-weight: 600;">Impresiones Cerca de Mí</a> •
+          <a href="/impresiones-a-color-cerca-de-mi"
+            style="color: var(--cta1); text-decoration: underline; font-weight: 600;">Color Cerca de Mí</a> •
           <a href="/servicios" style="color: var(--cta1); text-decoration: underline; font-weight: 600;">Servicios</a> •
           <a href="/contacto" style="color: var(--cta1); text-decoration: underline; font-weight: 600;">Contacto</a>
         </p>
@@ -1795,7 +1855,7 @@
       <!-- Copyright -->
       <div
         style="text-align: center; font-size: 0.9rem; color: #d1d5db; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; width: 100%;">
-        © 2025 COPIMAX – <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta</strong> copias por Volumen
+        © 2026 COPIMAX – <strong style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imprenta</strong> copias por Volumen
         CDMX • Todos los derechos reservados
       </div>
     </div>

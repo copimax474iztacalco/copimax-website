@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- TITLE ULTRA-OPTIMIZED FOR RANKING -->
-    <title>Centro de Copiado por Volumen CDMX | Copias Mayoreo desde $0.35 | COPIMAX Iztacalco</title>
+    <title>Centro de Copiado CDMX por Mayoreo | Entrega Hoy - Copimax</title>
 
     <!-- META DESCRIPTION KILLER -->
     <meta name="description"
-        content="Centro de copiado por volumen CDMX especializado en copias mayoreo e impresiones desde $0.35. 26 años experiencia en Iztacalco. Servicio domicilio GRATIS +25,000 copias. ☎️ 55-4021-9892">
+        content="El centro de copiado más completo de CDMX. Copias, impresiones, engargolados y más. Entrega en 2 horas, precios de mayoreo desde 1 copia.">
 
     <!-- KEYWORDS ULTRA-SPECIFIC -->
     <meta name="keywords"
@@ -54,13 +54,20 @@
     <!-- End Meta Pixel Code -->
 
     <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "t4iy5aqh55");
-    </script>
+  <script type="text/javascript">
+    function loadClarity() {
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "t4iy5aqh55");
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function() { setTimeout(loadClarity, 1500); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadClarity, 1500); });
+    }
+  </script>
 
     <!-- STRUCTURED DATA FOR GOOGLE -->
     <script type="application/ld+json">
@@ -326,12 +333,51 @@
         .header {
             background: var(--darker-bg);
             color: white;
-            padding: 1rem 0;
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             border-bottom: 1px solid #333;
+        }
+
+        .urgency-bar {
+            background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
+            color: #fff;
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 8px 15px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .urgency-bar a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .urgency-bar a:hover {
+            color: var(--lime-bright);
+            text-decoration: underline;
+        }
+
+        .urgency-bar .status-dot {
+            margin-right: 4px;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { opacity: 0.6; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.6; transform: scale(0.95); }
         }
 
         .nav {
@@ -340,7 +386,7 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 1rem 20px;
         }
 
         /* Menu Desktop */
@@ -1412,7 +1458,8 @@
 
             .nav {
                 flex-direction: column;
-                gap: 15px;
+                gap: 8px;
+                padding: 0.6rem 15px;
             }
 
             .main-navigation {
@@ -1718,6 +1765,11 @@
 
     <!-- HEADER -->
     <header class="header">
+        <div class="urgency-bar">
+            <span><span class="status-dot" id="open-status-dot">🟢</span> <span id="open-status-text">Abierto ahora</span></span> · 
+            <span>⚡ Entrega en 2h</span> · 
+            <a href="https://wa.me/525540219892?text=Hola%20COPIMAX,%20necesito%20cotizaci%C3%B3n%20para%20copias%20por%20volumen.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank">💬 WhatsApp</a>
+        </div>
         <nav class="nav">
             <div class="logo">COPIMAX</div>
 
@@ -2181,17 +2233,65 @@
             const menu = document.getElementById('mobileSlideMenu');
             const button = document.querySelector('.mobile-nav-button');
 
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
+            if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
                 menu.classList.remove('open');
             }
         });
+
+        // Function to check and update open/closed status in real time (Mexico City timezone)
+        function updateOpeningStatus() {
+            const statusTextEl = document.getElementById('open-status-text');
+            const statusDotEl = document.getElementById('open-status-dot');
+            if (!statusTextEl || !statusDotEl) return;
+
+            try {
+                // Get current date/time in America/Mexico_City timezone
+                const cdmxTimeStr = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                const mxTime = new Date(cdmxTimeStr);
+                const day = mxTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+                const hours = mxTime.getHours();
+                const minutes = mxTime.getMinutes();
+                const timeVal = hours * 100 + minutes;
+
+                let isOpen = false;
+                let closeTime = '';
+
+                // Horario: Lun-Vie 8:30 a 18:00, Sab-Dom 8:30 a 14:00
+                if (day >= 1 && day <= 5) { // Monday to Friday
+                    if (timeVal >= 830 && timeVal < 1800) {
+                        isOpen = true;
+                        closeTime = '18:00';
+                    }
+                } else { // Saturday and Sunday
+                    if (timeVal >= 830 && timeVal < 1400) {
+                        isOpen = true;
+                        closeTime = '14:00';
+                    }
+                }
+
+                if (isOpen) {
+                    statusDotEl.textContent = '🟢';
+                    statusTextEl.textContent = `Abierto ahora (cierra ${closeTime})`;
+                } else {
+                    statusDotEl.textContent = '🔴';
+                    statusTextEl.textContent = 'Cerrado · Abrimos 8:30';
+                }
+            } catch (e) {
+                // Fallback in case Intl or timezone is not supported
+                statusDotEl.textContent = '🟢';
+                statusTextEl.textContent = 'Abierto ahora';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateOpeningStatus);
     </script>
 
     <!-- FOOTER -->
     <footer
         style="background: var(--darker-bg); color: var(--text-gray); text-align: center; padding: 40px 20px; border-top: 1px solid #333;">
         <div class="container">
-            <p>&copy; 2025 COPIMAX - Centro de Copiado CDMX. Todos los derechos reservados.</p>
+            <p>&copy; 2026 COPIMAX - Centro de Copiado CDMX. Todos los derechos reservados.</p>
             <p>Vainilla 474, Iztacalco, CDMX 08400 | Tel: 55-4021-9892</p>
         </div>
     </footer>
+</body>
+</html>

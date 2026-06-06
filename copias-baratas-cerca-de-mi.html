@@ -35,17 +35,24 @@
     <!-- End Meta Pixel Code -->
 
     <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "t4iy5aqh55");
-    </script>
+  <script type="text/javascript">
+    function loadClarity() {
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "t4iy5aqh55");
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function() { setTimeout(loadClarity, 1500); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadClarity, 1500); });
+    }
+  </script>
 
-    <title>Copias Baratas Cerca de Mí en CDMX | Copimax Iztacalco</title>
+    <title>Copias Cerca de Mí en CDMX | Copimax Iztacalco - Mismo Día</title>
     <meta name="description"
-        content="Centro de copiado económico en Ciudad de México. Las copias más baratas con calidad garantizada. ¿Dónde estamos? Te contamos aquí." />
+        content="Centro de copiado en Ciudad de México. Copias económicas, impresiones y más. A 5 min del Metro Apatlaco. Abierto lunes a sábado." />
     <link rel="canonical" href="https://copimax.store/copias-baratas-cerca-de-mi">
 
     <!-- Favicon -->
@@ -60,27 +67,155 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "COPIMAX - Copias Baratas CDMX",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vainilla 474",
-      "addressLocality": "Iztacalco",
-      "addressRegion": "CDMX",
-      "postalCode": "08400",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 19.39732,
-      "longitude": -99.09302
-    },
-    "telephone": "+52-55-4021-9892",
-    "priceRange": "$0.35 - $5"
-  }
-  </script>
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "COPIMAX - Copias Baratas Cerca de Mí",
+        "image": "https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop",
+        "url": "https://copimax.store/copias-baratas-cerca-de-mi",
+        "telephone": "+52-55-4021-9892",
+        "email": "copimax474@hotmail.com",
+        "priceRange": "$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vainilla 474",
+          "addressLocality": "Iztacalco",
+          "addressRegion": "CDMX",
+          "postalCode": "08400",
+          "addressCountry": "MX"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 19.39732,
+          "longitude": -99.09302
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:30",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "08:30",
+            "closes": "14:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+          "https://www.instagram.com/copimax_upiicsa/",
+          "https://www.tiktok.com/@copimax_upiicsa",
+          "https://wa.me/525540219892"
+        ],
+        "areaServed": {
+          "@type": "City",
+          "name": "Ciudad de México"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "150",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Copias Baratas en CDMX",
+        "description": "Servicio de copias en blanco y negro a precios económicos. Desde $0.25 por hoja en volumen. Entrega el mismo día en Iztacalco, CDMX.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "COPIMAX - Copias Baratas Cerca de Mí",
+          "url": "https://copimax.store"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Ciudad de México"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Precios de Copias B/N Carta",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Copia B/N carta (1-99 copias)",
+              "price": "0.40",
+              "priceCurrency": "MXN",
+              "eligibleQuantity": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 99,
+                "unitText": "copias"
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Copia B/N carta (100+ copias)",
+              "price": "0.35",
+              "priceCurrency": "MXN",
+              "eligibleQuantity": {
+                "@type": "QuantitativeValue",
+                "minValue": 100,
+                "maxValue": 499,
+                "unitText": "copias"
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Copia B/N carta (500+ copias)",
+              "price": "0.30",
+              "priceCurrency": "MXN",
+              "eligibleQuantity": {
+                "@type": "QuantitativeValue",
+                "minValue": 500,
+                "maxValue": 999,
+                "unitText": "copias"
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Copia B/N carta (1000+ copias)",
+              "price": "0.25",
+              "priceCurrency": "MXN",
+              "eligibleQuantity": {
+                "@type": "QuantitativeValue",
+                "minValue": 1000,
+                "unitText": "copias"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://copimax.store"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Copias",
+            "item": "https://copimax.store/copias-volumen-cdmx"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Copias Baratas Cerca de Mí",
+            "item": "https://copimax.store/copias-baratas-cerca-de-mi"
+          }
+        ]
+      }
+    ]
+    </script>
 
     <style>
         * {
@@ -431,7 +566,7 @@
 
     <section class="hero">
         <div class="wrap">
-            <h1 class="animate-in">Copias Urgentes <span style="color: var(--primary1);">a Domicilio</span> en CDMX</h1>
+            <h1 class="animate-in">Copias Cerca de Mí <span style="color: var(--primary1);">en CDMX</span> — Copimax Iztacalco</h1>
             <p class="hero-subtitle animate-in">Desde $0.35/hoja. Ubicados en Iztacalco. Servicio a toda la Ciudad de
                 México.</p>
             <a href="#ubicacion" class="cta animate-in">📍 Ver Ubicación y Precios</a>
@@ -680,19 +815,17 @@
                     🔍 Otros Servicios
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                    <a href="/copias-volumen-cdmx"
+                    <a href="/impresiones-cerca-de-mi"
                         style="background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb; text-decoration: none; display: block; transition: all 0.3s ease;">
                         <div style="font-size: 3rem; margin-bottom: 12px;">🖨️</div>
-                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Copias por
-                            Volumen</h4>
-                        <p style="color: #666; font-size: 1rem; margin: 0;">Desde $0.35/hoja para grandes cantidades</p>
+                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Impresiones Cerca de Mí</h4>
+                        <p style="color: #666; font-size: 1rem; margin: 0;">Impresión digital rápida el mismo día en Iztacalco</p>
                     </a>
-                    <a href="/impresiones-baratas-cdmx"
+                    <a href="/impresiones-a-color-cerca-de-mi"
                         style="background: #fff; padding: 32px; border-radius: 16px; border: 2px solid #e5e7eb; text-decoration: none; display: block; transition: all 0.3s ease;">
                         <div style="font-size: 3rem; margin-bottom: 12px;">🎨</div>
-                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Impresiones
-                            Baratas</h4>
-                        <p style="color: #666; font-size: 1rem; margin: 0;">Color desde $3, garantía precio más bajo</p>
+                        <h4 style="font-size: 1.2rem; font-weight: 800; color: #000; margin-bottom: 12px;">Color Cerca de Mí</h4>
+                        <p style="color: #666; font-size: 1rem; margin: 0;">Impresiones a color láser en opalina y couche el mismo día</p>
                     </a>
                 </div>
             </div>
@@ -707,7 +840,7 @@
             <p style="font-size: 1.1rem; margin-bottom: 8px;">📞 <a href="tel:+525540219892" style="color: var(--cta1); font-weight: 700;">+52 55-4021-9892</a></p>
             <p style="font-size: 1.1rem; margin-bottom: 24px;">⏰ Lun-Vie 8:30-18:00 | Sáb-Dom 8:30-14:00</p>
             <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.2);">
-                <p style="color: #d1d5db; font-size: 0.95rem;">© 2025 COPIMAX - Copias Baratas CDMX | Todos los derechos
+                <p style="color: #d1d5db; font-size: 0.95rem;">© 2026 COPIMAX - Copias Baratas CDMX | Todos los derechos
                     reservados</p>
             </div>
         </div>
