@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const dealInfo = btn.dataset.deal;
             const msg = `Hola COPIMAX 👋 Me interesa el paquete: ${dealInfo}. ¿Puedo enviar el archivo por aquí?`;
-            window.open('https://wa.me/525540219892?text=' + encodeURIComponent(msg), '_blank');
+            window.open('https://wa.me/525529632885?text=' + encodeURIComponent(msg), '_blank');
         });
     });
 

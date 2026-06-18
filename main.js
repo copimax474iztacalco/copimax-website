@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Funzione per aprire WhatsApp con messaggio predefinito
     window.openWhatsApp = function(message) {
-        const phone = '5540219892';
+        const phone = '5529632885';
         const encodedMessage = encodeURIComponent(message);
         const url = `https://wa.me/${phone}?text=${encodedMessage}`;
         window.open(url, '_blank');

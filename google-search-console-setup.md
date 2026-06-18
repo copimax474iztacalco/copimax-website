@@ -78,7 +78,7 @@
 - Verifica Google My Business
 - Aggiungi indirizzo: Vainilla 474, Iztacalco, CDMX
 - Orari: Lun-Vie 8:30am-6pm, Sáb-Dom 8:30am-2pm
-- Telefono: 55-4021-9892
+- Telefono: 55-2963-2885
 
 ## 9. Analytics Integration
 
