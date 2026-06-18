@@ -259,8 +259,7 @@
         /* Hero Premium */
         .hero {
             background: linear-gradient(135deg, #f8fafc 0%, var(--cta2) 100%);
-            padding: 100px 0;
-            text-align: center;
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
         }
@@ -276,8 +275,38 @@
             pointer-events: none;
         }
 
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            text-align: left;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 4px solid #fff;
+            object-fit: cover;
+        }
+
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             line-height: 1.1;
@@ -296,7 +325,6 @@
 
         .hero-cta-container {
             display: flex;
-            justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
         }
@@ -515,6 +543,20 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+                gap: 32px;
+            }
+
+            .hero-cta-container {
+                justify-content: center;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -551,11 +593,18 @@
 
     <section class="hero">
         <div class="wrap">
-            <h1 class="animate-in">Impresiones Cerca de Mí <span style="color: var(--primary1);">en CDMX</span></h1>
-            <p class="hero-subtitle animate-in">Copimax Iztacalco — Entrega el Mismo Día. Sin Pedido Mínimo.</p>
-            <div class="hero-cta-container animate-in">
-                <a href="https://wa.me/525529632885?text=Hola%20COPIMAX,%20busco%20impresiones%20cerca%20de%20mi" class="cta" target="_blank">💬 WhatsApp Directo</a>
-                <a href="#precios" class="cta-secondary">📋 Ver Precios</a>
+            <div class="hero-grid">
+                <div class="hero-text animate-in">
+                    <h1>Impresiones Cerca de Mí <span style="color: var(--primary1);">en CDMX</span></h1>
+                    <p class="hero-subtitle">Copimax Iztacalco — Entrega el Mismo Día. Sin Pedido Mínimo.</p>
+                    <div class="hero-cta-container">
+                        <a href="https://wa.me/525529632885?text=Hola%20COPIMAX,%20busco%20impresiones%20cerca%20de%20mi" class="cta" target="_blank">💬 WhatsApp Directo</a>
+                        <a href="#precios" class="cta-secondary">📋 Ver Precios</a>
+                    </div>
+                </div>
+                <div class="hero-image animate-in">
+                    <img src="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=870&auto=format&fit=crop" alt="Local Copimax - Centro de Impresiones" width="450" height="300" loading="eager">
+                </div>
             </div>
         </div>
     </section>

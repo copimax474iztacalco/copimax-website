@@ -405,13 +405,36 @@
     /* Hero Section */
     .hero-section {
       background: linear-gradient(135deg, #f8fafc, var(--cta2));
-      padding: 100px 0;
-      text-align: center
+      padding: 80px 0;
     }
 
     .hero-content {
-      max-width: 800px;
-      margin: 0 auto
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 0 24px;
+    }
+
+    .hero-text-col {
+      flex: 1.2;
+    }
+
+    .hero-image-col {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-col img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border: 4px solid #fff;
+      object-fit: cover;
     }
 
     .hero-title {
@@ -549,15 +572,27 @@
         padding: 40px 0;
       }
 
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .hero-image-col {
+        order: -1;
+      }
+
       .hero-title {
         font-size: 1.8rem !important;
         padding: 0 16px;
         line-height: 1.2;
+        text-align: center !important;
       }
 
       .hero-subtitle {
         font-size: 1.1rem !important;
         padding: 0 16px;
+        text-align: center !important;
       }
 
       /* Hero CTA mobile */
@@ -1277,39 +1312,44 @@
   <!-- Hero Section HOOK PSICOLOGICO -->
   <section class="hero-section">
     <div class="hero-content">
-      <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
-      <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
-        Copias por Volumen Industrial CDMX | <span
-          style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Producción
-          Masiva</span> | Desde <strong>$0.35</strong>
-      </h1>
+      <div class="hero-text-col">
+        <!-- HOOK PRINCIPALE (5 secondi per catturare) -->
+        <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 16px;">
+          Copias por Volumen Industrial CDMX | <span
+            style="color: var(--cta1); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Producción
+            Masiva</span> | Desde <strong>$0.35</strong>
+        </h1>
 
-      <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
-      <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
-        Las tienes listas en <strong>24 horas</strong> desde <span
-          style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
-      </p>
+        <!-- SOLUZIONE + PREZZO (ancoraggio immediato) -->
+        <p class="hero-subtitle" style="font-size: 1.4rem; margin-bottom: 24px;">
+          Las tienes listas en <strong>24 horas</strong> desde <span
+            style="color: var(--cta1); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">$0.35</span> cada una
+        </p>
 
-      <!-- CTA GIGANTE E URGENTE -->
-      <div style="margin: 32px 0;">
-        <a href="https://wa.me/525529632885?text=Hola%20COPIMAX,%20necesito%20cotización%20urgente%20para%2050,000%20copias%20para%20mañana.%20¿Pueden%20ayudarme?"
-          class="cta"
-          style="font-size: 1.3rem; padding: 20px 40px; display: inline-block; text-decoration: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(181,255,0,0.4);"
-          target="_blank" rel="noopener">
-          🚀 COTIZAR AHORA - 2 MINUTOS
-        </a>
+        <!-- CTA GIGANTE E URGENTE -->
+        <div style="margin: 32px 0;">
+          <a href="https://wa.me/525529632885?text=Hola%20COPIMAX,%20necesito%20cotización%20urgente%20para%2050,000%20copias%20para%20mañana.%20¿Pueden%20ayudarme?"
+            class="cta"
+            style="font-size: 1.3rem; padding: 20px 40px; display: inline-block; text-decoration: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(181,255,0,0.4);"
+            target="_blank" rel="noopener">
+            🚀 COTIZAR AHORA - 2 MINUTOS
+          </a>
+        </div>
+
+        <!-- PROOF SOCIAL IMMEDIATO -->
+        <div
+          style="background: rgba(255,255,255,0.95); padding: 20px; border-radius: 12px; margin-top: 24px; border: 2px solid var(--cta1);">
+          <p style="font-size: 1rem; color: #000; margin: 0; font-weight: 600;">
+            🏆 <strong>Esta semana ya produjimos:</strong> 85,000 manuales → Universidad ✅ | 120,000 reportes → Banco ✅ |
+            200,000 folletos → Gobierno ✅
+          </p>
+          <p style="font-size: 0.9rem; color: #666; margin: 8px 0 0 0;">
+            <strong>500+ empresas</strong> confían en nosotros cada mes
+          </p>
+        </div>
       </div>
-
-      <!-- PROOF SOCIAL IMMEDIATO -->
-      <div
-        style="background: rgba(255,255,255,0.95); padding: 20px; border-radius: 12px; margin-top: 24px; border: 2px solid var(--cta1);">
-        <p style="font-size: 1rem; color: #000; margin: 0; font-weight: 600;">
-          🏆 <strong>Esta semana ya produjimos:</strong> 85,000 manuales → Universidad ✅ | 120,000 reportes → Banco ✅ |
-          200,000 folletos → Gobierno ✅
-        </p>
-        <p style="font-size: 0.9rem; color: #666; margin: 8px 0 0 0;">
-          <strong>500+ empresas</strong> confían en nosotros cada mes
-        </p>
+      <div class="hero-image-col">
+        <img src="https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=870&auto=format&fit=crop" alt="Local Copimax - Producción por Volumen" width="450" height="300" loading="eager">
       </div>
     </div>
   </section>
