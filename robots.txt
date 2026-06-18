@@ -9,7 +9,6 @@ Allow: /servicios
 Allow: /nosotros
 Allow: /blog
 Allow: /contacto
-Allow: /tesis-guia-2025
 Allow: /copias-volumen-cdmx
 Allow: /imprenta-cdmx
 
