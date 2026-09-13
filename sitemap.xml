@@ -12,6 +12,13 @@
   </url>
   
   <url>
+    <loc>https://copimax.store/empresas</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>https://copimax.store/servicios</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -225,6 +232,27 @@
 
   <url>
     <loc>https://copimax.store/blog/engargolado-cdmx-tipos-precios</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/copias-e-impresiones-con-factura-cdmx</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/proveedor-copias-para-escuelas-cdmx</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/como-cotizar-copias-por-volumen-empresa-cdmx</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
