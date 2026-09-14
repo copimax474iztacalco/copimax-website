@@ -2362,114 +2362,139 @@
   <!-- SCRIPT CALCULADORA B2B -->
   <script>
     (function() {
-      const range = document.getElementById("calc-copies-range");
-      const number = document.getElementById("calc-copies-number");
-      const radioCards = document.querySelectorAll(".calc-radio-card");
-      const optEngargolado = document.getElementById("calc-opt-engargolado");
-      const optIva = document.getElementById("calc-opt-iva");
-      
-      const totalDisplay = document.getElementById("calc-total-display");
-      const vatLabel = document.getElementById("calc-vat-label");
-      const breakdownQty = document.getElementById("calc-breakdown-qty");
-      const breakdownService = document.getElementById("calc-breakdown-service");
-      const breakdownSubtotal = document.getElementById("calc-breakdown-subtotal");
-      const breakdownIva = document.getElementById("calc-breakdown-iva");
-      const etaBadge = document.getElementById("calc-eta-badge");
-      const btnWhatsapp = document.getElementById("calc-btn-whatsapp");
+      function initB2BCalc() {
+        var range = document.getElementById("calc-copies-range");
+        var number = document.getElementById("calc-copies-number");
+        var radioCards = document.querySelectorAll(".calc-radio-card");
+        var optEngargolado = document.getElementById("calc-opt-engargolado");
+        var optIva = document.getElementById("calc-opt-iva");
+        
+        var totalDisplay = document.getElementById("calc-total-display");
+        var vatLabel = document.getElementById("calc-vat-label");
+        var breakdownQty = document.getElementById("calc-breakdown-qty");
+        var breakdownService = document.getElementById("calc-breakdown-service");
+        var breakdownSubtotal = document.getElementById("calc-breakdown-subtotal");
+        var breakdownIva = document.getElementById("calc-breakdown-iva");
+        var etaBadge = document.getElementById("calc-eta-badge");
+        var btnWhatsapp = document.getElementById("calc-btn-whatsapp");
 
-      if (!range || !number || !totalDisplay) return;
+        if (!range || !number || !totalDisplay) return;
 
-      const prices = {
-        "bn-doble": { price: 0.35, name: "B/N Doble Cara" },
-        "bn-una": { price: 0.40, name: "B/N Una Cara" },
-        "color-mayoreo": { price: 3.00, name: "Color Mayoreo (+300)" },
-        "color-std": { price: 4.00, name: "Color Estándar" }
-      };
+        var prices = {
+          "bn-doble": { price: 0.35, name: "B/N Doble Cara" },
+          "bn-una": { price: 0.40, name: "B/N Una Cara" },
+          "color-mayoreo": { price: 3.00, name: "Color Mayoreo (+300)" },
+          "color-std": { price: 4.00, name: "Color Estándar" }
+        };
 
-      let currentType = "bn-doble";
+        var currentType = "bn-doble";
 
-      function syncInputs(val) {
-        val = parseInt(val) || 100;
-        if (val < 100) val = 100;
-        range.value = Math.min(val, 50000);
-        number.value = val;
-        calculate();
-      }
+        function syncInputs(val) {
+          var numVal = parseInt(val, 10);
+          if (isNaN(numVal) || numVal < 100) numVal = 100;
+          range.value = Math.min(numVal, 50000);
+          number.value = numVal;
+          calculate();
+        }
 
-      range.addEventListener("input", function() {
-        number.value = this.value;
-        calculate();
-      });
+        range.addEventListener("input", function() {
+          number.value = this.value;
+          calculate();
+        });
 
-      number.addEventListener("change", function() {
-        syncInputs(this.value);
-      });
-
-      radioCards.forEach(card => {
-        card.addEventListener("click", function() {
-          radioCards.forEach(c => c.classList.remove("active"));
-          this.classList.add("active");
-          const radio = this.querySelector("input[type=radio]");
-          if (radio) {
-            radio.checked = true;
-            currentType = radio.value;
+        number.addEventListener("input", function() {
+          var v = parseInt(this.value, 10);
+          if (!isNaN(v)) {
+            range.value = Math.min(v, 50000);
             calculate();
           }
         });
-      });
 
-      if (optEngargolado) optEngargolado.addEventListener("change", calculate);
-      if (optIva) optIva.addEventListener("change", calculate);
+        number.addEventListener("change", function() {
+          syncInputs(this.value);
+        });
 
-      function calculate() {
-        const qty = parseInt(number.value) || 100;
-        const typeInfo = prices[currentType] || prices["bn-doble"];
-        let subtotal = qty * typeInfo.price;
+        radioCards.forEach(function(card) {
+          card.addEventListener("click", function(e) {
+            radioCards.forEach(function(c) { c.classList.remove("active"); });
+            this.classList.add("active");
+            var radio = this.querySelector("input[type=radio]");
+            if (radio) {
+              radio.checked = true;
+              currentType = radio.value;
+            }
+            calculate();
+          });
+        });
 
-        if (optEngargolado && optEngargolado.checked) {
-          const sets = Math.max(1, Math.ceil(qty / 100));
-          subtotal += (sets * 18);
+        if (optEngargolado) {
+          optEngargolado.addEventListener("change", calculate);
+        }
+        if (optIva) {
+          optIva.addEventListener("change", calculate);
         }
 
-        const iva = (optIva && optIva.checked) ? (subtotal * 0.16) : 0;
-        const total = subtotal + iva;
+        function calculate() {
+          var qty = parseInt(number.value, 10);
+          if (isNaN(qty) || qty < 100) qty = 100;
+          
+          var typeInfo = prices[currentType] || prices["bn-doble"];
+          var subtotal = qty * typeInfo.price;
 
-        totalDisplay.textContent = "$" + total.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (vatLabel) {
-          vatLabel.textContent = (optIva && optIva.checked) ? "MXN con 16% de IVA SAT incluido" : "MXN antes de impuestos";
-        }
+          var hasEngargolado = optEngargolado && optEngargolado.checked;
+          if (hasEngargolado) {
+            var sets = Math.max(1, Math.ceil(qty / 100));
+            subtotal += (sets * 18);
+          }
 
-        if (breakdownQty) breakdownQty.textContent = qty.toLocaleString("es-MX") + " unidades";
-        if (breakdownService) breakdownService.textContent = typeInfo.name;
-        if (breakdownSubtotal) breakdownSubtotal.textContent = "$" + subtotal.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " MXN";
-        if (breakdownIva) breakdownIva.textContent = "$" + iva.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " MXN";
+          var hasIva = optIva && optIva.checked;
+          var iva = hasIva ? (subtotal * 0.16) : 0;
+          var total = subtotal + iva;
 
-        if (etaBadge) {
-          if (qty <= 5000) {
-            etaBadge.textContent = "⏱️ Tiempo estimado: 2 a 4 horas express en CDMX";
-          } else if (qty <= 25000) {
-            etaBadge.textContent = "⏱️ Tiempo estimado: Mismo día (4 a 8 horas)";
-          } else {
-            etaBadge.textContent = "⏱️ Tiempo estimado: 24 a 48 horas con flete gratuito";
+          totalDisplay.textContent = "$" + total.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          if (vatLabel) {
+            vatLabel.textContent = hasIva ? "MXN con 16% de IVA SAT incluido" : "MXN antes de impuestos";
+          }
+
+          if (breakdownQty) breakdownQty.textContent = qty.toLocaleString("es-MX") + " unidades";
+          if (breakdownService) breakdownService.textContent = typeInfo.name;
+          if (breakdownSubtotal) breakdownSubtotal.textContent = "$" + subtotal.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " MXN";
+          if (breakdownIva) breakdownIva.textContent = "$" + iva.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " MXN";
+
+          if (etaBadge) {
+            if (qty <= 5000) {
+              etaBadge.textContent = "⏱️ Tiempo estimado: 2 a 4 horas express en CDMX";
+            } else if (qty <= 25000) {
+              etaBadge.textContent = "⏱️ Tiempo estimado: Mismo día (4 a 8 horas)";
+            } else {
+              etaBadge.textContent = "⏱️ Tiempo estimado: 24 a 48 horas con flete gratuito";
+            }
+          }
+
+          if (btnWhatsapp) {
+            var lines = [
+              "Hola COPIMAX, coticé en su sitio web:",
+              "- Tiraje: " + qty.toLocaleString("es-MX") + " copias/hojas",
+              "- Servicio: " + typeInfo.name,
+              "- Engargolado: " + (hasEngargolado ? "Sí" : "No"),
+              "- Requiere Factura CFDI: " + (hasIva ? "Sí" : "No"),
+              "- Total estimado: $" + total.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " MXN",
+              "",
+              "¿Tienen disponibilidad para procesar hoy mismo?"
+            ];
+            var msgText = encodeURIComponent(lines.join("\n"));
+            btnWhatsapp.href = "https://wa.me/525529632885?text=" + msgText;
           }
         }
 
-        if (btnWhatsapp) {
-          const msgText = encodeURIComponent(
-            "Hola COPIMAX, coticé en su sitio web:
-- Tiraje: " + qty.toLocaleString("es-MX") + " copias/hojas
-- Servicio: " + typeInfo.name + "
-- Engargolado: " + (optEngargolado && optEngargolado.checked ? "Sí" : "No") + "
-- Requiere Factura CFDI: " + (optIva && optIva.checked ? "Sí" : "No") + "
-- Total estimado: $" + total.toFixed(2) + " MXN
-
-¿Tienen disponibilidad para procesar hoy mismo?"
-          );
-          btnWhatsapp.href = "https://wa.me/525529632885?text=" + msgText;
-        }
+        calculate();
       }
 
-      calculate();
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initB2BCalc);
+      } else {
+        initB2BCalc();
+      }
     })();
   </script>
 
