@@ -111,7 +111,7 @@
         "name": "COPIMAX",
         "description": "Imprenta en CDMX con 25+ años de experiencia en copias e impresiones",
         "url": "https://copimax.store/imprenta-cdmx",
-        "telephone": "+525540219892",
+        "telephone": "+525529632885",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Vainilla 474",
@@ -128,7 +128,7 @@
         "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-15:00",
         "priceRange": "$$",
         "sameAs": [
-            "https://wa.me/525540219892"
+            "https://wa.me/525529632885"
         ]
     }
     </script>
@@ -721,7 +721,7 @@
                     <a href="#servicios" class="nav-item">Servicios</a>
                     <a href="#precios" class="nav-item">Precios</a>
                     <a href="#contacto" class="nav-item">Contacto</a>
-                    <a href="https://wa.me/525540219892" class="contact-button" target="_blank">
+                    <a href="https://wa.me/525529632885" class="contact-button" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </nav>
@@ -761,7 +761,7 @@
                     </div>
 
                     <div class="cta-buttons">
-                        <a href="https://wa.me/525540219892" class="btn-primary" target="_blank">
+                        <a href="https://wa.me/525529632885" class="btn-primary" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             COTIZAR AHORA
                         </a>
@@ -956,11 +956,11 @@
                     <div class="calc-price" id="total-preview">$35.00 MXN</div>
                     <div class="calc-details">Precio calculado automáticamente</div>
                     <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
-                        <a href="https://wa.me/525540219892" class="btn-primary" target="_blank"
+                        <a href="https://wa.me/525529632885" class="btn-primary" target="_blank"
                             style="background: #000; color: #ffffff;">
                             <i class="fab fa-whatsapp"></i> COTIZAR AHORA
                         </a>
-                        <a href="tel:+525540219892" class="btn-secondary" style="border-color: #000; color: #000;">
+                        <a href="tel:+525529632885" class="btn-secondary" style="border-color: #000; color: #000;">
                             <i class="fas fa-phone"></i> LLAMAR
                         </a>
                     </div>
@@ -1038,7 +1038,7 @@
             <h2>Pide tus impresiones ahora mismo</h2>
             <p>¿Tu empresa necesita un proveedor confiable de copias e impresiones en CDMX?
                 Contacta a COPIMAX y obtén cotización inmediata por WhatsApp.</p>
-            <a href="https://wa.me/525540219892" class="btn-primary" target="_blank"
+            <a href="https://wa.me/525529632885" class="btn-primary" target="_blank"
                 style="background: #000; color: #ffffff; font-size: 1.1rem; padding: 20px 40px;">
                 <i class="fab fa-whatsapp"></i>
                 INICIAR PEDIDO POR WHATSAPP
@@ -1077,7 +1077,7 @@
                         <li><i class="fas fa-subway"></i> Cerca de UPIICSA y Granjas México</li>
                         <li><i class="fab fa-whatsapp"></i> WhatsApp: Cotizaciones rápidas</li>
                         <li><i class="fas fa-clock"></i> Lun-Vie: 8:30-18:00 | Sáb-Dom: 8:30-14:00</li>
-                        <li><i class="fas fa-phone"></i> Tel: 55-4021-9892</li>
+                        <li><i class="fas fa-phone"></i> Tel: 55-2963-2885</li>
                     </ul>
                 </div>
 
@@ -1106,7 +1106,7 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/525540219892" class="whatsapp-float" target="_blank" title="Cotizar por WhatsApp">
+    <a href="https://wa.me/525529632885" class="whatsapp-float" target="_blank" title="Cotizar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

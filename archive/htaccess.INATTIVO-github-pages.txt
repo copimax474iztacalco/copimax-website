@@ -1,0 +1,97 @@
+# COPIMAX SEO & TECHNICAL OPTIMIZATION
+# Implemented: Dec 20 2025
+# Strategy: Clean URLs, Canonicalization, and Technical Consistency.
+
+RewriteEngine On
+RewriteBase /
+
+# 1. FORCE HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. REDIRECT .html TO CLEAN URL (SEO Friendly)
+# If the request is for an actual .html file, redirect to the clean version
+RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3. INTERNAL REWRITE: MAP CLEAN URL TO .html FILE
+# If the file exists with .html extension, serve it
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# 4. LEGACY REDIRECTS (Consolidation)
+Redirect 301 /impresione-cdmx https://copimax.store/impresiones-cdmx
+Redirect 301 /fotocopias-economicas-cdmx-precios-2025 https://copimax.store/servicios
+Redirect 301 /impresiones-baratas-cdmx https://copimax.store/impresiones-cdmx
+Redirect 301 /papeleria-cdmx-servicios-centro-confianza https://copimax.store/servicios
+Redirect 301 /papeleria-estudiantes-iztacalco https://copimax.store/servicios
+Redirect 301 /centro-copiado-cdmx-guia-2025 https://copimax.store/blog
+Redirect 301 /impresion-digital-imprenta-cdmx https://copimax.store/blog
+Redirect 301 /tesis-guia-2025 https://copimax.store/blog
+Redirect 301 /tesis-guia-2026 https://copimax.store/blog
+
+# ==========================================
+# GZIP COMPRESSION
+# ==========================================
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ==========================================
+# BROWSER CACHING
+# ==========================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  
+  # CSS and JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  
+  # Default
+  ExpiresDefault "access plus 2 days"
+</IfModule>
