@@ -13,7 +13,7 @@
   
   <url>
     <loc>https://copimax.store/empresas</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -27,7 +27,7 @@
   
   <url>
     <loc>https://copimax.store/nosotros</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -99,7 +99,7 @@
 
   <url>
     <loc>https://copimax.store/copias-baratas-cerca-de-mi</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -260,9 +260,9 @@
 
   <url>
     <loc>https://copimax.store/blog/cuanto-cuesta-una-impresion-cdmx</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -274,9 +274,44 @@
 
   <url>
     <loc>https://copimax.store/blog/imprimir-o-fotocopiar-que-sale-mas-barato</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/cuanto-cuesta-imprimir-400-paginas-cdmx</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/que-hace-un-centro-de-copiado</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/cuanto-cuesta-imprimir-100-hojas-cdmx</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/cuanto-cuesta-imprimir-libro-100-paginas-cdmx</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://copimax.store/blog/cuanto-cuesta-imprimir-libro-mexico</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
