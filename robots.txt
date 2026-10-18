@@ -14,3 +14,6 @@ Allow: /imprenta-cdmx
 
 # Crawl delay (optional)
 Crawl-delay: 1
+
+# AI Crawlers
+LLMs-txt: https://copimax.store/llms.txt
