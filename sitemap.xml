@@ -13,21 +13,21 @@
   
   <url>
     <loc>https://copimax.store/empresas</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://copimax.store/servicios</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://copimax.store/nosotros</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -41,7 +41,7 @@
   
   <url>
     <loc>https://copimax.store/blog</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@
   
   <url>
     <loc>https://copimax.store/impresion-corporativa-cdmx</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -344,7 +344,7 @@
 
   <url>
     <loc>https://copimax.store/blog/diferencia-tamano-carta-oficio-tabloide</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -391,4 +391,34 @@
     <priority>0.9</priority>
   </url>
 
+  <url>
+    <loc>https://copimax.store/blog/escaneo-documentos-cuando-necesitas</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://copimax.store/blog/que-es-el-enmicado-para-que-sirve</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://copimax.store/blog/copias-urgentes-cdmx-entrega-rapida</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://copimax.store/blog/que-hacer-documentos-viejos-escanear-o-guardar</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://copimax.store/blog/imprenta-cerca-de-mi-cdmx-centro-copiado</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
