@@ -49,7 +49,7 @@
         }
     </script>
 
-    <title>Escaneo y Digitalización de Documentos CDMX | Copimax</title>
+    <title>Escaneo de Documentos en CDMX (Desde $1.50) | Copimax</title>
     <meta name="description"
         content="Servicio de escaneo y digitalización de documentos en CDMX. Alta resolución, expedientes a PDF o USB y envío por email. 333 reseñas ⭐4.9. Vainilla 474." />
     <meta name="keywords"
@@ -131,7 +131,7 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Digitalización y Escaneo de Documentos en CDMX",
-        "description": "Digitalización profesional de documentos, expedientes legales, credenciales INE, planos y libros a formato PDF multipágina o JPG de alta resolución con entrega por WhatsApp o correo.",
+        "description": "Digitalización profesional de documentos, expedientes legales, credenciales INE, contratos y manuales en Carta y Oficio a formato PDF multipágina o JPG de alta resolución con entrega por WhatsApp o correo.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "COPIMAX",
@@ -793,6 +793,64 @@
             </table>
             <p style="font-size: 0.85rem; color: #64748b;">★ Precios en MXN, IVA incluido. No hay cargo extra por envío a correo electrónico o WhatsApp.</p>
 
+            
+            <!-- Mini-Cotizador Interactivo de Escaneo -->
+            <div style="background: #111827; color: #fff; border-radius: 16px; padding: 28px; margin: 28px 0; border: 2px solid #a3e635;">
+                <h3 style="color: #a3e635; font-size: 1.35rem; margin-bottom: 8px;">🧮 Calculadora Rápida de Escaneo (Carta, Oficio e INE)</h3>
+                <p style="color: #d1d5db; font-size: 0.95rem; margin-bottom: 18px;">Calcula al instante cuánto cuesta digitalizar tus hojas o expedientes a PDF (300 DPI):</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end;">
+                    <div>
+                        <label for="scan-type" style="display:block; font-size:0.85rem; color:#9ca3af; margin-bottom:6px;">Tipo de documento (Carta u Oficio)</label>
+                        <select id="scan-type" onchange="calcScan()" style="width:100%; padding:12px; border-radius:8px; border:1px solid #374151; background:#1f2937; color:#fff; font-size:1rem;">
+                            <option value="hojas">Hojas Carta u Oficio (Sueltas / ADF)</option>
+                            <option value="ine">Credencial INE / Identificación (Ambos lados)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="scan-qty" style="display:block; font-size:0.85rem; color:#9ca3af; margin-bottom:6px;">Cantidad de hojas / piezas</label>
+                        <input id="scan-qty" type="number" min="1" value="120" oninput="calcScan()" style="width:100%; padding:12px; border-radius:8px; border:1px solid #374151; background:#1f2937; color:#fff; font-size:1rem; font-weight:700;" />
+                    </div>
+                    <div style="background:#1f2937; padding:14px 18px; border-radius:10px; text-align:center; border:1px solid #374151;">
+                        <div style="font-size:0.8rem; color:#9ca3af;">Total Estimado (IVA incl.)</div>
+                        <div id="scan-total" style="font-size:1.65rem; font-weight:900; color:#a3e635;">$180.00 MXN</div>
+                        <div id="scan-unit" style="font-size:0.78rem; color:#d1d5db;">Tarifa volumen ADF: $1.50 / hoja</div>
+                    </div>
+                </div>
+                <div style="margin-top: 18px; text-align: center;">
+                    <a id="scan-wa-btn" href="https://wa.me/525529632885?text=Hola%20COPIMAX%2C%20cotice%20en%20la%20web%20el%20escaneo%20de%20120%20hojas%20Carta/Oficio%20por%20%24180%20MXN" target="_blank" rel="noopener" class="cta-btn" style="display:inline-block;">
+                        💬 Confirmar esta Cotización por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <script>
+            function calcScan() {
+                var type = document.getElementById('scan-type').value;
+                var qty = Math.max(1, parseInt(document.getElementById('scan-qty').value || '1', 10));
+                var unit = 5;
+                var label = '';
+                if (type === 'ine') {
+                    unit = 10;
+                    label = 'INE / Credencial ambos lados: $10.00 c/u';
+                } else {
+                    if (qty >= 100) {
+                        unit = 1.50;
+                        label = 'Tarifa volumen ADF (100+ hojas): $1.50 / hoja';
+                    } else if (qty >= 21) {
+                        unit = 3.00;
+                        label = 'Tarifa medio volumen (21-99 hojas): $3.00 / hoja';
+                    } else {
+                        unit = 5.00;
+                        label = 'Tarifa menudeo (1-20 hojas): $5.00 / hoja';
+                    }
+                }
+                var total = (qty * unit).toFixed(2);
+                document.getElementById('scan-total').textContent = '$' + total + ' MXN';
+                document.getElementById('scan-unit').textContent = label;
+                var msg = 'Hola COPIMAX, coticé en la calculadora web el escaneo de ' + qty + ' ' + (type === 'ine' ? 'credenciales INE' : 'hojas Carta/Oficio') + ' (Total estimado: $' + total + ' MXN).';
+                document.getElementById('scan-wa-btn').href = 'https://wa.me/525529632885?text=' + encodeURIComponent(msg);
+            }
+            </script>
+
             <div class="cta-banner">
                 <h3>¿Tienes un expediente o lote grande para digitalizar?</h3>
                 <p>Escríbenos por WhatsApp con el número estimado de hojas y te damos una cotización cerrada en minutos.</p>
@@ -823,7 +881,7 @@
                 </div>
                 <div class="case-card">
                     <h4>🎓 Estudiantes y Universitarios</h4>
-                    <p>Digitalización de tesis, antologías de estudio, constancias académicas y apuntes escolares para consulta en tablet o computadora.</p>
+                    <p>Digitalización de libros, antologías de estudio, constancias académicas y apuntes escolares para consulta en tablet o computadora.</p>
                 </div>
                 <div class="case-card">
                     <h4>🏢 Empresas y Contadores</h4>

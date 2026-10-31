@@ -49,7 +49,7 @@
         }
     </script>
 
-    <title>Enmicado Térmico y Plastificación en CDMX | Copimax</title>
+    <title>Enmicado de Documentos en CDMX ($10 a $30) | Copimax</title>
     <meta name="description"
         content="Enmicado térmico y plastificado en CDMX para credenciales, diplomas, menús y documentos carta u oficio. Acabado profesional sin burbujas. Vainilla 474." />
     <meta name="keywords"
@@ -131,7 +131,7 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Servicio de Enmicado Térmico y Plastificación en CDMX",
-        "description": "Enmicado térmico profesional con calor para credenciales, gafetes, menús de restaurante, actas, certificados y documentos en tamaños carta, oficio y doble carta.",
+        "description": "Enmicado térmico profesional con calor para credenciales, gafetes, menús de restaurante, actas, certificados y documentos en tamaños carta y oficio.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "COPIMAX",
@@ -170,7 +170,7 @@
             "name": "¿Cuánto cuesta enmicar un documento en CDMX?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "En Copimax Iztacalco: enmicar una credencial o INE cuesta desde $10.00 a $15.00 MXN. Un documento tamaño carta cuesta $25.00 MXN, tamaño oficio $30.00 MXN, y doble carta / tabloide (menús de restaurante) $45.00 MXN. Descuentos por volumen para colegios y negocios."
+              "text": "En Copimax Iztacalco: enmicar una credencial o INE cuesta desde $10.00 a $15.00 MXN. Un documento tamaño carta cuesta $25.00 MXN y tamaño oficio $30.00 MXN. Descuentos por volumen para colegios y negocios."
             }
           },
           {
@@ -723,7 +723,7 @@
                 <div class="step-box">
                     <div class="step-num">2</div>
                     <h3>Selección de Mica Térmica</h3>
-                    <p>Elegimos el calibre y tamaño exacto (credencial, carta, oficio o doble carta) con micas de alto brillo y resistencia anti-rayones.</p>
+                    <p>Elegimos el calibre y tamaño exacto (credencial, media carta, carta u oficio) con micas de alto brillo y resistencia anti-rayones.</p>
                 </div>
 
                 <div class="step-box">
@@ -778,14 +778,59 @@
                         <td>Contratos, expedientes legales y documentos notariales</td>
                     </tr>
                     <tr>
-                        <td><strong>Doble Carta / Tabloide</strong></td>
-                        <td>28 x 43 cm</td>
-                        <td><strong>$45.00 MXN</strong></td>
-                        <td>Menús de restaurantes, manteles de mesa y señalética</td>
+                        <td><strong>Media Carta / Recetario</strong></td>
+                        <td>14 x 21.6 cm</td>
+                        <td><strong>$18.00 MXN</strong></td>
+                        <td>Avisos, instructivos compactos, gafetes de evento y señalética</td>
                     </tr>
                 </tbody>
             </table>
             <p style="font-size: 0.85rem; color: #64748b;">★ Precios en MXN, IVA incluido. Pregunta por descuentos especiales en pedidos de más de 20 piezas para restaurantes y colegios.</p>
+
+            
+            <!-- Mini-Cotizador Interactivo de Enmicado -->
+            <div style="background: #111827; color: #fff; border-radius: 16px; padding: 28px; margin: 28px 0; border: 2px solid #a3e635;">
+                <h3 style="color: #a3e635; font-size: 1.35rem; margin-bottom: 8px;">🧮 Calculadora Rápida de Enmicado Térmico</h3>
+                <p style="color: #d1d5db; font-size: 0.95rem; margin-bottom: 18px;">Calcula al instante tu pedido de enmicado en tamaños Credencial/INE, Media Carta, Carta u Oficio:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end;">
+                    <div>
+                        <label for="enm-size" style="display:block; font-size:0.85rem; color:#9ca3af; margin-bottom:6px;">Tamaño de Mica</label>
+                        <select id="enm-size" onchange="calcEnm()" style="width:100%; padding:12px; border-radius:8px; border:1px solid #374151; background:#1f2937; color:#fff; font-size:1rem;">
+                            <option value="25">Tamaño Carta (21.6 × 27.9 cm) — $25</option>
+                            <option value="30">Tamaño Oficio (21.6 × 34.0 cm) — $30</option>
+                            <option value="18">Media Carta / Gafete Grande (14 × 21.6 cm) — $18</option>
+                            <option value="12">Credencial / INE / Gafete (6 × 9 cm) — $12</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="enm-qty" style="display:block; font-size:0.85rem; color:#9ca3af; margin-bottom:6px;">Cantidad de piezas</label>
+                        <input id="enm-qty" type="number" min="1" value="10" oninput="calcEnm()" style="width:100%; padding:12px; border-radius:8px; border:1px solid #374151; background:#1f2937; color:#fff; font-size:1rem; font-weight:700;" />
+                    </div>
+                    <div style="background:#1f2937; padding:14px 18px; border-radius:10px; text-align:center; border:1px solid #374151;">
+                        <div style="font-size:0.8rem; color:#9ca3af;">Total Estimado (IVA incl.)</div>
+                        <div id="enm-total" style="font-size:1.65rem; font-weight:900; color:#a3e635;">$250.00 MXN</div>
+                        <div id="enm-unit" style="font-size:0.78rem; color:#d1d5db;">Mica térmica rígida alta resistencia</div>
+                    </div>
+                </div>
+                <div style="margin-top: 18px; text-align: center;">
+                    <a id="enm-wa-btn" href="https://wa.me/525529632885?text=Hola%20COPIMAX%2C%20cotice%20en%20la%20web%20el%20enmicado%20de%2010%20piezas%20por%20%24250%20MXN" target="_blank" rel="noopener" class="cta-btn" style="display:inline-block;">
+                        💬 Pedir este Enmicado por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <script>
+            function calcEnm() {
+                var sel = document.getElementById('enm-size');
+                var price = parseFloat(sel.value);
+                var sizeName = sel.options[sel.selectedIndex].text.split('—')[0].trim();
+                var qty = Math.max(1, parseInt(document.getElementById('enm-qty').value || '1', 10));
+                var total = (qty * price).toFixed(2);
+                document.getElementById('enm-total').textContent = '$' + total + ' MXN';
+                document.getElementById('enm-unit').textContent = qty >= 20 ? '¡Pregunta por descuento adicional de mayoreo (20+ pzs)!' : 'Precio unitario: $' + price.toFixed(2) + ' MXN';
+                var msg = 'Hola COPIMAX, coticé en la calculadora web el enmicado de ' + qty + ' piezas en ' + sizeName + ' (Total estimado: $' + total + ' MXN).';
+                document.getElementById('enm-wa-btn').href = 'https://wa.me/525529632885?text=' + encodeURIComponent(msg);
+            }
+            </script>
 
             <div class="cta-banner">
                 <h3>¿Necesitas menús enmicados o gafetes para tu negocio?</h3>
