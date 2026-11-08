@@ -78,161 +78,190 @@
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "COPIMAX - Servicio de Enmicado Térmico y Plastificación en CDMX",
+    "image": "https://copimax.store/assets/exterior.jpg",
+    "url": "https://copimax.store/enmicado-cdmx",
+    "telephone": "+52-55-2963-2885",
+    "email": "copimax474@hotmail.com",
+    "priceRange": "$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vainilla 474",
+      "addressLocality": "Iztacalco",
+      "addressRegion": "CDMX",
+      "postalCode": "08400",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.39732,
+      "longitude": -99.09302
+    },
+    "openingHoursSpecification": [
       {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "COPIMAX - Servicio de Enmicado Térmico y Plastificación en CDMX",
-        "image": "https://copimax.store/assets/exterior.jpg",
-        "url": "https://copimax.store/enmicado-cdmx",
-        "telephone": "+52-55-2963-2885",
-        "email": "copimax474@hotmail.com",
-        "priceRange": "$",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Vainilla 474",
-          "addressLocality": "Iztacalco",
-          "addressRegion": "CDMX",
-          "postalCode": "08400",
-          "addressCountry": "MX"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 19.39732,
-          "longitude": -99.09302
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "08:30",
-            "closes": "18:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday", "Sunday"],
-            "opens": "08:30",
-            "closes": "14:00"
-          }
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "333"
-        },
-        "sameAs": [
-          "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
-          "https://www.instagram.com/copimax_upiicsa/",
-          "https://www.tiktok.com/@copimax_upiicsa",
-          "https://wa.me/525529632885"
-        ]
+        "opens": "08:30",
+        "closes": "18:00"
       },
       {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Servicio de Enmicado Térmico y Plastificación en CDMX",
-        "description": "Enmicado térmico profesional con calor para credenciales, gafetes, menús de restaurante, actas, certificados y documentos en tamaños carta y oficio.",
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": "COPIMAX",
-          "url": "https://copimax.store"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "Ciudad de México"
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:30",
+        "closes": "14:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "341"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+      "https://www.instagram.com/copimax_upiicsa/",
+      "https://www.tiktok.com/@copimax_upiicsa",
+      "https://wa.me/525529632885"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Servicio de Enmicado Térmico y Plastificación en CDMX",
+    "description": "Enmicado térmico profesional con calor para credenciales, gafetes, menús de restaurante, actas, certificados y documentos en tamaños carta y oficio.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "COPIMAX",
+      "url": "https://copimax.store"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Ciudad de México"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Servicio de Enmicado Térmico CDMX",
+    "image": "https://copimax.store/assets/blog/copimax-exterior-1280.webp",
+    "description": "Enmicado térmico sin burbujas en CDMX desde $10.00 MXN. Micas gruesas de alta resistencia para credenciales, menús y documentos.",
+    "brand": {
+      "@type": "Brand",
+      "name": "COPIMAX"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "MXN",
+      "lowPrice": "10.00",
+      "highPrice": "45.00",
+      "offerCount": "100",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "341",
+      "bestRating": "5"
+    },
+    "review": {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente Verificado en Google"
+      },
+      "datePublished": "2026-10-28",
+      "reviewBody": "Excelente servicio de copias, impresiones y escaneo por volumen en Carta y Oficio. Precios reales desde $0.35 y entrega puntual el mismo día.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta enmicar un documento en CDMX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En Copimax Iztacalco: enmicar una credencial o INE cuesta desde $10.00 a $15.00 MXN. Un documento tamaño carta cuesta $25.00 MXN y tamaño oficio $30.00 MXN. Descuentos por volumen para colegios y negocios."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Servicio de Enmicado Térmico CDMX",
-        "image": "https://copimax.store/assets/blog/copimax-exterior-1280.webp",
-        "description": "Enmicado térmico sin burbujas en CDMX desde $10.00 MXN. Micas gruesas de alta resistencia para credenciales, menús y documentos.",
-        "brand": {
-          "@type": "Brand",
-          "name": "COPIMAX"
-        },
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "MXN",
-          "lowPrice": "10.00",
-          "highPrice": "45.00",
-          "offerCount": "100",
-          "availability": "https://schema.org/InStock"
+        "@type": "Question",
+        "name": "¿Qué diferencia hay entre enmicado térmico y enmicado en frío?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El enmicado térmico utiliza calor y presión para fundir una película de poliéster sellada al 100%. Ofrece mayor rigidez, resistencia al agua, grasa y rayos UV, y no se despega con el tiempo. El enmicado en frío es un simple plástico adhesivo que suele levantarse en las orillas."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Cuánto cuesta enmicar un documento en CDMX?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "En Copimax Iztacalco: enmicar una credencial o INE cuesta desde $10.00 a $15.00 MXN. Un documento tamaño carta cuesta $25.00 MXN y tamaño oficio $30.00 MXN. Descuentos por volumen para colegios y negocios."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Qué diferencia hay entre enmicado térmico y enmicado en frío?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "El enmicado térmico utiliza calor y presión para fundir una película de poliéster sellada al 100%. Ofrece mayor rigidez, resistencia al agua, grasa y rayos UV, y no se despega con el tiempo. El enmicado en frío es un simple plástico adhesivo que suele levantarse en las orillas."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cuánto tarda en enmicarse un documento?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Para piezas individuales de 1 a 10 documentos, el enmicado térmico tarda menos de 5 minutos en mostrador. Para tirajes grandes de menús o credenciales coordinamos entrega el mismo día."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Se puede enmicar un documento oficial original?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Recomendamos verificar si el trámite permite enmicar el documento original. Actas de nacimiento recientes y algunos títulos exigen papel sin laminar. En esos casos sugerimos sacar una copia a color láser de alta fidelidad y enmicar la copia para uso diario."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Hacen plastificado de menús para restaurantes?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sí. Imprimimos a todo color en papel grueso o couché y aplicamos enmicado térmico grueso con esquinas redondeadas para que los menús soporten el uso rudo, limpieza con alcohol y desinfectantes."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "¿Cuánto tarda en enmicarse un documento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para piezas individuales de 1 a 10 documentos, el enmicado térmico tarda menos de 5 minutos en mostrador. Para tirajes grandes de menús o credenciales coordinamos entrega el mismo día."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Inicio",
-            "item": "https://copimax.store"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Servicios",
-            "item": "https://copimax.store/servicios"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Enmicado Térmico",
-            "item": "https://copimax.store/enmicado-cdmx"
-          }
-        ]
+        "@type": "Question",
+        "name": "¿Se puede enmicar un documento oficial original?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recomendamos verificar si el trámite permite enmicar el documento original. Actas de nacimiento recientes y algunos títulos exigen papel sin laminar. En esos casos sugerimos sacar una copia a color láser de alta fidelidad y enmicar la copia para uso diario."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen plastificado de menús para restaurantes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Imprimimos a todo color en papel grueso o couché y aplicamos enmicado térmico grueso con esquinas redondeadas para que los menús soporten el uso rudo, limpieza con alcohol y desinfectantes."
+        }
       }
     ]
-    </script>
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://copimax.store"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Servicios",
+        "item": "https://copimax.store/servicios"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Enmicado Térmico",
+        "item": "https://copimax.store/enmicado-cdmx"
+      }
+    ]
+  }
+]
+</script>
 
     <style>
         * {
@@ -660,6 +689,33 @@
             }
         }
     </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Enmicado y Plastificado Térmico en CDMX (INE, Media Carta, Carta y Oficio) — Copimax",
+  "description": "Servicio de impresión y enmicado térmico rígido para credenciales ($10), gafetes Media Carta ($18), listas de precios Carta ($25) y avisos Oficio ($30) en Copimax Iztacalco.",
+  "thumbnailUrl": [
+    "https://copimax.store/assets/blog/copimax-video-produccion-vertical.jpg",
+    "https://copimax.store/assets/blog/copimax-exterior-1280.webp"
+  ],
+  "uploadDate": "2026-11-07T09:00:00-06:00",
+  "duration": "PT29S",
+  "contentUrl": "https://copimax.store/copimax_centro_de_copiado_impresiones_corporate_por_mayoreo_copias_baratas_cdmx_iztacalco.webm",
+  "embedUrl": "https://copimax.store/enmicado-cdmx",
+  "width": 1080,
+  "height": 1920,
+  "inLanguage": "es-MX",
+  "publisher": {
+    "@type": "Organization",
+    "name": "COPIMAX",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://copimax.store/assets/logo.jpg"
+    }
+  }
+}
+  </script>
 </head>
 
 <body>
@@ -919,7 +975,45 @@
         </div>
     </section>
 
-    <footer>
+    
+  <!-- FASE 6: Video Shorts Facade (@copimax_upiicsa) — 0 KB video en carga inicial -->
+  <section id="video-produccion-copimax" style="max-width: 1020px; margin: 44px auto; padding: 0 18px;">
+    <div style="background: #0f0f10; color: #f4f4f5; border: 2px solid #cdff00; border-radius: 22px; padding: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; align-items: center; box-shadow: 0 18px 40px rgba(0,0,0,0.22);">
+      <div>
+        <span style="display: inline-block; background: #cdff00; color: #111; font-weight: 800; font-size: 0.78rem; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.03em; margin-bottom: 12px;">🎥 CENTRO COPIMAX EN ACCIÓN · @copimax_upiicsa</span>
+        <h2 style="font-size: 1.65rem; line-height: 1.22; font-weight: 900; color: #ffffff; margin: 0 0 12px;">Impresión nítida + enmicado rígido de alta resistencia</h2>
+        <p style="font-size: 0.98rem; line-height: 1.6; color: #d4d4d8; margin: 0 0 18px;">Producimos gafetes, señalética interna, menús y listas de precios en formatos Credencial, Media Carta, Carta y Oficio en Vainilla 474.</p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px; font-size: 0.9rem; color: #e4e4e7; line-height: 1.8;">
+          <li>✓ Equipos digitales <strong>Xerox de alta velocidad</strong> (tóner seco indeleble)</li>
+          <li>✓ Formatos exclusivos: <strong>Carta, Oficio mexicano, Media Carta y Credencial</strong></li>
+          <li>✓ <strong>★ 4.9 en Google (341 reseñas)</strong> · Entrega mismo día y CFDI 4.0</li>
+        </ul>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href="https://www.tiktok.com/@copimax_upiicsa" target="_blank" rel="noopener"
+             style="display: inline-flex; align-items: center; gap: 6px; background: #27272a; color: #cdff00; border: 1px solid #3f3f46; padding: 9px 15px; border-radius: 999px; font-size: 0.86rem; font-weight: 700; text-decoration: none;">▶ TikTok @copimax_upiicsa</a>
+          <a href="https://www.instagram.com/copimax_upiicsa/" target="_blank" rel="noopener"
+             style="display: inline-flex; align-items: center; gap: 6px; background: #27272a; color: #ffffff; border: 1px solid #3f3f46; padding: 9px 15px; border-radius: 999px; font-size: 0.86rem; font-weight: 700; text-decoration: none;">📸 Instagram @copimax_upiicsa</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center;">
+        <div onclick="if(!this.dataset.loaded){this.dataset.loaded='1';this.innerHTML='<video src=\'/copimax_centro_de_copiado_impresiones_corporate_por_mayoreo_copias_baratas_cdmx_iztacalco.webm\' poster=\'/assets/blog/copimax-video-produccion-vertical.jpg\' controls autoplay playsinline style=\'width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;\'></video>';}"
+             role="button" tabindex="0" aria-label="Reproducir video de producción Copimax (29 segundos)"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"
+             style="position: relative; width: 100%; max-width: 270px; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; cursor: pointer; border: 2px solid #3f3f46; background: #18181b;">
+          <img src="/assets/blog/copimax-video-produccion-vertical.jpg" width="540" height="960" loading="lazy" decoding="async"
+               alt="Enmicado y Plastificado Térmico en CDMX (INE, Media Carta, Carta y Oficio) — Copimax"
+               style="width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.86);" />
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.12));">
+            <span style="width: 64px; height: 64px; border-radius: 50%; background: #cdff00; color: #111; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 900; box-shadow: 0 8px 24px rgba(205,255,0,0.45);">▶</span>
+            <span style="margin-top: 10px; background: rgba(15,15,16,0.88); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Ver video real · 0:29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
         <div class="wrap">
             <div style="margin-bottom: 20px;">
                 <a href="/">Inicio</a>

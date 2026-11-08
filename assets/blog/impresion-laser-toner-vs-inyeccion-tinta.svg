@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">IMPRESIÓN LÁSER DE TÓNER XEROX VS INYECCIÓN DE TINTA</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Por qué el tóner fundido en calor gana en textos, códigos de barras, marca-textos y volumen</text>
+
+  <!-- Left: Laser Toner -->
+  <rect x="40" y="115" width="400" height="300" fill="#18181b" stroke="#cdff00" stroke-width="2.5" rx="10"/>
+  <text x="65" y="152" fill="#cdff00" font-size="18" font-weight="800">✓ LÁSER DE TÓNER (COPIMAX XEROX)</text>
+  <text x="65" y="190" fill="#e4e4e7" font-size="14">• Polvo polimérico fundido a ~180 °C</text>
+  <text x="65" y="220" fill="#e4e4e7" font-size="14">• NO se corre con agua, sudor ni marca-textos</text>
+  <text x="65" y="250" fill="#e4e4e7" font-size="14">• Papel plano y seco al instante (doble cara limpia)</text>
+  <text x="65" y="280" fill="#e4e4e7" font-size="14">• Velocidad industrial: 60 a 120 págs / minuto</text>
+  <rect x="65" y="315" width="350" height="72" fill="#27272a" stroke="#cdff00" rx="8"/>
+  <text x="240" y="345" fill="#cdff00" font-size="16" font-weight="900" text-anchor="middle">B/N desde $0.35 · Color desde $3.00</text>
+  <text x="240" y="368" fill="#d4d4d8" font-size="12" text-anchor="middle">Tarifa por volumen en Carta y Oficio</text>
+
+  <!-- Right: Inkjet -->
+  <rect x="465" y="115" width="395" height="300" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="490" y="152" fill="#fca5a5" font-size="18" font-weight="800">✗ INYECCIÓN DE TINTA LÍQUIDA</text>
+  <text x="490" y="190" fill="#d4d4d8" font-size="14">• Tinta base agua absorbida por el papel</text>
+  <text x="490" y="220" fill="#d4d4d8" font-size="14">• Se mancha al subrayar con marca-textos o humedad</text>
+  <text x="490" y="250" fill="#d4d4d8" font-size="14">• Ondula el papel Bond 75g en doble cara</text>
+  <text x="490" y="280" fill="#d4d4d8" font-size="14">• Lenta para pedidos de 200 a 5,000 hojas</text>
+  <rect x="490" y="315" width="345" height="72" fill="#27272a" stroke="#52525b" rx="8"/>
+  <text x="662" y="345" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">¿Cuándo usar tinta?</text>
+  <text x="662" y="368" fill="#a1a1aa" font-size="12" text-anchor="middle">Solo fotografía artística en papel glossy fotográfico</text>
+</svg>

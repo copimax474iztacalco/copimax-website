@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">TAMAÑO CUARTO DE CARTA: 10.8 × 14.0 CM (4 POR HOJA CARTA)</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Guillotina exacta a partir de 1 hoja tamaño Carta (21.6 × 27.94 cm) · Volantes, recibos y notas</text>
+
+  <!-- Sheet diagram -->
+  <rect x="55" y="115" width="320" height="300" fill="#fafafa" stroke="#cdff00" stroke-width="3" rx="6"/>
+  <line x1="215" y1="115" x2="215" y2="415" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="7,5"/>
+  <line x1="55" y1="265" x2="375" y2="265" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="7,5"/>
+
+  <text x="135" y="182" fill="#111111" font-size="15" font-weight="800" text-anchor="middle">1/4 CARTA</text>
+  <text x="135" y="204" fill="#3f3f46" font-size="13" font-weight="700" text-anchor="middle">10.8 × 14.0 cm</text>
+  <text x="295" y="182" fill="#111111" font-size="15" font-weight="800" text-anchor="middle">1/4 CARTA</text>
+  <text x="295" y="204" fill="#3f3f46" font-size="13" font-weight="700" text-anchor="middle">4.25 × 5.5 pulg</text>
+  <text x="135" y="332" fill="#111111" font-size="15" font-weight="800" text-anchor="middle">1/4 CARTA</text>
+  <text x="135" y="354" fill="#3f3f46" font-size="13" font-weight="700" text-anchor="middle">108 × 140 mm</text>
+  <text x="295" y="332" fill="#111111" font-size="15" font-weight="800" text-anchor="middle">1/4 CARTA</text>
+  <text x="295" y="354" fill="#15803d" font-size="13" font-weight="800" text-anchor="middle">$0.10 c/u B/N*</text>
+
+  <!-- Right comparison -->
+  <rect x="420" y="115" width="440" height="300" fill="#18181b" stroke="#3f3f46" rx="10"/>
+  <text x="445" y="150" fill="#ffffff" font-size="17" font-weight="800">Rendimiento por 100 hojas Carta impresas</text>
+  <text x="445" y="185" fill="#e4e4e7" font-size="14">• Piezas obtenidas: 400 volantes / notas 1/4 Carta</text>
+  <text x="445" y="213" fill="#e4e4e7" font-size="14">• Costo B/N 1 cara (100 hojas × $0.40): $40 MXN</text>
+  <text x="445" y="241" fill="#cdff00" font-size="15" font-weight="800">→ Costo real por volante 1/4 Carta: $0.10 MXN</text>
+  <text x="445" y="273" fill="#e4e4e7" font-size="14">• Costo B/N doble cara (200 caras × $0.35): $70 MXN</text>
+  <text x="445" y="301" fill="#e4e4e7" font-size="14">• Color texto (100 hojas × $5.00): $500 MXN ($1.25 c/u)</text>
+  <rect x="445" y="328" width="390" height="64" fill="#27272a" stroke="#cdff00" rx="8"/>
+  <text x="640" y="355" fill="#cdff00" font-size="14" font-weight="800" text-anchor="middle">SOLO FORMATOS CARTA, OFICIO Y SUBMÚLTIPLOS</text>
+  <text x="640" y="376" fill="#d4d4d8" font-size="12" text-anchor="middle">Corte recto en guillotina industrial · Copimax Vainilla 474</text>
+</svg>

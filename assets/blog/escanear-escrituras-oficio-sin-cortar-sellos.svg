@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">POR QUÉ SE CORTAN LAS ESCRITURAS OFICIO EN ESCÁNERES CASEROS</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Comparativa cristal Carta (29.7 cm) vs Escáner ADF/Cristal Oficio (34–35.6 cm) en Copimax</text>
+
+  <!-- Bad scan -->
+  <rect x="45" y="115" width="385" height="300" fill="#18181b" stroke="#ef4444" stroke-width="2" rx="10"/>
+  <text x="65" y="148" fill="#ef4444" font-size="16" font-weight="800">✗ Multifuncional Casero (Cristal Carta/A4)</text>
+  <rect x="90" y="168" width="135" height="190" fill="#fafafa" stroke="#71717a" rx="4"/>
+  <rect x="90" y="318" width="135" height="40" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="157" y="343" fill="#b91c1c" font-size="11" font-weight="800" text-anchor="middle">¡6.1 CM CORTADOS!</text>
+  <text x="245" y="200" fill="#e4e4e7" font-size="13">Cristal llega a 27.9–29.7 cm</text>
+  <text x="245" y="228" fill="#fca5a5" font-size="13">Pierdes sellos notariales,</text>
+  <text x="245" y="250" fill="#fca5a5" font-size="13">folios RPP y firmas al calce.</text>
+  <text x="245" y="292" fill="#a1a1aa" font-size="12">Trámite rechazado en INVI,</text>
+  <text x="245" y="312" fill="#a1a1aa" font-size="12">bancos, juzgados y notarías.</text>
+
+  <!-- Good scan -->
+  <rect x="465" y="115" width="390" height="300" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="485" y="148" fill="#cdff00" font-size="16" font-weight="800">✓ Escáner Industrial Copimax (Oficio Completo)</text>
+  <rect x="505" y="168" width="135" height="220" fill="#fafafa" stroke="#cdff00" stroke-width="2" rx="4"/>
+  <circle cx="595" cy="355" r="18" fill="none" stroke="#15803d" stroke-width="2.5"/>
+  <text x="595" y="359" fill="#15803d" font-size="9" font-weight="800" text-anchor="middle">SELLO OK</text>
+  <text x="660" y="200" fill="#ffffff" font-size="13" font-weight="700">21.6 × 34.0 cm íntegros</text>
+  <text x="660" y="228" fill="#e4e4e7" font-size="13">• Cama plana p/ libro cosido</text>
+  <text x="660" y="252" fill="#e4e4e7" font-size="13">• ADF veloz p/ hojas sueltas</text>
+  <text x="660" y="276" fill="#e4e4e7" font-size="13">• 300 DPI color o grises</text>
+  <rect x="660" y="302" width="175" height="68" fill="#27272a" stroke="#cdff00" rx="8"/>
+  <text x="747" y="328" fill="#cdff00" font-size="15" font-weight="800" text-anchor="middle">DESDE $1.00 / HOJA</text>
+  <text x="747" y="350" fill="#d4d4d8" font-size="12" text-anchor="middle">100+ hojas ADF · USB/WA</text>
+</svg>

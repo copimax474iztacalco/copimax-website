@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">COPIA DE INE AL 200% EN 1 SOLA HOJA CARTA (21.6 × 27.9 CM)</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Comparativa a escala real: tamaño original 100% vs ampliación oficial al 200% · Copimax Iztacalco</text>
+
+  <!-- Left: Original INE 100% -->
+  <rect x="40" y="110" width="340" height="300" fill="#18181b" stroke="#3f3f46" rx="10"/>
+  <text x="60" y="142" fill="#ffffff" font-size="16" font-weight="700">1. Credencial INE Original (100%)</text>
+  <rect x="95" y="175" width="171" height="108" fill="#27272a" stroke="#cdff00" stroke-width="2" rx="8"/>
+  <circle cx="132" cy="225" r="20" fill="#3f3f46"/>
+  <rect x="165" y="200" width="80" height="8" fill="#71717a" rx="3"/>
+  <rect x="165" y="216" width="65" height="8" fill="#52525b" rx="3"/>
+  <rect x="165" y="232" width="72" height="8" fill="#52525b" rx="3"/>
+  <text x="180" y="312" fill="#cdff00" font-size="15" font-weight="700" text-anchor="middle">8.56 × 5.40 cm</text>
+  <text x="180" y="336" fill="#a1a1aa" font-size="13" text-anchor="middle">Estándar ISO ID-1 bancario/oficial</text>
+  <text x="180" y="376" fill="#e4e4e7" font-size="13" text-anchor="middle">Enmicado rígido INE: $10–$15 MXN</text>
+
+  <!-- Right: Hoja Carta with 2 sides at 200% -->
+  <rect x="410" y="110" width="450" height="300" fill="#18181b" stroke="#3f3f46" rx="10"/>
+  <text x="430" y="142" fill="#ffffff" font-size="16" font-weight="700">2. Hoja Carta Vertical (21.6 × 27.9 cm)</text>
+  <!-- Sheet representation -->
+  <rect x="445" y="160" width="185" height="235" fill="#fafafa" stroke="#cdff00" stroke-width="2" rx="4"/>
+  <!-- Front 200% -->
+  <rect x="464" y="176" width="147" height="92" fill="#e4e4e7" stroke="#18181b" stroke-width="1.5" stroke-dasharray="4,2" rx="4"/>
+  <text x="537" y="218" fill="#111111" font-size="12" font-weight="800" text-anchor="middle">FRENTE 200%</text>
+  <text x="537" y="236" fill="#3f3f46" font-size="11" font-weight="700" text-anchor="middle">17.12 × 10.80 cm</text>
+  <!-- Back 200% -->
+  <rect x="464" y="282" width="147" height="92" fill="#e4e4e7" stroke="#18181b" stroke-width="1.5" stroke-dasharray="4,2" rx="4"/>
+  <text x="537" y="324" fill="#111111" font-size="12" font-weight="800" text-anchor="middle">REVERSO 200%</text>
+  <text x="537" y="342" fill="#3f3f46" font-size="11" font-weight="700" text-anchor="middle">17.12 × 10.80 cm</text>
+
+  <!-- Specs callout -->
+  <text x="652" y="190" fill="#cdff00" font-size="15" font-weight="800">¿Caben ambos lados?</text>
+  <text x="652" y="214" fill="#e4e4e7" font-size="13">✓ Alto total: 21.6 cm de 27.9 cm</text>
+  <text x="652" y="236" fill="#e4e4e7" font-size="13">✓ Ancho: 17.1 cm de 21.6 cm</text>
+  <text x="652" y="258" fill="#e4e4e7" font-size="13">✓ Margen libre: +2.2 cm por lado</text>
+  <rect x="652" y="284" width="190" height="88" fill="#27272a" stroke="#cdff00" rx="8"/>
+  <text x="747" y="312" fill="#cdff00" font-size="14" font-weight="800" text-anchor="middle">PRECIO COPIMAX</text>
+  <text x="747" y="336" fill="#ffffff" font-size="16" font-weight="800" text-anchor="middle">$1.00 MXN (1 cara)</text>
+  <text x="747" y="356" fill="#a1a1aa" font-size="12" text-anchor="middle">$0.40 en volumen (100+)</text>
+</svg>

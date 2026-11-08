@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">TABLA DE PESO PDF ESCANEADO: CÓMO LOGRAR MENOS DE 2 MB</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Cuántas páginas Carta/Oficio caben en 2 MB (SAT / IMSS) según modo de color y DPI</text>
+
+  <!-- Bars -->
+  <rect x="45" y="120" width="810" height="72" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="8"/>
+  <text x="65" y="152" fill="#cdff00" font-size="16" font-weight="800">B/N Bitonal 200 DPI (Texto y Sellos)</text>
+  <text x="65" y="175" fill="#a1a1aa" font-size="13">~45 KB por página · Ideal SAT, VUCEM, CompraNet</text>
+  <rect x="470" y="136" width="240" height="38" fill="#cdff00" rx="6"/>
+  <text x="590" y="161" fill="#111111" font-size="15" font-weight="900" text-anchor="middle">Hasta ~44 págs en 2 MB</text>
+
+  <rect x="45" y="208" width="810" height="72" fill="#18181b" stroke="#3f3f46" stroke-width="1.5" rx="8"/>
+  <text x="65" y="240" fill="#ffffff" font-size="16" font-weight="800">Escala de Grises 200 DPI (INE, Actas, Escrituras)</text>
+  <text x="65" y="263" fill="#a1a1aa" font-size="13">~140 KB por página · Equilibrio nitidez/peso IMSS e INVI</text>
+  <rect x="470" y="224" width="180" height="38" fill="#3f3f46" rx="6"/>
+  <text x="560" y="249" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">~14 págs en 2 MB</text>
+
+  <rect x="45" y="296" width="810" height="72" fill="#18181b" stroke="#ef4444" stroke-width="1.5" rx="8"/>
+  <text x="65" y="328" fill="#fca5a5" font-size="16" font-weight="800">Color 600 DPI sin comprimir (Error común en casa)</text>
+  <text x="65" y="351" fill="#a1a1aa" font-size="13">~2,800 KB (2.8 MB) por 1 sola hoja · Portal rechaza el archivo</text>
+  <rect x="470" y="312" width="145" height="38" fill="#7f1d1d" rx="6"/>
+  <text x="542" y="337" fill="#fecaca" font-size="14" font-weight="800" text-anchor="middle">0 págs (Rechazo)</text>
+
+  <text x="450" y="412" fill="#cdff00" font-size="14" font-weight="700" text-anchor="middle">Escaneo calibrado en Copimax Iztacalco desde $1.00/hoja (1,000+) y $1.50 (100+) · Entrega inmediata USB / WhatsApp</text>
+</svg>

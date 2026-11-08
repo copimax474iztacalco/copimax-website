@@ -103,192 +103,221 @@
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://copimax.store/#localbusiness",
-      "name": "COPIMAX",
-      "description": "Centro de copias, impresiones y papelería en Iztacalco, CDMX. 25+ años de experiencia. Copias desde $0.35, impresiones a color desde $2.50, engargolados, empastados y más.",
-      "url": "https://copimax.store",
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://copimax.store/#localbusiness",
+    "name": "COPIMAX",
+    "description": "Centro de copias, impresiones y papelería en Iztacalco, CDMX. 25+ años de experiencia. Copias desde $0.35, impresiones a color desde $2.50, engargolados, empastados y más.",
+    "url": "https://copimax.store",
+    "telephone": "+52-55-2963-2885",
+    "email": "copimax474@hotmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vainilla 474",
+      "addressLocality": "Iztacalco",
+      "addressRegion": "CDMX",
+      "postalCode": "08400",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.39732,
+      "longitude": -99.09302
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:30",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:30",
+        "closes": "14:00"
+      }
+    ],
+    "priceRange": "$",
+    "image": "https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop",
+    "sameAs": [
+      "https://wa.me/525529632885",
+      "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+      "https://www.instagram.com/copimax_upiicsa/",
+      "https://www.tiktok.com/@copimax_upiicsa"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Ciudad de México"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Impresión y Copiado",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Copias Blanco y Negro",
+            "description": "Copias B/N carta desde $0.35 por volumen (1000+)"
+          },
+          "price": "0.35",
+          "priceCurrency": "MXN"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Impresión a Color",
+            "description": "Impresiones a color carta desde $2.50 por volumen (300+)"
+          },
+          "price": "2.50",
+          "priceCurrency": "MXN"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Engargolado Profesional",
+            "description": "Encuadernación profesional con espiral plástico"
+          },
+          "price": "20.00",
+          "priceCurrency": "MXN"
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": "341"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Carlos M."
+        },
+        "reviewBody": "Excelente servicio, copias muy baratas y rápidas. Llevo años viniendo y siempre cumplen."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Ana R."
+        },
+        "reviewBody": "Imprimí mis manuales aquí y quedaron perfectos. El engargolado profesional y los precios son los mejores de la zona."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://copimax.store/#organization",
+    "name": "COPIMAX",
+    "url": "https://copimax.store",
+    "logo": "https://copimax.store/assets/logo.jpg",
+    "contactPoint": {
+      "@type": "ContactPoint",
       "telephone": "+52-55-2963-2885",
-      "email": "copimax474@hotmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Vainilla 474",
-        "addressLocality": "Iztacalco",
-        "addressRegion": "CDMX",
-        "postalCode": "08400",
-        "addressCountry": "MX"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.39732,
-        "longitude": -99.09302
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "08:30",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday","Sunday"],
-          "opens": "08:30",
-          "closes": "14:00"
-        }
-      ],
-      "priceRange": "$",
-      "image": "https://images.unsplash.com/photo-1756066685329-16873485da1d?q=80&w=1200&auto=format&fit=crop",
-      "sameAs": [
-        "https://wa.me/525529632885",
-        "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
-        "https://www.instagram.com/copimax_upiicsa/",
-        "https://www.tiktok.com/@copimax_upiicsa"
-      ],
-      "areaServed": {
-        "@type": "City",
-        "name": "Ciudad de México"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servicios de Impresión y Copiado",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Copias Blanco y Negro",
-              "description": "Copias B/N carta desde $0.35 por volumen (1000+)"
-            },
-            "price": "0.35",
-            "priceCurrency": "MXN"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Impresión a Color",
-              "description": "Impresiones a color carta desde $2.50 por volumen (300+)"
-            },
-            "price": "2.50",
-            "priceCurrency": "MXN"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Engargolado Profesional",
-              "description": "Encuadernación profesional con espiral plástico"
-            },
-            "price": "20.00",
-            "priceCurrency": "MXN"
-          }
-        ]
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "333"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Carlos M."
-          },
-          "reviewBody": "Excelente servicio, copias muy baratas y rápidas. Llevo años viniendo y siempre cumplen."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Ana R."
-          },
-          "reviewBody": "Imprimí mis manuales aquí y quedaron perfectos. El engargolado profesional y los precios son los mejores de la zona."
-        }
-      ]
+      "contactType": "customer service",
+      "availableLanguage": "Spanish"
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://copimax.store/#organization",
-      "name": "COPIMAX",
-      "url": "https://copimax.store",
-      "logo": "https://copimax.store/assets/logo.jpg",
-      "contactPoint": {
-        "@type": "ContactPoint",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
+      "https://www.instagram.com/copimax_upiicsa/",
+      "https://www.tiktok.com/@copimax_upiicsa"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "COPIMAX",
+    "url": "https://copimax.store",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://copimax.store/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Servicio de Copias e Impresiones en CDMX",
+    "image": "https://copimax.store/assets/blog/copimax-exterior-1280.webp",
+    "description": "Centro de copiado e impresiones en CDMX. Copias B/N desde $0.35, color láser y engargolados con calculadora de cotización online.",
+    "brand": {
+      "@type": "Brand",
+      "name": "COPIMAX"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "MXN",
+      "lowPrice": "0.35",
+      "highPrice": "5.00",
+      "offerCount": "100",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "LocalBusiness",
+        "name": "COPIMAX Iztacalco",
         "telephone": "+52-55-2963-2885",
-        "contactType": "customer service",
-        "availableLanguage": "Spanish"
-      },
-      "sameAs": [
-        "https://www.facebook.com/profile.php?viewas=100000686899395&id=61576341796622",
-        "https://www.instagram.com/copimax_upiicsa/",
-        "https://www.tiktok.com/@copimax_upiicsa"
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "COPIMAX",
-      "url": "https://copimax.store",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://copimax.store/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
+        "url": "https://copimax.store",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vainilla 474",
+          "addressLocality": "Iztacalco",
+          "addressRegion": "CDMX",
+          "postalCode": "08400",
+          "addressCountry": "MX"
+        }
       }
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Servicio de Copias e Impresiones en CDMX",
-      "image": "https://copimax.store/assets/blog/copimax-exterior-1280.webp",
-      "description": "Centro de copiado e impresiones en CDMX. Copias B/N desde $0.35, color láser y engargolados con calculadora de cotización online.",
-      "brand": {
-        "@type": "Brand",
-        "name": "COPIMAX"
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "341",
+      "bestRating": "5"
+    },
+    "review": {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Cliente Verificado en Google"
       },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "MXN",
-        "lowPrice": "0.35",
-        "highPrice": "5.00",
-        "offerCount": "100",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "LocalBusiness",
-          "name": "COPIMAX Iztacalco",
-          "telephone": "+52-55-2963-2885",
-          "url": "https://copimax.store",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Vainilla 474",
-            "addressLocality": "Iztacalco",
-            "addressRegion": "CDMX",
-            "postalCode": "08400",
-            "addressCountry": "MX"
-          }
-        }
+      "datePublished": "2026-10-28",
+      "reviewBody": "Excelente servicio de copias, impresiones y escaneo por volumen en Carta y Oficio. Precios reales desde $0.35 y entrega puntual el mismo día.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
       }
     }
-  ]
-  </script>
+  }
+]
+</script>
 
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous"></script>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">MODO FOLLETO (BOOKLET) EN HOJA CARTA DOBLADA A LA MITAD</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Imposición automática en Adobe Acrobat Reader: 4 páginas de cuadernillo por cada hoja Carta</text>
+
+  <!-- Cara A -->
+  <rect x="40" y="120" width="380" height="220" fill="#fafafa" stroke="#cdff00" stroke-width="2.5" rx="6"/>
+  <line x1="230" y1="120" x2="230" y2="340" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="135" y="165" fill="#71717a" font-size="13" font-weight="700" text-anchor="middle">CONTRAPORTADA</text>
+  <text x="135" y="225" fill="#111111" font-size="36" font-weight="900" text-anchor="middle">Pág. 8</text>
+  <text x="135" y="265" fill="#3f3f46" font-size="12" text-anchor="middle">14.0 × 21.6 cm</text>
+  <text x="325" y="165" fill="#15803d" font-size="13" font-weight="800" text-anchor="middle">PORTADA</text>
+  <text x="325" y="225" fill="#111111" font-size="36" font-weight="900" text-anchor="middle">Pág. 1</text>
+  <text x="325" y="265" fill="#3f3f46" font-size="12" text-anchor="middle">14.0 × 21.6 cm</text>
+  <text x="230" y="370" fill="#cdff00" font-size="14" font-weight="700" text-anchor="middle">CARA EXTERIOR (Hoja Carta horizontal 27.9 × 21.6 cm)</text>
+
+  <!-- Cara B -->
+  <rect x="470" y="120" width="390" height="220" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="495" y="156" fill="#ffffff" font-size="16" font-weight="800">Regla de los múltiplos de 4</text>
+  <text x="495" y="188" fill="#e4e4e7" font-size="14">• 8 páginas PDF  → 2 hojas Carta (4 caras)</text>
+  <text x="495" y="216" fill="#e4e4e7" font-size="14">• 16 páginas PDF → 4 hojas Carta (8 caras)</text>
+  <text x="495" y="244" fill="#e4e4e7" font-size="14">• 40 páginas PDF → 10 hojas Carta (20 caras)</text>
+  <rect x="495" y="266" width="340" height="54" fill="#27272a" stroke="#cdff00" rx="8"/>
+  <text x="665" y="290" fill="#cdff00" font-size="14" font-weight="800" text-anchor="middle">40 págs en folleto = 20 caras × $0.35*</text>
+  <text x="665" y="310" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">¡Solo $7.00 MXN por cuadernillo en volumen!</text>
+  <text x="665" y="370" fill="#a1a1aa" font-size="13" text-anchor="middle">*Tarifa volumen 100+ impresiones B/N en Copimax CDMX</text>
+</svg>

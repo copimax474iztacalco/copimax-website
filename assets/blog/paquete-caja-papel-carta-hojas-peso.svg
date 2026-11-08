@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">PAQUETE VS CAJA DE PAPEL BOND CARTA Y OFICIO: HOJAS Y PESO</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Medidas estándar en México (Bond 75 g/m²) para logística, Uber Flash y pedidos por millar</text>
+
+  <!-- Card 1: Paquete 500 -->
+  <rect x="40" y="115" width="260" height="295" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="170" y="150" fill="#cdff00" font-size="18" font-weight="800" text-anchor="middle">1 PAQUETE (RESMA)</text>
+  <rect x="95" y="172" width="150" height="65" fill="#27272a" stroke="#a1a1aa" rx="6"/>
+  <text x="170" y="212" fill="#ffffff" font-size="24" font-weight="900" text-anchor="middle">500 hojas</text>
+  <text x="60" y="268" fill="#e4e4e7" font-size="14">• Equivale a: 1,000 páginas</text>
+  <text x="60" y="294" fill="#e4e4e7" font-size="14">• Peso Carta 75g: ~2.26 kg</text>
+  <text x="60" y="320" fill="#e4e4e7" font-size="14">• Peso Oficio 75g: ~2.75 kg</text>
+  <text x="60" y="346" fill="#cdff00" font-size="14" font-weight="700">• Grosor: ~5.2 cm de alto</text>
+  <text x="60" y="382" fill="#a1a1aa" font-size="12">Cabe en mochila o envío moto</text>
+
+  <!-- Card 2: Millar -->
+  <rect x="320" y="115" width="260" height="295" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="450" y="150" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">1 MILLAR (2 PAQ.)</text>
+  <rect x="375" y="172" width="150" height="65" fill="#27272a" stroke="#cdff00" rx="6"/>
+  <text x="450" y="212" fill="#cdff00" font-size="22" font-weight="900" text-anchor="middle">1,000 hojas</text>
+  <text x="340" y="268" fill="#e4e4e7" font-size="14">• 2 paquetes cerrados</text>
+  <text x="340" y="294" fill="#e4e4e7" font-size="14">• Peso Carta 75g: ~4.52 kg</text>
+  <text x="340" y="320" fill="#e4e4e7" font-size="14">• 2,000 caras a doble cara</text>
+  <text x="340" y="346" fill="#cdff00" font-size="14" font-weight="700">• Impreso B/N: desde $700*</text>
+  <text x="340" y="382" fill="#a1a1aa" font-size="12">*2,000 caras × $0.35 doble cara</text>
+
+  <!-- Card 3: Caja 10 paquetes -->
+  <rect x="600" y="115" width="260" height="295" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="730" y="150" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">1 CAJA COMPLETA</text>
+  <rect x="655" y="172" width="150" height="65" fill="#27272a" stroke="#a1a1aa" rx="6"/>
+  <text x="730" y="212" fill="#ffffff" font-size="22" font-weight="900" text-anchor="middle">5,000 hojas</text>
+  <text x="620" y="268" fill="#e4e4e7" font-size="14">• Trae: 10 paquetes de 500</text>
+  <text x="620" y="294" fill="#e4e4e7" font-size="14">• Peso Carta 75g: ~22.6 kg</text>
+  <text x="620" y="320" fill="#e4e4e7" font-size="14">• Peso Oficio 75g: ~27.5 kg</text>
+  <text x="620" y="346" fill="#cdff00" font-size="14" font-weight="700">• Envío en auto (Uber Flash)</text>
+  <text x="620" y="382" fill="#a1a1aa" font-size="12">Gratis desde 25,000 copias B2B</text>
+</svg>

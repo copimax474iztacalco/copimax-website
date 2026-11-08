@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">PAPEL OPALINA DELGADA (120G) VS CARTULINA OPALINA (225G)</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Comparativa de rigidez, grosor y usos en tamaño Carta (21.6 × 27.9 cm) · Copimax CDMX</text>
+
+  <!-- Bond 75g reference -->
+  <rect x="40" y="120" width="250" height="290" fill="#18181b" stroke="#3f3f46" rx="10"/>
+  <text x="165" y="155" fill="#a1a1aa" font-size="16" font-weight="800" text-anchor="middle">REFERENCIA: BOND 75G</text>
+  <rect x="75" y="180" width="180" height="6" fill="#a1a1aa"/>
+  <text x="165" y="215" fill="#e4e4e7" font-size="14" text-anchor="middle">Grosor: ~0.10 mm</text>
+  <text x="60" y="255" fill="#d4d4d8" font-size="13">• Flexible de uso diario</text>
+  <text x="60" y="282" fill="#d4d4d8" font-size="13">• Manuales y copias volumen</text>
+  <text x="60" y="309" fill="#d4d4d8" font-size="13">• Doble cara sin atascos</text>
+  <text x="165" y="372" fill="#cdff00" font-size="16" font-weight="800" text-anchor="middle">Desde $0.35 B/N</text>
+
+  <!-- Opalina 120g -->
+  <rect x="325" y="120" width="250" height="290" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="450" y="155" fill="#cdff00" font-size="16" font-weight="800" text-anchor="middle">OPALINA DELGADA 120G</text>
+  <rect x="360" y="177" width="180" height="12" fill="#cdff00"/>
+  <text x="450" y="215" fill="#ffffff" font-size="14" text-anchor="middle">Grosor: ~0.16 mm</text>
+  <text x="345" y="255" fill="#e4e4e7" font-size="13">• Cuerpo ejecutivo terso</text>
+  <text x="345" y="282" fill="#e4e4e7" font-size="13">• Cartas membretadas y CV</text>
+  <text x="345" y="309" fill="#e4e4e7" font-size="13">• Separadores de carpetas</text>
+  <text x="450" y="372" fill="#cdff00" font-size="16" font-weight="800" text-anchor="middle">Color Carta desde $5*</text>
+
+  <!-- Cartulina Opalina 225g -->
+  <rect x="610" y="120" width="250" height="290" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="735" y="155" fill="#cdff00" font-size="16" font-weight="800" text-anchor="middle">CARTULINA OPALINA 225G</text>
+  <rect x="645" y="173" width="180" height="20" fill="#ffffff"/>
+  <text x="735" y="215" fill="#ffffff" font-size="14" text-anchor="middle">Grosor: ~0.28 mm (Rígida)</text>
+  <text x="630" y="255" fill="#e4e4e7" font-size="13">• Alta rigidez tipo tarjeta</text>
+  <text x="630" y="282" fill="#e4e4e7" font-size="13">• Diplomas y reconocimientos</text>
+  <text x="630" y="309" fill="#e4e4e7" font-size="13">• Portadas y gafetes Media Carta</text>
+  <text x="735" y="372" fill="#cdff00" font-size="16" font-weight="800" text-anchor="middle">Láser Tóner Seco</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">AHORRO REAL EN COPIAS DE TRASLADO (EXPEDIENTE DE 1,200 PÁGINAS)</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Comparativa en tamaño Oficio mexicano (21.6 × 34 cm) y Carta: Juzgados vs Copimax Iztacalco</text>
+
+  <!-- Outside courts -->
+  <rect x="45" y="120" width="380" height="290" fill="#18181b" stroke="#ef4444" stroke-width="2" rx="10"/>
+  <text x="235" y="158" fill="#fca5a5" font-size="17" font-weight="800" text-anchor="middle">LOCALES AFUERA DE JUZGADOS</text>
+  <text x="235" y="212" fill="#ffffff" font-size="38" font-weight="900" text-anchor="middle">$2,400 MXN</text>
+  <text x="235" y="242" fill="#a1a1aa" font-size="14" text-anchor="middle">1,200 copias Oficio × $2.00 MXN</text>
+  <text x="75" y="290" fill="#d4d4d8" font-size="13">• Filas largas en horario pico matutino</text>
+  <text x="75" y="318" fill="#d4d4d8" font-size="13">• Recargo extra por tamaño Oficio</text>
+  <text x="75" y="346" fill="#d4d4d8" font-size="13">• Rara vez emiten factura CFDI 4.0 inmediata</text>
+
+  <!-- Copimax -->
+  <rect x="470" y="120" width="385" height="290" fill="#18181b" stroke="#cdff00" stroke-width="2.5" rx="10"/>
+  <text x="662" y="158" fill="#cdff00" font-size="17" font-weight="800" text-anchor="middle">COPIMAX + ENVÍO UBER FLASH</text>
+  <text x="662" y="212" fill="#cdff00" font-size="38" font-weight="900" text-anchor="middle">$420–$480 MXN</text>
+  <text x="662" y="242" fill="#e4e4e7" font-size="14" text-anchor="middle">1,200 caras × $0.35 (doble) o $0.40 (1 cara)</text>
+  <text x="500" y="290" fill="#ffffff" font-size="13">✓ Ahorras hasta 80% (~$1,920 MXN por juego)</text>
+  <text x="500" y="318" fill="#ffffff" font-size="13">✓ Oficio mexicano 21.6×34 cm sin recargo oculto</text>
+  <text x="500" y="346" fill="#ffffff" font-size="13">✓ Entrega en Ciudad Judicial / San Lázaro en 25 min</text>
+  <text x="500" y="374" fill="#cdff00" font-size="13" font-weight="700">✓ Escaneo ADF expediente desde $1.00/hoja + CFDI</text>
+</svg>

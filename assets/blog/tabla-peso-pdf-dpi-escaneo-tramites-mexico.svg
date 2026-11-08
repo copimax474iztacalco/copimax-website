@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f172a" rx="18"/>
+  <text x="40" y="52" fill="#b5ff00" font-size="24" font-weight="800">PESO ESTIMADO DE PDF ESCANEADO (20 HOJAS CARTA A 300 DPI)</text>
+  <text x="40" y="80" fill="#cbd5e1" font-size="15">Requisitos de portales SAT, IMSS, INVI y VUCEM · Escaneo ADF COPIMAX desde $1.00/hoja</text>
+  <g transform="translate(50, 125)">
+    <rect x="0" y="0" width="800" height="58" rx="10" fill="#1e293b"/>
+    <rect x="0" y="0" width="160" height="58" rx="10" fill="#10b981"/>
+    <text x="20" y="35" fill="#052e16" font-size="16" font-weight="800">~0.9 MB</text>
+    <text x="185" y="35" fill="#fff" font-size="16" font-weight="600">B/N Bitonal 300 DPI — Ideal SAT / IMSS / INVI (Límite 2 a 4 MB)</text>
+
+    <rect x="0" y="78" width="800" height="58" rx="10" fill="#1e293b"/>
+    <rect x="0" y="78" width="340" height="58" rx="10" fill="#38bdf8"/>
+    <text x="20" y="113" fill="#082f49" font-size="16" font-weight="800">~3.2 MB</text>
+    <text x="360" y="113" fill="#fff" font-size="16" font-weight="600">Escala de Grises 300 DPI — Escrituras, sellos tenues y VUCEM</text>
+
+    <rect x="0" y="156" width="800" height="58" rx="10" fill="#1e293b"/>
+    <rect x="0" y="156" width="540" height="58" rx="10" fill="#f59e0b"/>
+    <text x="20" y="191" fill="#451a03" font-size="16" font-weight="800">~5.6 MB</text>
+    <text x="560" y="191" fill="#fff" font-size="15" font-weight="600">Color Optimizado 300 DPI (Sellos a color)</text>
+
+    <rect x="0" y="234" width="800" height="58" rx="10" fill="#1e293b"/>
+    <rect x="0" y="234" width="770" height="58" rx="10" fill="#ef4444"/>
+    <text x="20" y="269" fill="#fff" font-size="16" font-weight="800">~17.0 MB — Excede portales de gobierno (dividir en tomos o bajar a B/N)</text>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="460" fill="#0f0f10" rx="16"/>
+  <rect x="16" y="16" width="868" height="428" fill="none" stroke="#2a2a2e" stroke-width="2" rx="12"/>
+  <text x="40" y="56" fill="#cdff00" font-size="22" font-weight="800">FLUJO B2B: CARPETAS DE LICITACIONES PÚBLICAS (CARTA Y OFICIO)</text>
+  <text x="40" y="82" fill="#a1a1aa" font-size="14">Propuesta Técnica + Económica + Escaneo PDF para CompraNet · Copimax Iztacalco CFDI 4.0</text>
+
+  <!-- Step 1 -->
+  <rect x="35" y="120" width="195" height="285" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="132" y="155" fill="#cdff00" font-size="15" font-weight="800" text-anchor="middle">01. IMPRESIÓN</text>
+  <text x="52" y="190" fill="#e4e4e7" font-size="13">• Carta (21.6×27.9 cm)</text>
+  <text x="52" y="216" fill="#e4e4e7" font-size="13">• Oficio (21.6×34.0 cm)</text>
+  <text x="52" y="242" fill="#e4e4e7" font-size="13">• Bond 75g o 90g</text>
+  <text x="52" y="268" fill="#cdff00" font-size="14" font-weight="800">• Desde $0.35 / cara</text>
+  <text x="52" y="340" fill="#a1a1aa" font-size="12">Tóner Xerox indeleble</text>
+  <text x="52" y="360" fill="#a1a1aa" font-size="12">para sellos y firmas</text>
+
+  <!-- Step 2 -->
+  <rect x="250" y="120" width="195" height="285" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="347" y="155" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">02. ORGANIZACIÓN</text>
+  <text x="267" y="190" fill="#e4e4e7" font-size="13">• Separadores Opalina</text>
+  <text x="267" y="216" fill="#e4e4e7" font-size="13">• Foliado consecutivo</text>
+  <text x="267" y="242" fill="#e4e4e7" font-size="13">• Juego original + copia</text>
+  <text x="267" y="268" fill="#cdff00" font-size="14" font-weight="800">• Engargolado o carpeta</text>
+  <text x="267" y="340" fill="#a1a1aa" font-size="12">Revisión sin hojas</text>
+  <text x="267" y="360" fill="#a1a1aa" font-size="12">en blanco ni cortes</text>
+
+  <!-- Step 3 -->
+  <rect x="465" y="120" width="195" height="285" fill="#18181b" stroke="#3f3f46" stroke-width="2" rx="10"/>
+  <text x="562" y="155" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">03. ESCANEO ADF</text>
+  <text x="482" y="190" fill="#e4e4e7" font-size="13">• Post-firma autógrafa</text>
+  <text x="482" y="216" fill="#e4e4e7" font-size="13">• 200 o 300 DPI limpio</text>
+  <text x="482" y="242" fill="#e4e4e7" font-size="13">• PDF/A con OCR ligero</text>
+  <text x="482" y="268" fill="#cdff00" font-size="14" font-weight="800">• Desde $1.00 / hoja</text>
+  <text x="482" y="340" fill="#a1a1aa" font-size="12">Listo para subir a</text>
+  <text x="482" y="360" fill="#a1a1aa" font-size="12">CompraNet sin rechazo</text>
+
+  <!-- Step 4 -->
+  <rect x="680" y="120" width="185" height="285" fill="#18181b" stroke="#cdff00" stroke-width="2" rx="10"/>
+  <text x="772" y="155" fill="#cdff00" font-size="15" font-weight="800" text-anchor="middle">04. ENTREGA HOY</text>
+  <text x="695" y="190" fill="#e4e4e7" font-size="13">• Envío Uber Flash</text>
+  <text x="695" y="216" fill="#e4e4e7" font-size="13">• Dependencia o sede</text>
+  <text x="695" y="242" fill="#e4e4e7" font-size="13">• Factura CFDI 4.0</text>
+  <text x="695" y="268" fill="#cdff00" font-size="14" font-weight="800">• Lun–Dom Iztacalco</text>
+  <text x="695" y="340" fill="#a1a1aa" font-size="12">Vainilla 474, CDMX</text>
+  <text x="695" y="360" fill="#a1a1aa" font-size="12">WA: 55 2963 2885</text>
+</svg>
